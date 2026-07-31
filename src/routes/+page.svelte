@@ -1,0 +1,361 @@
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import type { DictionaryWord, UserWordProgress, SessionCard, UserSettings, ReviewGrade } from '$lib/types';
+  import { INITIAL_WORDS } from '$lib/data/words';
+  import { calculateSM2, getTodayDateString } from '$lib/supermemo';
+  import {
+    getLocalProgressMap,
+    saveLocalWordProgress,
+    saveAllLocalProgress,
+    getLocalSettings,
+    saveLocalSettings,
+    loadProgressFromCloud,
+    syncProgressToCloud,
+    clearAllProgress
+  } from '$lib/storage';
+  import { createDailySession } from '$lib/session';
+  import { registerServiceWorker } from '$lib/notifications';
+  import { getFirebaseAuth } from '$lib/firebase';
+  import { signOut, onAuthStateChanged, type User } from 'firebase/auth';
+  import { initTheme } from '$lib/theme.svelte';
+
+  import Navbar from '$lib/components/Navbar.svelte';
+  import NewWordsShowcase from '$lib/components/NewWordsShowcase.svelte';
+  import HybridCard from '$lib/components/HybridCard.svelte';
+  import Catalog from '$lib/components/Catalog.svelte';
+  import Stats from '$lib/components/Stats.svelte';
+  import SettingsModal from '$lib/components/SettingsModal.svelte';
+  import AuthModal from '$lib/components/AuthModal.svelte';
+  import Icon from '@iconify/svelte';
+
+  let activeTab = $state<'lesson' | 'catalog' | 'stats'>('lesson');
+  let isSettingsOpen = $state(false);
+  let isAuthOpen = $state(false);
+  let currentUser = $state<User | null>(null);
+
+  // Faza sesji: 'showcase' (prezentacja wszystkich nowych haseł) lub 'quiz' (sprawdzanie i powtórki)
+  let sessionPhase = $state<'showcase' | 'quiz'>('showcase');
+  let newWordsToLearn = $state<DictionaryWord[]>([]);
+  let sessionCards = $state<SessionCard[]>([]);
+  let currentCardIndex = $state(0);
+  let sessionCompleted = $state(false);
+  let cardsReviewedInSession = $state(0);
+
+  let progressMap = $state<Record<string, UserWordProgress>>({});
+  let settings = $state<UserSettings>(getLocalSettings());
+
+  // Wartości reaktywne
+  let streakDays = $derived(calculateStreak(progressMap));
+  let currentCard = $derived(sessionCards[currentCardIndex]);
+  let learnedCount = $derived(Object.values(progressMap).filter((p) => p.repetitions >= 3).length);
+
+  /**
+   * Applies accessibility data attributes to the HTML element
+   * based on the current user settings.
+   */
+  function applyA11ySettings(s: UserSettings) {
+    if (typeof document === 'undefined') return;
+    const root = document.documentElement;
+    root.setAttribute('data-a11y-contrast', s.highContrast ? 'high' : 'default');
+    root.setAttribute('data-a11y-text', s.largerText ? 'large' : 'default');
+    root.setAttribute('data-a11y-motion', s.reducedMotion ? 'reduced' : 'default');
+  }
+
+  onMount(() => {
+    // Inicjalizacja motywu
+    initTheme();
+
+    // Rejestracja Service Workera
+    registerServiceWorker();
+
+    // Wczytanie postępu lokalnego
+    progressMap = getLocalProgressMap();
+    settings = getLocalSettings();
+
+    // Aplikacja ustawień dostępności
+    applyA11ySettings(settings);
+
+    // Utworzenie sesji
+    startSession();
+
+    // Listener Firebase Auth
+    try {
+      const auth = getFirebaseAuth();
+      if (auth) {
+        onAuthStateChanged(auth, async (user) => {
+          currentUser = user;
+          if (user) {
+            // Po zalogowaniu wczytujemy dane z chmury i scalamy z lokalnymi
+            const cloudProgress = await loadProgressFromCloud(user.uid);
+            if (cloudProgress) {
+              progressMap = { ...cloudProgress, ...progressMap };
+              saveAllLocalProgress(progressMap);
+              await syncProgressToCloud(user.uid, progressMap);
+              startSession();
+            }
+          }
+        });
+      }
+    } catch (e) {
+      console.warn('Firebase Auth w trybie offline / nieskonfigurowany.');
+    }
+  });
+
+  function startSession() {
+    const sessionData = createDailySession(progressMap, settings, INITIAL_WORDS);
+    sessionCards = sessionData.cards;
+    currentCardIndex = 0;
+    sessionCompleted = sessionCards.length === 0;
+    cardsReviewedInSession = 0;
+
+    // Wyciągamy nowe słówka z tej sesji do fazy pierwszej (Showcase)
+    const newWords = sessionCards.filter((c) => c.isNew).map((c) => c.word);
+    
+    // Jeśli są nowe słówka, zaczynamy od Fazy 1 (Prezentacji)
+    if (newWords.length > 0) {
+      newWordsToLearn = newWords;
+      sessionPhase = 'showcase';
+    } else {
+      newWordsToLearn = [];
+      sessionPhase = 'quiz';
+    }
+  }
+
+  function handleFinishShowcase() {
+    sessionPhase = 'quiz';
+  }
+
+  function calculateStreak(map: Record<string, UserWordProgress>): number {
+    const dates = new Set<string>();
+    for (const prog of Object.values(map)) {
+      if (prog.history) {
+        for (const h of prog.history) {
+          if (h.date) dates.add(h.date);
+        }
+      }
+    }
+    const today = getTodayDateString();
+    if (dates.size === 0) return 0;
+
+    let count = 0;
+    let curr = new Date(today);
+    while (true) {
+      const dateStr = curr.toISOString().split('T')[0];
+      if (dates.has(dateStr)) {
+        count++;
+        curr.setDate(curr.getDate() - 1);
+      } else {
+        if (count === 0) {
+          curr.setDate(curr.getDate() - 1);
+          const yesterdayStr = curr.toISOString().split('T')[0];
+          if (dates.has(yesterdayStr)) {
+            count++;
+            curr.setDate(curr.getDate() - 1);
+            continue;
+          }
+        }
+        break;
+      }
+    }
+    return Math.max(count, 1);
+  }
+
+  function handleGradeCard(grade: ReviewGrade) {
+    if (!currentCard) return;
+
+    // Przeliczenie SuperMemo SM-2
+    const updatedProgress = calculateSM2(currentCard.word.id, grade, progressMap[currentCard.word.id]);
+    
+    // Zapis postępu lokalnego
+    saveLocalWordProgress(updatedProgress);
+    progressMap[currentCard.word.id] = updatedProgress;
+    cardsReviewedInSession++;
+
+    // Synchronizacja w tle z Firebase Firestore jeśli zalogowany
+    if (currentUser?.uid) {
+      syncProgressToCloud(currentUser.uid, progressMap);
+    }
+
+    // Jeśli ocena to "Bardzo trudne" (0), słówko wraca na koniec obecnej sesji
+    if (grade === 0) {
+      sessionCards = [
+        ...sessionCards,
+        {
+          word: currentCard.word,
+          isNew: false,
+          userProgress: updatedProgress,
+          options: currentCard.options
+        }
+      ];
+    }
+
+    // Przejście do kolejnej karty
+    if (currentCardIndex + 1 < sessionCards.length) {
+      currentCardIndex++;
+    } else {
+      sessionCompleted = true;
+    }
+  }
+
+  function handleSaveSettings(newSettings: UserSettings) {
+    settings = newSettings;
+    saveLocalSettings(newSettings);
+    applyA11ySettings(newSettings);
+  }
+
+  async function handleResetProgress() {
+    await clearAllProgress(currentUser?.uid || undefined);
+    progressMap = {};
+    startSession();
+  }
+
+  async function handleLogout() {
+    try {
+      const auth = getFirebaseAuth();
+      await signOut(auth);
+    } catch (err) {
+      console.error('Błąd wylogowania:', err);
+    }
+  }
+</script>
+
+<!-- Pasek Nawigacji z przełącznikiem motywu -->
+<Navbar
+  {activeTab}
+  {streakDays}
+  {learnedCount}
+  userEmail={currentUser?.email || null}
+  onTabChange={(tab) => (activeTab = tab)}
+  onOpenSettings={() => (isSettingsOpen = true)}
+  onLogin={() => (isAuthOpen = true)}
+  onLogout={handleLogout}
+/>
+
+<!-- Główna zawartość -->
+<!-- pb-24 na mobile = miejsce na bottom tab bar + trochę oddechu -->
+<main class="mx-auto max-w-5xl px-0 sm:px-6 py-4 sm:py-8 pb-24 sm:pb-8">
+  
+  {#if activeTab === 'lesson'}
+    <!-- WIDOK LEKCJI -->
+    <div class="flex flex-col items-center justify-center space-y-6">
+      
+      {#if !sessionCompleted}
+
+        <!-- FAZA 1: Prezentacja Nowych Słów (Showcase) -->
+        {#if sessionPhase === 'showcase' && newWordsToLearn.length > 0}
+          
+          <NewWordsShowcase
+            words={newWordsToLearn}
+            onFinishShowcase={handleFinishShowcase}
+          />
+
+        <!-- FAZA 2: Sprawdzian wiedzy i powtórki (Quiz) -->
+        {:else if currentCard}
+          
+          <!-- Pasek postępu sesji - kompaktowy na mobile -->
+          <div class="w-full max-w-2xl px-4 sm:px-0">
+            <!-- Mobile: uproszczony pasek z liczbą -->
+            <div class="flex items-center gap-3 mb-1">
+              <span class="text-[11px] sm:text-xs font-extrabold text-[var(--brand-primary)] shrink-0">Faza 2 &middot; {currentCardIndex + 1}/{sessionCards.length}</span>
+              <div class="flex-1 h-2 sm:h-2.5 rounded-full bg-[var(--progress-track)] overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-primary-hover)] transition-all duration-300"
+                  style="width: {((currentCardIndex + 1) / sessionCards.length) * 100}%"
+                ></div>
+              </div>
+              <span class="text-[11px] sm:text-xs font-extrabold text-[var(--text-muted)] shrink-0 tabular-nums">{Math.round(((currentCardIndex + 1) / sessionCards.length) * 100)}%</span>
+            </div>
+          </div>
+
+          <!-- Hybrydowa Karta Słówka dla Quizu -->
+          <HybridCard card={currentCard} onGrade={handleGradeCard} />
+
+        {/if}
+
+      {:else}
+        
+        <!-- EKRAN PODSUMOWANIA LEKCJI -->
+        <!-- Na mobile: edge-to-edge, brak zaokrągleń po bokach -->
+        <div class="w-full sm:max-w-xl sm:rounded-2xl border-y sm:border border-[var(--border-default)] bg-[var(--bg-surface)] sm:shadow-xl animate-in fade-in duration-300">
+          
+          <!-- Górna sekcja -->
+          <div class="flex flex-col items-center text-center px-6 pt-10 pb-6 gap-4">
+            <div class="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[var(--brand-primary)] to-[var(--brand-primary-hover)] shadow-lg">
+              <Icon icon="ph:trophy-bold" class="h-11 w-11 text-white" />
+            </div>
+            <div>
+              <h2 class="title-serif text-3xl sm:text-4xl">Wspaniała praca!</h2>
+              <p class="mt-2 text-sm font-semibold text-[var(--text-muted)] max-w-xs mx-auto">
+                Dzisiejsza lekcja zakończona. Twój zasób słownictwa rośnie!
+              </p>
+            </div>
+          </div>
+
+          <!-- Statystyki sesji -->
+          <div class="grid grid-cols-2 divide-x divide-[var(--border-default)] border-y border-[var(--border-default)] text-center">
+            <div class="py-5 px-4">
+              <span class="text-[11px] font-extrabold text-[var(--text-muted)] uppercase tracking-wider">Przejrzane hasła</span>
+              <p class="font-serif text-3xl font-bold text-[var(--text-amber-brand)] mt-1">{cardsReviewedInSession}</p>
+            </div>
+            <div class="py-5 px-4">
+              <span class="text-[11px] font-extrabold text-[var(--text-muted)] uppercase tracking-wider">Seria nauki</span>
+              <p class="font-serif text-3xl font-bold text-[var(--text-amber-brand)] mt-1">{streakDays} dni</p>
+            </div>
+          </div>
+
+          <!-- Akcje - duże, dotykowe -->
+          <div class="flex flex-col gap-3 p-5">
+            <button
+              type="button"
+              onclick={startSession}
+              class="btn-touch"
+            >
+              <Icon icon="ph:arrows-clockwise-bold" class="h-5 w-5" />
+              <span>Powtórz dodatkowo</span>
+            </button>
+            <button
+              type="button"
+              onclick={() => (activeTab = 'catalog')}
+              class="btn-secondary w-full py-3 text-sm"
+            >
+              Przeglądaj Słowniczek
+            </button>
+          </div>
+
+        </div>
+
+      {/if}
+
+    </div>
+
+  {:else if activeTab === 'catalog'}
+    
+    <!-- WIDOK KATALOGU / SŁOWNICZKA -->
+    <Catalog words={INITIAL_WORDS} {progressMap} />
+
+  {:else if activeTab === 'stats'}
+
+    <!-- WIDOK STATYSTYK -->
+    <Stats words={INITIAL_WORDS} {progressMap} {streakDays} />
+
+  {/if}
+
+</main>
+
+<!-- Modal Ustawień -->
+{#if isSettingsOpen}
+  <SettingsModal
+    {settings}
+    onClose={() => (isSettingsOpen = false)}
+    onSave={handleSaveSettings}
+    onResetProgress={handleResetProgress}
+  />
+{/if}
+
+<!-- Modal Logowania i Rejestracji -->
+{#if isAuthOpen}
+  <AuthModal
+    onClose={() => (isAuthOpen = false)}
+    onSuccess={() => startSession()}
+  />
+{/if}

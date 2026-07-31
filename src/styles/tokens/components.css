@@ -1,0 +1,273 @@
+/* Ustandaryzowane Klasy Komponentów UI (Design System Components) */
+
+@layer components {
+  /* Karty i Kontenery */
+  .app-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .app-card-interactive {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .app-card-interactive:hover {
+    border-color: var(--brand-primary);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Przyciski */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+    background-color: var(--brand-primary);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.15s ease-in-out;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--brand-primary-hover);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-default);
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--brand-primary);
+  }
+
+  /* Duże przyciski mobilne (min 44px touch target) */
+  .btn-touch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.75rem; /* 44px */
+    border-radius: 0.875rem;
+    background-color: var(--brand-primary);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    transition: all 0.15s ease-in-out;
+    width: 100%;
+  }
+
+  .btn-touch:hover, .btn-touch:active {
+    background-color: var(--brand-primary-hover);
+    transform: scale(0.98);
+  }
+
+  /* Odznaki i Etykiety */
+  .badge-amber {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: 9999px;
+    background-color: var(--badge-amber-bg);
+    color: var(--badge-amber-text);
+    border: 1px solid var(--badge-amber-border);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .badge-emerald {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: 9999px;
+    background-color: var(--badge-emerald-bg);
+    color: var(--badge-emerald-text);
+    border: 1px solid var(--badge-emerald-border);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .badge-rose {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: 9999px;
+    background-color: var(--badge-rose-bg);
+    color: var(--badge-rose-text);
+    border: 1px solid var(--badge-rose-border);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  /* Nagłówki i Teksty */
+  .title-serif {
+    font-family: var(--font-serif);
+    color: var(--text-serif-title);
+    font-weight: 700;
+  }
+
+  .text-body-primary {
+    color: var(--text-primary);
+  }
+
+  .text-body-muted {
+    color: var(--text-muted);
+  }
+
+  /* ===== MODALE - Desktop ===== */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    padding: 1rem;
+  }
+
+  .modal-container {
+    position: relative;
+    width: 100%;
+    max-width: 32rem;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 1rem;
+    border: 1px solid var(--border-default);
+    background-color: var(--bg-surface);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  /* ===== BOTTOM SHEET (mobile) ===== */
+  /* Backdrop bez centrowania na mobile - modal wysuwa się od dołu */
+  .sheet-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: flex-end;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  .sheet-container {
+    position: relative;
+    width: 100%;
+    max-height: 92dvh;
+    overflow-y: auto;
+    /* Zaokrąglenie tylko na górze */
+    border-radius: 1.25rem 1.25rem 0 0;
+    border: 1px solid var(--border-default);
+    border-bottom: none;
+    background-color: var(--bg-surface);
+    box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2);
+    /* Animacja wjazdu od dołu */
+    animation: slide-up 0.28s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Uchwyt do przeciągania (drag handle) */
+  .sheet-handle {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .sheet-handle::before {
+    content: '';
+    display: block;
+    width: 2.5rem;
+    height: 0.25rem;
+    border-radius: 9999px;
+    background-color: var(--border-default);
+  }
+
+  /* ===== BOTTOM TAB BAR ===== */
+  .bottom-tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    display: flex;
+    align-items: stretch;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-default);
+    /* Safe area dla telefony z notchem */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .bottom-tab-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.625rem 0.5rem;
+    min-height: 3.25rem; /* 52px - duży touch target */
+    color: var(--text-muted);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    transition: color 0.15s ease;
+    cursor: pointer;
+    border: none;
+    background: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .bottom-tab-item.active {
+    color: var(--brand-primary);
+  }
+
+  .bottom-tab-indicator {
+    position: absolute;
+    top: 0;
+    height: 2px;
+    width: 2rem;
+    border-radius: 0 0 9999px 9999px;
+    background-color: var(--brand-primary);
+    transition: all 0.2s ease;
+  }
+}

@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+
+/* Import tokenów Design Systemu */
+@import '../styles/tokens/colors.css';
+@import '../styles/tokens/components.css';
+@import '../styles/tokens/accessibility.css';
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
+
+@theme {
+  --font-serif: 'Libre Baskerville', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  
+  --color-bg-app: var(--bg-app);
+  --color-bg-surface: var(--bg-surface);
+  --color-border-default: var(--border-default);
+  --color-text-primary: var(--text-primary);
+  --color-text-serif-title: var(--text-serif-title);
+  --color-text-muted: var(--text-muted);
+  --color-brand-primary: var(--brand-primary);
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: 'Libre Baskerville', Georgia, serif;
+  }
+  .font-sans {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Reguły przejścia motywów View Transitions API z angmatura.pl */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+::view-transition-group(root) {
+  animation-duration: 650ms;
+}
+
+/* Fallback przejścia bez wsparcia View Transitions */
+.theme-crossfade,
+.theme-crossfade * {
+  transition: background-color 0.45s ease,
+  color 0.45s ease,
+  border-color 0.45s ease,
+  box-shadow 0.45s ease,
+  fill 0.45s ease,
+  stroke 0.45s ease !important;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+html[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: #0f1117;
+}
+html[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: #2a3042;
+  border-radius: 4px;
+}
+html:not([data-theme='dark']) ::-webkit-scrollbar-track {
+  background: #faf7f2;
+}
+html:not([data-theme='dark']) ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}

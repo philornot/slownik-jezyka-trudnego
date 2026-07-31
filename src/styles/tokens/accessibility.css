@@ -1,0 +1,163 @@
+/* Design System: Accessibility Overrides */
+
+/* =============================================
+   TRYB WYSOKIEGO KONTRASTU (High Contrast Mode)
+   Klasa: [data-a11y-contrast="high"]
+   ============================================= */
+
+/* Light Mode + High Contrast */
+:root[data-a11y-contrast="high"] {
+  /* Tekst jeszcze ciemniejszy */
+  --text-primary: #000000;
+  --text-secondary: #0a0a0a;
+  --text-serif-title: #000000;
+  --text-muted: #1a1a2e;
+  --text-amber-brand: #5c2d00;
+  --text-amber-accent: #7c3b00;
+
+  /* Tła bardziej kontrastowe */
+  --bg-surface-elevated: #eee9de;
+  --bg-surface-muted: #ddd5c6;
+
+  /* Obramowania wyrazistsze */
+  --border-default: #94a3b8;
+  --border-muted: #a8a29e;
+  --border-amber: #d97706;
+
+  /* Brand jeszcze ciemniejszy */
+  --brand-primary: #b45309;
+  --brand-primary-hover: #92400e;
+
+  /* Odznaki */
+  --badge-amber-text: #5c2d00;
+  --badge-amber-border: #d97706;
+
+  --badge-emerald-text: #022c22;
+  --badge-emerald-border: #059669;
+
+  --badge-rose-text: #4c0519;
+  --badge-rose-border: #e11d48;
+
+  /* Kolory kontekstowe */
+  --emerald-text: #022c22;
+  --emerald-icon: #047857;
+
+  --rose-text: #4c0519;
+  --rose-icon: #be123c;
+
+  --blue-text: #0c1d36;
+
+  /* Blockquote */
+  --blockquote-text: #000000;
+
+  /* Tooltip */
+  --tooltip-bg: #000000;
+}
+
+/* Dark Mode + High Contrast */
+[data-theme='dark'][data-a11y-contrast="high"],
+.dark[data-a11y-contrast="high"] {
+  /* Tekst jaśniejszy i ostrzejszy */
+  --text-primary: #ffffff;
+  --text-secondary: #f8fafc;
+  --text-serif-title: #ffffff;
+  --text-muted: #cbd5e1;
+  --text-amber-brand: #fde68a;
+  --text-amber-accent: #fbbf24;
+
+  /* Tła z wyraźniejszym rozdzieleniem */
+  --bg-surface: #1a1d2a;
+  --bg-surface-elevated: #252a3a;
+  --bg-surface-muted: #303850;
+
+  /* Obramowania jaśniejsze */
+  --border-default: #475569;
+  --border-muted: #334155;
+  --border-amber: #fbbf24;
+
+  /* Brand jaśniejszy */
+  --brand-primary: #f59e0b;
+  --brand-primary-hover: #d97706;
+
+  /* Odznaki */
+  --badge-amber-text: #fde68a;
+  --badge-amber-border: rgba(251, 191, 36, 0.6);
+  --badge-amber-bg: rgba(217, 119, 6, 0.25);
+
+  --badge-emerald-text: #a7f3d0;
+  --badge-emerald-border: rgba(16, 185, 129, 0.5);
+  --badge-emerald-bg: rgba(16, 185, 129, 0.2);
+
+  --badge-rose-text: #fecdd3;
+  --badge-rose-border: rgba(244, 63, 94, 0.5);
+  --badge-rose-bg: rgba(244, 63, 94, 0.2);
+
+  /* Kolory kontekstowe */
+  --emerald-text: #a7f3d0;
+  --emerald-icon: #6ee7b7;
+
+  --rose-text: #fecdd3;
+  --rose-icon: #fb7185;
+
+  --blue-text: #bfdbfe;
+
+  /* Blockquote */
+  --blockquote-text: #f1f5f9;
+
+  /* Wykres */
+  --bar-active: #f59e0b;
+  --bar-secondary: rgba(245, 158, 11, 0.8);
+  --bar-inactive: #1e293b;
+  --progress-track: #1e293b;
+  --progress-border: #475569;
+}
+
+/* =============================================
+   POWIĘKSZONY TEKST (Larger Text Mode)
+   Klasa: [data-a11y-text="large"]
+   ============================================= */
+
+[data-a11y-text="large"] {
+  font-size: 112.5%; /* 18px zamiast 16px base */
+}
+
+[data-a11y-text="large"] .text-xs {
+  font-size: 0.8125rem; /* 13px zamiast 12px */
+}
+
+[data-a11y-text="large"] .text-sm {
+  font-size: 0.9375rem; /* 15px zamiast 14px */
+}
+
+[data-a11y-text="large"] .text-\[10px\],
+[data-a11y-text="large"] .text-\[11px\] {
+  font-size: 0.75rem; /* 12px zamiast 10-11px */
+}
+
+/* =============================================
+   REDUKCJA RUCHU (Reduced Motion Mode)
+   Klasa: [data-a11y-motion="reduced"]
+   ============================================= */
+
+[data-a11y-motion="reduced"],
+[data-a11y-motion="reduced"] * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+[data-a11y-motion="reduced"] .animate-pulse {
+  animation: none !important;
+}
+
+/* Wyłączenie View Transitions API w trybie redukcji ruchu */
+[data-a11y-motion="reduced"] ::view-transition-group(root) {
+  animation-duration: 0ms;
+}
+
+/* Focus ring dla lepszej widoczności w trybie wysokiego kontrastu */
+[data-a11y-contrast="high"] :focus-visible {
+  outline: 3px solid var(--brand-primary) !important;
+  outline-offset: 2px !important;
+}

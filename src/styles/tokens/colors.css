@@ -1,0 +1,159 @@
+/* Design System Tokeny Kolorów i Motywów */
+
+:root {
+  /* Motyw Jasny (Light Mode Tokens) */
+
+  /* Tła */
+  --bg-app: #faf7f2;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f4efe6;
+  --bg-surface-muted: #e6dfd3;
+  --bg-surface-inset: #f8f5f0;
+
+  /* Obramowania */
+  --border-default: #cbd5e1;
+  --border-muted: #e2e8f0;
+  --border-amber: #fcd34d;
+  --border-amber-strong: #d97706;
+
+  /* Tekst */
+  --text-primary: #0f172a;
+  --text-secondary: #1e293b;
+  --text-serif-title: #2a0c00;
+  --text-muted: #334155;
+  --text-amber-brand: #78350f;
+  --text-amber-accent: #b45309;
+
+  /* Brand */
+  --brand-primary: #d97706;
+  --brand-primary-hover: #b45309;
+
+  /* Ikonowe tła akcent */
+  --icon-bg-amber: #fef3c7;
+  --icon-bg-stone: #f5f5f4;
+  --icon-bg-emerald: #d1fae5;
+
+  /* Odznaki */
+  --badge-amber-bg: #fef3c7;
+  --badge-amber-text: #78350f;
+  --badge-amber-border: #fcd34d;
+
+  --badge-emerald-bg: #d1fae5;
+  --badge-emerald-text: #064e3b;
+  --badge-emerald-border: #6ee7b7;
+
+  --badge-rose-bg: #ffe4e6;
+  --badge-rose-text: #881337;
+  --badge-rose-border: #fda4af;
+
+  /* Kolory kontekstowe (emerald, rose, blue, amber) */
+  --emerald-text: #064e3b;
+  --emerald-text-strong: #065f46;
+  --emerald-bg: #d1fae5;
+  --emerald-border: #6ee7b7;
+  --emerald-icon: #047857;
+
+  --rose-text: #881337;
+  --rose-text-strong: #9f1239;
+  --rose-bg: #ffe4e6;
+  --rose-border: #fda4af;
+  --rose-icon: #be123c;
+
+  --blue-text: #1e3a5f;
+  --blue-bg: #dbeafe;
+  --blue-border: #93c5fd;
+
+  /* Wykres / progress bar */
+  --bar-active: #d97706;
+  --bar-inactive: #d6d3d1;
+  --bar-secondary: rgba(245, 158, 11, 0.9);
+  --progress-track: #d6d3d1;
+  --progress-border: #a8a29e;
+
+  /* Tooltip */
+  --tooltip-bg: #0f172a;
+  --tooltip-text: #ffffff;
+
+  /* Blockquote */
+  --blockquote-bg: #fffbeb;
+  --blockquote-text: #0f172a;
+}
+
+[data-theme='dark'], .dark {
+  /* Motyw Ciemny (Dark Mode Tokens) */
+
+  /* Tła */
+  --bg-app: #0f1117;
+  --bg-surface: #161922;
+  --bg-surface-elevated: #1e2330;
+  --bg-surface-muted: #252b3b;
+  --bg-surface-inset: #0f1117;
+
+  /* Obramowania */
+  --border-default: #2a3042;
+  --border-muted: #1f2536;
+  --border-amber: #d97706;
+  --border-amber-strong: #fbbf24;
+
+  /* Tekst */
+  --text-primary: #f1f5f9;
+  --text-secondary: #e2e8f0;
+  --text-serif-title: #fef3c7;
+  --text-muted: #94a3b8;
+  --text-amber-brand: #fbbf24;
+  --text-amber-accent: #d97706;
+
+  /* Brand */
+  --brand-primary: #d97706;
+  --brand-primary-hover: #b45309;
+
+  /* Ikonowe tła akcent */
+  --icon-bg-amber: rgba(217, 119, 6, 0.15);
+  --icon-bg-stone: #0f1117;
+  --icon-bg-emerald: rgba(16, 185, 129, 0.15);
+
+  /* Odznaki */
+  --badge-amber-bg: rgba(217, 119, 6, 0.15);
+  --badge-amber-text: #fbbf24;
+  --badge-amber-border: rgba(217, 119, 6, 0.3);
+
+  --badge-emerald-bg: rgba(16, 185, 129, 0.15);
+  --badge-emerald-text: #6ee7b7;
+  --badge-emerald-border: rgba(16, 185, 129, 0.3);
+
+  --badge-rose-bg: rgba(244, 63, 94, 0.15);
+  --badge-rose-text: #fda4af;
+  --badge-rose-border: rgba(244, 63, 94, 0.3);
+
+  /* Kolory kontekstowe */
+  --emerald-text: #6ee7b7;
+  --emerald-text-strong: #6ee7b7;
+  --emerald-bg: rgba(16, 185, 129, 0.15);
+  --emerald-border: rgba(16, 185, 129, 0.3);
+  --emerald-icon: #6ee7b7;
+
+  --rose-text: #fda4af;
+  --rose-text-strong: #fda4af;
+  --rose-bg: rgba(244, 63, 94, 0.15);
+  --rose-border: rgba(244, 63, 94, 0.3);
+  --rose-icon: #fb7185;
+
+  --blue-text: #93c5fd;
+  --blue-bg: rgba(59, 130, 246, 0.15);
+  --blue-border: rgba(59, 130, 246, 0.3);
+
+  /* Wykres / progress bar */
+  --bar-active: #d97706;
+  --bar-inactive: #0f1117;
+  --bar-secondary: rgba(217, 119, 6, 0.6);
+  --progress-track: #161922;
+  --progress-border: #2a3042;
+
+  /* Tooltip */
+  --tooltip-bg: #2a3042;
+  --tooltip-text: #ffffff;
+
+  /* Blockquote */
+  --blockquote-bg: rgba(15, 17, 23, 0.6);
+  --blockquote-text: #cbd5e1;
+}
