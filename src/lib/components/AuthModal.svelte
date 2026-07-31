@@ -87,7 +87,7 @@
   tabindex="-1"
   onclick={onClose}
   onkeydown={(e) => e.key === 'Escape' && onClose()}
-  class="modal-backdrop cursor-pointer"
+  class="sheet-backdrop sm:modal-backdrop cursor-pointer"
 >
   <!-- Wnętrze modala -->
   <div
@@ -96,16 +96,19 @@
     tabindex="0"
     onclick={(e) => e.stopPropagation()}
     onkeydown={(e) => e.stopPropagation()}
-    class="modal-container max-w-md overflow-hidden cursor-default"
+    class="sheet-container sm:modal-container max-w-md overflow-hidden cursor-default"
   >
+    <!-- Uchwyt do przeciągania na mobile -->
+    <div class="sheet-handle sm:hidden"></div>
+
     <!-- Nagłówek -->
-    <div class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-6 py-4">
+    <div class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-4 sm:px-6 py-3.5 sm:py-4">
       <div>
         <h2 class="title-serif text-xl">
           {mode === 'login' ? 'Zaloguj się' : 'Utwórz nowe konto'}
         </h2>
         <p class="text-xs font-bold text-[var(--text-muted)]">
-          Zapisuj swój postęp i synchronizuj słówka między urządzeniami
+          Zapisuj swój postęp i synchronizuj słówka
         </p>
       </div>
       <button
@@ -117,7 +120,7 @@
       </button>
     </div>
 
-    <div class="p-6 space-y-5">
+    <div class="p-4 sm:p-6 space-y-4 sm:space-y-5">
       <!-- Komunikaty o błędach / sukcesie -->
       {#if errorMessage}
         <div class="flex items-center gap-2 rounded-xl bg-[var(--rose-bg)] border border-[var(--rose-border)] p-3 text-xs font-bold text-[var(--rose-text)]">
@@ -139,7 +142,7 @@
           type="button"
           disabled={isSubmitting}
           onclick={handleGoogleLogin}
-          class="app-card-interactive relative flex w-full items-center justify-between p-3.5"
+          class="app-card-interactive relative flex w-full items-center justify-between p-3.5 min-h-[48px]"
         >
           <div class="flex items-center gap-3">
             <svg class="h-5 w-5" viewBox="0 0 24 24">
@@ -178,7 +181,7 @@
       </div>
 
       <!-- FORMULARZ LOGOWANIA EMAIL/HASŁO -->
-      <form onsubmit={handleSubmitEmail} class="space-y-4">
+      <form onsubmit={handleSubmitEmail} class="space-y-3.5">
         <div class="space-y-1.5">
           <label for="auth-email-input" class="text-xs font-extrabold text-[var(--text-primary)] uppercase">Adres Email</label>
           <div class="relative">
@@ -189,7 +192,7 @@
               required
               bind:value={email}
               placeholder="twojadres@email.com"
-              class="w-full rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] pl-10 pr-4 py-2.5 text-xs font-bold text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--brand-primary)] focus:outline-hidden"
+              class="w-full rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] pl-10 pr-4 py-3 text-xs font-bold text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--brand-primary)] focus:outline-hidden"
             />
           </div>
         </div>
@@ -204,7 +207,7 @@
               required
               bind:value={password}
               placeholder="••••••••"
-              class="w-full rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] pl-10 pr-4 py-2.5 text-xs font-bold text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--brand-primary)] focus:outline-hidden"
+              class="w-full rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] pl-10 pr-4 py-3 text-xs font-bold text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--brand-primary)] focus:outline-hidden"
             />
           </div>
         </div>
@@ -212,15 +215,15 @@
         <button
           type="submit"
           disabled={isSubmitting}
-          class="btn-primary w-full py-2.5"
+          class="btn-touch mt-2"
         >
           <span>{mode === 'login' ? 'Zaloguj się' : 'Zarejestruj konto'}</span>
-          <Icon icon="ph:arrow-right-bold" class="h-4 w-4" />
+          <Icon icon="ph:arrow-right-bold" class="h-5 w-5" />
         </button>
       </form>
 
       <!-- PRZEŁĄCZNIK LOGOWANIE / REJESTRACJA -->
-      <div class="border-t border-[var(--border-default)] pt-4 text-center">
+      <div class="border-t border-[var(--border-default)] pt-4 text-center pb-2">
         {#if mode === 'login'}
           <p class="text-xs font-bold text-[var(--text-muted)]">
             Nie masz jeszcze konta?
@@ -230,7 +233,7 @@
                 mode = 'register';
                 errorMessage = null;
               }}
-              class="font-extrabold text-[var(--text-amber-brand)] hover:underline"
+              class="font-extrabold text-[var(--text-amber-brand)] hover:underline p-1"
             >
               Zarejestruj się
             </button>
@@ -244,7 +247,7 @@
                 mode = 'login';
                 errorMessage = null;
               }}
-              class="font-extrabold text-[var(--text-amber-brand)] hover:underline"
+              class="font-extrabold text-[var(--text-amber-brand)] hover:underline p-1"
             >
               Przejdź do logowania
             </button>

@@ -30,18 +30,18 @@
 </script>
 
 <div
-  class="app-card w-full max-w-2xl overflow-hidden border-[var(--border-amber)] shadow-2xl transition-all duration-300"
+  class="w-full sm:max-w-2xl border-y sm:border border-[var(--border-default)] bg-[var(--bg-surface)] sm:rounded-2xl sm:shadow-2xl transition-all duration-300"
 >
   <!-- Nagłówek Prezentacji Nowych Słów -->
   <div
-    class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--icon-bg-amber)] px-6 py-3.5"
+    class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--icon-bg-amber)] px-4 sm:px-6 py-3.5 sm:rounded-t-2xl"
   >
     <div class="flex items-center gap-2">
-      <Icon icon="ph:sparkle-bold" class="h-5 w-5 text-[var(--text-amber-brand)]" />
+      <Icon icon="ph:sparkle-bold" class="h-5 w-5 text-[var(--text-amber-brand)] shrink-0" />
       <span
         class="text-xs font-extrabold tracking-wider text-[var(--text-amber-brand)] uppercase"
       >
-        Faza 1: Prezentacja Nowych Słów ({currentIndex + 1} z {words.length})
+        Prezentacja ({currentIndex + 1}/{words.length})
       </span>
     </div>
 
@@ -49,7 +49,7 @@
     <div class="flex items-center gap-1.5">
       {#each words as _, idx}
         <div
-          class="h-2 w-5 rounded-full transition-all {idx === currentIndex
+          class="h-2 w-4 sm:w-5 rounded-full transition-all {idx === currentIndex
             ? 'bg-[var(--brand-primary)]'
             : idx < currentIndex
               ? 'bg-[var(--bar-secondary)]'
@@ -59,11 +59,11 @@
     </div>
   </div>
 
-  <div class="p-6 sm:p-8 space-y-6">
+  <div class="p-4 sm:p-8 space-y-5 sm:space-y-6">
     <!-- Słowo i wymowa -->
-    <div class="text-center">
+    <div class="text-center py-2 sm:py-0">
       <h2
-        class="title-serif text-3xl tracking-wide sm:text-4xl"
+        class="title-serif text-3xl sm:text-4xl tracking-wide"
       >
         {currentWord.word}
       </h2>
@@ -94,7 +94,7 @@
             class="inline-flex items-center gap-1 text-[11px] font-extrabold text-[var(--brand-primary)] animate-pulse"
           >
             <Icon icon="ph:eye-bold" class="h-4 w-4" />
-            <span>Kliknij pole poniżej, aby odsłonić</span>
+            <span>Stuknij, aby odsłonić</span>
           </span>
         {/if}
       </div>
@@ -105,7 +105,7 @@
         tabindex="0"
         onclick={handleReveal}
         onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && handleReveal()}
-        class="relative min-h-[90px] rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-5 shadow-xs transition-all cursor-pointer group hover:border-[var(--brand-primary)]"
+        class="relative min-h-[100px] rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-4 sm:p-5 shadow-xs transition-all cursor-pointer group hover:border-[var(--brand-primary)]"
       >
         <p
           class="text-base leading-relaxed font-semibold transition-all duration-300 {isRevealed
@@ -118,13 +118,13 @@
         <!-- Przycisk z kłódką/okiem zachęcający do kliknięcia -->
         {#if !isRevealed}
           <div
-            class="absolute inset-0 flex items-center justify-center rounded-xl bg-[var(--brand-primary)]/15 backdrop-blur-[2px] transition-all group-hover:bg-[var(--brand-primary)]/20"
+            class="absolute inset-0 flex items-center justify-center rounded-xl bg-[var(--brand-primary)]/15 backdrop-blur-[2px] transition-all group-hover:bg-[var(--brand-primary)]/20 p-4"
           >
             <div
-              class="btn-primary"
+              class="btn-primary py-2.5 px-4 text-xs sm:text-sm text-center"
             >
-              <Icon icon="ph:eye-bold" class="h-4 w-4" />
-              <span>Kliknij, aby odsłonić definicję</span>
+              <Icon icon="ph:eye-bold" class="h-4 w-4 shrink-0" />
+              <span>Stuknij, aby odsłonić definicję</span>
             </div>
           </div>
         {/if}
@@ -177,7 +177,7 @@
           href={currentWord.sjpUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--text-amber-brand)] hover:underline"
+          class="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--text-amber-brand)] hover:underline py-1"
         >
           <span>Zobacz w SJP PWN</span>
           <Icon icon="ph:arrow-square-out-bold" class="h-4 w-4" />
@@ -189,14 +189,14 @@
       <button
         type="button"
         onclick={handleNextWord}
-        class="btn-primary w-full sm:w-auto px-6 py-2.5 shadow-lg"
+        class="btn-touch sm:w-auto sm:px-6"
       >
         {#if currentIndex + 1 < words.length}
           <span>Następne słowo</span>
-          <Icon icon="ph:arrow-right-bold" class="h-4 w-4" />
+          <Icon icon="ph:arrow-right-bold" class="h-5 w-5" />
         {:else}
           <span>Przejdź do testu wiedzy</span>
-          <Icon icon="ph:check-bold" class="h-4 w-4" />
+          <Icon icon="ph:check-bold" class="h-5 w-5" />
         {/if}
       </button>
     </div>

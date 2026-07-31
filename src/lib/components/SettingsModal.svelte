@@ -77,7 +77,7 @@
   tabindex="-1"
   onclick={onClose}
   onkeydown={(e) => e.key === 'Escape' && onClose()}
-  class="modal-backdrop cursor-pointer"
+  class="sheet-backdrop sm:modal-backdrop cursor-pointer"
 >
   <div
     role="dialog"
@@ -85,11 +85,13 @@
     tabindex="0"
     onclick={(e) => e.stopPropagation()}
     onkeydown={(e) => e.stopPropagation()}
-    class="modal-container max-w-md overflow-hidden cursor-default"
+    class="sheet-container sm:modal-container max-w-md overflow-hidden cursor-default"
   >
+    <!-- Uchwyt do przeciągania na mobile -->
+    <div class="sheet-handle sm:hidden"></div>
     
     <!-- Nagłówek -->
-    <div class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-6 py-4">
+    <div class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-4 sm:px-6 py-3.5">
       <h2 class="title-serif text-xl">Ustawienia</h2>
       <button
         type="button"
@@ -100,11 +102,11 @@
       </button>
     </div>
 
-    <div class="p-6 space-y-6">
+    <div class="p-4 sm:p-6 space-y-5 sm:space-y-6">
 
       {#if message}
         <div class="flex items-center gap-2 rounded-xl bg-[var(--badge-amber-bg)] border border-[var(--badge-amber-border)] p-3 text-xs font-bold text-[var(--badge-amber-text)]">
-          <Icon icon="ph:check-circle-bold" class="h-4 w-4 text-[var(--brand-primary)]" />
+          <Icon icon="ph:check-circle-bold" class="h-4 w-4 text-[var(--brand-primary)] shrink-0" />
           <span>{message}</span>
         </div>
       {/if}
@@ -131,7 +133,7 @@
             min="1"
             max="20"
             bind:value={localSettings.dailyNewWordsLimit}
-            class="w-full h-2 rounded-lg bg-[var(--progress-track)] accent-[var(--brand-primary)] cursor-pointer"
+            class="w-full h-3 sm:h-2 rounded-lg bg-[var(--progress-track)] accent-[var(--brand-primary)] cursor-pointer"
           />
           <div class="flex justify-between text-[10px] font-extrabold text-[var(--text-muted)]">
             <span>1 słowo</span>
@@ -154,10 +156,10 @@
             type="button"
             aria-label="Przełącz powiadomienia"
             onclick={handleToggleNotifications}
-            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.notificationsEnabled ? 'bg-[var(--brand-primary)]' : 'bg-[var(--progress-track)]'}"
+            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.notificationsEnabled ? 'bg-[var(--brand-primary)]' : 'bg-[var(--progress-track)]'}"
           >
             <span
-              class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.notificationsEnabled ? 'translate-x-5' : 'translate-x-0'}"
+              class="pointer-events-none inline-block h-6 w-6 sm:h-5 sm:w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.notificationsEnabled ? 'translate-x-5' : 'translate-x-0'}"
             ></span>
           </button>
         </div>
@@ -166,7 +168,7 @@
       <!-- ========================================== -->
       <!-- SEKCJA: Dostępność (Accessibility) -->
       <!-- ========================================== -->
-      <div class="border-t border-[var(--border-default)] pt-5 space-y-4">
+      <div class="border-t border-[var(--border-default)] pt-4 sm:pt-5 space-y-4">
         <div class="flex items-center gap-2 text-xs font-extrabold text-[var(--text-amber-brand)] uppercase tracking-wider">
           <Icon icon="ph:eye-bold" class="h-4 w-4" />
           <span>Dostępność</span>
@@ -186,10 +188,10 @@
             type="button"
             aria-label="Przełącz wysoki kontrast"
             onclick={() => (localSettings.highContrast = !localSettings.highContrast)}
-            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.highContrast ? 'bg-[var(--brand-primary)]' : 'bg-[var(--progress-track)]'}"
+            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.highContrast ? 'bg-[var(--brand-primary)]' : 'bg-[var(--progress-track)]'}"
           >
             <span
-              class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.highContrast ? 'translate-x-5' : 'translate-x-0'}"
+              class="pointer-events-none inline-block h-6 w-6 sm:h-5 sm:w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.highContrast ? 'translate-x-5' : 'translate-x-0'}"
             ></span>
           </button>
         </div>
@@ -201,17 +203,17 @@
               <Icon icon="ph:text-aa-bold" class="h-4 w-4 text-[var(--brand-primary)]" />
               <span>Powiększony tekst</span>
             </div>
-            <p class="text-[11px] font-semibold text-[var(--text-muted)]">Zwiększona wielkość czcionki w całej aplikacji</p>
+            <p class="text-[11px] font-semibold text-[var(--text-muted)]">Zwiększona wielkość czcionki</p>
           </div>
 
           <button
             type="button"
             aria-label="Przełącz powiększony tekst"
             onclick={() => (localSettings.largerText = !localSettings.largerText)}
-            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.largerText ? 'bg-[var(--brand-primary)]' : 'bg-[var(--progress-track)]'}"
+            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.largerText ? 'bg-[var(--brand-primary)]' : 'bg-[var(--progress-track)]'}"
           >
             <span
-              class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.largerText ? 'translate-x-5' : 'translate-x-0'}"
+              class="pointer-events-none inline-block h-6 w-6 sm:h-5 sm:w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.largerText ? 'translate-x-5' : 'translate-x-0'}"
             ></span>
           </button>
         </div>
@@ -230,10 +232,10 @@
             type="button"
             aria-label="Przełącz redukcję animacji"
             onclick={() => (localSettings.reducedMotion = !localSettings.reducedMotion)}
-            class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.reducedMotion ? 'bg-[var(--brand-primary)]' : 'bg-[var(--progress-track)]'}"
+            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.reducedMotion ? 'bg-[var(--brand-primary)]' : 'bg-[var(--progress-track)]'}"
           >
             <span
-              class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.reducedMotion ? 'translate-x-5' : 'translate-x-0'}"
+              class="pointer-events-none inline-block h-6 w-6 sm:h-5 sm:w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.reducedMotion ? 'translate-x-5' : 'translate-x-0'}"
             ></span>
           </button>
         </div>
@@ -243,7 +245,7 @@
       <!-- SEKCJA: Resetowanie danych nauki -->
       <!-- ========================================== -->
       {#if onResetProgress}
-        <div class="border-t border-[var(--border-default)] pt-5 space-y-3">
+        <div class="border-t border-[var(--border-default)] pt-4 sm:pt-5 space-y-3">
           <div class="flex items-center gap-2 text-xs font-extrabold text-[var(--rose-text)] uppercase tracking-wider">
             <Icon icon="ph:trash-bold" class="h-4 w-4 text-[var(--rose-icon)]" />
             <span>Strefa zagrożenia</span>
@@ -253,7 +255,7 @@
             <button
               type="button"
               onclick={startResetTimer}
-              class="flex w-full items-center justify-center gap-2 rounded-xl border border-[var(--rose-border)] bg-[var(--rose-bg)] py-2.5 px-4 text-xs font-extrabold text-[var(--rose-text)] hover:opacity-80 transition-all shadow-xs"
+              class="flex w-full items-center justify-center gap-2 rounded-xl border border-[var(--rose-border)] bg-[var(--rose-bg)] py-3 px-4 text-xs font-extrabold text-[var(--rose-text)] hover:opacity-80 transition-all shadow-xs min-h-[44px]"
             >
               <Icon icon="ph:trash-bold" class="h-4 w-4" />
               <span>Resetuj cały postęp nauki</span>
@@ -274,19 +276,19 @@
                   type="button"
                   disabled={countdown > 0}
                   onclick={executeReset}
-                  class="w-full rounded-lg py-2 px-3 text-xs font-bold transition-all shadow-md {countdown > 0 ? 'bg-[var(--rose-bg)] text-[var(--rose-text)] cursor-not-allowed opacity-60' : 'bg-[var(--rose-icon)] text-white hover:opacity-90 animate-pulse'}"
+                  class="w-full rounded-lg py-2.5 px-3 text-xs font-bold transition-all shadow-md min-h-[44px] {countdown > 0 ? 'bg-[var(--rose-bg)] text-[var(--rose-text)] cursor-not-allowed opacity-60' : 'bg-[var(--rose-icon)] text-white hover:opacity-90 animate-pulse'}"
                 >
                   {#if countdown > 0}
                     <span>Odczekaj {countdown} s...</span>
                   {:else}
-                    <span>Potwierdzam resetowanie danych</span>
+                    <span>Potwierdzam resetowanie</span>
                   {/if}
                 </button>
 
                 <button
                   type="button"
                   onclick={cancelReset}
-                  class="btn-secondary py-2 px-3"
+                  class="btn-secondary py-2.5 px-4 min-h-[44px]"
                 >
                   Anuluj
                 </button>
@@ -299,11 +301,11 @@
     </div>
 
     <!-- Stopka z przyciskiem Zapisz -->
-    <div class="flex items-center justify-end border-t border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-6 py-4">
+    <div class="flex items-center justify-end border-t border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-4 sm:px-6">
       <button
         type="button"
         onclick={handleSave}
-        class="btn-primary"
+        class="btn-touch sm:w-auto sm:px-6"
       >
         Zapisz zmiany
       </button>

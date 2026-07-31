@@ -32,11 +32,11 @@
 </script>
 
 <div
-  class="app-card w-full max-w-2xl overflow-hidden shadow-xl transition-all duration-300"
+  class="w-full sm:max-w-2xl border-y sm:border border-[var(--border-default)] bg-[var(--bg-surface)] sm:rounded-2xl sm:shadow-xl transition-all duration-300"
 >
   <!-- Nagłówek karty -->
   <div
-    class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-6 py-3"
+    class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-4 sm:px-6 py-3 sm:rounded-t-2xl"
   >
     <span class="badge-amber">
       {card.word.category || "Literackie"}
@@ -57,11 +57,11 @@
     </div>
   </div>
 
-  <div class="p-6 sm:p-8 space-y-6">
+  <div class="p-4 sm:p-8 space-y-5 sm:space-y-6">
     <!-- Słowo główne i wymowa -->
-    <div class="text-center">
+    <div class="text-center py-2 sm:py-0">
       <h2
-        class="title-serif text-3xl tracking-wide sm:text-4xl"
+        class="title-serif text-3xl sm:text-4xl tracking-wide"
       >
         {card.word.word}
       </h2>
@@ -83,20 +83,20 @@
           Sprawdź pamięć: Wybierz właściwe znaczenie tego słowa
         </p>
 
-        <div class="grid gap-3 sm:grid-cols-1">
+        <div class="grid gap-3">
           {#each card.options as option, index}
             <button
               type="button"
               onclick={() => handleSelectOption(option)}
-              class="app-card-interactive group flex items-start gap-3 bg-[var(--bg-surface-elevated)] p-4 text-left"
+              class="app-card-interactive group flex items-start gap-3 bg-[var(--bg-surface-elevated)] p-4 sm:p-4 min-h-[56px] text-left active:scale-[0.99] transition-transform"
             >
               <span
-                class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] text-xs font-extrabold text-[var(--text-primary)] group-hover:border-[var(--brand-primary)] group-hover:text-[var(--text-amber-brand)]"
+                class="flex h-7 w-7 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-lg border border-[var(--border-default)] bg-[var(--bg-surface)] text-xs sm:text-xs font-extrabold text-[var(--text-primary)] group-hover:border-[var(--brand-primary)] group-hover:text-[var(--text-amber-brand)]"
               >
                 {String.fromCharCode(65 + index)}
               </span>
               <span
-                class="text-sm font-semibold text-[var(--text-primary)]"
+                class="text-sm font-semibold leading-snug text-[var(--text-primary)] pt-0.5"
               >
                 {option}
               </span>
@@ -107,7 +107,7 @@
 
       <!-- ETAP 2: ODSŁONIĘCIE KONTEKSTU I SAMOOCENA -->
     {:else}
-      <div class="space-y-6 animate-in fade-in duration-300">
+      <div class="space-y-5 sm:space-y-6 animate-in fade-in duration-300">
         <!-- Wynik z quizu -->
         <div
           class="flex items-center justify-center gap-2 rounded-xl p-3.5 text-sm font-bold {isCorrect
@@ -117,11 +117,11 @@
           {#if isCorrect}
             <Icon
               icon="ph:check-circle-bold"
-              class="h-5 w-5 text-[var(--emerald-icon)]"
+              class="h-5 w-5 text-[var(--emerald-icon)] shrink-0"
             />
             <span>Świetnie! Poprawna odpowiedź.</span>
           {:else}
-            <Icon icon="ph:x-circle-bold" class="h-5 w-5 text-[var(--rose-icon)]" />
+            <Icon icon="ph:x-circle-bold" class="h-5 w-5 text-[var(--rose-icon)] shrink-0" />
             <span
               >Twój wybór różni się od definicji. Zobacz szczegóły poniżej.</span
             >
@@ -130,7 +130,7 @@
 
         <!-- Definicja i Etymologia -->
         <div
-          class="rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-5"
+          class="rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-4 sm:p-5"
         >
           <h3
             class="text-xs font-extrabold tracking-wider text-[var(--brand-primary)] uppercase"
@@ -153,7 +153,7 @@
                 Etymologia
               </h4>
               <p
-                class="mt-1 text-xs font-semibold text-[var(--text-secondary)]"
+                class="mt-1 text-xs sm:text-xs font-semibold text-[var(--text-secondary)]"
               >
                 {card.word.etymology}
               </p>
@@ -188,7 +188,7 @@
               href={card.word.sjpUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--text-amber-brand)] hover:underline"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--text-amber-brand)] hover:underline py-1 px-2"
             >
               <span>Zobacz w SJP PWN</span>
               <Icon icon="ph:arrow-square-out-bold" class="h-4 w-4" />
@@ -196,20 +196,20 @@
           </div>
         {/if}
 
-        <!-- PRZYCISKI SAMOOCENY -->
-        <div class="border-t border-[var(--border-default)] pt-6">
+        <!-- PRZYCISKI SAMOOCENY (Duże cele dotykowe 52px) -->
+        <div class="border-t border-[var(--border-default)] pt-4 sm:pt-6">
           <p
             class="mb-3 text-center text-xs font-extrabold tracking-wider text-[var(--text-muted)] uppercase"
           >
             Jak dobrze pamiętasz to słówko?
           </p>
 
-          <div class="grid grid-cols-2 gap-3.5 sm:grid-cols-4">
+          <div class="grid grid-cols-2 gap-2.5 sm:gap-3.5 sm:grid-cols-4">
             <!-- Bardzo trudne (Ocena 0) -->
             <button
               type="button"
               onclick={() => handleSelfGrade(0)}
-              class="flex items-center justify-center rounded-xl border border-[var(--rose-border)] bg-[var(--rose-bg)] py-3.5 px-3 font-extrabold text-xs sm:text-sm text-[var(--rose-text)] transition-all hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--rose-border)] bg-[var(--rose-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--rose-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
             >
               <span>Bardzo trudne</span>
             </button>
@@ -218,7 +218,7 @@
             <button
               type="button"
               onclick={() => handleSelfGrade(3)}
-              class="flex items-center justify-center rounded-xl border border-[var(--badge-amber-border)] bg-[var(--badge-amber-bg)] py-3.5 px-3 font-extrabold text-xs sm:text-sm text-[var(--badge-amber-text)] transition-all hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--badge-amber-border)] bg-[var(--badge-amber-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--badge-amber-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
             >
               <span>Trudne</span>
             </button>
@@ -227,7 +227,7 @@
             <button
               type="button"
               onclick={() => handleSelfGrade(4)}
-              class="flex items-center justify-center rounded-xl border border-[var(--blue-border)] bg-[var(--blue-bg)] py-3.5 px-3 font-extrabold text-xs sm:text-sm text-[var(--blue-text)] transition-all hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--blue-border)] bg-[var(--blue-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--blue-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
             >
               <span>Średnie</span>
             </button>
@@ -236,7 +236,7 @@
             <button
               type="button"
               onclick={() => handleSelfGrade(5)}
-              class="flex items-center justify-center rounded-xl border border-[var(--emerald-border)] bg-[var(--emerald-bg)] py-3.5 px-3 font-extrabold text-xs sm:text-sm text-[var(--emerald-text)] transition-all hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--emerald-border)] bg-[var(--emerald-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--emerald-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
             >
               <span>Łatwe</span>
             </button>

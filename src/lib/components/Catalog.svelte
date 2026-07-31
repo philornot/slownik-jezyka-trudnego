@@ -61,11 +61,11 @@
   }
 </script>
 
-<div class="mx-auto max-w-5xl space-y-6">
+<div class="mx-auto max-w-5xl space-y-4 sm:space-y-6 px-3 sm:px-0">
 
-  <!-- Zwięzły pasek wyszukiwania i filtrów z tokenami -->
-  <div class="app-card p-4 sm:p-5">
-    <div class="flex flex-col gap-4 md:flex-row md:items-center justify-between">
+  <!-- Zwięzły pasek wyszukiwania i filtrów z tokenami (sticky na mobile) -->
+  <div class="app-card p-3.5 sm:p-5 sticky top-14 z-30 sm:relative sm:top-0 shadow-md sm:shadow-xs">
+    <div class="flex flex-col gap-3 md:flex-row md:items-center justify-between">
       
       <!-- Szukajka -->
       <div class="relative flex-1">
@@ -73,16 +73,16 @@
         <input
           type="text"
           bind:value={searchQuery}
-          placeholder="Szukaj w poznanych lub zablokowanych słówkach..."
-          class="w-full rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] pl-10 pr-4 py-2.5 text-xs font-bold text-body-primary placeholder:text-body-muted focus:border-[var(--brand-primary)] focus:outline-hidden"
+          placeholder="Szukaj w słówkach..."
+          class="w-full rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] pl-10 pr-4 py-2.5 text-xs sm:text-xs font-bold text-body-primary placeholder:text-body-muted focus:border-[var(--brand-primary)] focus:outline-hidden"
         />
       </div>
 
       <!-- Filtr Kategorii oraz dyskretny wskaźnik odblokowanych -->
-      <div class="flex flex-wrap items-center gap-3">
+      <div class="flex items-center justify-between gap-2.5">
         <select
           bind:value={selectedCategory}
-          class="rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-3.5 py-2.5 text-xs font-bold text-body-primary focus:border-[var(--brand-primary)] focus:outline-hidden"
+          class="flex-1 sm:flex-none rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-3 py-2 text-xs font-bold text-body-primary focus:border-[var(--brand-primary)] focus:outline-hidden"
         >
           <option value="all">Wszystkie kategorie</option>
           {#each categories as cat}
@@ -90,9 +90,9 @@
           {/each}
         </select>
 
-        <span class="badge-amber px-3.5 py-2.5 text-xs">
-          <Icon icon="ph:sparkle-bold" class="h-4 w-4 text-[var(--brand-primary)]" />
-          <span>Odblokowane: {unlockedWords.length} / {words.length}</span>
+        <span class="badge-amber px-2.5 py-2 text-[11px] sm:text-xs shrink-0">
+          <Icon icon="ph:sparkle-bold" class="h-3.5 w-3.5 text-[var(--brand-primary)]" />
+          <span>{unlockedWords.length} / {words.length}</span>
         </span>
       </div>
 
@@ -100,18 +100,18 @@
   </div>
 
   <!-- SEKCJA 1: ODBLOKOWANE / POZNANE SŁÓWKA -->
-  <div class="space-y-4">
+  <div class="space-y-3 sm:space-y-4">
     <div class="flex items-center justify-between border-b border-[var(--border-default)] pb-2">
       <div class="flex items-center gap-2">
-        <Icon icon="ph:check-circle-bold" class="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-        <h3 class="title-serif text-xl">
+        <Icon icon="ph:check-circle-bold" class="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+        <h3 class="title-serif text-lg sm:text-xl">
           Poznane Słówka ({filteredUnlockedWords.length})
         </h3>
       </div>
     </div>
 
     {#if filteredUnlockedWords.length > 0}
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {#each filteredUnlockedWords as word}
           {@const status = getStatusBadge(word.id)}
           <!-- Klikalny kafelek ze spójną klasą -->
@@ -120,13 +120,13 @@
             tabindex="0"
             onclick={() => (activeWord = word)}
             onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && (activeWord = word)}
-            class="app-card-interactive group flex flex-col justify-between p-5"
+            class="app-card-interactive group flex flex-col justify-between p-4 sm:p-5 min-h-[110px]"
           >
             <div>
               <div class="flex items-start justify-between gap-2">
-                <h4 class="title-serif text-xl group-hover:text-[var(--brand-primary)] transition-colors">{word.word}</h4>
+                <h4 class="title-serif text-lg sm:text-xl group-hover:text-[var(--brand-primary)] transition-colors">{word.word}</h4>
                 {#if status}
-                  <span class="{status.badgeClass} text-[10px] py-0.5">
+                  <span class="{status.badgeClass} text-[10px] py-0.5 px-2 shrink-0">
                     {status.label}
                   </span>
                 {/if}
@@ -136,15 +136,15 @@
                 <p class="mt-0.5 text-xs italic font-bold text-body-muted">{word.phonetic}</p>
               {/if}
 
-              <p class="mt-3 text-xs font-semibold text-body-primary line-clamp-3 leading-relaxed">
+              <p class="mt-2 text-xs font-semibold text-body-primary line-clamp-2 sm:line-clamp-3 leading-relaxed">
                 {word.shortDefinition}
               </p>
             </div>
 
-            <div class="mt-5 flex items-center justify-between border-t border-[var(--border-default)] pt-3">
+            <div class="mt-4 flex items-center justify-between border-t border-[var(--border-default)] pt-2.5">
               <span class="text-[11px] font-extrabold text-[var(--text-amber-brand)]">{word.category}</span>
               
-              <span class="inline-flex items-center gap-1 text-xs font-bold text-[var(--brand-primary)] group-hover:underline">
+              <span class="inline-flex items-center gap-1 text-xs font-bold text-[var(--brand-primary)] group-hover:underline py-0.5">
                 <span>Szczegóły</span>
                 <Icon icon="ph:book-open-bold" class="h-3.5 w-3.5" />
               </span>
@@ -153,7 +153,7 @@
         {/each}
       </div>
     {:else}
-      <div class="rounded-2xl border border-dashed border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-8 text-center">
+      <div class="rounded-2xl border border-dashed border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-6 sm:p-8 text-center">
         <p class="text-xs font-bold text-body-muted">
           Nie rozpocząłeś jeszcze nauki słówek z wybranymi filtrami. Przejdź do zakładki Lekcja!
         </p>
@@ -162,28 +162,28 @@
   </div>
 
   <!-- SEKCJA 2: ZABLOKOWANE SŁÓWKA -->
-  <div class="space-y-4 pt-4">
+  <div class="space-y-3 sm:space-y-4 pt-2 sm:pt-4">
     <div class="flex items-center justify-between border-b border-[var(--border-default)] pb-2">
       <div class="flex items-center gap-2">
-        <Icon icon="ph:lock-key-bold" class="h-5 w-5 text-[#b45309] dark:text-amber-400" />
-        <h3 class="title-serif text-xl">
+        <Icon icon="ph:lock-key-bold" class="h-5 w-5 text-[#b45309] dark:text-amber-400 shrink-0" />
+        <h3 class="title-serif text-lg sm:text-xl">
           Oczekujące na Odblokowanie ({filteredLockedWords.length})
         </h3>
       </div>
     </div>
 
     {#if filteredLockedWords.length > 0}
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {#each filteredLockedWords as word}
           <div
-            class="relative flex flex-col justify-between rounded-2xl border border-dashed border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-5 opacity-90"
+            class="relative flex flex-col justify-between rounded-2xl border border-dashed border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-4 sm:p-5 opacity-90"
           >
             <div>
               <div class="flex items-start justify-between gap-2">
-                <h4 class="title-serif text-lg text-body-muted">
+                <h4 class="title-serif text-base sm:text-lg text-body-muted">
                   {word.word}
                 </h4>
-                <span class="inline-flex items-center gap-1 rounded-full border border-[var(--border-default)] bg-[var(--bg-surface)] px-2.5 py-0.5 text-[10px] font-extrabold text-body-muted">
+                <span class="inline-flex items-center gap-1 rounded-full border border-[var(--border-default)] bg-[var(--bg-surface)] px-2 py-0.5 text-[10px] font-extrabold text-body-muted shrink-0">
                   <Icon icon="ph:lock-key-bold" class="h-3 w-3" />
                   <span>Zablokowane</span>
                 </span>
@@ -194,12 +194,12 @@
               {/if}
 
               <!-- Ukryty podgląd definicji -->
-              <p class="mt-3 text-xs font-semibold text-body-muted italic blur-[3px] select-none">
+              <p class="mt-2 text-xs font-semibold text-body-muted italic blur-[3px] select-none line-clamp-2">
                 {word.shortDefinition}
               </p>
             </div>
 
-            <div class="mt-4 flex items-center justify-between border-t border-[var(--border-default)] pt-3">
+            <div class="mt-3 flex items-center justify-between border-t border-[var(--border-default)] pt-2.5">
               <span class="text-[11px] font-bold text-body-muted">{word.category}</span>
               <span class="text-[10px] font-extrabold text-[var(--brand-primary)]">Poznasz w lekcji</span>
             </div>
@@ -215,14 +215,14 @@
     {/if}
   </div>
 
-  <!-- Modal Szczegółów Otwartych Słów -->
+  <!-- Modal Szczegółów Otwartych Słów (Bottom Sheet na mobile) -->
   {#if activeWord}
     <div
       role="button"
       tabindex="-1"
       onclick={() => (activeWord = null)}
       onkeydown={(e) => e.key === 'Escape' && (activeWord = null)}
-      class="modal-backdrop cursor-pointer"
+      class="sheet-backdrop sm:modal-backdrop cursor-pointer"
     >
       <div
         role="dialog"
@@ -230,10 +230,12 @@
         tabindex="0"
         onclick={(e) => e.stopPropagation()}
         onkeydown={(e) => e.stopPropagation()}
-        class="modal-container p-6 space-y-5 cursor-default"
+        class="sheet-container sm:modal-container p-5 sm:p-6 space-y-4 sm:space-y-5 cursor-default max-w-xl"
       >
-        
-        <div class="flex items-start justify-between border-b border-[var(--border-default)] pb-4">
+        <!-- Uchwyt przeciągania na mobile -->
+        <div class="sheet-handle sm:hidden"></div>
+
+        <div class="flex items-start justify-between border-b border-[var(--border-default)] pb-3">
           <div>
             <h2 class="title-serif text-2xl">{activeWord.word}</h2>
             {#if activeWord.phonetic}
@@ -279,7 +281,7 @@
             href={activeWord.sjpUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--brand-primary)] hover:underline"
+            class="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--brand-primary)] hover:underline py-1"
           >
             <span>Otwórz w SJP PWN</span>
             <Icon icon="ph:arrow-square-out-bold" class="h-4 w-4" />
@@ -288,7 +290,7 @@
           <button
             type="button"
             onclick={() => (activeWord = null)}
-            class="btn-primary"
+            class="btn-primary py-2 px-5"
           >
             Zamknij
           </button>
