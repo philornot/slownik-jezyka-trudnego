@@ -287,171 +287,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ]
   },
   {
-    id: 'altruizm',
-    word: 'Altruizm',
-    phonetic: '[al-tru-izm]',
-    shortDefinition: 'Bezinteresowne troszczenie się o dobro i finanse innych ludzi.',
-    fullDefinition: 'Postawa kierowania się dobrem bliźnich, gotowość do poświęcenia własnych interesów lub wygody na rzecz pomocy innym bez oczekiwania nagrody.',
-    etymology: 'Z francuskiego: altruisme (od łacińskiego alter – inny).',
-    examples: [
-      'Jej praca w wolontariacie była pięknym przykładem czystego altruizmu.',
-      'Altruizm buduje więzi i zaufanie we współczesnym społeczeństwie.'
-    ],
-    category: 'Etyka i Moralność',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/altruizm.html',
-    distractors: ['Skrajne dbanie wyłącznie o własne korzyści.', 'Lęk przed przebywaniem w dużym tłumie.', 'Sztuka pisania listów urzędowych.']
-  },
-  {
-    id: 'anachronizm',
-    word: 'Anachronizm',
-    phonetic: '[a-na-chro-nizm]',
-    shortDefinition: 'Rzecz, pojęcie lub obyczaj niepasujący do danej epoki.',
-    fullDefinition: 'Niezgodność z czasami lub epoką; przypisanie zjawiska lub przedmiotu do okresu historycznego, w którym nie mogły one istnieć.',
-    etymology: 'Z greki: anachronismos (ana- – przeciw + chronos – czas).',
-    examples: [
-      'Stosowanie maszyn do pisania w dzisiejszym biurze brzmi jak anachronizm.',
-      'Film zawierał anachronizm – bohater nosił zegarek elektroniczny w XIX wieku.'
-    ],
-    category: 'Sztuka i Literatura',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/anachronizm.html',
-    distractors: ['Przycisk przyspieszający działanie zegara.', 'Styl architektoniczny w dawnej Grecji.', 'Nauka o minerałach szlachetnych.']
-  },
-  {
-    id: 'anomalia',
-    word: 'Anomalia',
-    phonetic: '[a-no-ma-lia]',
-    shortDefinition: 'Odchylenie od normy, prawidłowości lub praw natury.',
-    fullDefinition: 'Nietypowe zjawisko, stan lub cecha różniąca się od tego, co jest uważane za normalne, prawidłowe lub powszechne.',
-    etymology: 'Z greki: anōmalia – nierówność, nieregularność.',
-    examples: [
-      'Opady śniegu w środku lata uznano za atmosferyczną anomalię.',
-      'Badania krwi wykazały drobną anomalię, która wymagała dalszej diagnostyki.'
-    ],
-    category: 'Czas i Zjawiska',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/anomalia.html',
-    distractors: ['Stosowanie reguł gramatycznych bez błędów.', 'Prawny nakaz zapłaty podatku.', 'Tradycyjny taniec narodowy.']
-  },
-  {
-    id: 'antagonizm',
-    word: 'Antagonizm',
-    phonetic: '[an-ta-go-nizm]',
-    shortDefinition: 'Głęboka sprzeczność, wrogość i ścieranie się sił.',
-    fullDefinition: 'Wzajemna niechęć, wrogość lub ścieranie się ze sobą dwóch przeciwstawnych postaw, grup ludzkich, interesów bądź idei.',
-    etymology: 'Z greki: antagōnismos – spór, walka (anti- + agōn).',
-    examples: [
-      'Antagonizm między dwoma sąsiadującymi rodami trwał od pokoleń.',
-      'Różnice światopoglądowe pogłębiły społeczny antagonizm.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/antagonizm.html',
-    distractors: ['Pełna harmonia i współpraca zespołowa.', 'Dążenie do ugody za wszelką cenę.', 'Rodzaj dawnego stroju dworskiego.']
-  },
-  {
-    id: 'apatia',
-    word: 'Apatia',
-    phonetic: '[a-pa-tia]',
-    shortDefinition: 'Stan obojętności, braku energii i zobojętnienia.',
-    fullDefinition: 'Stan głębokiego zobojętnienia na bodźce zewnętrzne, spadek aktywności życiowej oraz brak uczuć i zainteresowania otoczeniem.',
-    etymology: 'Z greki: apatheia – niewrażliwość (a- + pathos).',
-    examples: [
-      'Chory popadł w apatię i całymi dniami patrzył w okno bez słowa.',
-      'Jesienna szaruga wprawiała mieszkańców w lekką apatię.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/apatia.html',
-    distractors: ['Gwałtowny wybuch wściekłości.', 'Przesadny entuzjazm i radość.', 'Gorączkowa praca pod presją czasu.']
-  },
-  {
-    id: 'apogeum',
-    word: 'Apogeum',
-    phonetic: '[a-po-ge-um]',
-    shortDefinition: 'Najwyższy punkt rozwoju, szczyt natężenia zjawiska.',
-    fullDefinition: 'Punkt kulminacyjny, najwyższy poziom natężenia lub rozwoju procesu, emocji bądź wydarzenia.',
-    etymology: 'Z greki: apogeios – oddalony od Ziemi (apo- + gē).',
-    examples: [
-      'Konflikt osiągnął swoje apogeum podczas wczorajszej debat sejmowej.',
-      'Kariera artystki znajduje się obecnie w absolutnym apogeum.'
-    ],
-    category: 'Czas i Zjawiska',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/apogeum.html',
-    distractors: ['Najniższy punkt moralnego upadku.', 'Początkowa faza projektu.', 'Zbiór podstawowych pojęć z matematyki.']
-  },
-  {
-    id: 'aprobata',
-    word: 'Aprobata',
-    phonetic: '[a-pro-ba-ta]',
-    shortDefinition: 'Uznanie, zgoda i pozytywna ocena czyjegoś czynu.',
-    fullDefinition: 'Wyraz uznania, zgody, poparcia lub pozytywnej oceny czyjegoś zachowania, pomysłu albo propozycji.',
-    etymology: 'Z łaciny: approbatio – uznanie, zatwierdzenie.',
-    examples: [
-      'Wniosek spotkał się z gorącą aprobatą całego zarządu spółki.',
-      'Spojrzał na córkę z uśmiechem pełnym ojcowskiej aprobaty.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/aprobata.html',
-    distractors: ['Stanowcza odmowa i sprzeciw.', 'Obojętność na sprawy innych.', 'Wstrzymanie płatności faktury.']
-  },
-  {
-    id: 'arbitralny',
-    word: 'Arbitralny',
-    phonetic: '[ar-bi-tral-ny]',
-    shortDefinition: 'Podejmowany samowolnie, bez liczenia się ze zdaniem innych.',
-    fullDefinition: 'Narzucany bez uwzględnienia opinii zainteresowanych stron, oparty wyłącznie na własnym widzimisię.',
-    etymology: 'Z łaciny: arbitralis – zależny od woli sędziego (arbiter).',
-    examples: [
-      'Decyzja dyrektora o zwolnieniu wydawała się wszystkim całkowicie arbitralna.',
-      'Unikaj arbitralnego rozstrzygania sporów bez wysłuchania obu stron.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/arbitralny.html',
-    distractors: ['Wypływający ze wspólnego kompromisu.', 'Poparty szczegółowymi badaniami statystycznymi.', 'Elastyczny i podatny na zmiany.']
-  },
-  {
-    id: 'ascetyczny',
-    word: 'Ascetyczny',
-    phonetic: '[as-ce-tycz-ny]',
-    shortDefinition: 'Surowy, niezwykle skromny, pozbawiony ozdób i luksusu.',
-    fullDefinition: 'Cechujący się wyrzeczeniem się wygód, prostotą, umartwieniem i brakiem ozdób; surowy w formie lub stylu życia.',
-    etymology: 'Z greki: askētikos – ćwiczący się, pobożny.',
-    examples: [
-      'Wnętrze pokoju było ascetyczne – łóżko, prosty stół i drewniane krzesło.',
-      'Prowadził ascetyczny tryb życia, poświęcając cały czas nauce.'
-    ],
-    category: 'Sztuka i Literatura',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/ascetyczny.html',
-    distractors: ['Błyszczący złotem i przepychem.', 'Pełen kolorowych i zbędnych dekoracji.', 'Niezwykle głośny i entuzjastyczny.']
-  },
-  {
-    id: 'asertywnosc',
-    word: 'Asertywność',
-    phonetic: '[a-ser-tyw-ność]',
-    shortDefinition: 'Umiejętność stanowczego wyrażania zdania bez agresji.',
-    fullDefinition: 'Zdolność do otwartego i stanowczego wyrażania własnych opinii, potrzeb i granic w sposób szanujący prawa innych.',
-    etymology: 'Z angielskiego: assertiveness (od łac. asserere – twierdzić).',
-    examples: [
-      'Kurs asertywności pomógł jej nauczyć się odmawiać bez poczucia winy.',
-      'Asertywność to kluczowa cecha dobrego menedżera.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/asertywno%C5%9B%C4%87.html',
-    distractors: ['Uległe zgadzanie się ze wszystkim.', 'Agresywne atakowanie rozmówcy.', 'Brak własnego zdania w dyskusji.']
-  },
-  {
-    id: 'aspiracja',
-    word: 'Aspiracja',
-    phonetic: '[as-pi-ra-cja]',
-    shortDefinition: 'Dążenie do osiągnięcia ambitnych celów i sukcesu.',
-    fullDefinition: 'Gorące pragnienie zdobycia czegoś wybitnego, awansu społecznego, wiedzy lub pozycji; ambitne dążenie życiowe.',
-    etymology: 'Z łaciny: aspiratio – dążenie, pragnienie (aspirare).',
-    examples: [
-      'Młody pisarz miał ogromne aspiracje sięgające Nagrody Nobla.',
-      'Ambitne aspiracje zawodowe wymagały od niej wielu poświęceń.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/aspiracja.html',
-    distractors: ['Rezygnacja z wszelkich marzeń.', 'Lęk przed podjęciem wyzwania.', 'Rodzaj choroby układu oddechowego.']
-  },
-  {
     id: 'atawizm',
     word: 'Atawizm',
     phonetic: '[a-ta-wizm]',
@@ -465,66 +300,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/atawizm.html',
     distractors: ['Nowoczesny wynalazek techniczny.', 'Złudzenie optyczne na pustyni.', 'Nauka o gwiazdozbiorach.']
-  },
-  {
-    id: 'autonomia',
-    word: 'Autonomia',
-    phonetic: '[au-to-no-mia]',
-    shortDefinition: 'Prawo do samodecydujności i niezależności.',
-    fullDefinition: 'Niezależność w stanowieniu o sobie, prawo jednostki, instytucji lub regionu do samodzielnego decydowania.',
-    etymology: 'Z greki: autonomia (autos – sam + nomos – prawo).',
-    examples: [
-      'Uniwersytet cieszył się pełną autonomią w stanowieniu programu studiów.',
-      'Wychowanie polega na stopniowym przyznawaniu dziecku autonomii.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/autonomia.html',
-    distractors: ['Pełne podporządkowanie władzy obcej.', 'Brak własnego rządu i praw.', 'Rodzaj pojazdu szynowego.']
-  },
-  {
-    id: 'awersja',
-    word: 'Awersja',
-    phonetic: '[a-wer-sja]',
-    shortDefinition: 'Silne uczucie niechęci, odrazy lub wstrętu.',
-    fullDefinition: 'Głęboko zakorzenione uczucie odrazy, niechęci lub uprzedzenia do danej osoby, rzeczy lub czynności.',
-    etymology: 'Z łaciny: aversio – odwrócenie się, niechęć (avertere).',
-    examples: [
-      'Czuję silną awersję do nieszczerości i manipulacji.',
-      'Jego awersja do publicznych występów była powszechnie znana.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/awersja.html',
-    distractors: ['Gorące uczucie sympatii i miłości.', 'Niekontrolowana chęć jedzenia.', 'Zdolność do szybkiego zapamiętywania.']
-  },
-  {
-    id: 'banalny',
-    word: 'Banalny',
-    phonetic: '[ba-nal-ny]',
-    shortDefinition: 'Powszedni, pozbawiony oryginalności i pospolity.',
-    fullDefinition: 'Niewyróżniający się niczym szczególnym, wyświechtany, oczywisty i znikomej wartości.',
-    etymology: 'Z francuskiego: banal – powszechny, dostępny wszystkim.',
-    examples: [
-      'Fabuła filmu okazała się absolutnie banalna i przewidywalna.',
-      'Unikaj banalnych powiedzeń w rozmowie kwalifikacyjnej.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/banalny.html',
-    distractors: ['Wyjątkowo rzadki i unikalny.', 'Niezwykle skomplikowany wzór.', 'Przenikliwy i zachwycający.']
-  },
-  {
-    id: 'barykada',
-    word: 'Barykada',
-    phonetic: '[ba-ry-ka-da]',
-    shortDefinition: 'Tymczasowa przeszkoda zablokowująca przejście.',
-    fullDefinition: 'Doraźna przegroda wzniesiona z ulicznych mebli, kamieni lub pojazdów w celu zablokowania drogi.',
-    etymology: 'Z francuskiego: barricade (od barrique – beczka).',
-    examples: [
-      'Powstańcy wznieśli barykadę w poprzek głównej alei.',
-      'Po obu stronach politycznej barykady stały tłumy.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/barykada.html',
-    distractors: ['Ozdobny most w parku.', 'Szeroka szklana witryna.', 'Przenośny głośnik koncertowy.']
   },
   {
     id: 'behawioralny',
@@ -557,21 +332,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Wykonany szybko i bez dbałości o detale.', 'Związany z produkcją bakalii.', 'Cechujący się głośnym zachowaniem.']
   },
   {
-    id: 'bezprecedensowy',
-    word: 'Bezprecedensowy',
-    phonetic: '[bez-pre-ce-den-so-wy]',
-    shortDefinition: 'Niemający odpowiednika w przeszłości, wyjątkowy.',
-    fullDefinition: 'Wydarzający się po raz pierwszy w historii, niemający wcześniejszego przykładu ani wzoru.',
-    etymology: 'Z polskiego: bez + precedens (łac. praecedens).',
-    examples: [
-      'Decyzja sądu była bezprecedensowa w polskim sądownictwie.',
-      'Wzrost gospodarczy osiągnął bezprecedensowy poziom.'
-    ],
-    category: 'Czas i Zjawiska',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/bezprecedensowy.html',
-    distractors: ['Powtarzający się co roku w ten sam dzień.', 'Zgodny ze starożytną tradycją.', 'Niezwykle nudny i powszedni.']
-  },
-  {
     id: 'bigoteria',
     word: 'Bigoteria',
     phonetic: '[bi-go-te-ria]',
@@ -587,36 +347,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Głębokie zrozumienie innych wyznań.', 'Radość z życia w zgodzie z naturą.', 'Zbiór przepisów kulinarnych.']
   },
   {
-    id: 'bravura',
-    word: 'Brawura',
-    phonetic: '[bra-wu-ra]',
-    shortDefinition: 'Śmiałość granicząca z lekkomyślnością i ryzykiem.',
-    fullDefinition: 'Niezwykła odwaga połączona z brakiem ostrożności, brawurowym ryzykiem i chęcią zaimponowania innym.',
-    etymology: 'Z włoskiego: bravura (od bravo – odważny).',
-    examples: [
-      'Jazda z nadmierną prędkością w deszczu to czysta brawura.',
-      'Młody pilot wykazał się brawurą podczas akcji ratunkowej.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/brawura.html',
-    distractors: ['Przesadna lękliwość i ostrożność.', 'Powolne przemieszczanie się pieszo.', 'Zdolność do zachowania tajemnicy.']
-  },
-  {
-    id: 'charyzma',
-    word: 'Charyzma',
-    phonetic: '[cha-ryz-ma]',
-    shortDefinition: 'Niezwykły osobisty urok przyciągający ludzi.',
-    fullDefinition: 'Wyjątkowa cecha osobowości, urok osobisty i autorytet, dzięki któremu dana osoba z łatwością wywiera wpływ na ludzi.',
-    etymology: 'Z greki: charisma – dar łaski.',
-    examples: [
-      'Mówca zachwycił zebranych swoją niezwykłą charyzmą.',
-      'Bez charyzmy trudno być porywającym liderem.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/charyzma.html',
-    distractors: ['Wrodzony brak pewności siebie.', 'Niechęć do przebywania wśród ludzi.', 'Umiejętność szybkiego liczenia.']
-  },
-  {
     id: 'chimeryczny',
     word: 'Chimeryczny',
     phonetic: '[chi-me-rycz-ny]',
@@ -630,36 +360,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/chimeryczny.html',
     distractors: ['Stały w poglądach i przewidywalny.', 'Wykonany z żelaza i stali.', 'Spokojny jak skała.']
-  },
-  {
-    id: 'cynizm',
-    word: 'Cynizm',
-    phonetic: '[cy-nizm]',
-    shortDefinition: 'Niewiara w ludzką bezinteresowność i lekceważenie norm.',
-    fullDefinition: 'Postawa jawnego lekceważenia powszechnie uznawanych wartości moralnych i autorytetów.',
-    etymology: 'Od szkoły cyników w dawnej Grecji.',
-    examples: [
-      'Głęboki cynizm polityka oburzył opinię publiczną.',
-      'Z wiekiem jej dawny idealizm ustąpił miejsca gorzkiemu cynizmowi.'
-    ],
-    category: 'Etyka i Moralność',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/cynizm.html',
-    distractors: ['Wiara w dobroć każdego człowieka.', 'Przesadna wrażliwość na krzywdę.', 'Zamiłowanie do ogrodnictwa.']
-  },
-  {
-    id: 'defetizm',
-    word: 'Defetizm',
-    phonetic: '[de-fe-tizm]',
-    shortDefinition: 'Niewiara w zwycięstwo i szerzenie nastrojów klęski.',
-    fullDefinition: 'Brak wiary w wygraną lub powodzenie sprawy, połączony z uleganiem panice i sieciem nastrojów rezygnacji.',
-    etymology: 'Z francuskiego: défaitisme (od défaite – klęska).',
-    examples: [
-      'Zarząd surowo zwalczał defetizm wśród pracowników przed fuzją.',
-      'Szerzenie defetizmu w czasie wojny było uznawane za zdradę.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/defetizm.html',
-    distractors: ['Pełen optymizmu zapał do walki.', 'Planowanie budowy domu.', 'Zamiłowanie do poezji romantycznej.']
   },
   {
     id: 'dekadencja',
@@ -692,21 +392,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Precyzyjny wywód naukowy.', 'Skromne i ciche milczenie.', 'Podział majątku spadkowego.']
   },
   {
-    id: 'determinacja',
-    word: 'Determinacja',
-    phonetic: '[de-ter-mi-na-cja]',
-    shortDefinition: 'Niezłomna wola dążenia do celu mimo przeszkód.',
-    fullDefinition: 'Zdecydowanie, gotowość do pokonania wszelkich trudności w celu zrealizowania podjętego postanowienia.',
-    etymology: 'Z łaciny: determinatio – rozstrzygnięcie.',
-    examples: [
-      'Dzięki ogromnej determinacji ukończył maraton mimo kontuzji.',
-      'Jej determinacja w dążeniu do prawdy zaimponowała sędziom.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/determinacja.html',
-    distractors: ['Szybkie poddawanie się bez walki.', 'Wahanie się przed podjęciem decyzji.', 'Lęk przed wyjściem z domu.']
-  },
-  {
     id: 'dyletant',
     word: 'Dyletant',
     phonetic: '[dy-le-tant]',
@@ -735,21 +420,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/dychotomia.html',
     distractors: ['Połączenie trzech elementów w jeden.', 'Gładka linia bez załamań.', 'Rodzaj dawnego instrumentu.']
-  },
-  {
-    id: 'dysonans',
-    word: 'Dysonans',
-    phonetic: '[dy-so-nans]',
-    shortDefinition: 'Niezgodność, zgrzyt lub brak harmonii.',
-    fullDefinition: 'Niezgodność brzmienia dźwięków, postaw, poglądów lub wrażeń, wywołująca poczucie przykrego zgrzytu.',
-    etymology: 'Z łaciny: dissonantia – brzmienie niezgodne.',
-    examples: [
-      'Dysonans poznawczy pojawił się, gdy fakt sprzeciwił się jego przekonaniom.',
-      'Między jej słowami a czynami istniał rażący dysonans.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/dysonans.html',
-    distractors: ['Idealne współbrzmienie akordów.', 'Zgoda w całym zespole.', 'Słodki zapach owoców.']
   },
   {
     id: 'eklektyczny',
@@ -782,51 +452,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Mylenie słów i jąkanie się.', 'Ciche milczenie ze wstydu.', 'Pisanie krótko i bezbarwnie.']
   },
   {
-    id: 'empatia',
-    word: 'Empatia',
-    phonetic: '[em-pa-tia]',
-    shortDefinition: 'Umiejętność wczuwania się w emocje i sytuację drugiego człowieka.',
-    fullDefinition: 'Zdolność psychiczna do rozpoznawania i współodczuwania stanów emocjonalnych oraz sytuacji osobistej innych.',
-    etymology: 'Z greki: empatheia – namiętność.',
-    examples: [
-      'Lekarz wykazał się ogromną empatią wobec cierpiącego pacjenta.',
-      'Brak empatii utrudnia budowanie głębokich relacji.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/empatia.html',
-    distractors: ['Chłodne kalkulowanie zysków.', 'Obojętność na cierpienie ludzkie.', 'Umiejętność gry na pianinie.']
-  },
-  {
-    id: 'enigmatyczny',
-    word: 'Enigmatyczny',
-    phonetic: '[e-nig-ma-tycz-ny]',
-    shortDefinition: 'Tajemniczy, zagadkowy i trudny do rozwikłania.',
-    fullDefinition: 'Zawierający w sobie zagadkę, skryty, trudny do zrozumienia i jednoznacznego zinterpretowania.',
-    etymology: 'Z greki: ainigmatikos – zagadkowy.',
-    examples: [
-      'Rzucił tylko enigmatyczne spojrzenie i wyszedł z pokoju.',
-      'List zawierał enigmatyczne wiadomości pisane kodem.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/enigmatyczny.html',
-    distractors: ['Przejrzysty i łatwy do zrozumienia.', 'Opublikowany w gazecie codziennej.', 'Kolorowy i świecący.']
-  },
-  {
-    id: 'entuzjazm',
-    word: 'Entuzjazm',
-    phonetic: '[en-tuz-jazm]',
-    shortDefinition: 'Stan głębokiego zachwytu, pasji i zapału do działania.',
-    fullDefinition: 'Silny stan emocjonalnego ożywienia, zachwytu, radosnego zapału i zaangażowania.',
-    etymology: 'Z greki: enthousiasmos – natchnienie boże.',
-    examples: [
-      'Dzieci z entuzjazmem rzuciły się do rozpakowywania prezentów.',
-      'Jego entuzjazm udzielił się całemu zespołowi projektowemu.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/entuzjazm.html',
-    distractors: ['Głębokie smutek i zniechęcenie.', 'Zimna niechęć do ludzi.', 'Zmęczenie po fizycznej pracy.']
-  },
-  {
     id: 'erudycja',
     word: 'Erudycja',
     phonetic: '[e-ru-dy-cja]',
@@ -840,111 +465,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/erudycja.html',
     distractors: ['Powierzchowna znajomość faktów z prasy.', 'Brak znajomości ortografii.', 'Zdolność do szybkiego biegania.']
-  },
-  {
-    id: 'esencja',
-    word: 'Esencja',
-    phonetic: '[e-sen-cja]',
-    shortDefinition: 'To, co najważniejsze i stanowiące istotę rzeczy.',
-    fullDefinition: 'Wewnętrzna, najistotniejsza cecha lub sens jakiegoś zjawiska, przedmiotu bądź pojęcia.',
-    etymology: 'Z łaciny: essentia – istota.',
-    examples: [
-      'Ten krótki wiersz stanowi esencję polskiego romantyzmu.',
-      'Wyciągnij esencję z tego długiego raportu.'
-    ],
-    category: 'Filozofia i Pojęcia',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/esencja.html',
-    distractors: ['Zbędne i niepotrzebne ozdobniki.', 'Zewnętrzne opakowanie produktu.', 'Krótka pauza w dyskusji.']
-  },
-  {
-    id: 'etykieta',
-    word: 'Etykieta',
-    phonetic: '[e-ty-kie-ta]',
-    shortDefinition: 'Zbiór zasad dobrego wychowania obowiązujących w danej grupie.',
-    fullDefinition: 'Ogół norm grzecznościowych i zwyczajowych określających właściwe zachowanie.',
-    etymology: 'Z francuskiego: étiquette – dworski obyczaj.',
-    examples: [
-      'Etykieta dyplomatyczna wymaga noszenia odpowiedniego stroju.',
-      'Złamał zasady etykiety, przerywając starszemu rozmówcy.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/etykieta.html',
-    distractors: ['Cena przyczepiona do ubrania w sklepie.', 'Przepis na tradycyjne danie.', 'Opis techniczny silnika.']
-  },
-  {
-    id: 'eufemizm',
-    word: 'Eufemizm',
-    phonetic: '[eu-fe-mizm]',
-    shortDefinition: 'Słowo złagodzone użyte zamiast wyrazu dosadnego.',
-    fullDefinition: 'Słowo lub wyrażenie użyte w celu złagodzenia znaczenia wyrazu zbyt dosadnego lub niegrzecznego.',
-    etymology: 'Z greki: euphemismos (eu- + phemi).',
-    examples: [
-      'Sformułowanie "odejść na zawsze" to znany eufemizm zastępujący słowo "umrzeć".',
-      'Użyła eufenizmu, by nie urazić uczuć rozmówcy.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/eufemizm.html',
-    distractors: ['Wulgaryzm rzucony w złości.', 'Głośny krzyk w miejscu publicznym.', 'Trudne słowo medyczne.']
-  },
-  {
-    id: 'euforia',
-    word: 'Euforia',
-    phonetic: '[eu-fo-ria]',
-    shortDefinition: 'Stan gwałtownego, nieuzasadnionego szczęścia i radości.',
-    fullDefinition: 'Stan niezwykle silnego podniecenia radosnego, poczucia błogości i beztroski.',
-    etymology: 'Z greki: euphoria – dobre znoszenie.',
-    examples: [
-      'Kibice wpadli w euforię po zdobyciu zwycięskiej bramki.',
-      'Po zdanym egzaminie czuła rozpraszającą euforię.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/euforia.html',
-    distractors: ['Głęboki smutek i żałoba.', 'Uczucie zniechęcenia do nauki.', 'Spokojna drzemka po obiedzie.']
-  },
-  {
-    id: 'ewolucja',
-    word: 'Ewolucja',
-    phonetic: '[e-wo-lu-cja]',
-    shortDefinition: 'Stopniowy proces powolnych zmian i rozwoju.',
-    fullDefinition: 'Proces powolnych, ciągłych i przekształcających zmian struktury, poglądów lub organizmów.',
-    etymology: 'Z łaciny: evolutio – rozwijanie zwoju.',
-    examples: [
-      'Jego poglądy przeszły długą ewolucję od radykalizmu do umiarkowania.',
-      'Ewolucja gatunków trwała miliony lat.'
-    ],
-    category: 'Czas i Zjawiska',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/ewolucja.html',
-    distractors: ['Niezwykle gwałtowny przewrót zbrojny.', 'Cofnięcie się w rozwoju do zera.', 'Zatrzymanie wskazówek zegara.']
-  },
-  {
-    id: 'fanatyzm',
-    word: 'Fanatyzm',
-    phonetic: '[fa-na-tyzm]',
-    shortDefinition: 'Ślepa, nieznosząca sprzeciwu wiara w jakąś ideę.',
-    fullDefinition: 'Skrajna, bezkrytyczna i ślepa wiara w słuszność jakiejś idei, połączona z nietolerancją.',
-    etymology: 'Z łaciny: fanaticus – nawiedzony.',
-    examples: [
-      'Fanatyzm religijny doprowadził do wielu tragicznych wojen.',
-      'Trudno przekonać kogoś, u kogo pasja zmieniła się w fanatyzm.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/fanatyzm.html',
-    distractors: ['Rozważne analizowanie faktów.', 'Tolerancja dla odmiennych poglądów.', 'Chęć pomocy potrzebującym.']
-  },
-  {
-    id: 'fascinacja',
-    word: 'Fascynacja',
-    phonetic: '[fas-cy-na-cja]',
-    shortDefinition: 'Silny zachwyt, urok i głębokie zainteresowanie.',
-    fullDefinition: 'Stan silnego oczarowania, zachwytu i przyciągania czymś lub kimś.',
-    etymology: 'Z łaciny: fascinatio – rzucenie uroku.',
-    examples: [
-      'Jego fascynacja kosmosem zaczęła się od pierwszej książki w dzieciństwie.',
-      'Muzyka kompozytora wzbudzała powszechną fascynację.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/fascynacja.html',
-    distractors: ['Niechęć i obrzydzenie.', 'Nudzenie się na wykładzie.', 'Brak zainteresowania światem.']
   },
   {
     id: 'fatalizm',
@@ -962,96 +482,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Wiara we własne siły i pełną wolność.', 'Radosne dążenie do sukcesu.', 'Planowanie budowy domu.']
   },
   {
-    id: 'fenomen',
-    word: 'Fenomen',
-    phonetic: '[fe-no-men]',
-    shortDefinition: 'Zjawisko wyjątkowe, rzadkie i godne podziwu.',
-    fullDefinition: 'Niezwykłe, rzadko spotykane zjawisko lub osoba o wybitnych, zdumiewających zdolnościach.',
-    etymology: 'Z greki: phainomenon – to, co się ukazuje.',
-    examples: [
-      'Młody pianista został uznany za prawdziwy fenomen muzyczny.',
-      'Zjawisko zorzy polarnej to niezwykły fenomen natury.'
-    ],
-    category: 'Czas i Zjawiska',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/fenomen.html',
-    distractors: ['Szare i zwyczajne wydarzenie dnia.', 'Pomyłka popełniona przez początkującego.', 'Przedmiot codziennego użytku.']
-  },
-  {
-    id: 'furia',
-    word: 'Furia',
-    phonetic: '[fu-ria]',
-    shortDefinition: 'Gwałtowny, niekontrolowany wybuch wściekłości.',
-    fullDefinition: 'Stan skrajnego gniewu, szału i nienawiści prowadzący do niekontrolowanych zachowań.',
-    etymology: 'Od Furii – rzymskich bogiń zemsty.',
-    examples: [
-      'Wpadł w prawdziwą furię, gdy dowiedział się o zdradzie.',
-      'Szybko opanuj furię, zanim powiesz coś, czego pożałujesz.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/furia.html',
-    distractors: ['Spokojne rozmyślanie w fotelu.', 'Uczucie głębokiej wdzięczności.', 'Uśmiech pełen sympatii.']
-  },
-  {
-    id: 'fuzja',
-    word: 'Fuzja',
-    phonetic: '[fu-zja]',
-    shortDefinition: 'Połączenie się dwóch lub więcej podmiotów w jeden.',
-    fullDefinition: 'Proces złączenia ze sobą odrębnych elementów, przedsiębiorstw lub organizacji w nową całość.',
-    etymology: 'Z łaciny: fusio – stopienie się.',
-    examples: [
-      'Fuzja dwóch banków stworzyła największą instytucję w kraju.',
-      'Muzyka zespołu to udana fuzja jazzu z rokiem.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/fuzja.html',
-    distractors: ['Rozpad spółki na mniejsze części.', 'Sprzedaż akcji giełdowych.', 'Kłótnia wspólników biznesowych.']
-  },
-  {
-    id: 'gafe',
-    word: 'Gafa',
-    phonetic: '[ga-fa]',
-    shortDefinition: 'Niezręczność słowna lub uchybienie w zachowaniu.',
-    fullDefinition: 'Niewłaściwe, niezręczne słowo lub czyn popełniony nieumyślnie, stanowiący naruszenie etykiety.',
-    etymology: 'Z francuskiego: gaffe – hak, niezręczność.',
-    examples: [
-      'Popełnił straszną gafę, pytając gospodynię o wiek.',
-      'Próbował obrócić w żart swoją wczorajszą gafę.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/gafa.html',
-    distractors: ['Wielki sukces dyplomatyczny.', 'Wybitne osiągnięcie naukowe.', 'Przemówienie bez żadnego błędu.']
-  },
-  {
-    id: 'gwarancja',
-    word: 'Gwarancja',
-    phonetic: '[gwa-ran-cja]',
-    shortDefinition: 'Zobowiązanie do zapewnienia jakości lub wykonania obietnicy.',
-    fullDefinition: 'Prawne lub osobiste zapewnienie, że dany produkt, obietnica lub warunek zostaną spełnione.',
-    etymology: 'Z francuskiego: garantie.',
-    examples: [
-      'Dobra umowa daje pełną gwarancję bezpieczeństwa inwestycji.',
-      'Dostał pięć lat gwarancji na zakupiony sprzęt.'
-    ],
-    category: 'Nauka i Logika',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/gwarancja.html',
-    distractors: ['Ryzyko utraty całego majątku.', 'Brak jakichkolwiek umów na pismie.', 'Plotka krążąca po mieście.']
-  },
-  {
-    id: 'harmonia',
-    word: 'Harmonia',
-    phonetic: '[har-mo-nia]',
-    shortDefinition: 'Zgodne współbrzmienie, uładzenie i brak konfliktów.',
-    fullDefinition: 'Stan ładu, spokoju, proporcji i zgodnego współistnienia różnych elementów.',
-    etymology: 'Z greki: harmonia – spójność, ład.',
-    examples: [
-      'W ich domu panowała prawdziwa harmonia i wzajemny szacunek.',
-      'Architektura budynku zachwycała harmonią proporcji.'
-    ],
-    category: 'Filozofia i Pojęcia',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/harmonia.html',
-    distractors: ['Ciągłe kłótnie i spory w rodzinie.', 'Głośny zgrzyt uszkodzonego silnika.', 'Bałagan na biurku.']
-  },
-  {
     id: 'hedonizm',
     word: 'Hedonizm',
     phonetic: '[he-do-nizm]',
@@ -1065,66 +495,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/hedonizm.html',
     distractors: ['Życie w ubóstwie i ścisłym postach.', 'Ciężka praca bez chwili odpoczynku.', 'Dążenie do głębokiej pobożności.']
-  },
-  {
-    id: 'hipokryzja',
-    word: 'Hipokryzja',
-    phonetic: '[hi-po-kry-zja]',
-    shortDefinition: 'Dwulicowość, udawanie szlachetności na pokaz.',
-    fullDefinition: 'Fałsz, obłuda i postępowanie niezgodne z publicznie głoszonymi zasadami moralnymi.',
-    etymology: 'Z greki: hypokrisis – odgrywanie roli.',
-    examples: [
-      'Brzydzę się hipokryzją ludzi, którzy pouczają innych, sami grzesząc.',
-      'Jej wypowiedź była szczytem politycznej hipokryzji.'
-    ],
-    category: 'Etyka i Moralność',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/hipokryzja.html',
-    distractors: ['Szczere przyznanie się do błędu.', 'Prawdomówność za wszelką cenę.', 'Skromność i małomówność.']
-  },
-  {
-    id: 'histeria',
-    word: 'Histeria',
-    phonetic: '[his-te-ria]',
-    shortDefinition: 'Niekontrolowany, przesadny wybuch emocjonalny.',
-    fullDefinition: 'Stan gwałtownego pobudzenia emocjonalnego, objawiający się krzykiem lub płaczem nieadekwatnym do przyczyny.',
-    etymology: 'Z greki: hysteria.',
-    examples: [
-      'Wybuchła histerią na wiadomość o zagubieniu psa.',
-      'W tłumie rozeszła się panika i histeria.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/histeria.html',
-    distractors: ['Zimna krew w sytuacji zagrożenia.', 'Przesadny spokój duchowy.', 'Głęboki sen zimowy.']
-  },
-  {
-    id: 'ideologia',
-    word: 'Ideologia',
-    phonetic: '[i-de-o-lo-gia]',
-    shortDefinition: 'Zbiór poglądów i wartości kształtujących światopogląd.',
-    fullDefinition: 'Uporządkowany system pojęć i poglądów wyrażających interesy danej grupy społecznej.',
-    etymology: 'Z francuskiego: idéologie.',
-    examples: [
-      'Poświęcił całe życie walce z tą groźną ideologią.',
-      'Każda partia kieruje się swoją własną ideologią.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/ideologia.html',
-    distractors: ['Plan budowy autostrady.', 'Zbiór przepisów ruchu drogowego.', 'Nauka o minerałach morskich.']
-  },
-  {
-    id: 'iluzja',
-    word: 'Iluzja',
-    phonetic: '[i-lu-zja]',
-    shortDefinition: 'Złudzenie, błędne odebranie rzeczywistości.',
-    fullDefinition: 'Złudne wrażenie zmysłowe lub fałszywa nadzieja, nieodpowiadająca rzeczywistemu stanowi rzeczy.',
-    etymology: 'Z łaciny: illusio – drwiny, złudzenie.',
-    examples: [
-      'Wszystkie jego sukcesy okazały się tylko krótkotrwałą iluzją.',
-      'Malarz stworzył iluzję głębi na płaskim płótnie.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/iluzja.html',
-    distractors: ['Prawdziwy i namacalny fakt.', 'Twardy kamień budowlany.', 'Zapis w księdze wieczystej.']
   },
   {
     id: 'imperatyw',
@@ -1157,36 +527,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Wyraz głębokiego ukłonu i szacunku.', 'Cichi szept zachwytu.', 'Podziękowanie za prezent.']
   },
   {
-    id: 'impulsywny',
-    word: 'Impulsywny',
-    phonetic: '[im-pul-syw-ny]',
-    shortDefinition: 'Działający nagle, pod wpływem chwilowego emocjonalnego zrywu.',
-    fullDefinition: 'Skłonny do podejmowania szybkich, nieprzemyślanych decyzji pod wpływem nagłego bodźca.',
-    etymology: 'Z łaciny: impulsivus.',
-    examples: [
-      'Jego impulsywny charakter wpędzał go w stałe kłopoty.',
-      'Podjął impulsywną decyzję o rzuceniu pracy.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/impulsywny.html',
-    distractors: ['Chłodno kalkulujący każdy krok.', 'Powolny i stały w działaniu.', 'Bojący się jakichkolwiek zmian.']
-  },
-  {
-    id: 'incydent',
-    word: 'Incydent',
-    phonetic: '[in-cy-dent]',
-    shortDefinition: 'Niespodziewane, przykre lub zakłócające wydarzenie.',
-    fullDefinition: 'Drobne lub poważne wydarzenie o nieprzyjemnym charakterze, zakłócające normalny przebieg spraw.',
-    etymology: 'Z łaciny: incidens – zdarzający się.',
-    examples: [
-      'Policja szybko opanowała incydent na granicy.',
-      'Wczorajszy incydent nie wpłynął na dalsze rozmowy.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/incydent.html',
-    distractors: ['Uroczysty bal charytatywny.', 'Zaplanowany od dawna ślub.', 'Spokojny spacer po parku.']
-  },
-  {
     id: 'indolencja',
     word: 'Indolencja',
     phonetic: '[in-do-len-cja]',
@@ -1217,21 +557,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Nauka samodzielnego myślenia.', 'Wolna dyskusja naukowa.', 'Sprzedaż książek przygodowych.']
   },
   {
-    id: 'infantylny',
-    word: 'Infantylny',
-    phonetic: '[in-fan-tyl-ny]',
-    shortDefinition: 'Dziecinny, naiwny i niedojrzały.',
-    fullDefinition: 'Cechujący się zachowaniem, poglądami lub emocjami właściwymi dzieciom; niedojrzały.',
-    etymology: 'Z łaciny: infantilis – dziecięcy.',
-    examples: [
-      'Jego infantylne zachowanie zepsuło wywarte wrażenie.',
-      'Powieść była pełna infantylnych dialogów.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/infantylny.html',
-    distractors: ['Wyjątkowo mądry i doświadczony.', 'Poważny jak profesor.', 'Niezwykle elegancki i wykwintny.']
-  },
-  {
     id: 'insynuacja',
     word: 'Insynuacja',
     phonetic: '[in-sy-nua-cja]',
@@ -1245,66 +570,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/insynuacja.html',
     distractors: ['Oficjalna pochwała za osiągnięcia.', 'Wyraz wdzięczności na piśmie.', 'Prawdziwy komplement.']
-  },
-  {
-    id: 'integralny',
-    word: 'Integralny',
-    phonetic: '[in-teg-ral-ny]',
-    shortDefinition: 'Stanowiący nierozerwalną, nieodłączną część całości.',
-    fullDefinition: 'Cechujący się tym, że tworzy z czymś nierozerwalną całość; nieodłączny i konieczny.',
-    etymology: 'Z łaciny: integralis – całkowity.',
-    examples: [
-      'Wolność słowa jest integralną częścią demokracji.',
-      'Rozgrzewka stanowi integralną część każdego treningu.'
-    ],
-    category: 'Filozofia i Pojęcia',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/integralny.html',
-    distractors: ['Złapany przypadkowo na ulicy.', 'Zbędny dodatek odrzucony na końcu.', 'Szkodliwy dla organizmu.']
-  },
-  {
-    id: 'intryga',
-    word: 'Intryga',
-    phonetic: '[in-try-ga]',
-    shortDefinition: 'Skryte, podstępne działanie skierowane przeciw komuś.',
-    fullDefinition: 'Skryte, zaplanowane podstępnie działanie mające na celu pokrzyżowanie czyichś planów.',
-    etymology: 'Z francuskiego: intrigue.',
-    examples: [
-      'Dworska intryga doprowadziła do uwięzienia księcia.',
-      'Fabuła powieści opiera się na skomplikowanej intrydze.'
-    ],
-    category: 'Sztuka i Literatura',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/intryga.html',
-    distractors: ['Szczera i otwarta rozmowa.', 'Pomoc finansowa ubogim.', 'Budowa mostu nad rzeką.']
-  },
-  {
-    id: 'introwertyk',
-    word: 'Introwertyk',
-    phonetic: '[in-tro-wer-tyk]',
-    shortDefinition: 'Osoba skierowana do wewnątrz, ceniąca samotność.',
-    fullDefinition: 'Człowiek skupiony głównie na własnych myślach i przeżyciach wewnętrznych.',
-    etymology: 'Z łaciny: intro- + vertere.',
-    examples: [
-      'Jako introwertyk wolał spędzić wieczór z książką.',
-      'Introwertycy bywają świetnymi obserwatorami.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/introwertyk.html',
-    distractors: ['Głośna dusza towarzystwa.', 'Aktor występujący na scenie.', 'Sprzedawca uliczny.']
-  },
-  {
-    id: 'intuicja',
-    word: 'Intuicja',
-    phonetic: '[in-tu-i-cja]',
-    shortDefinition: 'Przeczucie pozwalające zrozumieć prawdę bez analizy.',
-    fullDefinition: 'Zdolność do natychmiastowego rozumienia sytuacji lub podjęcia właściwej decyzji na podstawie przeczucia.',
-    etymology: 'Z łaciny: intuitio – spojrzenie.',
-    examples: [
-      'Kobieca intuicja podpowiedziała jej, że coś jest nie tak.',
-      'W biznesie warto łączyć chłodną analizę z intuicją.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/intuicja.html',
-    distractors: ['Długie i żmudne obliczenia.', 'Czytanie instrukcji obsługi.', 'Stosowanie przepisów prawnych.']
   },
   {
     id: 'inwektywa',
@@ -1322,36 +587,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Uprzejme powitanie.', 'Komplement wygłoszony szczerze.', 'Przeprosiny za spóźnienie.']
   },
   {
-    id: 'ironia',
-    word: 'Ironia',
-    phonetic: '[i-ro-nia]',
-    shortDefinition: 'Kpiąca wypowiedź wyrażająca sens przeciwny do słów.',
-    fullDefinition: 'Sposób wypowiedzi polegający na wyrażeniu treści sprzecznej z dosłownym znaczeniem słów.',
-    etymology: 'Z greki: eirōneia – udawana niewiedza.',
-    examples: [
-      'Mówił z lekką ironią, widząc ich pośpiech.',
-      'To prawdziwa ironia losu, że spóźnił się o sekundę.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/ironia.html',
-    distractors: ['Poważne i dosłowne oświadczenie.', 'Krzyk z wściekłości.', 'Składanie oficjalnej przysięgi.']
-  },
-  {
-    id: 'izolacja',
-    word: 'Izolacja',
-    phonetic: '[i-zo-la-cja]',
-    shortDefinition: 'Odcięcie od otoczenia, samotność lub wydzielenie.',
-    fullDefinition: 'Stan odseparowania od świata zewnętrznego, ludzi lub wpływów środowiska.',
-    etymology: 'Z francuskiego: isolation.',
-    examples: [
-      'Długotrwała izolacja wpływa negatywnie na samopoczucie.',
-      'Chory przebywał w pełnej izolacji na oddziale.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/izolacja.html',
-    distractors: ['Radosne spotkanie z przyjaciółmi.', 'Szybki przepływ informacji.', 'Podróż autokarem.']
-  },
-  {
     id: 'jowialny',
     word: 'Jowialny',
     phonetic: '[jo-wial-ny]',
@@ -1367,186 +602,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Ponury, zgorzkniały i milczący.', 'Groźny jak burza.', 'Bojący się własnego cienia.']
   },
   {
-    id: 'kalkulacja',
-    word: 'Kalkulacja',
-    phonetic: '[kal-ku-la-cja]',
-    shortDefinition: 'Chłodne przeliczanie zysków, strat i możliwości.',
-    fullDefinition: 'Przeliczanie kosztów, zysków lub ryzyka; zimne planowanie działań.',
-    etymology: 'Z łaciny: calculatio.',
-    examples: [
-      'Zimna kalkulacja wskazywała, że projekt się nie opłaca.',
-      'Po dokładnej kalkulacji kupił tańsze mieszkanie.'
-    ],
-    category: 'Nauka i Logika',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/kalkulacja.html',
-    distractors: ['Podejmowanie decyzji pod wpływem emocji.', 'Pisanie wiersza miłosnego.', 'Spacer bez celu po lesie.']
-  },
-  {
-    id: 'kamuflaz',
-    word: 'Kamuflaż',
-    phonetic: '[ka-mu-flaż]',
-    shortDefinition: 'Ukrywanie prawdziwego wyglądu, cech lub intencji.',
-    fullDefinition: 'Sposób maskowania się, ukrywania swoich prawdziwych intencji lub obecności.',
-    etymology: 'Z francuskiego: camouflage.',
-    examples: [
-      'Mundury w barwach kamuflażu utrudniają dostrzeżenie.',
-      'Jej pozorna życzliwość była tylko kamuflażem.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/kamufla%C5%BC.html',
-    distractors: ['Jaskrawy strój przyciągający wzrok.', 'Szczere wyznanie prawdy.', 'Podświetlenie budynku nocą.']
-  },
-  {
-    id: 'kanon',
-    word: 'Kanon',
-    phonetic: '[ka-non]',
-    shortDefinition: 'Zbiór podstawowych, uznanych reguł lub dzieł.',
-    fullDefinition: 'Zbiór zasad, wzorców lub dzieł uznanych w danej dziedzinie za podstawowe.',
-    etymology: 'Z greki: kanōn – miara.',
-    examples: [
-      'Weszło to do kanonu lektur szkolnych.',
-      'Kanon piękna zmieniał się na przestrzeni wieków.'
-    ],
-    category: 'Sztuka i Literatura',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/kanon.html',
-    distractors: ['Błąd popełniony przy szyciu ubrań.', 'Tymczasowy przepis urzędowy.', 'Rodzaj dawnej broni.']
-  },
-  {
-    id: 'kaprys',
-    word: 'Kaprys',
-    phonetic: '[ka-prys]',
-    shortDefinition: 'Niezrozumiała zachcianka lub nagła zmiana nastroju.',
-    fullDefinition: 'Niespodziewana, nieracjonalna zachcianka lub przelotny nastrój.',
-    etymology: 'Z włoskiego: capriccio.',
-    examples: [
-      'Kupno tego drogiego zegarka było tylko przelotnym kaprysem.',
-      'Pogoda w marcu słynie z kaprysów.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/kaprys.html',
-    distractors: ['Przemyślany plan oszczędzania.', 'Długotrwały cel życiowy.', 'Instrukcja montażu szafy.']
-  },
-  {
-    id: 'katarza',
-    word: 'Katharsis',
-    phonetic: '[ka-tar-sis]',
-    shortDefinition: 'Duchowe oczyszczenie przez przeżycie sztuki lub emocji.',
-    fullDefinition: 'Uczucie duchowego ulżenia i oczyszczenia z tłumionych emocji.',
-    etymology: 'Z greki: katharsis – oczyszczenie.',
-    examples: [
-      'Finał spektaklu przyniósł widzom prawdziwe katharsis.',
-      'Płacz okazał się dla niej oczyszczającym katharsis.'
-    ],
-    category: 'Sztuka i Literatura',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/katharsis.html',
-    distractors: ['Głębokie poczucie winy.', 'Zatrucie pokarmowe.', 'Rozpad budowli z cegły.']
-  },
-  {
-    id: 'klisza',
-    word: 'Klisza',
-    phonetic: '[kli-sza]',
-    shortDefinition: 'Schemat myślowy, powtarzany utarty zwrot lub banał.',
-    fullDefinition: 'Wytarty zwrot lub utarty schemat myślowy powielany bez oryginalności.',
-    etymology: 'Z francuskiego: cliché.',
-    examples: [
-      'Film był pełen hollywoodzkich klisz.',
-      'Unikaj językowych klisz w wypracowaniu.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/klisza.html',
-    distractors: ['Nowatorski pomysł naukowy.', 'Nowy model samochodu.', 'Cenna rzeźba w muzeum.']
-  },
-  {
-    id: 'koegzystencja',
-    word: 'Koegzystencja',
-    phonetic: '[ko-eg-zys-ten-cja]',
-    shortDefinition: 'Równoległe, spokojne istnienie obok siebie.',
-    fullDefinition: 'Zgodne lub neutralne współistnienie obok siebie odmiennych grup lub poglądów.',
-    etymology: 'Z łaciny: co- + existentia.',
-    examples: [
-      'Pokojowa koegzystencja kultur jest możliwa dzięki tolerancji.',
-      'W ekosystemie istnieje koegzystencja wielu gatunków.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/koegzystencja.html',
-    distractors: ['Wzajemna walka na śmierć i życie.', 'Wymarcie całego gatunku.', 'Brak widzenia barw.']
-  },
-  {
-    id: 'kompromis',
-    word: 'Kompromis',
-    phonetic: '[kom-pro-mis]',
-    shortDefinition: 'Porozumienie osiągnięte przez wzajemne ustępstwa.',
-    fullDefinition: 'Rozstrzygnięcie sporu polegające na ustępstwach z obu stron w celu porozumienia.',
-    etymology: 'Z łaciny: compromissum.',
-    examples: [
-      'Po długich negocjacjach wypracowano kompromis cenowy.',
-      'W małżeństwie umiejętność pójścia na kompromis jest kluczowa.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/kompromis.html',
-    distractors: ['Narzucenie własnej woli siłą.', 'Złożenie skargi do sądu.', 'Zerwanie wszelkich kontaktów.']
-  },
-  {
-    id: 'konformizm',
-    word: 'Konformizm',
-    phonetic: '[kon-for-mizm]',
-    shortDefinition: 'Bezmyślne dostosowywanie się do większości.',
-    fullDefinition: 'Postawa uległego podporządkowywania się opiniom panującym w danej grupie z lęku przed odrzuceniem.',
-    etymology: 'Z łaciny: conformo.',
-    examples: [
-      'Ślepy konformizm zabija indywidualność i kreatywność.',
-      'Kierował się konformizmem, głosując tak jak reszta.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/konformizm.html',
-    distractors: ['Bunt przeciwko wszelkim normom.', 'Posiadanie własnego zdania.', 'Samotne żeglowanie.']
-  },
-  {
-    id: 'kontekst',
-    word: 'Kontekst',
-    phonetic: '[kon-tekst]',
-    shortDefinition: 'Otoczenie słowa lub wydarzenia nadające mu sens.',
-    fullDefinition: 'Zbiór okoliczności towarzyszących wypowiedzi, bez których trudno zrozumieć jej właściwy sens.',
-    etymology: 'Z łaciny: contextus.',
-    examples: [
-      'Wypowiedź wyrwana z kontekstu zabrzmiała groźnie.',
-      'Trzeba rozpatrywać tę decyzję w kontekście epoki.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/kontekst.html',
-    distractors: ['Format pliku komputerowego.', 'Wymiary ramki na obrazek.', 'Cena towaru na półce.']
-  },
-  {
-    id: 'kontrowersja',
-    word: 'Kontrowersja',
-    phonetic: '[kon-tro-wer-sja]',
-    shortDefinition: 'Spór, rozbieżność opinii i brak zgody.',
-    fullDefinition: 'Gwałtowna różnica zdań, spór lub wywołujące emocje dyskusje wokół danego tematu.',
-    etymology: 'Z łaciny: controversia.',
-    examples: [
-      'Nowa ustawa budzi ogromne kontrowersje w społeczeństwie.',
-      'Artysta celowo wywoływał kontrowersje swoimi wystąpieniami.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/kontrowersja.html',
-    distractors: ['Pełna jednomyślność i aprobata.', 'Cicha modlitwa w świątyni.', 'Zbiór wykresów w książce.']
-  },
-  {
-    id: 'kreacja',
-    word: 'Kreacja',
-    phonetic: '[kre-a-cja]',
-    shortDefinition: 'Twórcze dzieło, rola lub proces tworzenia.',
-    fullDefinition: 'Owoc twórczej pracy, stworzona rola aktorska, strój lub sam proces powoływania czegoś nowego.',
-    etymology: 'Z łaciny: creatio.',
-    examples: [
-      'Aktor stworzył genialną kreację w nowym dramacie.',
-      'Suknia była niezwykłą kreacją słynnego projektanta.'
-    ],
-    category: 'Sztuka i Literatura',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/kreacja.html',
-    distractors: ['Niszczenie dawnych dokumentów.', 'Zakup towarów w hurtowni.', 'Sprzątanie biurka.']
-  },
-  {
     id: 'kredybilnosc',
     word: 'Kredybilność',
     phonetic: '[kre-dy-bil-ność]',
@@ -1560,21 +615,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/kredybilno%C5%9B%C4%87.html',
     distractors: ['Oszukańczy charakter relacji.', 'Trudność w czytaniu tekstu.', 'Brak pieniędzy na koncie.']
-  },
-  {
-    id: 'kryzys',
-    word: 'Kryzys',
-    phonetic: '[kry-zys]',
-    shortDefinition: 'Załamanie, okres trudności i punkt zwrotny.',
-    fullDefinition: 'Okres głębokiego załamania gospodarczego lub osobistego, stanowiący punkt zwrotny.',
-    etymology: 'Z greki: krisis.',
-    examples: [
-      'Firma przetrwała ciężki kryzys finansowy.',
-      'Małżeństwo przechodziło poważny kryzys.'
-    ],
-    category: 'Czas i Zjawiska',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/kryzys.html',
-    distractors: ['Czas prosperity i bogactwa.', 'Szybka jazda na rowerze.', 'Radosne świętowanie urodzin.']
   },
   {
     id: 'lapsus',
@@ -1607,21 +647,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Gorączkowy bieg po zakupy.', 'Głośna zabawa na dyskotece.', 'Praca na trzy zmiany.']
   },
   {
-    id: 'lojalnosc',
-    word: 'Lojalność',
-    phonetic: '[lo-jal-ność]',
-    shortDefinition: 'Wierność, uczciwość i dotrzymywanie zobowiązań.',
-    fullDefinition: 'Postawa wierności i rzetelności wobec ludzi lub zasad.',
-    etymology: 'Z francuskiego: loyauté.',
-    examples: [
-      'Lojalność pracowników uratowała firmę przed upadkiem.',
-      'Cenił u przyjaciół bezwzględną lojalność.'
-    ],
-    category: 'Etyka i Moralność',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/lojalno%C5%9B%C4%87.html',
-    distractors: ['Zdradzanie tajemnic firmy.', 'Ucieczka z pola walki.', 'Ciągła zmiana zdania.']
-  },
-  {
     id: 'lukratywny',
     word: 'Lukratywny',
     phonetic: '[lu-kra-tyw-ny]',
@@ -1635,66 +660,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/lukratywny.html',
     distractors: ['Przynoszący same straty.', 'Darmowy i wolontariacki.', 'Bolesny dla zdrowia.']
-  },
-  {
-    id: 'magnetyzm',
-    word: 'Magnetyzm',
-    phonetic: '[mag-ne-tyzm]',
-    shortDefinition: 'Niezwykłe przyciąganie uwagi i czar osobisty.',
-    fullDefinition: 'Siła niezwykłego uroku i atrakcyjności osobistej, która przyciąga innych ludzi.',
-    etymology: 'Od magnesu.',
-    examples: [
-      'Aktorka roztaczała na ekranie niezwykły magnetyzm.',
-      'Jego magnetyzm sprawiał, że słuchano go z zapartym tchem.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/magnetyzm.html',
-    distractors: ['Odpychający wygląd zewnętrzny.', 'Głośny zgrzyt blachy.', 'Zdolność pływania.']
-  },
-  {
-    id: 'manipulacja',
-    word: 'Manipulacja',
-    phonetic: '[ma-ni-pu-la-cja]',
-    shortDefinition: 'Podstępne wpływanie na ludzi dla własnych korzyści.',
-    fullDefinition: 'Czynność podstępnego kierowania zachowaniem lub myśleniem innych dla własnych celów.',
-    etymology: 'Z łaciny: manipulatio.',
-    examples: [
-      'Artykuł był pełen socjotechnicznej manipulacji faktami.',
-      'Nie ulegaj emocjonalnej manipulacji ze strony oszustów.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/manipulacja.html',
-    distractors: ['Uczciwa sprzedaż w sklepie.', 'Pomoc bezdomnym zwierzętom.', 'Instrukcja obsługi pralki.']
-  },
-  {
-    id: 'melancholia',
-    word: 'Melancholia',
-    phonetic: '[me-lan-cho-lia]',
-    shortDefinition: 'Zadumany, cichy smutek i zamyślenie.',
-    fullDefinition: 'Stan cichego, łagodnego smutku, przygnębienia i tęsknoty połączony z zamyśleniem.',
-    etymology: 'Z greki: melancholia – czarna żółć.',
-    examples: [
-      'Jesienne wieczory zawsze wprawiały go w lekką melancholię.',
-      'Muzyka emanowała głęboką melancholią.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/melancholia.html',
-    distractors: ['Wybuch głośnego śmiechu.', 'Szybki taniec na weselu.', 'Gorączkowa praca w kuchni.']
-  },
-  {
-    id: 'metafora',
-    word: 'Metafora',
-    phonetic: '[me-ta-fo-ra]',
-    shortDefinition: 'Przenośnia językowa nadająca słowu nowe znaczenie.',
-    fullDefinition: 'Figura retoryczna polegająca na nieszablonowym połączeniu wyrazów, które zyskują nowe znaczenie.',
-    etymology: 'Z greki: metaphora – przeniesienie.',
-    examples: [
-      'Poeta posłużył się przejmującą metaforą zachodu słońca.',
-      'To stwierdzenie należy traktować jedynie jako metaforę.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/metafora.html',
-    distractors: ['Dosłowna instrukcja z podręcznika.', 'Błąd ortograficzny w słowie.', 'Podpis pod zdjęciem w dowodzie.']
   },
   {
     id: 'mistyfikacja',
@@ -1712,66 +677,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Oficjalny komunikat rządowy.', 'Darmowy koncert na rynku.', 'Prawdziwy dokument tożsamości.']
   },
   {
-    id: 'monotonia',
-    word: 'Monotonia',
-    phonetic: '[mo-no-to-nia]',
-    shortDefinition: 'Jednostajność, nudna powtarzalność i brak zmian.',
-    fullDefinition: 'Jednostajność, brak urozmaicenia i zmienności wywołujący uczucie nudy.',
-    etymology: 'Z greki: monotonia.',
-    examples: [
-      'Monotonia codziennych obowiązków zacząła go męczyć.',
-      'Głos lektora uśpił słuchaczy swoją monotonią.'
-    ],
-    category: 'Czas i Zjawiska',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/monotonia.html',
-    distractors: ['Szybka zmiana akcji w filmie.', 'Niezwykle barwny pokaz sztucznych ogni.', 'Wybuch wesołości w klasie.']
-  },
-  {
-    id: 'moralnosc',
-    word: 'Moralność',
-    phonetic: '[mo-ral-ność]',
-    shortDefinition: 'Zbiór zasad odróżniających dobro od zła.',
-    fullDefinition: 'Ogół przyjętych w danym społeczeństwie zasad, ocen i norm określających, co jest dobre, a co złe.',
-    etymology: 'Z łaciny: moralitas.',
-    examples: [
-      'Kierował się w życiu surową moralnością.',
-      'Powieść stawia trudne pytania o ludzką moralność.'
-    ],
-    category: 'Etyka i Moralność',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/moralno%C5%9B%C4%87.html',
-    distractors: ['Cena biletu wstępu do teatru.', 'Rozmiar buta rowerowego.', 'Znajomość języka francuskiego.']
-  },
-  {
-    id: 'narcyzm',
-    word: 'Narcyzm',
-    phonetic: '[nar-cyzm]',
-    shortDefinition: 'Bezmierny zachwyt samym sobą i własną osobą.',
-    fullDefinition: 'Postawa przesadnej miłości własnej, samouwielbienia i skupienia wyłącznie na własnych potrzebach.',
-    etymology: 'Od mitologicznego Narcyza.',
-    examples: [
-      'Jego narcyzm sprawiał, że nie potrafił wysłuchać nikogo innego.',
-      'W mediach społecznościowych powszechny jest powierzchowny narcyzm.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/narcyzm.html',
-    distractors: ['Skromne ocenianie swoich możliwości.', 'Miłość do uprawy kwiatów.', 'Pomoc bezdomnym dzieciom.']
-  },
-  {
-    id: 'nostalgia',
-    word: 'Nostalgia',
-    phonetic: '[nos-tal-gia]',
-    shortDefinition: 'Tęsknota za Ojczyzną, przeszłością lub młodością.',
-    fullDefinition: 'Uczucie tęsknoty za rodzinnym krajem, minionymi latami młodości lub kimś bliskim.',
-    etymology: 'Z greki: nostalgia (nostos + algos).',
-    examples: [
-      'Na emigracji dopadła go głęboka nostalgia za rodzinnym miastem.',
-      'Stare fotografie wywołały falę nostalgii.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/nostalgia.html',
-    distractors: ['Strach przed przyszłymi wydarzeniami.', 'Szybki bieg na czas.', 'Głosny krzyk w lesie.']
-  },
-  {
     id: 'nuans',
     word: 'Nuans',
     phonetic: '[nu-ans]',
@@ -1785,21 +690,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/nuans.html',
     distractors: ['Wielki, widoczny z daleka błąd.', 'Głośny huk uderzenia.', 'Ciężka przeszkoda na drodze.']
-  },
-  {
-    id: 'obiektywizm',
-    word: 'Obiektywizm',
-    phonetic: '[o-biek-ty-wizm]',
-    shortDefinition: 'Bezstronność i ocenianie faktów bez uprzedzeń.',
-    fullDefinition: 'Postawa polegająca na bezstronnym, wolnym od osobistych uprzedzeń ocenianiu rzeczywistości.',
-    etymology: 'Z łaciny: obiectivus.',
-    examples: [
-      'Dziennikarz powinien zachować pełen obiektywizm w relacji.',
-      'Trudno o obiektywizm, gdy sprawa dotyka bliskich.'
-    ],
-    category: 'Nauka i Logika',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/obiektywizm.html',
-    distractors: ['Kierowanie się wyłącznie własną sympatią.', 'Ślepa wiara w plotki.', 'Złudzenie optyczne.']
   },
   {
     id: 'obligatoryjny',
@@ -1832,51 +722,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Nowoczesny i pełen swobody.', 'Bardzo zmienny w decyzjach.', 'Mylący się na każdym kroku.']
   },
   {
-    id: 'paradoks',
-    word: 'Paradoks',
-    phonetic: '[pa-ra-doks]',
-    shortDefinition: 'Twierdzenie zaskakujące, sprzeczne z potoczną logiką.',
-    fullDefinition: 'Sformułowanie lub sytuacja zawierająca w sobie pozorną lub rzeczywistą sprzeczność z powszechnym mniemaniem.',
-    etymology: 'Z greki: paradoxos.',
-    examples: [
-      'Paradoks polega na tym, że im więcej ma czasu, tym mniej udaje mu się zrobić.',
-      'Wiersz opierał się na filozoficznym paradoksie.'
-    ],
-    category: 'Filozofia i Pojęcia',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/paradoks.html',
-    distractors: ['Prosty wzór matematyczny.', 'Przepis w kodeksie karnym.', 'Zwykła prawda bez niespodzianki.']
-  },
-  {
-    id: 'paranoja',
-    word: 'Paranoja',
-    phonetic: '[pa-ra-no-ja]',
-    shortDefinition: 'Chorobliwa podejrzliwość i urojenia prześladowcze.',
-    fullDefinition: 'Stan głębokiej, urojeniowej podejrzliwości wobec otoczenia.',
-    etymology: 'Z greki: paranoia.',
-    examples: [
-      'Jego stałe sprawdzanie zamków graniczyło z paranoją.',
-      'W firmie zapanowała paranoja po pogłoskach o redukcji etatów.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/paranoja.html',
-    distractors: ['Beztroska wiara we wszystkich ludzi.', 'Dobry i mocny sen.', 'Zamiłowanie do gry w szachy.']
-  },
-  {
-    id: 'passa',
-    word: 'Passa',
-    phonetic: '[pas-sa]',
-    shortDefinition: 'Ciąg pomyślnych lub niepomyślnych wydarzeń.',
-    fullDefinition: 'Dłuższy okres serii kolejnych sukcesów lub niepowodzeń w grze, sporcie albo życiu.',
-    etymology: 'Z francuskiego: passe.',
-    examples: [
-      'Dobra passa drużyny trwała od początku sezonu.',
-      'Miał nadzieję, że zła passa w interesach wreszcie się skończy.'
-    ],
-    category: 'Czas i Zjawiska',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/passa.html',
-    distractors: ['Bilet wstępu na basen.', 'Przepustka wojskowa.', 'Krótka rozmowa kwalifikacyjna.']
-  },
-  {
     id: 'perfidia',
     word: 'Perfidia',
     phonetic: '[per-fi-dia]',
@@ -1892,21 +737,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Szczera i serdeczna pomoc przyjaciołom.', 'Niewinna dziecięca zabawa.', 'Zdolność do szybkiego liczenia.']
   },
   {
-    id: 'pluralizm',
-    word: 'Pluralizm',
-    phonetic: '[plu-ra-lizm]',
-    shortDefinition: 'Współistnienie różnych poglądów i grup w społeczeństwie.',
-    fullDefinition: 'Zasada uznająca prawo do swobodnego współistnienia odmiennych poglądów i grup w państwie.',
-    etymology: 'Z łaciny: pluralis.',
-    examples: [
-      'Pluralizm opinii w mediach jest fundamentem wolności.',
-      'Szkoła dbała o pluralizm światopoglądowy.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/pluralizm.html',
-    distractors: ['Dyktatura jednej osoby.', 'Zakaz czytania książek.', 'Zbiór liczb parzystych.']
-  },
-  {
     id: 'polemika',
     word: 'Polemika',
     phonetic: '[po-le-mi-ka]',
@@ -1920,51 +750,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/polemika.html',
     distractors: ['Zgodne milczenie na zebraniu.', 'Instrukcja montażu mebli.', 'Taniec ludowy.']
-  },
-  {
-    id: 'pragmatyzm',
-    word: 'Pragmatyzm',
-    phonetic: '[prag-ma-tyzm]',
-    shortDefinition: 'Postawa kierowania się wyłącznie praktyczną skutecznością.',
-    fullDefinition: 'Postawa życiowa uznająca przydatność i praktyczną skuteczność za jedyne kryterium wartości działania.',
-    etymology: 'Z greki: pragma.',
-    examples: [
-      'W biznesie kierował się chłodnym pragmatyzmem.',
-      'Pragmatyzm polityka pozwolił osiągnąć kompromis.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/pragmatyzm.html',
-    distractors: ['Kierowanie się wyłącznie nierealnymi marzeniami.', 'Ślepe uleganie przesądom.', 'Zamiłowanie do poezji.']
-  },
-  {
-    id: 'precedens',
-    word: 'Precedens',
-    phonetic: '[pre-ce-dens]',
-    shortDefinition: 'Wcześniejsze wydarzenie stanowiące wzór dla późniejszych.',
-    fullDefinition: 'Wydarzenie z przeszłości, które staje się przykładem lub regułą przy rozstrzyganiu podobnych spraw.',
-    etymology: 'Z łaciny: praecedens.',
-    examples: [
-      'Ten wyrok sądu stworzył groźny precedens.',
-      'Brak było precedensu dla tak dziwnej sprawy.'
-    ],
-    category: 'Nauka i Logika',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/precedens.html',
-    distractors: ['Zaplanowany ślub w kościele.', 'Zwykła pomyłka drukarska.', 'Zakup nowych mebli.']
-  },
-  {
-    id: 'precyzja',
-    word: 'Precyzja',
-    phonetic: '[pre-cy-zja]',
-    shortDefinition: 'Dokładność, staranność i dbałość o każdy szczegół.',
-    fullDefinition: 'Niezwykła dokładność, ścisłość i dbałość o najmniejsze detale w wykonywaniu czynności.',
-    etymology: 'Z łaciny: praecisio.',
-    examples: [
-      'Zegarmistrz pracował z niesamowitą precyzją.',
-      'Precyzja wypowiedzi uniemożliwiała przekręcenie jej sensu.'
-    ],
-    category: 'Nauka i Logika',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/precyzja.html',
-    distractors: ['Robienie wszystkiego na oko.', 'Niestaranny rysunek na serwetce.', 'Brak porządku w pokoju.']
   },
   {
     id: 'prekursor',
@@ -1997,21 +782,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Osoba słuchająca wykładu.', 'Kierowca autobusowy.', 'Pracownik szatni w teatrze.']
   },
   {
-    id: 'prestiż',
-    word: 'Prestiż',
-    phonetic: '[pres-tiż]',
-    shortDefinition: 'Szacunek, uznanie i wysoka pozycja w oczach innych.',
-    fullDefinition: 'Należny autorytet, powszechny szacunek i wysoka pozycja społeczna lub zawodowa.',
-    etymology: 'Z francuskiego: prestige.',
-    examples: [
-      'Praca w tym zespole to ogromny prestiż dla młodego naukowca.',
-      'Dbano o prestiż uczelni na arenie międzynarodowej.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/presti%C5%BC.html',
-    distractors: ['Utrata zaufania i hańba.', 'Cena obiadu w restauracji.', 'Brak znajomych w nowym mieście.']
-  },
-  {
     id: 'presumpcja',
     word: 'Presumpcja',
     phonetic: '[pre-sump-cja]',
@@ -2025,51 +795,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/presumpcja.html',
     distractors: ['Złośliwe kłamstwo skazujące.', 'Wyrok skazujący na karę.', 'Brak dowodów w sprawie.']
-  },
-  {
-    id: 'priorytet',
-    word: 'Priorytet',
-    phonetic: '[prio-ry-tet]',
-    shortDefinition: 'Sprawa ważniejsza od innych, pierwszoplanowa.',
-    fullDefinition: 'Zasada przyznawania pierwszeństwa określonym sprawom lub celom przed pozostałymi.',
-    etymology: 'Z łaciny: prior.',
-    examples: [
-      'Bezpieczeństwo pacjentów jest dla nas najwyższym priorytetem.',
-      'Ustal priorytety zadań na dzisiejszy dzień.'
-    ],
-    category: 'Nauka i Logika',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/priorytet.html',
-    distractors: ['Sprawa mało ważna odłożona na koniec.', 'Odrzucona propozycja.', 'Lista zakupów spożywczych.']
-  },
-  {
-    id: 'procedura',
-    word: 'Procedura',
-    phonetic: '[pro-ce-du-ra]',
-    shortDefinition: 'Ustalony sposób postępowania krok po kroku.',
-    fullDefinition: 'Określony przepisami, stały sposób wykonywania czynności lub załatwiania spraw.',
-    etymology: 'Z francuskiego: procédure.',
-    examples: [
-      'Ewakuacja odbyła się zgodnie z procedurą bezpieczeństwa.',
-      'Wniosek został odrzucony ze względów proceduralnych.'
-    ],
-    category: 'Nauka i Logika',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/procedura.html',
-    distractors: ['Niezorganizowany chaos.', 'Impulsywne działanie bez planu.', 'Spacer po lesie.']
-  },
-  {
-    id: 'progres',
-    word: 'Progres',
-    phonetic: '[pro-gres]',
-    shortDefinition: 'Stopniowy rozwój, postęp i poprawa stanu.',
-    fullDefinition: 'Proces przechodzenia na wyższy poziom rozwoju, doskonalenie się i osiąganie lepszych wyników.',
-    etymology: 'Z łaciny: progressus.',
-    examples: [
-      'Zrobiła ogromny progres w nauce języka obcego.',
-      'Widać wyraźny progres w wynikach firmy.'
-    ],
-    category: 'Czas i Zjawiska',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/progres.html',
-    distractors: ['Cofanie się w rozwoju.', 'Spadek sprzedaży o połowę.', 'Brak jakichkolwiek zmian.']
   },
   {
     id: 'prowizoryczny',
@@ -2102,66 +827,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Zasypywanie języka wulgaryzmami.', 'Niedbalstwo o wygląd domu.', 'Brak czystości na podłodze.']
   },
   {
-    id: 'radykalizm',
-    word: 'Radykalizm',
-    phonetic: '[ra-dy-ka-lizm]',
-    shortDefinition: 'Bezkompromisowość i dążenie do głębokich zmian.',
-    fullDefinition: 'Postawa bezkompromisowości, dążenie do gwałtownych, głębokich zmian u samych korzeni.',
-    etymology: 'Z łaciny: radicalis.',
-    examples: [
-      'Młodzieńczy radykalizm z wiekiem ustąpił umiarkowaniu.',
-      'Radykalizm ideologiczny utrudniał jakikolwiek dialog.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/radykalizm.html',
-    distractors: ['Spokojne godzenie się na kompromis.', 'Brak chęci wprowadzania zmian.', 'Ciche milczenie ze wstydu.']
-  },
-  {
-    id: 'racjonalizm',
-    word: 'Racjonalizm',
-    phonetic: '[ra-cjo-na-lizm]',
-    shortDefinition: 'Kierowanie się wyłącznie rozumem i logiką.',
-    fullDefinition: 'Kierunek filozoficzny i postawa życiowa uznająca rozum za jedyne lub główne źródło poznania.',
-    etymology: 'Z łaciny: rationalis.',
-    examples: [
-      'Chłodny racjonalizm pomagał mu chłodno oceniać sytuację.',
-      'Racjonalizm Oświecenia przyniósł wielki rozwój nauk.'
-    ],
-    category: 'Filozofia i Pojęcia',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/racjonalizm.html',
-    distractors: ['Ślepa wiara w przesądy.', 'Kierowanie się skrajnymi emocjami.', 'Zamiłowanie do czarów.']
-  },
-  {
-    id: 'refleksja',
-    word: 'Refleksja',
-    phonetic: '[re-flek-sja]',
-    shortDefinition: 'Głębokie rozmyślanie nad sprawami i wnioski.',
-    fullDefinition: 'Proces głębokiego rozważania czegoś, myślowa analiza własnych postaw lub przeżyć.',
-    etymology: 'Z łaciny: reflexio.',
-    examples: [
-      'Po przeczytaniu książki przyszedł czas na głęboką refleksję.',
-      'Dzielił się z nami swoimi refleksjami z podróży.'
-    ],
-    category: 'Filozofia i Pojęcia',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/refleksja.html',
-    distractors: ['Szybki odruch obronny nogi.', 'Szybki rzut piłką do kosza.', 'Głośny śmiech w kinie.']
-  },
-  {
-    id: 'relatywizzm',
-    word: 'Relatywizm',
-    phonetic: '[re-la-ty-wizm]',
-    shortDefinition: 'Pogląd, że prawda i wartości zależą od punktu widzenia.',
-    fullDefinition: 'Pogląd uznający, że pojęcia prawdy, dobra lub piękna zależą od warunków i punktu widzenia.',
-    etymology: 'Z łaciny: relativus.',
-    examples: [
-      'Moralny relatywizm utrudnia jednoznaczne potępienie zła.',
-      'W ocenie sztuki panuje pełny relatywizm.'
-    ],
-    category: 'Filozofia i Pojęcia',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/relatywizm.html',
-    distractors: ['Wiara w jedną, bezwzględną prawdę.', 'Kupowanie akcji giełdowych.', 'Nauka o minerałach.']
-  },
-  {
     id: 'reminiscencja',
     word: 'Reminiscencja',
     phonetic: '[re-mi-nis-cen-cja]',
@@ -2175,36 +840,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/reminiscencja.html',
     distractors: ['Zapomnienie imienia sąsiada.', 'Planowanie jutrzejszych zakupów.', 'Szybki bieg na 100 metrów.']
-  },
-  {
-    id: 'renoma',
-    word: 'Renoma',
-    phonetic: '[re-no-ma]',
-    shortDefinition: 'Dobra opinia, uznanie i sława jakiejś firmy lub osoby.',
-    fullDefinition: 'Utrwalona, bardzo wysoka i zasłużona opinia o kimś lub o czymś w oczach społeczeństwa.',
-    etymology: 'Z francuskiego: renommée.',
-    examples: [
-      'Restauracja cieszyła się doskonałą renomą w całym mieście.',
-      'Firma budowała swoją renomę przez dekady.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/renoma.html',
-    distractors: ['Zła sława oszusta.', 'Brak jakichkolwiek opinii.', 'Niska cena produktu.']
-  },
-  {
-    id: 'retoryka',
-    word: 'Retoryka',
-    phonetic: '[re-to-ry-ka]',
-    shortDefinition: 'Sztuka pięknego, logicznego i przekonującego mówienia.',
-    fullDefinition: 'Kunszt i nauka poprawnego, wykwintnego oraz przekonującego posługiwania się słowem.',
-    etymology: 'Z greki: rhētorikē techne.',
-    examples: [
-      'Jego przemówienie było popisowym przykładem retoryki.',
-      'Pusta retoryka nie zastąpi konkretnych działań.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/retoryka.html',
-    distractors: ['Mylenie słów ze strachu.', 'Ciche milczenie w kącie.', 'Rysowanie portretów.']
   },
   {
     id: 'rygoryzm',
@@ -2252,21 +887,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Wiara w wróżby i horoskopy.', 'Zamiłowanie do poezji miłosnej.', 'Śpiewanie w chórze.']
   },
   {
-    id: 'sentyment',
-    word: 'Sentyment',
-    phonetic: '[sen-ty-ment]',
-    shortDefinition: 'Czułe wspomnienie, uczucie sympatii i przywiązania.',
-    fullDefinition: 'Uczucie radosnego przywiązania, sympatii lub wzruszenia związane z pamięcią.',
-    etymology: 'Z francuskiego: sentiment.',
-    examples: [
-      'Darzył stary dom rodzinny ogromnym sentymentem.',
-      'Kupił zegarek z sentymentu do dziadka.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/sentyment.html',
-    distractors: ['Nienawiść do dawnych znajomych.', 'Brak jakichkolwiek uczuć.', 'Głośny spór o pieniądze.']
-  },
-  {
     id: 'snobizm',
     word: 'Snobizm',
     phonetic: '[sno-bizm]',
@@ -2297,201 +917,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Wiara w istnienie duchów.', 'Lęk przed samotnością.', 'Nauka o minerałach.']
   },
   {
-    id: 'subtelnosc',
-    word: 'Subtelność',
-    phonetic: '[sub-tel-ność]',
-    shortDefinition: 'Delikatność, wrażliwość i wyrafinowany smak.',
-    fullDefinition: 'Cecha cechująca się wykwintną delikatnością, dyskrecją i wrażliwością na niuanse.',
-    etymology: 'Z łaciny: subtilis.',
-    examples: [
-      'Zachwyciła go subtelność rysów jej twarzy.',
-      'Wypowiedział się z wielką subtelnością i wyczuciem.'
-    ],
-    category: 'Sztuka i Literatura',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/subtelno%C5%9B%C4%87.html',
-    distractors: ['Gburowatość i brak manier.', 'Głośne krzyczenie w kinie.', 'Ciężki krok w butach.']
-  },
-  {
-    id: 'sugestia',
-    word: 'Sugestia',
-    phonetic: '[su-ges-tja]',
-    shortDefinition: 'Niejawne podpowiedzenie myśli lub pomysłu.',
-    fullDefinition: 'Podpowiedzenie komuś pewnej myśli lub pomysłu w sposób niebezpośredni lub dyskretny.',
-    etymology: 'Z łaciny: suggestio.',
-    examples: [
-      'Posłuchał sugestii przyjaciela i zmienił plany.',
-      'W pytaniu zawarta była delikatna sugestia.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/sugestia.html',
-    distractors: ['Bezwzględny rozkaz wojskowy.', 'Zakaz wyjazdu z kraju.', 'Rysunek na papierze.']
-  },
-  {
-    id: 'synergia',
-    word: 'Synergia',
-    phonetic: '[sy-ner-gia]',
-    shortDefinition: 'Współdziałanie dające efekt większy niż suma części.',
-    fullDefinition: 'Efekt połączenia i współdziałania różnych czynników, w którym wynik jest większy niż suma części.',
-    etymology: 'Z greki: synergia.',
-    examples: [
-      'Synergia obu firm pozwoliła zdominować rynek.',
-      'Połączenie diety i ćwiczeń daje efekt synergii.'
-    ],
-    category: 'Nauka i Logika',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/synergia.html',
-    distractors: ['Przeszkadzanie sobie nawzajem.', 'Rozpad zespołu na części.', 'Brak jakichkolwiek efektów.']
-  },
-  {
-    id: 'sceptyk',
-    word: 'Sceptyk',
-    phonetic: '[scep-tyk]',
-    shortDefinition: 'Osoba odnosząca się do wszystkiego z rezerwą i nieufnością.',
-    fullDefinition: 'Człowiek mający skłonność do podważania oficjalnych prawd i nieprzyjmowania niczego na wiarę.',
-    etymology: 'Z greki: skeptikos.',
-    examples: [
-      'Nawet największy sceptyk musiał uznać dowody naukowe.',
-      'Był sceptykiem wobec wszelkich obietnic polityków.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/sceptyk.html',
-    distractors: ['Człowiek wierzący w każdą plotkę.', 'Aktor komediowy.', 'Dziecko w przedszkolu.']
-  },
-  {
-    id: 'tabu',
-    word: 'Tabu',
-    phonetic: '[ta-bu]',
-    shortDefinition: 'Temat zakazany, o którym nie wypada głośno mówić.',
-    fullDefinition: 'Temat, czynność lub słowo objęte bezwzględnym zakazem społecznym lub obyczajowym.',
-    etymology: 'Z polinezyjskiego: tapu.',
-    examples: [
-      'Sprawy finansowe w tej rodzinie były tematem tabu.',
-      'Przełamał tabu, pisząc szczerą książkę o chorobie.'
-    ],
-    category: 'Społeczeństwo i Polityka',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/tabu.html',
-    distractors: ['Oficjalne ogłoszenie w radiu.', 'Temat codziennych rozmów.', 'Darmowa ulotka reklamowa.']
-  },
-  {
-    id: 'tolerancja',
-    word: 'Tolerancja',
-    phonetic: '[to-le-ran-cja]',
-    shortDefinition: 'Poszanowanie dla cudzych poglądów, cech i wyznań.',
-    fullDefinition: 'Postawa wyrozumiałości i szacunku dla odmiennych poglądów, wierzeń i cech innych ludzi.',
-    etymology: 'Z łaciny: tolerantia.',
-    examples: [
-      'Tolerancja jest podstawą pokoju w różnorodnym świecie.',
-      'Wykazał się wielką tolerancją dla błędu początkującego.'
-    ],
-    category: 'Etyka i Moralność',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/tolerancja.html',
-    distractors: ['Nienawiść do inności.', 'Karanie za odmienne zdanie.', 'Niedbalstwo w pracy.']
-  },
-  {
-    id: 'tradycja',
-    word: 'Tradycja',
-    phonetic: '[tra-dy-cja]',
-    shortDefinition: 'Zwyczaje i wartości przekazywane z pokolenia na pokolenie.',
-    fullDefinition: 'Ogół zwyczajów, norm i poglądów przekazywanych z pokolenia na pokolenie w danej grupie.',
-    etymology: 'Z łaciny: traditio.',
-    examples: [
-      'Kultywowali staropolskie tradycje świąteczne.',
-      'Tradycja jest fundamentem tożsamości narodu.'
-    ],
-    category: 'Sztuka i Literatura',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/tradycja.html',
-    distractors: ['Najnowsza moda odzieżowa.', 'Wybór nowego prezydenta.', 'Kupno nowego auta.']
-  },
-  {
-    id: 'trauma',
-    word: 'Trauma',
-    phonetic: '[tra-u-ma]',
-    shortDefinition: 'Głęboki uraz psychiczny lub fizyczny po bolesnym przeżyciu.',
-    fullDefinition: 'Trwały uraz psychiczny powstały w wyniku gwałtownego, bolesnego przeżycia.',
-    etymology: 'Z greki: trauma.',
-    examples: [
-      'Wypadek pozostawił w jej psychice głęboką traumę.',
-      'Terapia pomaga przepracować traumy z dzieciństwa.'
-    ],
-    category: 'Psychologia i Emocje',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/trauma.html',
-    distractors: ['Radosne wspomnienie wakacji.', 'Zwycięstwo w konkursie.', 'Dobry sen w nocy.']
-  },
-  {
-    id: 'trywialny',
-    word: 'Trywialny',
-    phonetic: '[try-wia-lny]',
-    shortDefinition: 'Banalny, pospolity i znikomej wartości.',
-    fullDefinition: 'Bardzo prosty, oczywisty lub mało znaczący; pozbawiony jakiejkolwiek głębi.',
-    etymology: 'Z łaciny: trivialis.',
-    examples: [
-      'To był trywialny problem, który rozwiązano w pięć minut.',
-      'Unikaj trywialnych żartów w towarzystwie.'
-    ],
-    category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/trywialny.html',
-    distractors: ['Niezwykle skomplikowany problem.', 'Cenny skarb w muzeum.', 'Bolesny uraz głowy.']
-  },
-  {
-    id: 'utopia',
-    word: 'Utopia',
-    phonetic: '[u-to-pia]',
-    shortDefinition: 'Nierealna wizja idealnego społeczeństwa.',
-    fullDefinition: 'Wizja idealnego ustroju społecznego i politycznego, niemożliwa do zrealizowania.',
-    etymology: 'Stworzone z greki: ou + topos.',
-    examples: [
-      'Wizja świata bez żadnych wojen okazała się utopią.',
-      'Powieść przedstawia ruinę dawnej utopii.'
-    ],
-    category: 'Filozofia i Pojęcia',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/utopia.html',
-    distractors: ['Realny plan budowy osiedla.', 'Fakt historyczny z kroniki.', 'Opis wycieczki do zoo.']
-  },
-  {
-    id: 'weryfikacja',
-    word: 'Weryfikacja',
-    phonetic: '[we-ry-fi-ka-cja]',
-    shortDefinition: 'Sprawdzenie prawdziwości i zgodności z faktami.',
-    fullDefinition: 'Proces sprawdzania prawdziwości danych, hipotezy lub tożsamości na podstawie dowodów.',
-    etymology: 'Z łaciny: verificatio.',
-    examples: [
-      'Informacja wymaga szczegółowej weryfikacji w archiwum.',
-      'Weryfikacja dwuetapowa chroni konto bankowe.'
-    ],
-    category: 'Nauka i Logika',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/weryfikacja.html',
-    distractors: ['Kłamliwe oskarżenie sąsiada.', 'Zgadywanie wyników meczu.', 'Rysowanie portretu.']
-  },
-  {
-    id: 'wirtualny',
-    word: 'Wirtualny',
-    phonetic: '[wir-tu-al-ny]',
-    shortDefinition: 'Stworzony komputerowo, istniejący w cyfrowym świecie.',
-    fullDefinition: 'Stworzony w środowisku cyfrowym, symulowany przez komputer, bez wymiaru fizycznego.',
-    etymology: 'Z łaciny: virtualis.',
-    examples: [
-      'Wirtualne muzeum pozwala oglądać eksponaty z całego świata.',
-      'Spotkanie odbyło się w wirtualnej przestrzeni.'
-    ],
-    category: 'Czas i Zjawiska',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/wirtualny.html',
-    distractors: ['Ciężki przedmiot z kamienia.', 'Fizyczny budynek z cegły.', 'Stary liść z drzewa.']
-  },
-  {
-    id: 'wizjonerski',
-    word: 'Wizjonerski',
-    phonetic: '[wiz-jo-ner-ski]',
-    shortDefinition: 'Cechujący się geniuszem i wyprzedzaniem epoki.',
-    fullDefinition: 'Cechujący się zdolnością przewidywania przyszłości i tworzeniem novum.',
-    etymology: 'Z francuskiego: visionnaire.',
-    examples: [
-      'Jego wizjonerskie projekty zmieniły oblicze architektury.',
-      'Był wizjonerskim przywódcą, który wiedział, dokąd zmierza.'
-    ],
-    category: 'Osobowość i Postawy',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/wizjonerski.html',
-    distractors: ['Kopiujący dawne schematy.', 'Krótkowzroczny i ograniczony.', 'Niedbający o wykształcenie.']
-  },
-  {
     id: 'wstrzemiezliwosc',
     word: 'Wstrzemięźliwość',
     phonetic: '[wstrze-mięź-li-wość]',
@@ -2520,5 +945,614 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     category: 'Czas i Zjawiska',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/znikomo%C5%9B%C4%87.html',
     distractors: ['Ogromna masa skały.', 'Wielki majątek w banku.', 'Głośny huk gromu.']
+  },
+  {
+    id: 'ataraksja',
+    word: 'Ataraksja',
+    phonetic: '[a-ta-rak-sja]',
+    shortDefinition: 'Zupelny spokoj ducha, stan niepoddawania sie namiętnościom.',
+    fullDefinition: 'W filozofii starozytnej: idealny stan niezachwianego spokoju wewnetrznego, w ktorym dusza pozostaje wolna od wszelkich namiętności, lękow i niepokojow.',
+    etymology: 'Z greki: ataraksía – spokoj ducha (a- + tarassein – niepokoic).',
+    examples: [
+      'Epikurejczycy widzieli w ataraksji najwyzsze spelnienie – zycie wolne od bolu i leku.',
+      'Mimo nagromadzonych nieszczęść zachowal ataraksję stoika, nie skarząc się nikomu.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/ataraksja.html',
+    distractors: [
+      'Gwaltown wybuch gniewu wywołany niesprawiedliwością.',
+      'Stan głębokiego żalu i rozpaczy po stracie.',
+      'Nadmierny lęk przed przyszłymi wydarzeniami.'
+    ]
+  },
+  {
+    id: 'hybris',
+    word: 'Hybris',
+    phonetic: '[hy-bris]',
+    shortDefinition: 'Nieposkromiona pycha i zuchwałość obrażająca porządek boski.',
+    fullDefinition: 'W myśli starożytnej Grecji: zuchwała pycha i arogancja, ktore obrazily bogow i nieuchronnie prowadziły do kary (nemezis).',
+    etymology: 'Z greki: hýbris – pycha, zuchwałość.',
+    examples: [
+      'Hybris Edypa polegała na przekonaniu, że zdoła oszukać wyrocznię i uciec przed przeznaczeniem.',
+      'Wielcy zdobywcy, od Aleksandra do Napoleona, padali ofiarą własnego hybris.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/hybris.html',
+    distractors: [
+      'Głęboka pokora i posłuszeństwo wobec autorytetów.',
+      'Naukowe wyjaśnienie przyczyn zjawisk atmosferycznych.',
+      'Umiejętność ustępowania w sporach.'
+    ]
+  },
+  {
+    id: 'idiosynkrazja',
+    word: 'Idiosynkrazja',
+    phonetic: '[i-dio-syn-kra-zja]',
+    shortDefinition: 'Wrodzona, wyjątkowa niechęć lub nadwrażliwość na kogoś lub coś.',
+    fullDefinition: 'Wstręt lub głęboka niechęć do kogoś lub czegoś; też: wrodzona nadwrażliwość organizmu na pewne substancje.',
+    etymology: 'Z fr. idiosyncrasie (z gr. ídios – indywidualny + sýnkrasis – zmieszanie).',
+    examples: [
+      'Miał głęboko zakorzenioną idiosynkrazję wobec wszelkiej biurokracji.',
+      'U niektórych pacjentów stwierdzono idiosynkrazję na powszechnie stosowane leki.'
+    ],
+    category: 'Psychologia i Emocje',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/idiosynkrazja.html',
+    distractors: [
+      'Niezwykły talent do naśladowania głosów.',
+      'Zdolność do szybkiego uczenia się języków obcych.',
+      'Głęboka miłość do muzyki klasycznej.'
+    ]
+  },
+  {
+    id: 'eudajmonia',
+    word: 'Eudajmonia',
+    phonetic: '[eu-daj-mo-nia]',
+    shortDefinition: 'Szczęście jako pełnia ludzkich cnót i rozkwit istoty człowieka.',
+    fullDefinition: 'W filozofii Arystotelesa: najwyższe dobro i cel życia, osiągane przez rozwijanie cnót i postępowanie zgodne z ludzką rozumną naturą.',
+    etymology: 'Z greki: eudaimonia (eu- – dobry + daimon – duch opiekuńczy).',
+    examples: [
+      'Arystoteles uznawał eudajmonię za cel wszelkiej działalności ludzkiej, nie zaś chwilową przyjemność.',
+      'Współczesna psychologia pozytywna nawiązuje do starożytnej idei eudajmonii.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/eudajmonia.html',
+    distractors: [
+      'Krótkotrwała zmysłowa rozkosz.',
+      'Dorobek materialny zgromadzony przez lata pracy.',
+      'Stan nieświadomości wywołany lekami.'
+    ]
+  },
+  {
+    id: 'metanoia',
+    word: 'Metanoia',
+    phonetic: '[me-ta-no-ja]',
+    shortDefinition: 'Głęboka przemiana duchowa i zmiana sposobu myślenia.',
+    fullDefinition: 'Radykalna zmiana myślenia i postawy, wewnętrzne nawrócenie lub transformacja duchowa prowadząca do całkowicie nowego spojrzenia na życie.',
+    etymology: 'Z greki: metanoia (meta- – po/ponad + nous – umysł).',
+    examples: [
+      'Pobyt w więzieniu stał się dla niego metanoją — wyszedł stamtąd zupełnie innym człowiekiem.',
+      'Filozofowie stoiccy opisywali metanoję jako wewnętrzny przewrót, który wyzwala od namiętności.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/metanoia.html',
+    distractors: [
+      'Powierzchowna zmiana przyzwyczajeń bez głębszej refleksji.',
+      'Stopniowe zapominanie dawnych przekonań.',
+      'Nagłe pogorszenie stanu zdrowia psychicznego.'
+    ]
+  },
+  {
+    id: 'mizantropia',
+    word: 'Mizantropia',
+    phonetic: '[mi-zan-tro-pia]',
+    shortDefinition: 'Głęboka niechęć i pogarda wobec ludzkości.',
+    fullDefinition: 'Postawa skrajnej nieufności, wrogości i pogardy wobec rodzaju ludzkiego, wyrażająca się ucieczką od towarzystwa.',
+    etymology: 'Z greki: misanthropía (misein – nienawidzić + anthropos – człowiek).',
+    examples: [
+      'Molierowski Alcest z Mizantropa był człowiekiem, którego szczerość zrodziła nieuchronną mizantropię.',
+      'Po kolejnym rozczarowaniu przyjacielem zamknął się w chacie i dał się pochłonąć mizantropii.'
+    ],
+    category: 'Psychologia i Emocje',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/mizantropia.html',
+    distractors: [
+      'Głęboka miłość do ludzkości i chęć pomocy innym.',
+      'Towarzyski charakter i potrzeba przebywania w tłumie.',
+      'Nadmierne zaufanie do obcych i naiwna dobroć.'
+    ]
+  },
+  {
+    id: 'nihilizm',
+    word: 'Nihilizm',
+    phonetic: '[ni-hi-lizm]',
+    shortDefinition: 'Odrzucenie wszelkich wartości, norm i sensu istnienia.',
+    fullDefinition: 'Pogląd filozoficzny uznający, że nie istnieje żadna obiektywna prawda, wartość ani cel, a istnienie jest pozbawione sensu.',
+    etymology: 'Z łaciny: nihil – nic.',
+    examples: [
+      'Nihilizm Nietzschego nie był ostateczną odpowiedzią, lecz punktem wyjścia do nowych wartości.',
+      'Bohater powieści wpadł w nihilizm po śmierci bliskich — wszystko wydawało mu się bez znaczenia.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/nihilizm.html',
+    distractors: [
+      'Głęboka wiara w sens ludzkiego cierpienia.',
+      'Przekonanie, że nauka wyjaśni wszelkie tajemnice.',
+      'Poszukiwanie wartości w tradycji i religii.'
+    ]
+  },
+  {
+    id: 'paremia',
+    word: 'Paremia',
+    phonetic: '[pa-re-mia]',
+    shortDefinition: 'Ludowe przysłowie lub krótkie powiedzenie mądrościowe.',
+    fullDefinition: 'Krótkie, utrwalone w tradycji powiedzenie ludowe zawierające praktyczną mądrość lub obserwację etyczną.',
+    etymology: 'Z greki: paroimia – przysłowie.',
+    examples: [
+      'Badacz zebrał w swym dziele setki polskich paremiów, od staropolskich przysłów po regionalne sentencje.',
+      'Paremia „Nie ma dymu bez ognia" okazała się niestety trafna w tej sprawie.'
+    ],
+    category: 'Język i Mowa',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/paremia.html',
+    distractors: [
+      'Skomplikowany wywód retoryczny skierowany do uczonych.',
+      'Naukowe opracowanie historii języka.',
+      'Nowatorski slogan reklamowy skierowany do młodzieży.'
+    ]
+  },
+  {
+    id: 'paroksyzm',
+    word: 'Paroksyzm',
+    phonetic: '[pa-rok-syzm]',
+    shortDefinition: 'Nagłe i gwałtowne nasilenie objawów, uczucia lub stanu.',
+    fullDefinition: 'Nagłe, niezwykle silne nasilenie objawów chorobowych lub uczuć; chwilowe osiągnięcie skrajnego natężenia.',
+    etymology: 'Z greki: paroxysmos – zaostrzenie (paroxynein – drażnić, zaostrzać).',
+    examples: [
+      'Wiadomość o śmierci przyjaciela wywołała w niej paroksyzm szlochu.',
+      'Gorączka osiągnęła paroksyzm w środku nocy, po czym gwałtownie opadła.'
+    ],
+    category: 'Psychologia i Emocje',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/paroksyzm.html',
+    distractors: [
+      'Stopniowe, łagodne narastanie niepokoju.',
+      'Spokojne trwanie w harmonii z otoczeniem.',
+      'Powolne słabnięcie objawów choroby.'
+    ]
+  },
+  {
+    id: 'predestynacja',
+    word: 'Predestynacja',
+    phonetic: '[pre-des-ty-na-cja]',
+    shortDefinition: 'Boskie z góry przeznaczenie losu i zbawienia człowieka.',
+    fullDefinition: 'W teologii: doktryna głosząca, że Bóg z góry przeznaczył jednych ludzi do zbawienia, innych do potępienia, niezależnie od ich uczynków.',
+    etymology: 'Z łaciny: praedestinatio – uprzednie przeznaczenie (prae- + destinare).',
+    examples: [
+      'Kalwinizm głosił surową predestynację: los człowieka był przesądzony zanim się urodził.',
+      'Bohater powieści czuł się ofiarą predestynacji — wszystko, co robił, prowadziło do zagłady.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/predestynacja.html',
+    distractors: [
+      'Wiara w możliwość zmiany swojego losu przez wolną wolę.',
+      'Nagroda przyznawana za wyjątkowe zasługi w życiu publicznym.',
+      'Filozofia głosząca, że przyszłości nie można przewidzieć.'
+    ]
+  },
+  {
+    id: 'reifikacja',
+    word: 'Reifikacja',
+    phonetic: '[re-i-fi-ka-cja]',
+    shortDefinition: 'Uprzedmiotowienie, traktowanie abstrakcji lub ludzi jak rzeczy.',
+    fullDefinition: 'Proces lub błąd myślowy polegający na traktowaniu pojęcia abstrakcyjnego, wartości lub osoby tak, jakby były materialnym przedmiotem.',
+    etymology: 'Z łaciny: res – rzecz + facere – czynić.',
+    examples: [
+      'Marks opisywał reifikację jako stan, w którym relacje między ludźmi przybierają pozór stosunków między rzeczami.',
+      'Reklama doprowadza do reifikacji miłości — uczucie staje się produktem do nabycia.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/reifikacja.html',
+    distractors: [
+      'Nadawanie duchowego wymiaru przedmiotom materialnym.',
+      'Dosłowna interpretacja tekstów religijnych.',
+      'Naukowe badanie właściwości substancji chemicznych.'
+    ]
+  },
+  {
+    id: 'ruminacja',
+    word: 'Ruminacja',
+    phonetic: '[ru-mi-na-cja]',
+    shortDefinition: 'Obsesyjne, bezproduktywne powracanie myślami do tych samych problemów.',
+    fullDefinition: 'W psychologii: skłonność do nawracającego, kompulsywnego rozważania negatywnych myśli lub bolesnych doświadczeń bez dochodzenia do rozwiązania.',
+    etymology: 'Z łaciny: ruminatio – przeżuwanie (ruminare – przeżuwać).',
+    examples: [
+      'Terapia poznawcza pomaga przerwać destrukcyjny cykl ruminacji po niepowodzeniu.',
+      'Całą noc spędził na ruminacji nad słowami, które wypowiedział nierozważnie podczas kłótni.'
+    ],
+    category: 'Psychologia i Emocje',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/ruminacja.html',
+    distractors: [
+      'Spokojne, konstruktywne planowanie przyszłości.',
+      'Zdolność do szybkiego zapomnienia o błędach.',
+      'Technika medytacyjna prowadząca do jasności umysłu.'
+    ]
+  },
+  {
+    id: 'sofizmat',
+    word: 'Sofizmat',
+    phonetic: '[so-fiz-mat]',
+    shortDefinition: 'Pozornie logiczny, lecz fałszywy argument z ukrytym błędem.',
+    fullDefinition: 'Rozumowanie zbudowane w celu wprowadzenia w błąd: zewnętrznie poprawne i przekonujące, lecz skrywające celowy błąd logiczny.',
+    etymology: 'Z greki: sophisma – podstęp, biegłość (sophizein – stosować wybiegi).',
+    examples: [
+      'Klasycznym sofizmatem jest: „Kłamca mówi, że kłamie — skoro mówi prawdę, jest kłamcą".',
+      'Polityk posłużył się sofizmatem, by uchylić się od odpowiedzi na pytanie o budżet.'
+    ],
+    category: 'Nauka i Logika',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/sofizmat.html',
+    distractors: [
+      'Poprawny sylogizm prowadzący do prawdziwego wniosku.',
+      'Intuicyjne przeczucie bez żadnych argumentów.',
+      'Dowód matematyczny oparty na aksjomatach.'
+    ]
+  },
+  {
+    id: 'symulakrum',
+    word: 'Symulakrum',
+    phonetic: '[sy-mu-la-krum]',
+    shortDefinition: 'Kopia bez oryginału, pozór wypierający rzeczywistość.',
+    fullDefinition: 'W filozofii Baudrillarda: obraz lub znak, który nie odnosi się do żadnego rzeczywistego oryginału, lecz tworzy wrażenie autentyczności z niczego.',
+    etymology: 'Z łaciny: simulacrum – wizerunek, pozór (simulare – udawać).',
+    examples: [
+      'Parki rozrywki zbudowane na wzór historycznych miejsc są dla Baudrillarda doskonałymi symulakrami.',
+      'Media kreują symulakrum polityki: widzowie oglądają spektakl udający rzeczywistość.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/symulakrum.html',
+    distractors: [
+      'Dokładna kopia dzieła sztuki wykonana z tego samego materiału.',
+      'Cyfrowe odwzorowanie realnego budynku dla celów archiwizacji.',
+      'Model naukowy upraszczający złożone procesy.'
+    ]
+  },
+  {
+    id: 'synkretyzm',
+    word: 'Synkretyzm',
+    phonetic: '[syn-kre-tyzm]',
+    shortDefinition: 'Łączenie różnych, niekiedy sprzecznych systemów filozoficznych lub religijnych.',
+    fullDefinition: 'Tendencja do mieszania i godzenia ze sobą odmiennych, niekiedy sprzecznych kierunków religijnych, filozoficznych lub kulturowych.',
+    etymology: 'Z greki: synkrētismos – połączenie (syn- – razem).',
+    examples: [
+      'Wiele kultów starożytnego Bliskiego Wschodu rozwijało się w duchu synkretyzmu.',
+      'Nowe ruchy duchowe opierają się na synkretyzmie: mieszają hinduizm, buddyzm i chrześcijaństwo.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/synkretyzm.html',
+    distractors: [
+      'Konsekwentne trzymanie się jednej tradycji religijnej.',
+      'Naukowe porównywanie systemów filozoficznych bez ich łączenia.',
+      'Ruch sprzeciwiający się wszelkiemu wpływowi obcych kultur.'
+    ]
+  },
+  {
+    id: 'teodycea',
+    word: 'Teodycea',
+    phonetic: '[te-o-dy-ce-a]',
+    shortDefinition: 'Filozoficzne uzasadnienie dobroci Boga wobec istnienia zła na świecie.',
+    fullDefinition: 'Dział filozofii lub teologii próbujący pogodzić istnienie wszechmocnego i dobrego Boga z faktem istnienia zła i cierpienia w świecie.',
+    etymology: 'Termin ukuty przez Leibniza (1710) z greki: theos – Bóg + dike – sprawiedliwość.',
+    examples: [
+      'Leibniz pisał teodycee, by wykazać, że Bóg stworzył najlepszy z możliwych światów.',
+      'Auschwitz stał się dla wielu myślicieli ostatecznym argumentem przeciwko wszelkiej teodycei.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/teodycea.html',
+    distractors: [
+      'Naukowe wyjaśnienie ewolucji systemów religijnych.',
+      'Matematyczny dowód istnienia Boga.',
+      'Historyczna analiza prześladowań religijnych.'
+    ]
+  },
+  {
+    id: 'wanitatywny',
+    word: 'Wanitatywny',
+    phonetic: '[wa-ni-ta-tyw-ny]',
+    shortDefinition: 'Dotyczący marności, ulotności i próżności istnienia.',
+    fullDefinition: 'Odnoszący się do motywu vanitas — głębokiego poczucia przemijania, nietrwałości dóbr i życia oraz jego ostatecznej marności.',
+    etymology: 'Z łaciny: vanitas – próżność, marność (vanus – pusty, próżny).',
+    examples: [
+      'Martwe natury holenderskie XVII w. nasycone były symboliką wanitatywną: czaszki, zegarki i kwiaty.',
+      'Poeta w swoich ostatnich sonetach przyjął ton głęboko wanitatywny.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/wanitatywny.html',
+    distractors: [
+      'Wyrażający radość z chwili teraźniejszej i afirmację życia.',
+      'Skupiony na technicznej doskonałości formy.',
+      'Opisujący relacje między postaciami w dramacie.'
+    ]
+  },
+  {
+    id: 'wiwisekcja',
+    word: 'Wiwisekcja',
+    phonetic: '[wi-wi-sek-cja]',
+    shortDefinition: 'Sekcja żywego organizmu; przenośnie: bezlitosna, wnikliwa analiza.',
+    fullDefinition: 'Dosłownie: operacja na żywym zwierzęciu; przenośnie: bezduszna, okrutnie szczegółowa analiza lub obnażenie czegoś.',
+    etymology: 'Z łaciny: vivus – żywy + sectio – cięcie.',
+    examples: [
+      'Powieść była literacką wiwisekcją małżeństwa: bezlitośnie obnażała jego mechanizmy.',
+      'Krytyk dokonał wiwisekcji scenariusza, wykazując każdy logiczny błąd fabuły.'
+    ],
+    category: 'Nauka i Logika',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/wiwisekcja.html',
+    distractors: [
+      'Ostrożna, powierzchowna analiza pomijająca szczegóły.',
+      'Ceremonia poświęcona leczeniu chorych zwierząt.',
+      'Popularnonaukowy opis budowy organizmów żywych.'
+    ]
+  },
+  {
+    id: 'kabotynizm',
+    word: 'Kabotynizm',
+    phonetic: '[ka-bo-ty-nizm]',
+    shortDefinition: 'Powierzchowna, napuszona sztuczność artysty grającego na efekt.',
+    fullDefinition: 'Zachowanie aktora lub artysty polegające na pozerskim przeakcentowaniu i graniu pod publiczkę, kosztem prawdziwego talentu.',
+    etymology: 'Z fr. cabotin – wędrowny aktor, pozer.',
+    examples: [
+      'Krytyk zarzucił aktorowi kabotynizm — zamiast gry, widz dostawał jedynie popis egocentryzmu.',
+      'Polityk wpadł w pułapkę kabotynizmu: każde przemówienie było bardziej teatrem niż treścią.'
+    ],
+    category: 'Sztuka i Literatura',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/kabotynizm.html',
+    distractors: [
+      'Wirtuozeria wynikająca z wieloletniego ćwiczenia.',
+      'Skromna, skupiona gra pozbawiona efektów specjalnych.',
+      'Zdolność do zapamiętywania długich tekstów na pamięć.'
+    ]
+  },
+  {
+    id: 'kazuistyka',
+    word: 'Kazuistyka',
+    phonetic: '[ka-zu-is-ty-ka]',
+    shortDefinition: 'Metoda rozstrzygania spraw moralnych przez analizę konkretnych przypadków.',
+    fullDefinition: 'W etyce i prawie: szczegółowe stosowanie ogólnych zasad do konkretnych, skomplikowanych przypadków; pogardliwie: sofistyczne szukanie wykrętów.',
+    etymology: 'Z łaciny: casus – przypadek.',
+    examples: [
+      'Jezuicka kazuistyka pozwalała na niezwykle elastyczną interpretację zasad moralnych.',
+      'Prawnicy uciekali się do kazuistyki, by uniknąć prostego rozstrzygnięcia.'
+    ],
+    category: 'Nauka i Logika',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/kazuistyka.html',
+    distractors: [
+      'Podejście intuicyjne oparte na przeczuciu.',
+      'Proste stosowanie jednakowej reguły do wszystkich przypadków.',
+      'Rezygnacja z wszelkich zasad moralnych.'
+    ]
+  },
+  {
+    id: 'makiawelizm',
+    word: 'Makiawelizm',
+    phonetic: '[ma-kia-we-lizm]',
+    shortDefinition: 'Polityka bezwzględna, uznająca cel za usprawiedliwienie wszelkich środków.',
+    fullDefinition: 'Postawa lub metoda działania opierająca się na bezwzględności i gotowości użycia każdego środka, by osiągnąć zamierzony cel polityczny.',
+    etymology: 'Od Niccola Machiavellego, autora Księcia (Il Principe, 1513).',
+    examples: [
+      'Dyrektor stosował czysty makiawelizm: manipulował zarówno sojusznikami, jak i wrogami.',
+      'Historyk oskarżył ministra o makiawelizm — wszystkie obietnice składał z pełną świadomością, że ich nie dotrzyma.'
+    ],
+    category: 'Etyka i Moralność',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/makiawelizm.html',
+    distractors: [
+      'Postawa szlachetna, opierająca się na zasadach honoru.',
+      'Filozofia uznająca dobro wspólne za najwyższy cel.',
+      'Nauka o budowaniu trwałych sojuszy dyplomatycznych.'
+    ]
+  },
+  {
+    id: 'manicheizm',
+    word: 'Manicheizm',
+    phonetic: '[ma-ni-che-izm]',
+    shortDefinition: 'Dualistyczna doktryna walki dobra i zła jako równorzędnych sił.',
+    fullDefinition: 'Starożytna religia i doktryna filozoficzna głosząca, że świat jest polem wiecznej walki dwóch równorzędnych zasad: dobra i zła, ducha i materii.',
+    etymology: 'Od imienia Maniego (III w. n.e.), perskiego proroka.',
+    examples: [
+      'Jego ocena polityków była naiwnie manicheistyczna — wszyscy byli albo aniołami, albo demonami.',
+      'Manicheizm wpłynął na wczesnochrześcijańskie spory o naturę zła.'
+    ],
+    category: 'Filozofia i Pojęcia',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/manicheizm.html',
+    distractors: [
+      'Filozofia uznająca materię za jedyne istniejące tworzywo.',
+      'Nauka o etapach rozwoju duszy po śmierci.',
+      'Monoteistyczna wiara w jedynego i wszechwładnego Boga.'
+    ]
+  },
+  {
+    id: 'marazm',
+    word: 'Marazm',
+    phonetic: '[ma-razm]',
+    shortDefinition: 'Zastój, odrętwienie i głęboki upadek sił oraz aktywności.',
+    fullDefinition: 'Stan głębokiego zastoju, stopniowego zaniku sił witalnych, postępująca apatia i bezwładność instytucji lub jednostki.',
+    etymology: 'Z greki: marasmos – wyczerpanie, marnienie (marainein – wygasać).',
+    examples: [
+      'Po latach prosperity branżę ogarnął marazm — nowych projektów nie było, stare się wlokły.',
+      'Kraj wychodził powoli z wieloletniego marazmu ekonomicznego i politycznego.'
+    ],
+    category: 'Czas i Zjawiska',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/marazm.html',
+    distractors: [
+      'Gwałtowny rozkwit kulturalny i ekonomiczny.',
+      'Stan wyjątkowej aktywności twórczej.',
+      'Nagłe ożywienie społeczne po długim kryzysie.'
+    ]
+  },
+  {
+    id: 'palinoda',
+    word: 'Palinoda',
+    phonetic: '[pa-li-no-da]',
+    shortDefinition: 'Odwołanie wcześniej wygłoszonej opinii lub poematu.',
+    fullDefinition: 'Utwór literacki lub wypowiedź, w której autor odwołuje lub zaprzecza temu, co wcześniej twierdził lub pisał.',
+    etymology: 'Z greki: palinōdia (palin – z powrotem + ōde – pieśń).',
+    examples: [
+      'Poeta napisał palinodę, odwołując swoje wcześniejsze uwielbienie dla władcy.',
+      'Filozof opublikował palinodę po tym, jak nowe dowody obaliły jego wcześniejszą teorię.'
+    ],
+    category: 'Sztuka i Literatura',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/palinoda.html',
+    distractors: [
+      'Utwór pochwalny sławiący zasługi bohatera.',
+      'Zbiór epigramów na tematy polityczne.',
+      'Powieść autobiograficzna opisująca lata młodości.'
+    ]
+  },
+  {
+    id: 'oneiryczny',
+    word: 'Oneiryczny',
+    phonetic: '[o-ne-iry-czny]',
+    shortDefinition: 'Mający charakter snu, sennych wizji lub marzeń.',
+    fullDefinition: 'Odnoszący się do sfery snów i marzeń sennych; o nieuchwytnej, jakby śnionej atmosferze.',
+    etymology: 'Z greki: oneiros – sen.',
+    examples: [
+      'Proza poetki miała oneiryczny charakter: obrazy przenikały się jak we śnie, bez przyczynowego porządku.',
+      'Film zbudowany był z sekwencji oneirycznych — granica między jawą a snem zacierała się celowo.'
+    ],
+    category: 'Sztuka i Literatura',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/oneiryczny.html',
+    distractors: [
+      'Oparty na ścisłych danych empirycznych.',
+      'Brutalnie realistyczny i pozbawiony metafory.',
+      'Niezwykle dynamiczny i oparty na akcji.'
+    ]
+  },
+  {
+    id: 'subsydiarnosc',
+    word: 'Subsydiarność',
+    phonetic: '[sub-sy-diar-ność]',
+    shortDefinition: 'Zasada rozwiązywania problemów na możliwie najniższym szczeblu władzy.',
+    fullDefinition: 'Zasada organizacji politycznej stanowiąca, że decyzje powinny być podejmowane na szczeblu możliwie najbliższym obywatelowi, a wyższe organy wkraczają wyłącznie gdy niższe są niewystarczające.',
+    etymology: 'Z łaciny: subsidium – wsparcie, pomoc (sub – pod + sedere – siedzieć).',
+    examples: [
+      'Traktat z Maastricht uczynił subsydiarność jedną z fundamentalnych zasad Unii Europejskiej.',
+      'Reforma samorządowa opierała się na subsydiarności: gmina decyduje o tym, czego centrum nie umie lepiej.'
+    ],
+    category: 'Społeczeństwo i Polityka',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/subsydiarno%C5%9B%C4%87.html',
+    distractors: [
+      'Zasada centralizacji władzy w rękach jednego organu.',
+      'Przepis o obowiązkowym finansowaniu organizacji pozarządowych.',
+      'Prawo zakazujące tworzenia partii regionalnych.'
+    ]
+  },
+  {
+    id: 'proweniencja',
+    word: 'Proweniencja',
+    phonetic: '[pro-we-nien-cja]',
+    shortDefinition: 'Udokumentowane pochodzenie i historia własności dzieła lub obiektu.',
+    fullDefinition: 'Historia kolejnych właścicieli i miejsc, w których przebywało dzieło sztuki, zabytek lub rękopis; szerzej: udokumentowane pochodzenie czegoś.',
+    etymology: 'Z łaciny: provenire – wywodzić się, pochodzić.',
+    examples: [
+      'Dom aukcyjny nie mógł wystawić obrazu, bo proweniencja wskazywała na rabunek wojenny.',
+      'Biblioteka pieczołowicie dokumentuje proweniencję każdego rękopisu z XV wieku.'
+    ],
+    category: 'Sztuka i Literatura',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/proweniencja.html',
+    distractors: [
+      'Cena rynkowa dzieła sztuki w danym roku.',
+      'Technika malarska zastosowana przez twórcę.',
+      'Tematyka religijna obrazu lub rzeźby.'
+    ]
+  },
+  {
+    id: 'logomachnia',
+    word: 'Logomachnia',
+    phonetic: '[lo-go-mach-nia]',
+    shortDefinition: 'Spór o słowa zamiast o meritum zagadnienia.',
+    fullDefinition: 'Jałowy spór, w którym strony kłócą się o znaczenie słów lub terminów, nie docierając do istoty zagadnienia.',
+    etymology: 'Z greki: logos – słowo + mache – walka.',
+    examples: [
+      'Konferencja zamieniła się w logomachnię — filozofowie przez dwie godziny spierali się o definicję słowa świadomość.',
+      'Unikaj logomachni w negocjacjach: lepiej uzgodnić znaczenie pojęć na początku.'
+    ],
+    category: 'Język i Mowa',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/logomachnia.html',
+    distractors: [
+      'Precyzyjne rozróżnienie między pojęciami bliskoznacznymi.',
+      'Wielojęzyczna konferencja naukowa.',
+      'Szczera i owocna wymiana argumentów.'
+    ]
+  },
+  {
+    id: 'inercja',
+    word: 'Inercja',
+    phonetic: '[i-ner-cja]',
+    shortDefinition: 'Bezwładność, bierność i oporność na zmiany.',
+    fullDefinition: 'W fizyce: własność ciał polegająca na zachowaniu stanu ruchu lub spoczynku; przenośnie: niezdolność do zmian i opór wobec wszelkiej aktywności.',
+    etymology: 'Z łaciny: inertia – bezczynność, bezwładność (iners – bezczynny).',
+    examples: [
+      'Instytucje rządowe wyróżniają się szczególną inercją — każda zmiana napotyka opór biurokracji.',
+      'Długoletnia inercja polityczna sprawiła, że kraj stracił dekady możliwego rozwoju.'
+    ],
+    category: 'Czas i Zjawiska',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/inercja.html',
+    distractors: [
+      'Gwałtowna aktywność i chęć do działania.',
+      'Przyspieszenie pociągu po opuszczeniu stacji.',
+      'Zdolność do szybkiego uczenia się nowych umiejętności.'
+    ]
+  },
+  {
+    id: 'pleonazm',
+    word: 'Pleonazm',
+    phonetic: '[ple-o-nazm]',
+    shortDefinition: 'Nadmiarowe użycie słów o tym samym znaczeniu.',
+    fullDefinition: 'Błąd językowy lub świadomy zabieg polegający na użyciu wyrazów zbędnych, zawierających informację już wyrażoną przez inne słowo.',
+    etymology: 'Z greki: pleonasmos – nadmiar (pleon – więcej).',
+    examples: [
+      'Wyrażenie masło maślane jest klasycznym przykładem pleonazmu.',
+      'Redaktor wykreślił z tekstu wszystkie pleonazmy, takie jak cofnąć się z powrotem.'
+    ],
+    category: 'Język i Mowa',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/pleonazm.html',
+    distractors: [
+      'Celowe pominięcie ważnego słowa dla większego efektu.',
+      'Użycie słowa obcego zamiast polskiego odpowiednika.',
+      'Sposób tworzenia nowych wyrazów przez złożenie dwóch rdzeni.'
+    ]
+  },
+  {
+    id: 'interregnum',
+    word: 'Interregnum',
+    phonetic: '[in-ter-reg-num]',
+    shortDefinition: 'Okres bezkrólewia lub braku władzy między rządami.',
+    fullDefinition: 'Czas między śmiercią lub abdykacją jednego władcy a objęciem tronu przez kolejnego; szerzej: każdy okres bezwładzy instytucjonalnej.',
+    etymology: 'Z łaciny: inter – pomiędzy + regnum – panowanie, królestwo.',
+    examples: [
+      'Polska republika szlachecka słynęła z burzliwych interregnów, gdy magnaci rywalizowali o wpływ.',
+      'Po upadku rządu kraj przez miesiąc trwał w politycznym interregnum.'
+    ],
+    category: 'Społeczeństwo i Polityka',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/interregnum.html',
+    distractors: [
+      'Uroczysta koronacja nowego władcy.',
+      'Wieloletni okres stabilnych rządów jednej dynastii.',
+      'Dokument nadający prawa obywatelskie.'
+    ]
+  },
+  {
+    id: 'katharsis',
+    word: 'Katharsis',
+    phonetic: '[ka-tar-sis]',
+    shortDefinition: 'Duchowe oczyszczenie przez przeżycie sztuki lub silnych emocji.',
+    fullDefinition: 'Uczucie duchowego ulżenia i oczyszczenia z tłumionych emocji, które wywołuje wielka sztuka lub intensywne przeżycie.',
+    etymology: 'Z greki: katharsis – oczyszczenie.',
+    examples: [
+      'Finał spektaklu przyniósł widzom prawdziwe katharsis.',
+      'Płacz okazał się dla niej oczyszczającym katharsis po miesiącach tłumionych emocji.'
+    ],
+    category: 'Sztuka i Literatura',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/katharsis.html',
+    distractors: [
+      'Głębokie poczucie winy bez możliwości ulgi.',
+      'Zatrucie pokarmowe wywołane zjedzeniem zepsutej żywności.',
+      'Rozpad budowli z cegły na skutek działania mrozu.'
+    ]
   }
+
 ];
