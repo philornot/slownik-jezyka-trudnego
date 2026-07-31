@@ -1,159 +1,195 @@
-/* Design System Tokeny Kolorów i Motywów */
+/* Design System Tokeny Kolorów i Motywów (Wyrazista Przydymiona Szałwia & Palette Overrides) */
 
 :root {
-  /* Motyw Jasny (Light Mode Tokens) */
+  /* Motyw Jasny - Wyrazista Przydymiona Szałwia (Domyślny) */
 
   /* Tła */
-  --bg-app: #faf7f2;
+  --bg-app: #f2f5f3;
   --bg-surface: #ffffff;
-  --bg-surface-elevated: #f4efe6;
-  --bg-surface-muted: #e6dfd3;
-  --bg-surface-inset: #f8f5f0;
+  --bg-surface-elevated: #e3ebe5;
+  --bg-surface-muted: #d0ded4;
+  --bg-surface-inset: #f2f5f3;
 
   /* Obramowania */
-  --border-default: #cbd5e1;
-  --border-muted: #e2e8f0;
-  --border-amber: #fcd34d;
-  --border-amber-strong: #d97706;
+  --border-default: #bacbbf;
+  --border-muted: #d4e0d7;
+  --border-amber: #a8c4b0;
+  --border-amber-strong: #2e4d3e;
 
   /* Tekst */
-  --text-primary: #0f172a;
-  --text-secondary: #1e293b;
-  --text-serif-title: #2a0c00;
-  --text-muted: #334155;
-  --text-amber-brand: #78350f;
-  --text-amber-accent: #b45309;
+  --text-primary: #18261e;
+  --text-secondary: #27382d;
+  --text-serif-title: #12241b;
+  --text-muted: #4e6355;
+  --text-amber-brand: #2e4d3e;
+  --text-amber-accent: #705b38;
 
   /* Brand */
-  --brand-primary: #d97706;
-  --brand-primary-hover: #b45309;
+  --brand-primary: #2e4d3e;
+  --brand-primary-hover: #223b2f;
+  --btn-primary-text: #ffffff;
 
   /* Ikonowe tła akcent */
-  --icon-bg-amber: #fef3c7;
-  --icon-bg-stone: #f5f5f4;
-  --icon-bg-emerald: #d1fae5;
+  --icon-bg-amber: #f5f0e6;
+  --icon-bg-stone: #f2f5f3;
+  --icon-bg-emerald: #e2f2e6;
 
   /* Odznaki */
-  --badge-amber-bg: #fef3c7;
-  --badge-amber-text: #78350f;
-  --badge-amber-border: #fcd34d;
+  --badge-amber-bg: #f5f0e6;
+  --badge-amber-text: #6b5635;
+  --badge-amber-border: #e6dac6;
 
-  --badge-emerald-bg: #d1fae5;
-  --badge-emerald-text: #064e3b;
-  --badge-emerald-border: #6ee7b7;
+  --badge-emerald-bg: #dbe6de;
+  --badge-emerald-text: #1e382b;
+  --badge-emerald-border: #a8c4b0;
 
-  --badge-rose-bg: #ffe4e6;
-  --badge-rose-text: #881337;
-  --badge-rose-border: #fda4af;
+  --badge-rose-bg: #f7e8e8;
+  --badge-rose-text: #6e2c2c;
+  --badge-rose-border: #dba4a4;
 
-  /* Kolory kontekstowe (emerald, rose, blue, amber) */
-  --emerald-text: #064e3b;
-  --emerald-text-strong: #065f46;
-  --emerald-bg: #d1fae5;
-  --emerald-border: #6ee7b7;
-  --emerald-icon: #047857;
+  /* Kolory kontekstowe */
+  --emerald-text: #1e382b;
+  --emerald-text-strong: #12241b;
+  --emerald-bg: #dbe6de;
+  --emerald-border: #a8c4b0;
+  --emerald-icon: #2e4d3e;
 
-  --rose-text: #881337;
-  --rose-text-strong: #9f1239;
-  --rose-bg: #ffe4e6;
-  --rose-border: #fda4af;
-  --rose-icon: #be123c;
+  --rose-text: #6e2c2c;
+  --rose-text-strong: #542222;
+  --rose-bg: #f7e8e8;
+  --rose-border: #dba4a4;
+  --rose-icon: #9e4343;
 
-  --blue-text: #1e3a5f;
-  --blue-bg: #dbeafe;
-  --blue-border: #93c5fd;
+  --blue-text: #2c4254;
+  --blue-bg: #e5edf5;
+  --blue-border: #a4be35;
 
   /* Wykres / progress bar */
-  --bar-active: #d97706;
-  --bar-inactive: #d6d3d1;
-  --bar-secondary: rgba(245, 158, 11, 0.9);
-  --progress-track: #d6d3d1;
-  --progress-border: #a8a29e;
+  --bar-active: #2e4d3e;
+  --bar-inactive: #bacbbf;
+  --bar-secondary: rgba(179, 107, 59, 0.7);
+  --progress-track: #d0ded4;
+  --progress-border: #bacbbf;
+
+  /* Przyciski Samooceny SM-2 (Grade Buttons - Intuicyjne Kolory Trudności) */
+  --grade-0-bg: #fde8e8;
+  --grade-0-border: #fca5a5;
+  --grade-0-text: #991b1b;
+
+  --grade-3-bg: #fff3e0;
+  --grade-3-border: #ffe0b2;
+  --grade-3-text: #e65100;
+
+  --grade-4-bg: #e0f2fe;
+  --grade-4-border: #bae6fd;
+  --grade-4-text: #0369a1;
+
+  --grade-5-bg: #dcfce7;
+  --grade-5-border: #bbf7d0;
+  --grade-5-text: #15803d;
 
   /* Tooltip */
-  --tooltip-bg: #0f172a;
+  --tooltip-bg: #12241b;
   --tooltip-text: #ffffff;
 
   /* Blockquote */
-  --blockquote-bg: #fffbeb;
-  --blockquote-text: #0f172a;
+  --blockquote-bg: #e8f0ea;
+  --blockquote-text: #18261e;
 }
 
 [data-theme='dark'], .dark {
-  /* Motyw Ciemny (Dark Mode Tokens) */
+  /* Motyw Ciemny - Wyrazista Przydymiona Szałwia */
 
   /* Tła */
-  --bg-app: #0f1117;
-  --bg-surface: #161922;
-  --bg-surface-elevated: #1e2330;
-  --bg-surface-muted: #252b3b;
-  --bg-surface-inset: #0f1117;
+  --bg-app: #0e1411;
+  --bg-surface: #16201b;
+  --bg-surface-elevated: #1f2e27;
+  --bg-surface-muted: #2a3d34;
+  --bg-surface-inset: #0e1411;
 
   /* Obramowania */
-  --border-default: #2a3042;
-  --border-muted: #1f2536;
-  --border-amber: #d97706;
-  --border-amber-strong: #fbbf24;
+  --border-default: #31473d;
+  --border-muted: #24362e;
+  --border-amber: #52997a;
+  --border-amber-strong: #68b090;
 
   /* Tekst */
-  --text-primary: #f1f5f9;
-  --text-secondary: #e2e8f0;
-  --text-serif-title: #fef3c7;
-  --text-muted: #94a3b8;
-  --text-amber-brand: #fbbf24;
-  --text-amber-accent: #d97706;
+  --text-primary: #e4f0e9;
+  --text-secondary: #c6dcd0;
+  --text-serif-title: #e8f5ee;
+  --text-muted: #86a394;
+  --text-amber-brand: #68b090;
+  --text-amber-accent: #e8d0a9;
 
   /* Brand */
-  --brand-primary: #d97706;
-  --brand-primary-hover: #b45309;
+  --brand-primary: #52997a;
+  --brand-primary-hover: #68b090;
+  --btn-primary-text: #06120b;
 
   /* Ikonowe tła akcent */
-  --icon-bg-amber: rgba(217, 119, 6, 0.15);
-  --icon-bg-stone: #0f1117;
-  --icon-bg-emerald: rgba(16, 185, 129, 0.15);
+  --icon-bg-amber: rgba(212, 184, 138, 0.14);
+  --icon-bg-stone: #0e1411;
+  --icon-bg-emerald: rgba(82, 153, 122, 0.18);
 
   /* Odznaki */
-  --badge-amber-bg: rgba(217, 119, 6, 0.15);
-  --badge-amber-text: #fbbf24;
-  --badge-amber-border: rgba(217, 119, 6, 0.3);
+  --badge-amber-bg: rgba(212, 184, 138, 0.14);
+  --badge-amber-text: #e8d0a9;
+  --badge-amber-border: rgba(212, 184, 138, 0.3);
 
-  --badge-emerald-bg: rgba(16, 185, 129, 0.15);
-  --badge-emerald-text: #6ee7b7;
-  --badge-emerald-border: rgba(16, 185, 129, 0.3);
+  --badge-emerald-bg: rgba(82, 153, 122, 0.18);
+  --badge-emerald-text: #68b090;
+  --badge-emerald-border: rgba(82, 153, 122, 0.35);
 
-  --badge-rose-bg: rgba(244, 63, 94, 0.15);
-  --badge-rose-text: #fda4af;
-  --badge-rose-border: rgba(244, 63, 94, 0.3);
+  --badge-rose-bg: rgba(217, 130, 130, 0.18);
+  --badge-rose-text: #e8a0a0;
+  --badge-rose-border: rgba(217, 130, 130, 0.35);
+
+  /* Przyciski Samooceny SM-2 (Grade Buttons) */
+  --grade-0-bg: rgba(244, 63, 94, 0.16);
+  --grade-0-border: rgba(244, 63, 94, 0.4);
+  --grade-0-text: #fda4af;
+
+  --grade-3-bg: rgba(245, 158, 11, 0.16);
+  --grade-3-border: rgba(245, 158, 11, 0.4);
+  --grade-3-text: #fcd34d;
+
+  --grade-4-bg: rgba(56, 189, 248, 0.16);
+  --grade-4-border: rgba(56, 189, 248, 0.4);
+  --grade-4-text: #7dd3fc;
+
+  --grade-5-bg: rgba(34, 197, 94, 0.16);
+  --grade-5-border: rgba(34, 197, 94, 0.4);
+  --grade-5-text: #86efac;
 
   /* Kolory kontekstowe */
-  --emerald-text: #6ee7b7;
-  --emerald-text-strong: #6ee7b7;
-  --emerald-bg: rgba(16, 185, 129, 0.15);
-  --emerald-border: rgba(16, 185, 129, 0.3);
-  --emerald-icon: #6ee7b7;
+  --emerald-text: #68b090;
+  --emerald-text-strong: #68b090;
+  --emerald-bg: rgba(82, 153, 122, 0.18);
+  --emerald-border: rgba(82, 153, 122, 0.35);
+  --emerald-icon: #52997a;
 
-  --rose-text: #fda4af;
-  --rose-text-strong: #fda4af;
-  --rose-bg: rgba(244, 63, 94, 0.15);
-  --rose-border: rgba(244, 63, 94, 0.3);
-  --rose-icon: #fb7185;
+  --rose-text: #e8a0a0;
+  --rose-text-strong: #e8a0a0;
+  --rose-bg: rgba(217, 130, 130, 0.18);
+  --rose-border: rgba(217, 130, 130, 0.35);
+  --rose-icon: #d47474;
 
-  --blue-text: #93c5fd;
-  --blue-bg: rgba(59, 130, 246, 0.15);
-  --blue-border: rgba(59, 130, 246, 0.3);
+  --blue-text: #96c2e8;
+  --blue-bg: rgba(150, 194, 232, 0.18);
+  --blue-border: rgba(150, 194, 232, 0.35);
 
   /* Wykres / progress bar */
-  --bar-active: #d97706;
-  --bar-inactive: #0f1117;
-  --bar-secondary: rgba(217, 119, 6, 0.6);
-  --progress-track: #161922;
-  --progress-border: #2a3042;
+  --bar-active: #52997a;
+  --bar-inactive: #16201b;
+  --bar-secondary: rgba(224, 159, 103, 0.5);
+  --progress-track: #1f2e27;
+  --progress-border: #31473d;
 
   /* Tooltip */
-  --tooltip-bg: #2a3042;
+  --tooltip-bg: #2a3d34;
   --tooltip-text: #ffffff;
 
   /* Blockquote */
-  --blockquote-bg: rgba(15, 17, 23, 0.6);
-  --blockquote-text: #cbd5e1;
+  --blockquote-bg: rgba(82, 153, 122, 0.12);
+  --blockquote-text: #c6dcd0;
 }

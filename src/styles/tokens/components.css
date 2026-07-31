@@ -30,8 +30,8 @@
     gap: 0.5rem;
     border-radius: 0.75rem;
     background-color: var(--brand-primary);
-    color: #ffffff;
-    font-weight: 700;
+    color: var(--btn-primary-text, #ffffff);
+    font-weight: 800;
     font-size: 0.75rem;
     padding: 0.625rem 1.25rem;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -70,8 +70,8 @@
     min-height: 2.75rem; /* 44px */
     border-radius: 0.875rem;
     background-color: var(--brand-primary);
-    color: #ffffff;
-    font-weight: 700;
+    color: var(--btn-primary-text, #ffffff);
+    font-weight: 800;
     font-size: 0.875rem;
     padding: 0.75rem 1.5rem;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
@@ -85,6 +85,19 @@
   }
 
   /* Odznaki i Etykiety */
+  .badge-neutral {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: 9999px;
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-default);
+    padding: 0.2rem 0.625rem;
+    font-size: 0.725rem;
+    font-weight: 600;
+  }
+
   .badge-amber {
     display: inline-flex;
     align-items: center;
@@ -93,9 +106,9 @@
     background-color: var(--badge-amber-bg);
     color: var(--badge-amber-text);
     border: 1px solid var(--badge-amber-border);
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 800;
+    padding: 0.2rem 0.625rem;
+    font-size: 0.725rem;
+    font-weight: 600;
   }
 
   .badge-emerald {
@@ -106,9 +119,9 @@
     background-color: var(--badge-emerald-bg);
     color: var(--badge-emerald-text);
     border: 1px solid var(--badge-emerald-border);
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 800;
+    padding: 0.2rem 0.625rem;
+    font-size: 0.725rem;
+    font-weight: 600;
   }
 
   .badge-rose {
@@ -119,9 +132,9 @@
     background-color: var(--badge-rose-bg);
     color: var(--badge-rose-text);
     border: 1px solid var(--badge-rose-border);
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 800;
+    padding: 0.2rem 0.625rem;
+    font-size: 0.725rem;
+    font-weight: 600;
   }
 
   /* Nagłówki i Teksty */
@@ -172,6 +185,7 @@
     z-index: 50;
     display: flex;
     align-items: flex-end;
+    justify-content: center;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
   }
@@ -181,7 +195,7 @@
     width: 100%;
     max-height: 92dvh;
     overflow-y: auto;
-    /* Zaokrąglenie tylko na górze */
+    /* Zaokrąglenie tylko na górze na mobile */
     border-radius: 1.25rem 1.25rem 0 0;
     border: 1px solid var(--border-default);
     border-bottom: none;
@@ -189,6 +203,25 @@
     box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2);
     /* Animacja wjazdu od dołu */
     animation: slide-up 0.28s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
+  /* Na komputery i małe ekrany (sm: >= 640px) okno idealnie wycentrowane na środku ekranu */
+  @media (min-width: 640px) {
+    .sheet-backdrop {
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .sheet-container {
+      border-radius: 1rem !important;
+      border-bottom: 1px solid var(--border-default) !important;
+      max-width: 36rem;
+      max-height: 85vh;
+      margin: auto;
+      animation: none !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+    }
   }
 
   @keyframes slide-up {

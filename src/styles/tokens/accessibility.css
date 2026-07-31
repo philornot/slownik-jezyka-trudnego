@@ -9,41 +9,41 @@
 :root[data-a11y-contrast="high"] {
   /* Tekst jeszcze ciemniejszy */
   --text-primary: #000000;
-  --text-secondary: #0a0a0a;
+  --text-secondary: #12241b;
   --text-serif-title: #000000;
-  --text-muted: #1a1a2e;
-  --text-amber-brand: #5c2d00;
-  --text-amber-accent: #7c3b00;
+  --text-muted: #27382d;
+  --text-amber-brand: #12241b;
+  --text-amber-accent: #8a491e;
 
   /* Tła bardziej kontrastowe */
-  --bg-surface-elevated: #eee9de;
-  --bg-surface-muted: #ddd5c6;
+  --bg-surface-elevated: #d4e0d7;
+  --bg-surface-muted: #bacbbf;
 
   /* Obramowania wyrazistsze */
-  --border-default: #94a3b8;
-  --border-muted: #a8a29e;
-  --border-amber: #d97706;
+  --border-default: #4e6355;
+  --border-muted: #86a394;
+  --border-amber: #2e4d3e;
 
   /* Brand jeszcze ciemniejszy */
-  --brand-primary: #b45309;
-  --brand-primary-hover: #92400e;
+  --brand-primary: #12241b;
+  --brand-primary-hover: #070e0a;
 
   /* Odznaki */
-  --badge-amber-text: #5c2d00;
-  --badge-amber-border: #d97706;
+  --badge-amber-text: #542222;
+  --badge-amber-border: #8a491e;
 
-  --badge-emerald-text: #022c22;
-  --badge-emerald-border: #059669;
+  --badge-emerald-text: #12241b;
+  --badge-emerald-border: #2e4d3e;
 
-  --badge-rose-text: #4c0519;
-  --badge-rose-border: #e11d48;
+  --badge-rose-text: #522d2d;
+  --badge-rose-border: #9e4343;
 
   /* Kolory kontekstowe */
-  --emerald-text: #022c22;
-  --emerald-icon: #047857;
+  --emerald-text: #12241b;
+  --emerald-icon: #2e4d3e;
 
-  --rose-text: #4c0519;
-  --rose-icon: #be123c;
+  --rose-text: #522d2d;
+  --rose-icon: #9e4343;
 
   --blue-text: #0c1d36;
 
@@ -59,57 +59,57 @@
 .dark[data-a11y-contrast="high"] {
   /* Tekst jaśniejszy i ostrzejszy */
   --text-primary: #ffffff;
-  --text-secondary: #f8fafc;
+  --text-secondary: #e8f5ee;
   --text-serif-title: #ffffff;
-  --text-muted: #cbd5e1;
-  --text-amber-brand: #fde68a;
-  --text-amber-accent: #fbbf24;
+  --text-muted: #a6c9b7;
+  --text-amber-brand: #85d4b0;
+  --text-amber-accent: #f5b887;
 
   /* Tła z wyraźniejszym rozdzieleniem */
-  --bg-surface: #1a1d2a;
-  --bg-surface-elevated: #252a3a;
-  --bg-surface-muted: #303850;
+  --bg-surface: #0a0f0d;
+  --bg-surface-elevated: #131c18;
+  --bg-surface-muted: #1c2b24;
 
   /* Obramowania jaśniejsze */
-  --border-default: #475569;
-  --border-muted: #334155;
-  --border-amber: #fbbf24;
+  --border-default: #52997a;
+  --border-muted: #38614e;
+  --border-amber: #85d4b0;
 
   /* Brand jaśniejszy */
-  --brand-primary: #f59e0b;
-  --brand-primary-hover: #d97706;
+  --brand-primary: #68b090;
+  --brand-primary-hover: #85d4b0;
 
   /* Odznaki */
-  --badge-amber-text: #fde68a;
-  --badge-amber-border: rgba(251, 191, 36, 0.6);
-  --badge-amber-bg: rgba(217, 119, 6, 0.25);
+  --badge-amber-text: #f5b887;
+  --badge-amber-border: rgba(245, 184, 135, 0.8);
+  --badge-amber-bg: rgba(224, 159, 103, 0.3);
 
-  --badge-emerald-text: #a7f3d0;
-  --badge-emerald-border: rgba(16, 185, 129, 0.5);
-  --badge-emerald-bg: rgba(16, 185, 129, 0.2);
+  --badge-emerald-text: #85d4b0;
+  --badge-emerald-border: rgba(133, 212, 176, 0.5);
+  --badge-emerald-bg: rgba(82, 153, 122, 0.25);
 
-  --badge-rose-text: #fecdd3;
-  --badge-rose-border: rgba(244, 63, 94, 0.5);
-  --badge-rose-bg: rgba(244, 63, 94, 0.2);
+  --badge-rose-text: #f5b8b8;
+  --badge-rose-border: rgba(245, 184, 184, 0.5);
+  --badge-rose-bg: rgba(217, 130, 130, 0.25);
 
   /* Kolory kontekstowe */
-  --emerald-text: #a7f3d0;
-  --emerald-icon: #6ee7b7;
+  --emerald-text: #85d4b0;
+  --emerald-icon: #68b090;
 
-  --rose-text: #fecdd3;
-  --rose-icon: #fb7185;
+  --rose-text: #f5b8b8;
+  --rose-icon: #e8a0a0;
 
-  --blue-text: #bfdbfe;
+  --blue-text: #b8daf7;
 
   /* Blockquote */
-  --blockquote-text: #f1f5f9;
+  --blockquote-text: #ffffff;
 
   /* Wykres */
-  --bar-active: #f59e0b;
-  --bar-secondary: rgba(245, 158, 11, 0.8);
-  --bar-inactive: #1e293b;
-  --progress-track: #1e293b;
-  --progress-border: #475569;
+  --bar-active: #68b090;
+  --bar-secondary: rgba(245, 184, 135, 0.8);
+  --bar-inactive: #131c18;
+  --progress-track: #131c18;
+  --progress-border: #52997a;
 }
 
 /* =============================================

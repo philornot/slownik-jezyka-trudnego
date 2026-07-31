@@ -38,7 +38,7 @@
   <div
     class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-4 sm:px-6 py-3 sm:rounded-t-2xl"
   >
-    <span class="badge-amber">
+    <span class="badge-neutral">
       {card.word.category || "Literackie"}
     </span>
 
@@ -205,38 +205,38 @@
           </p>
 
           <div class="grid grid-cols-2 gap-2.5 sm:gap-3.5 sm:grid-cols-4">
-            <!-- Bardzo trudne (Ocena 0) -->
+            <!-- Bardzo trudne (Ocena 0 - Czerwony/Różowy) -->
             <button
               type="button"
               onclick={() => handleSelfGrade(0)}
-              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--rose-border)] bg-[var(--rose-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--rose-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-0-border)] bg-[var(--grade-0-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-0-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
             >
               <span>Bardzo trudne</span>
             </button>
 
-            <!-- Trudne (Ocena 3) -->
+            <!-- Trudne (Ocena 3 - Bursztynowy/Pomarańczowy) -->
             <button
               type="button"
               onclick={() => handleSelfGrade(3)}
-              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--badge-amber-border)] bg-[var(--badge-amber-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--badge-amber-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-3-border)] bg-[var(--grade-3-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-3-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
             >
               <span>Trudne</span>
             </button>
 
-            <!-- Średnie (Ocena 4) -->
+            <!-- Średnie (Ocena 4 - Stonowany Błękit) -->
             <button
               type="button"
               onclick={() => handleSelfGrade(4)}
-              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--blue-border)] bg-[var(--blue-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--blue-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-4-border)] bg-[var(--grade-4-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-4-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
             >
               <span>Średnie</span>
             </button>
 
-            <!-- Łatwe (Ocena 5) -->
+            <!-- Łatwe (Ocena 5 - Szmaragdowa Zieleń) -->
             <button
               type="button"
               onclick={() => handleSelfGrade(5)}
-              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--emerald-border)] bg-[var(--emerald-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--emerald-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-5-border)] bg-[var(--grade-5-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-5-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
             >
               <span>Łatwe</span>
             </button>

@@ -5,8 +5,8 @@ export type ThemeName = 'light' | 'dark';
 const STORAGE_KEY = 'sjt_theme_mode';
 
 const META_COLOR: Record<ThemeName, string> = {
-  light: '#faf7f2',
-  dark: '#0f1117'
+  light: '#f2f5f3',
+  dark: '#0e1411'
 };
 
 let current = $state<ThemeName>('dark');
@@ -52,8 +52,8 @@ export const theme = {
 
 export function initTheme(): void {
   if (typeof window === 'undefined') return;
-  const stored = readStoredTheme();
-  current = stored ?? (systemPrefersDark() ? 'dark' : 'light');
+  const storedTheme = readStoredTheme();
+  current = storedTheme ?? (systemPrefersDark() ? 'dark' : 'light');
   writeThemeToDom(current);
 
   if (typeof matchMedia !== 'function') return;

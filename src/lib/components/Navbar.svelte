@@ -63,7 +63,7 @@
       <button
         type="button"
         onclick={() => onTabChange('lesson')}
-        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all {activeTab === 'lesson' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--text-amber-brand)]'}"
+        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all {activeTab === 'lesson' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--brand-primary)]'}"
       >
         <Icon icon="ph:book-open-bold" class="h-4 w-4" />
         <span>Lekcja</span>
@@ -71,7 +71,7 @@
       <button
         type="button"
         onclick={() => onTabChange('catalog')}
-        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all {activeTab === 'catalog' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--text-amber-brand)]'}"
+        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all {activeTab === 'catalog' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--brand-primary)]'}"
       >
         <Icon icon="ph:bookmark-bold" class="h-4 w-4" />
         <span>Katalog</span>
@@ -79,7 +79,7 @@
       <button
         type="button"
         onclick={() => onTabChange('stats')}
-        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all {activeTab === 'stats' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--text-amber-brand)]'}"
+        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all {activeTab === 'stats' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--brand-primary)]'}"
       >
         <Icon icon="ph:chart-bar-bold" class="h-4 w-4" />
         <span>Statystyki</span>
@@ -91,15 +91,15 @@
       
       {#if userEmail}
         <!-- Zalogowany: avatar/email i wylogowanie -->
-        <div class="hidden md:flex items-center gap-1.5 badge-emerald">
-          <Icon icon="ph:user-check-bold" class="h-4 w-4" />
-          <span class="max-w-[120px] truncate">{userEmail}</span>
+        <div class="hidden md:flex items-center gap-1.5 rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-2.5 py-1 text-xs font-semibold text-[var(--text-secondary)]">
+          <Icon icon="ph:user-bold" class="h-3.5 w-3.5 text-[var(--brand-primary)]" />
+          <span class="max-w-[130px] truncate">{userEmail}</span>
         </div>
         <button
           type="button"
           onclick={onLogout}
           title="Wyloguj się"
-          class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--rose-icon)] hover:border-[var(--rose-border)] transition-all"
+          class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-muted)] hover:text-[var(--rose-icon)] hover:border-[var(--rose-border)] transition-all"
         >
           <Icon icon="ph:sign-out-bold" class="h-4 w-4" />
         </button>
@@ -129,12 +129,12 @@
         onpointerdown={handlePointerDown}
         onclick={handleThemeToggle}
         title={theme.current === 'dark' ? 'Jasny motyw' : 'Ciemny motyw'}
-        class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-primary)] hover:border-[var(--brand-primary)] hover:text-[var(--text-amber-brand)] transition-all"
+        class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] transition-all"
       >
         {#if theme.current === 'dark'}
-          <Icon icon="ph:sun-bold" class="h-4 w-4 text-amber-400" />
+          <Icon icon="ph:sun-bold" class="h-4 w-4 text-[var(--text-secondary)]" />
         {:else}
-          <Icon icon="ph:moon-bold" class="h-4 w-4 text-[#78350f]" />
+          <Icon icon="ph:moon-bold" class="h-4 w-4 text-[var(--text-secondary)]" />
         {/if}
       </button>
 
@@ -143,7 +143,7 @@
         type="button"
         onclick={onOpenSettings}
         title="Ustawienia"
-        class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-primary)] hover:border-[var(--brand-primary)] hover:text-[var(--text-amber-brand)] transition-all"
+        class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] transition-all"
       >
         <Icon icon="ph:gear-six-bold" class="h-4 w-4" />
       </button>

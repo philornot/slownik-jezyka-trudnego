@@ -55,7 +55,9 @@
     const prog = progressMap[wordId];
     if (!prog) return null;
     if (prog.repetitions >= 3) {
-      return { label: `Opanowane (${prog.repetitions} powt.)`, badgeClass: 'badge-emerald' };
+      const rep = prog.repetitions;
+      const label = rep === 1 ? '1 powtórzenie' : (rep >= 2 && rep <= 4 ? `${rep} powtórzenia` : `${rep} powtórzeń`);
+      return { label, badgeClass: 'badge-emerald' };
     }
     return { label: `W trakcie nauki`, badgeClass: 'badge-amber' };
   }
@@ -90,8 +92,8 @@
           {/each}
         </select>
 
-        <span class="badge-amber px-2.5 py-2 text-[11px] sm:text-xs shrink-0">
-          <Icon icon="ph:sparkle-bold" class="h-3.5 w-3.5 text-[var(--brand-primary)]" />
+        <span class="badge-neutral px-2.5 py-2 text-[11px] sm:text-xs shrink-0 flex items-center gap-1.5 text-[var(--text-secondary)]">
+          <Icon icon="ph:sparkle-bold" class="h-3.5 w-3.5 text-current shrink-0" />
           <span>{unlockedWords.length} / {words.length}</span>
         </span>
       </div>
@@ -165,7 +167,7 @@
   <div class="space-y-3 sm:space-y-4 pt-2 sm:pt-4">
     <div class="flex items-center justify-between border-b border-[var(--border-default)] pb-2">
       <div class="flex items-center gap-2">
-        <Icon icon="ph:lock-key-bold" class="h-5 w-5 text-[#b45309] dark:text-amber-400 shrink-0" />
+        <Icon icon="ph:lock-key-bold" class="h-5 w-5 text-[var(--brand-primary)] shrink-0" />
         <h3 class="title-serif text-lg sm:text-xl">
           Oczekujące na Odblokowanie ({filteredLockedWords.length})
         </h3>

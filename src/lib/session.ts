@@ -47,7 +47,7 @@ export function calculateAdaptiveNewWordsLimit(
 }
 
 /**
- * Pobiera adaptacyjną paczkę nowych słów do nauki
+ * Pobiera adaptacyjną paczkę nowych słów do nauki z losowej puli niepoznanych słówek
  */
 export function getNewWordsToLearn(
   progressMap: Record<string, UserWordProgress>,
@@ -58,7 +58,9 @@ export function getNewWordsToLearn(
   if (effectiveLimit <= 0) return [];
 
   const unstartedWords = allWords.filter((word) => !progressMap[word.id]);
-  return unstartedWords.slice(0, effectiveLimit);
+  // Losujemy kolejność niepoznanych słówek, aby każda lekcja była zaskakująca
+  const shuffled = [...unstartedWords].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, effectiveLimit);
 }
 
 /**
@@ -109,12 +111,13 @@ export function createDailySession(
     options: generateQuizOptions(word, allWords)
   }));
 
-  // Jeśli brak dzisiaj powtórek i brak nowych słówek, ale są nieopanowane słowa, dołączamy nieopanowane słowa jako powtórkę treningową
-  let cards = [...newCards, ...reviewCards];
+  // Łączymy nowe karty i powtórki w wymieszaną losową kolejność
+  let cards = [...newCards, ...reviewCards].sort(() => 0.5 - Math.random());
 
   if (cards.length === 0 && unmasteredCount > 0) {
     const unmasteredWords = allWords.filter((w) => progressMap[w.id] && progressMap[w.id].repetitions < 3);
-    const trainingCards: SessionCard[] = unmasteredWords.slice(0, 5).map((word) => ({
+    const shuffledUnmastered = [...unmasteredWords].sort(() => 0.5 - Math.random());
+    const trainingCards: SessionCard[] = shuffledUnmastered.slice(0, 5).map((word) => ({
       word,
       isNew: false,
       userProgress: progressMap[word.id],

@@ -34,12 +34,12 @@
 >
   <!-- Nagłówek Prezentacji Nowych Słów -->
   <div
-    class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--icon-bg-amber)] px-4 sm:px-6 py-3.5 sm:rounded-t-2xl"
+    class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-4 sm:px-6 py-3.5 sm:rounded-t-2xl"
   >
     <div class="flex items-center gap-2">
-      <Icon icon="ph:sparkle-bold" class="h-5 w-5 text-[var(--text-amber-brand)] shrink-0" />
+      <Icon icon="ph:sparkle-bold" class="h-4 w-4 text-[var(--brand-primary)] shrink-0" />
       <span
-        class="text-xs font-extrabold tracking-wider text-[var(--text-amber-brand)] uppercase"
+        class="text-xs font-bold tracking-wider text-[var(--text-primary)] uppercase"
       >
         Prezentacja ({currentIndex + 1}/{words.length})
       </span>
@@ -75,7 +75,7 @@
         </p>
       {/if}
       <span
-        class="mt-2 inline-block badge-amber"
+        class="mt-2 inline-block badge-neutral"
       >
         Kategoria: {currentWord.category}
       </span>
