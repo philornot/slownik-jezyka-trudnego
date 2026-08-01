@@ -279,14 +279,14 @@
     {/if}
   </div>
 
-  <!-- PRZYCISKI SAMOOCENY – stopka karty, przylepiona na dole na urządzeniach mobilnych -->
+  <!-- PRZYCISKI SAMOOCENY – stopka karty, przylepiona nad dolnym paskiem nawigacji na urządzeniach mobilnych -->
   {#if isAnswered}
     <div
       bind:this={gradeSectionRef}
-      class="sticky bottom-0 z-20 sm:static border-t border-(--border-default) bg-(--bg-surface-elevated) px-4 sm:px-6 py-3.5 sm:py-4 sm:rounded-b-2xl shadow-[0_-4px_16px_rgba(0,0,0,0.12)] sm:shadow-none"
+      class="sticky bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] z-20 sm:static border-t border-(--border-default) bg-(--bg-surface-elevated) px-3 sm:px-6 py-2.5 sm:py-4 sm:rounded-b-2xl shadow-[0_-4px_16px_rgba(0,0,0,0.15)] sm:shadow-none transition-all"
     >
       <!-- CTA -->
-      <div class="mb-3 text-center">
+      <div class="mb-2 sm:mb-3 text-center">
         <p class="text-xs sm:text-sm font-extrabold text-(--text-primary)">
           Oceń, jak dobrze pamiętasz to słówko
         </p>
@@ -299,15 +299,15 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-2 gap-2 sm:gap-3 sm:grid-cols-4">
+      <div class="grid grid-cols-2 gap-1.5 sm:gap-3 sm:grid-cols-4">
         <!-- Bardzo słabo (Ocena 0) -->
         <button
           type="button"
           onclick={() => handleSelfGrade(0)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-0-border) bg-(--grade-0-bg) py-2 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1 relative"
+          class="flex min-h-10 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-0-border) bg-(--grade-0-bg) py-1.5 px-1.5 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5 sm:gap-1 relative"
         >
           <div class="flex items-center gap-1">
-            <Icon icon="ph:x-circle-bold" class="h-4 w-4 text-(--grade-0-text)" />
+            <Icon icon="ph:x-circle-bold" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-(--grade-0-text)" />
             <span class="font-extrabold text-xs sm:text-sm text-(--grade-0-text)">Bardzo słabo</span>
           </div>
           <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-0-text)">
@@ -319,10 +319,10 @@
         <button
           type="button"
           onclick={() => handleSelfGrade(3)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-3-border) bg-(--grade-3-bg) py-2 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1 relative"
+          class="flex min-h-10 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-3-border) bg-(--grade-3-bg) py-1.5 px-1.5 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5 sm:gap-1 relative"
         >
           <div class="flex items-center gap-1">
-            <Icon icon="ph:minus-circle-bold" class="h-4 w-4 text-(--grade-3-text)" />
+            <Icon icon="ph:minus-circle-bold" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-(--grade-3-text)" />
             <span class="font-extrabold text-xs sm:text-sm text-(--grade-3-text)">Słabo</span>
           </div>
           <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-3-text)">
@@ -334,10 +334,10 @@
         <button
           type="button"
           onclick={() => handleSelfGrade(4)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-4-border) bg-(--grade-4-bg) py-2 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1 relative"
+          class="flex min-h-10 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-4-border) bg-(--grade-4-bg) py-1.5 px-1.5 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5 sm:gap-1 relative"
         >
           <div class="flex items-center gap-1">
-            <Icon icon="ph:check-circle-bold" class="h-4 w-4 text-(--grade-4-text)" />
+            <Icon icon="ph:check-circle-bold" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-(--grade-4-text)" />
             <span class="font-extrabold text-xs sm:text-sm text-(--grade-4-text)">Dobrze</span>
           </div>
           <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-4-text)">
@@ -349,10 +349,10 @@
         <button
           type="button"
           onclick={() => handleSelfGrade(5)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-5-border) bg-(--grade-5-bg) py-2 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1 relative"
+          class="flex min-h-10 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-5-border) bg-(--grade-5-bg) py-1.5 px-1.5 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5 sm:gap-1 relative"
         >
           <div class="flex items-center gap-1">
-            <Icon icon="ph:star-bold" class="h-4 w-4 text-(--grade-5-text)" />
+            <Icon icon="ph:star-bold" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-(--grade-5-text)" />
             <span class="font-extrabold text-xs sm:text-sm text-(--grade-5-text)">Bardzo dobrze</span>
           </div>
           <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-5-text)">
