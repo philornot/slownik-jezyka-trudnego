@@ -11,7 +11,9 @@
     saveLocalSettings,
     loadProgressFromCloud,
     syncProgressToCloud,
-    clearAllProgress
+    clearAllProgress,
+    saveSettingsToCloud,
+    loadSettingsFromCloud
   } from '$lib/storage';
   import { createDailySession } from '$lib/session';
   import { registerServiceWorker } from '$lib/notifications';
@@ -92,6 +94,13 @@
               saveAllLocalProgress(progressMap);
               await syncProgressToCloud(user.uid, progressMap);
               startSession();
+            }
+            // Wczytaj ustawienia z chmury (chmura ma pierwszeństwo)
+            const cloudSettings = await loadSettingsFromCloud(user.uid);
+            if (cloudSettings) {
+              settings = cloudSettings;
+              saveLocalSettings(cloudSettings);
+              applyA11ySettings(cloudSettings);
             }
           }
         });
@@ -201,6 +210,15 @@
     settings = newSettings;
     saveLocalSettings(newSettings);
     applyA11ySettings(newSettings);
+    // Synchronizacja w tle z Firebase jeśli zalogowany
+    if (currentUser?.uid) {
+      saveSettingsToCloud(currentUser.uid, newSettings);
+    }
+  }
+
+  /** Podgląd na żywo – aplikuje ustawienia bez zapisu */
+  function handlePreviewSettings(previewSettings: UserSettings) {
+    applyA11ySettings(previewSettings);
   }
 
   async function handleResetProgress() {
@@ -348,6 +366,7 @@
     {settings}
     onClose={() => (isSettingsOpen = false)}
     onSave={handleSaveSettings}
+    onPreview={handlePreviewSettings}
     onResetProgress={handleResetProgress}
   />
 {/if}

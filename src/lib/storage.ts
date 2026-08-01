@@ -156,3 +156,35 @@ export async function loadProgressFromCloud(userId: string): Promise<Record<stri
   }
   return null;
 }
+
+/**
+ * Zapisuje ustawienia użytkownika do chmury Firebase Firestore
+ */
+export async function saveSettingsToCloud(userId: string, settings: UserSettings): Promise<void> {
+  try {
+    const db = getFirebaseDb();
+    if (!db) return;
+    const userDocRef = doc(db, 'users', userId);
+    await setDoc(userDocRef, { settings, updatedAt: new Date().toISOString() }, { merge: true });
+  } catch (e) {
+    console.warn('Nie udało się zapisać ustawień do Firebase Firestore:', e);
+  }
+}
+
+/**
+ * Wczytuje ustawienia użytkownika z chmury Firebase Firestore
+ */
+export async function loadSettingsFromCloud(userId: string): Promise<UserSettings | null> {
+  try {
+    const db = getFirebaseDb();
+    if (!db) return null;
+    const userDocRef = doc(db, 'users', userId);
+    const snap = await getDoc(userDocRef);
+    if (snap.exists() && snap.data()?.settings) {
+      return { ...DEFAULT_SETTINGS, ...snap.data().settings } as UserSettings;
+    }
+  } catch (e) {
+    console.warn('Nie udało się wczytać ustawień z Firebase Firestore:', e);
+  }
+  return null;
+}
