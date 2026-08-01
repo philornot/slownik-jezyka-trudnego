@@ -179,7 +179,7 @@
               >
                 {option}
               </span>
-              <kbd class="hidden sm:inline-flex shrink-0 items-center justify-center px-2 py-0.5 text-[10px] font-mono font-bold bg-(--bg-surface) text-(--text-muted) rounded border border-(--border-default) shadow-2xs group-hover:border-(--brand-primary) group-hover:text-(--brand-primary)">
+              <kbd class="hidden sm:inline-flex shrink-0 group-hover:border-(--brand-primary) group-hover:text-(--brand-primary)">
                 {index + 1}
               </kbd>
             </button>
@@ -293,7 +293,7 @@
         <p class="text-[11px] sm:text-xs font-semibold text-(--text-muted) mt-0.5 flex items-center justify-center gap-1">
           <span class="sm:hidden">Wybierz ocenę, aby przejść dalej</span>
           <span class="hidden sm:inline">Wybierz myszką lub klawiszami 1-4, aby przejść dalej:</span>
-          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-(--bg-surface) text-(--text-primary) rounded border border-(--border-default) shadow-2xs">
+          <kbd class="hidden sm:inline-flex">
             1 - 4
           </kbd>
         </p>

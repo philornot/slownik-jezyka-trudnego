@@ -364,7 +364,7 @@
             >
               <Icon icon="ph:arrows-clockwise-bold" class="h-5 w-5" />
               <span>Powtórz dodatkowo</span>
-              <kbd class="hidden sm:inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-bold bg-current/15 text-current rounded border border-current/25">
+              <kbd class="hidden sm:inline-flex">
                 Enter ↵
               </kbd>
             </button>
@@ -374,7 +374,7 @@
               class="btn-secondary w-full py-3 text-sm flex items-center justify-center gap-2"
             >
               <span>Przeglądaj Słowniczek</span>
-              <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-(--bg-surface) text-(--text-muted) rounded border border-(--border-default)">
+              <kbd class="hidden sm:inline-flex">
                 K
               </kbd>
             </button>
