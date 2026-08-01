@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { tick } from "svelte";
   import type { SessionCard, ReviewGrade } from "../types";
   import Icon from "@iconify/svelte";
 
@@ -13,6 +14,8 @@
   let selectedOption = $state<string | null>(null);
   let isAnswered = $derived(selectedOption !== null);
   let isCorrect = $derived(selectedOption === card.word.shortDefinition);
+
+  let gradeSectionRef = $state<HTMLElement | null>(null);
 
   // Blokada zapobiegająca natychmiastowemu nakładaniu się akcji po przytrzymaniu klawisza lub szybkim klikaniu
   let isActionLocked = $state(false);
@@ -36,6 +39,9 @@
     if (isActionLocked) return;
     lockActionTemporarily();
     selectedOption = option;
+    tick().then(() => {
+      gradeSectionRef?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    });
   }
 
   function handleSelfGrade(grade: ReviewGrade) {
@@ -273,14 +279,18 @@
 
   <!-- PRZYCISKI SAMOOCENY – stopka karty, bez fixed -->
   {#if isAnswered}
-    <div class="border-t border-(--border-default) bg-(--bg-surface-elevated) px-4 sm:px-6 py-4 sm:rounded-b-2xl">
+    <div
+      bind:this={gradeSectionRef}
+      class="border-t border-(--border-default) bg-(--bg-surface-elevated) px-4 sm:px-6 py-4 sm:rounded-b-2xl"
+    >
       <!-- CTA -->
       <div class="mb-3 text-center">
         <p class="text-xs sm:text-sm font-extrabold text-(--text-primary)">
           Oceń, jak dobrze pamiętasz to słówko
         </p>
-        <p class="text-[11px] font-semibold text-(--text-muted) mt-0.5 flex items-center justify-center gap-1">
-          <span>Wybierz myszką lub klawiszami 1-4:</span>
+        <p class="text-[11px] sm:text-xs font-semibold text-(--text-muted) mt-0.5 flex items-center justify-center gap-1">
+          <span class="sm:hidden">Wybierz ocenę, aby przejść dalej</span>
+          <span class="hidden sm:inline">Wybierz myszką lub klawiszami 1-4, aby przejść dalej:</span>
           <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-(--bg-surface) text-(--text-primary) rounded border border-(--border-default) shadow-2xs">
             1 - 4
           </kbd>
