@@ -15,6 +15,7 @@
   let isAnswered = $derived(selectedOption !== null);
   let isCorrect = $derived(selectedOption === card.word.shortDefinition);
 
+  let cardRef = $state<HTMLElement | null>(null);
   let gradeSectionRef = $state<HTMLElement | null>(null);
 
   // Blokada zapobiegająca natychmiastowemu nakładaniu się akcji po przytrzymaniu klawisza lub szybkim klikaniu
@@ -40,7 +41,7 @@
     lockActionTemporarily();
     selectedOption = option;
     tick().then(() => {
-      gradeSectionRef?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      cardRef?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
@@ -109,6 +110,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <div
+  bind:this={cardRef}
   class="w-full sm:max-w-2xl border-y sm:border border-(--border-default) bg-(--bg-surface) sm:rounded-2xl sm:shadow-xl transition-all duration-300"
 >
   <!-- Nagłówek karty -->
@@ -277,11 +279,11 @@
     {/if}
   </div>
 
-  <!-- PRZYCISKI SAMOOCENY – stopka karty, bez fixed -->
+  <!-- PRZYCISKI SAMOOCENY – stopka karty, przylepiona na dole na urządzeniach mobilnych -->
   {#if isAnswered}
     <div
       bind:this={gradeSectionRef}
-      class="border-t border-(--border-default) bg-(--bg-surface-elevated) px-4 sm:px-6 py-4 sm:rounded-b-2xl"
+      class="sticky bottom-0 z-20 sm:static border-t border-(--border-default) bg-(--bg-surface-elevated) px-4 sm:px-6 py-3.5 sm:py-4 sm:rounded-b-2xl shadow-[0_-4px_16px_rgba(0,0,0,0.12)] sm:shadow-none"
     >
       <!-- CTA -->
       <div class="mb-3 text-center">
