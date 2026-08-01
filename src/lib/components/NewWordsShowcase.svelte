@@ -27,7 +27,36 @@
       onFinishShowcase();
     }
   }
+
+  /**
+   * Handles keyboard navigation for revealing definitions and moving to the next word.
+   *
+   * @param e - The keyboard event object.
+   */
+  function handleKeydown(e: KeyboardEvent) {
+    const target = e.target as HTMLElement | null;
+    if (
+      target &&
+      (target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        target.tagName === 'SELECT' ||
+        target.isContentEditable)
+    ) {
+      return;
+    }
+
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (!isRevealed) {
+        handleReveal();
+      } else {
+        handleNextWord();
+      }
+    }
+  }
 </script>
+
+<svelte:window onkeydown={handleKeydown} />
 
 <div
   class="w-full sm:max-w-2xl border-y sm:border border-(--border-default) bg-(--bg-surface) sm:rounded-2xl sm:shadow-2xl transition-all duration-300"
@@ -121,10 +150,13 @@
             class="absolute inset-0 flex items-center justify-center rounded-xl bg-(--brand-primary)/15 backdrop-blur-[2px] transition-all group-hover:bg-(--brand-primary)/20 p-4"
           >
             <div
-              class="btn-primary py-2.5 px-4 text-xs sm:text-sm text-center"
+              class="btn-primary py-2.5 px-4 text-xs sm:text-sm text-center flex items-center justify-center gap-2"
             >
               <Icon icon="ph:eye-bold" class="h-4 w-4 shrink-0" />
               <span>Stuknij, aby odsłonić definicję</span>
+              <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
+                Spacja / Enter ↵
+              </kbd>
             </div>
           </div>
         {/if}
@@ -189,13 +221,19 @@
       <button
         type="button"
         onclick={handleNextWord}
-        class="btn-touch sm:w-auto sm:px-6"
+        class="btn-touch sm:w-auto sm:px-6 flex items-center justify-center gap-2"
       >
         {#if currentIndex + 1 < words.length}
           <span>Następne słowo</span>
+          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
+            {!isRevealed ? 'Spacja' : 'Enter ↵'}
+          </kbd>
           <Icon icon="ph:arrow-right-bold" class="h-5 w-5" />
         {:else}
           <span>Przejdź do testu wiedzy</span>
+          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
+            Enter ↵
+          </kbd>
           <Icon icon="ph:check-bold" class="h-5 w-5" />
         {/if}
       </button>

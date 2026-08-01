@@ -29,7 +29,62 @@
     onGrade(grade);
     selectedOption = null;
   }
+
+  /**
+   * Handles keyboard events for quiz option selection and self-assessment grading.
+   *
+   * @param e - The keyboard event object.
+   */
+  function handleKeydown(e: KeyboardEvent) {
+    const target = e.target as HTMLElement | null;
+    if (
+      target &&
+      (target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        target.tagName === 'SELECT' ||
+        target.isContentEditable)
+    ) {
+      return;
+    }
+
+    if (!isAnswered) {
+      // Quiz selection step: numbers 1-4 or letters A-D
+      if (['1', 'a', 'A'].includes(e.key) && card.options[0]) {
+        e.preventDefault();
+        handleSelectOption(card.options[0]);
+      } else if (['2', 'b', 'B'].includes(e.key) && card.options[1]) {
+        e.preventDefault();
+        handleSelectOption(card.options[1]);
+      } else if (['3', 'c', 'C'].includes(e.key) && card.options[2]) {
+        e.preventDefault();
+        handleSelectOption(card.options[2]);
+      } else if (['4', 'd', 'D'].includes(e.key) && card.options[3]) {
+        e.preventDefault();
+        handleSelectOption(card.options[3]);
+      }
+    } else {
+      // Self-grade step: Enter/Space for smart default, or 1-4 / Z,X,C,V
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        handleSelfGrade(isCorrect ? 5 : 0);
+      } else if (['1', 'z', 'Z'].includes(e.key)) {
+        e.preventDefault();
+        handleSelfGrade(0);
+      } else if (['2', 'x', 'X'].includes(e.key)) {
+        e.preventDefault();
+        handleSelfGrade(3);
+      } else if (['3', 'c', 'C'].includes(e.key)) {
+        e.preventDefault();
+        handleSelfGrade(4);
+      } else if (['4', 'v', 'V'].includes(e.key)) {
+        e.preventDefault();
+        handleSelfGrade(5);
+      }
+    }
+  }
 </script>
+
+<svelte:window onkeydown={handleKeydown} />
 
 <div
   class="w-full sm:max-w-2xl border-y sm:border border-(--border-default) bg-(--bg-surface) sm:rounded-2xl sm:shadow-xl transition-all duration-300"
@@ -88,7 +143,7 @@
             <button
               type="button"
               onclick={() => handleSelectOption(option)}
-              class="app-card-interactive group flex items-start gap-3 bg-(--bg-surface-elevated) p-4 min-h-14 text-left active:scale-[0.99] transition-transform"
+              class="app-card-interactive group flex items-start gap-3 bg-(--bg-surface-elevated) p-4 min-h-14 text-left active:scale-[0.99] transition-transform relative"
             >
               <span
                 class="flex h-7 w-7 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-lg border border-(--border-default) bg-(--bg-surface) text-xs font-extrabold text-(--text-primary) group-hover:border-(--brand-primary) group-hover:text-(--text-amber-brand)"
@@ -96,10 +151,13 @@
                 {String.fromCharCode(65 + index)}
               </span>
               <span
-                class="text-sm font-semibold leading-snug text-(--text-primary) pt-0.5"
+                class="text-sm font-semibold leading-snug text-(--text-primary) pt-0.5 flex-1"
               >
                 {option}
               </span>
+              <kbd class="hidden sm:inline-flex shrink-0 items-center justify-center px-2 py-0.5 text-[10px] font-mono font-bold bg-(--bg-surface) text-(--text-muted) rounded border border-(--border-default) shadow-2xs group-hover:border-(--brand-primary) group-hover:text-(--brand-primary)">
+                {index + 1}
+              </kbd>
             </button>
           {/each}
         </div>
@@ -205,8 +263,14 @@
         <p class="text-xs sm:text-sm font-extrabold text-(--text-primary)">
           Oceń, jak dobrze pamiętasz to słówko
         </p>
-        <p class="text-[11px] font-semibold text-(--text-muted) mt-0.5">
-          Kliknij przycisk, żeby przejść dalej
+        <p class="text-[11px] font-semibold text-(--text-muted) mt-0.5 flex items-center justify-center gap-1">
+          <span>Użyj myszki lub skrótów:</span>
+          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-(--bg-surface) text-(--text-primary) rounded border border-(--border-default) shadow-2xs">
+            Enter ↵
+          </kbd>
+          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-(--bg-surface) text-(--text-primary) rounded border border-(--border-default) shadow-2xs">
+            1 - 4
+          </kbd>
         </p>
       </div>
 
@@ -215,40 +279,60 @@
         <button
           type="button"
           onclick={() => handleSelfGrade(0)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-0-border) bg-(--grade-0-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1"
+          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-0-border) bg-(--grade-0-bg) py-2 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1 relative"
         >
-          <Icon icon="ph:x-circle-bold" class="h-5 w-5 text-(--grade-0-text)" />
-          <span class="font-extrabold text-xs sm:text-sm text-(--grade-0-text)">Bardzo słabo</span>
+          <div class="flex items-center gap-1">
+            <Icon icon="ph:x-circle-bold" class="h-4 w-4 text-(--grade-0-text)" />
+            <span class="font-extrabold text-xs sm:text-sm text-(--grade-0-text)">Bardzo słabo</span>
+          </div>
+          <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-0-text)">
+            [1 / Z] {!isCorrect ? '• Enter ↵' : ''}
+          </span>
         </button>
 
         <!-- Słabo (Ocena 3) -->
         <button
           type="button"
           onclick={() => handleSelfGrade(3)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-3-border) bg-(--grade-3-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1"
+          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-3-border) bg-(--grade-3-bg) py-2 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1 relative"
         >
-          <Icon icon="ph:minus-circle-bold" class="h-5 w-5 text-(--grade-3-text)" />
-          <span class="font-extrabold text-xs sm:text-sm text-(--grade-3-text)">Słabo</span>
+          <div class="flex items-center gap-1">
+            <Icon icon="ph:minus-circle-bold" class="h-4 w-4 text-(--grade-3-text)" />
+            <span class="font-extrabold text-xs sm:text-sm text-(--grade-3-text)">Słabo</span>
+          </div>
+          <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-3-text)">
+            [2 / X]
+          </span>
         </button>
 
         <!-- Dobrze (Ocena 4) -->
         <button
           type="button"
           onclick={() => handleSelfGrade(4)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-4-border) bg-(--grade-4-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1"
+          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-4-border) bg-(--grade-4-bg) py-2 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1 relative"
         >
-          <Icon icon="ph:check-circle-bold" class="h-5 w-5 text-(--grade-4-text)" />
-          <span class="font-extrabold text-xs sm:text-sm text-(--grade-4-text)">Dobrze</span>
+          <div class="flex items-center gap-1">
+            <Icon icon="ph:check-circle-bold" class="h-4 w-4 text-(--grade-4-text)" />
+            <span class="font-extrabold text-xs sm:text-sm text-(--grade-4-text)">Dobrze</span>
+          </div>
+          <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-4-text)">
+            [3 / C]
+          </span>
         </button>
 
         <!-- Bardzo dobrze (Ocena 5) -->
         <button
           type="button"
           onclick={() => handleSelfGrade(5)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-5-border) bg-(--grade-5-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1"
+          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-5-border) bg-(--grade-5-bg) py-2 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1 relative"
         >
-          <Icon icon="ph:star-bold" class="h-5 w-5 text-(--grade-5-text)" />
-          <span class="font-extrabold text-xs sm:text-sm text-(--grade-5-text)">Bardzo dobrze</span>
+          <div class="flex items-center gap-1">
+            <Icon icon="ph:star-bold" class="h-4 w-4 text-(--grade-5-text)" />
+            <span class="font-extrabold text-xs sm:text-sm text-(--grade-5-text)">Bardzo dobrze</span>
+          </div>
+          <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-5-text)">
+            [4 / V] {isCorrect ? '• Enter ↵' : ''}
+          </span>
         </button>
       </div>
     </div>

@@ -235,7 +235,37 @@
       console.error('Błąd wylogowania:', err);
     }
   }
+
+  /**
+   * Handles keyboard shortcuts when on the session summary screen.
+   *
+   * @param e - The keyboard event object.
+   */
+  function handlePageKeydown(e: KeyboardEvent) {
+    const target = e.target as HTMLElement | null;
+    if (
+      target &&
+      (target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        target.tagName === 'SELECT' ||
+        target.isContentEditable)
+    ) {
+      return;
+    }
+
+    if (activeTab === 'lesson' && sessionCompleted) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        startSession();
+      } else if (e.key === 'k' || e.key === 'K') {
+        e.preventDefault();
+        activeTab = 'catalog';
+      }
+    }
+  }
 </script>
+
+<svelte:window onkeydown={handlePageKeydown} />
 
 <!-- Pasek Nawigacji z przełącznikiem motywu -->
 <Navbar
@@ -321,22 +351,28 @@
             </div>
           </div>
 
-          <!-- Akcje - duże, dotykowe -->
+          <!-- Akcje - duże, dotykowe z kbd dla dekstopa -->
           <div class="flex flex-col gap-3 p-5">
             <button
               type="button"
               onclick={startSession}
-              class="btn-touch"
+              class="btn-touch flex items-center justify-center gap-2"
             >
               <Icon icon="ph:arrows-clockwise-bold" class="h-5 w-5" />
               <span>Powtórz dodatkowo</span>
+              <kbd class="hidden sm:inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
+                Enter ↵
+              </kbd>
             </button>
             <button
               type="button"
               onclick={() => (activeTab = 'catalog')}
-              class="btn-secondary w-full py-3 text-sm"
+              class="btn-secondary w-full py-3 text-sm flex items-center justify-center gap-2"
             >
-              Przeglądaj Słowniczek
+              <span>Przeglądaj Słowniczek</span>
+              <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-(--bg-surface) text-(--text-muted) rounded border border-(--border-default)">
+                K
+              </kbd>
             </button>
           </div>
 
