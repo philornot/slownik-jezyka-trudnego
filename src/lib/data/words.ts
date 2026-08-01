@@ -176,7 +176,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     id: 'antynomia',
     word: 'Antynomia',
     phonetic: '[an-ty-no-mia]',
-    shortDefinition: 'Sprzeczność między dwoma sprzecznymi, lecz racjonalnymi twierdzeniami.',
+    shortDefinition: 'Sprzeczność między dwoma uzasadnionymi, lecz wykluczającymi się twierdzeniami.',
     fullDefinition: 'Sprzeczność dwóch twierdzeń, z których każde wydaje się równie dobrze uzasadnione i logicznie poprawne, co tworzy nierozwiązalny paradoks.',
     etymology: 'Z greki: antinomia – sprzeczność praw (anti- + nomos).',
     examples: [
@@ -470,7 +470,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     id: 'fatalizm',
     word: 'Fatalizm',
     phonetic: '[fa-ta-lizm]',
-    shortDefinition: 'Przekonanie, że los człowiek jest nieuchronnie z góry przesądzony.',
+    shortDefinition: 'Przekonanie, że los człowieka jest z góry nieuchronnie przesądzony.',
     fullDefinition: 'Wiara w nieuchronność losu i przeznaczenia, poczucie bezsilności wobec wyższych wyroków.',
     etymology: 'Z łaciny: fatalis – przeznaczony przez los.',
     examples: [
@@ -620,7 +620,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     id: 'lapsus',
     word: 'Lapsus',
     phonetic: '[lap-sus]',
-    shortDefinition: 'Drobna, nieumyślna pomyłka w mowie lub pismie.',
+    shortDefinition: 'Drobna, nieumyślna pomyłka w mowie lub piśmie.',
     fullDefinition: 'Niezamierzony błąd, przejęzyczenie lub przeoczenie popełnione podczas mówienia lub pisania.',
     etymology: 'Z łaciny: lapsus.',
     examples: [
@@ -677,23 +677,23 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     distractors: ['Oficjalny komunikat rządowy.', 'Darmowy koncert na rynku.', 'Prawdziwy dokument tożsamości.']
   },
   {
-    id: 'nuans',
-    word: 'Nuans',
-    phonetic: '[nu-ans]',
+    id: 'niuans',
+    word: 'Niuans',
+    phonetic: '[niu-ans]',
     shortDefinition: 'Drobny, subtelny odcień znaczenia, barwy lub dźwięku.',
     fullDefinition: 'Subtelna różnica, bardzo drobna odmienność w znaczeniu słów, odcieniu koloru lub dźwięku.',
     etymology: 'Z francuskiego: nuance.',
     examples: [
-      'Dobry tłumacz potrafi wyłapać każdy nuans wypowiedzi.',
-      'Aktor uchwycił wszystkie nuanse postaci.'
+      'Dobry tłumacz potrafi wyłapać każdy niuans wypowiedzi.',
+      'Aktor uchwycił wszystkie niuanse postaci.'
     ],
     category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/nuans.html',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/niuans.html',
     distractors: ['Wielki, widoczny z daleka błąd.', 'Głośny huk uderzenia.', 'Ciężka przeszkoda na drodze.']
   },
   {
     id: 'obligatoryjny',
-    word: 'Obligatorijny',
+    word: 'Obligatoryjny',
     phonetic: '[ob-li-ga-to-ryj-ny]',
     shortDefinition: 'Bezwzględnie nakazany, obowiązkowy.',
     fullDefinition: 'Mający charakter bezwzględnego obowiązku; nakazany przez przepisy prawa lub zasady.',
@@ -928,7 +928,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
       'Wstrzemięźliwość żywieniowa sprzyja zdrowiu.'
     ],
     category: 'Etyka i Moralność',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/wstrzemi%C7%A8%C5%BAliwo%C5%9B%C4%87.html',
+    sjpUrl: 'https://sjp.pwn.pl/slowniki/wstrzemi%C4%99%C5%BAliwo%C5%9B%C4%87.html',
     distractors: ['Objadanie się bez umiaru.', 'Uleganie wszelkim zachciankom.', 'Głośny krzyk w miejscu publicznym.']
   },
   {
@@ -970,7 +970,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     word: 'Hybris',
     phonetic: '[hy-bris]',
     shortDefinition: 'Nieposkromiona pycha i zuchwałość obrażająca porządek boski.',
-    fullDefinition: 'W myśli starożytnej Grecji: zuchwała pycha i arogancja, ktore obrazily bogow i nieuchronnie prowadziły do kary (nemezis).',
+    fullDefinition: 'W myśli starożytnej Grecji: zuchwała pycha i arogancja, które obraziły bogów i nieuchronnie prowadziły do kary (nemezis).',
     etymology: 'Z greki: hýbris – pycha, zuchwałość.',
     examples: [
       'Hybris Edypa polegała na przekonaniu, że zdoła oszukać wyrocznię i uciec przed przeznaczeniem.',
@@ -1384,18 +1384,18 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ]
   },
   {
-    id: 'palinoda',
-    word: 'Palinoda',
-    phonetic: '[pa-li-no-da]',
+    id: 'palinodia',
+    word: 'Palinodia',
+    phonetic: '[pa-li-no-dia]',
     shortDefinition: 'Odwołanie wcześniej wygłoszonej opinii lub poematu.',
     fullDefinition: 'Utwór literacki lub wypowiedź, w której autor odwołuje lub zaprzecza temu, co wcześniej twierdził lub pisał.',
     etymology: 'Z greki: palinōdia (palin – z powrotem + ōde – pieśń).',
     examples: [
-      'Poeta napisał palinodę, odwołując swoje wcześniejsze uwielbienie dla władcy.',
-      'Filozof opublikował palinodę po tym, jak nowe dowody obaliły jego wcześniejszą teorię.'
+      'Poeta napisał palinodię, odwołując swoje wcześniejsze uwielbienie dla władcy.',
+      'Filozof opublikował palinodię po tym, jak nowe dowody obaliły jego wcześniejszą teorię.'
     ],
     category: 'Sztuka i Literatura',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/palinoda.html',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/palinodia.html',
     distractors: [
       'Utwór pochwalny sławiący zasługi bohatera.',
       'Zbiór epigramów na tematy polityczne.',
@@ -1403,18 +1403,18 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ]
   },
   {
-    id: 'oneiryczny',
-    word: 'Oneiryczny',
-    phonetic: '[o-ne-iry-czny]',
+    id: 'oniryczny',
+    word: 'Oniryczny',
+    phonetic: '[o-ni-rycz-ny]',
     shortDefinition: 'Mający charakter snu, sennych wizji lub marzeń.',
     fullDefinition: 'Odnoszący się do sfery snów i marzeń sennych; o nieuchwytnej, jakby śnionej atmosferze.',
-    etymology: 'Z greki: oneiros – sen.',
+    etymology: 'Z greki: óneiros – sen (por. oniryzm).',
     examples: [
-      'Proza poetki miała oneiryczny charakter: obrazy przenikały się jak we śnie, bez przyczynowego porządku.',
-      'Film zbudowany był z sekwencji oneirycznych — granica między jawą a snem zacierała się celowo.'
+      'Proza poetki miała oniryczny charakter: obrazy przenikały się jak we śnie, bez przyczynowego porządku.',
+      'Film zbudowany był z sekwencji onirycznych — granica między jawą a snem zacierała się celowo.'
     ],
     category: 'Sztuka i Literatura',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/oneiryczny.html',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/oniryczny.html',
     distractors: [
       'Oparty na ścisłych danych empirycznych.',
       'Brutalnie realistyczny i pozbawiony metafory.',
@@ -1460,18 +1460,18 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ]
   },
   {
-    id: 'logomachnia',
-    word: 'Logomachnia',
-    phonetic: '[lo-go-mach-nia]',
+    id: 'logomachia',
+    word: 'Logomachia',
+    phonetic: '[lo-go-ma-chia]',
     shortDefinition: 'Spór o słowa zamiast o meritum zagadnienia.',
     fullDefinition: 'Jałowy spór, w którym strony kłócą się o znaczenie słów lub terminów, nie docierając do istoty zagadnienia.',
     etymology: 'Z greki: logos – słowo + mache – walka.',
     examples: [
-      'Konferencja zamieniła się w logomachnię — filozofowie przez dwie godziny spierali się o definicję słowa świadomość.',
-      'Unikaj logomachni w negocjacjach: lepiej uzgodnić znaczenie pojęć na początku.'
+      'Konferencja zamieniła się w logomachię — filozofowie przez dwie godziny spierali się o definicję słowa świadomość.',
+      'Unikaj logomachii w negocjacjach: lepiej uzgodnić znaczenie pojęć na początku.'
     ],
     category: 'Język i Mowa',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/logomachnia.html',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/logomachia.html',
     distractors: [
       'Precyzyjne rozróżnienie między pojęciami bliskoznacznymi.',
       'Wielojęzyczna konferencja naukowa.',
