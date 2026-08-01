@@ -274,14 +274,14 @@
           <div class="w-full max-w-2xl px-4 sm:px-0">
             <!-- Mobile: uproszczony pasek z liczbą -->
             <div class="flex items-center gap-3 mb-1">
-              <span class="text-[11px] sm:text-xs font-extrabold text-[var(--brand-primary)] shrink-0">Faza 2 &middot; {currentCardIndex + 1}/{sessionCards.length}</span>
-              <div class="flex-1 h-2 sm:h-2.5 rounded-full bg-[var(--progress-track)] overflow-hidden">
+              <span class="text-[11px] sm:text-xs font-extrabold text-(--brand-primary) shrink-0">Faza 2 &middot; {currentCardIndex + 1}/{sessionCards.length}</span>
+              <div class="flex-1 h-2 sm:h-2.5 rounded-full bg-(--progress-track) overflow-hidden">
                 <div
-                  class="h-full bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-primary-hover)] transition-all duration-300"
+                  class="h-full bg-linear-to-r from-(--brand-primary) to-(--brand-primary-hover) transition-all duration-300"
                   style="width: {((currentCardIndex + 1) / sessionCards.length) * 100}%"
                 ></div>
               </div>
-              <span class="text-[11px] sm:text-xs font-extrabold text-[var(--text-muted)] shrink-0 tabular-nums">{Math.round(((currentCardIndex + 1) / sessionCards.length) * 100)}%</span>
+              <span class="text-[11px] sm:text-xs font-extrabold text-(--text-muted) shrink-0 tabular-nums">{Math.round(((currentCardIndex + 1) / sessionCards.length) * 100)}%</span>
             </div>
           </div>
 
@@ -294,30 +294,30 @@
         
         <!-- EKRAN PODSUMOWANIA LEKCJI -->
         <!-- Na mobile: edge-to-edge, brak zaokrągleń po bokach -->
-        <div class="w-full sm:max-w-xl sm:rounded-2xl border-y sm:border border-[var(--border-default)] bg-[var(--bg-surface)] sm:shadow-xl animate-in fade-in duration-300">
+        <div class="w-full sm:max-w-xl sm:rounded-2xl border-y sm:border border-(--border-default) bg-(--bg-surface) sm:shadow-xl animate-in fade-in duration-300">
           
           <!-- Górna sekcja -->
           <div class="flex flex-col items-center text-center px-6 pt-10 pb-6 gap-4">
-            <div class="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[var(--brand-primary)] to-[var(--brand-primary-hover)] shadow-lg">
+            <div class="flex h-20 w-20 items-center justify-center rounded-3xl bg-linear-to-br from-(--brand-primary) to-(--brand-primary-hover) shadow-lg">
               <Icon icon="ph:trophy-bold" class="h-11 w-11 text-white" />
             </div>
             <div>
               <h2 class="title-serif text-3xl sm:text-4xl">Wspaniała praca!</h2>
-              <p class="mt-2 text-sm font-semibold text-[var(--text-muted)] max-w-xs mx-auto">
+              <p class="mt-2 text-sm font-semibold text-(--text-muted) max-w-xs mx-auto">
                 Dzisiejsza lekcja zakończona. Twój zasób słownictwa rośnie!
               </p>
             </div>
           </div>
 
           <!-- Statystyki sesji -->
-          <div class="grid grid-cols-2 divide-x divide-[var(--border-default)] border-y border-[var(--border-default)] text-center">
+          <div class="grid grid-cols-2 divide-x divide-(--border-default) border-y border-(--border-default) text-center">
             <div class="py-5 px-4">
-              <span class="text-[11px] font-extrabold text-[var(--text-muted)] uppercase tracking-wider">Przejrzane hasła</span>
-              <p class="font-serif text-3xl font-bold text-[var(--text-amber-brand)] mt-1">{cardsReviewedInSession}</p>
+              <span class="text-[11px] font-extrabold text-(--text-muted) uppercase tracking-wider">Przejrzane hasła</span>
+              <p class="font-serif text-3xl font-bold text-(--text-amber-brand) mt-1">{cardsReviewedInSession}</p>
             </div>
             <div class="py-5 px-4">
-              <span class="text-[11px] font-extrabold text-[var(--text-muted)] uppercase tracking-wider">Seria nauki</span>
-              <p class="font-serif text-3xl font-bold text-[var(--text-amber-brand)] mt-1">{streakDays} dni</p>
+              <span class="text-[11px] font-extrabold text-(--text-muted) uppercase tracking-wider">Seria nauki</span>
+              <p class="font-serif text-3xl font-bold text-(--text-amber-brand) mt-1">{streakDays} dni</p>
             </div>
           </div>
 

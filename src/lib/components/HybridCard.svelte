@@ -215,9 +215,9 @@
         <button
           type="button"
           onclick={() => handleSelfGrade(0)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-0-border) bg-(--grade-0-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5"
+          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-0-border) bg-(--grade-0-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1"
         >
-          <span class="text-base leading-none">😰</span>
+          <Icon icon="ph:x-circle-bold" class="h-5 w-5 text-(--grade-0-text)" />
           <span class="font-extrabold text-xs sm:text-sm text-(--grade-0-text)">Bardzo słabo</span>
         </button>
 
@@ -225,9 +225,9 @@
         <button
           type="button"
           onclick={() => handleSelfGrade(3)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-3-border) bg-(--grade-3-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5"
+          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-3-border) bg-(--grade-3-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1"
         >
-          <span class="text-base leading-none">😕</span>
+          <Icon icon="ph:minus-circle-bold" class="h-5 w-5 text-(--grade-3-text)" />
           <span class="font-extrabold text-xs sm:text-sm text-(--grade-3-text)">Słabo</span>
         </button>
 
@@ -235,9 +235,9 @@
         <button
           type="button"
           onclick={() => handleSelfGrade(4)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-4-border) bg-(--grade-4-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5"
+          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-4-border) bg-(--grade-4-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1"
         >
-          <span class="text-base leading-none">🙂</span>
+          <Icon icon="ph:check-circle-bold" class="h-5 w-5 text-(--grade-4-text)" />
           <span class="font-extrabold text-xs sm:text-sm text-(--grade-4-text)">Dobrze</span>
         </button>
 
@@ -245,9 +245,9 @@
         <button
           type="button"
           onclick={() => handleSelfGrade(5)}
-          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-5-border) bg-(--grade-5-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5"
+          class="flex min-h-13 sm:min-h-14 flex-col items-center justify-center rounded-xl border border-(--grade-5-border) bg-(--grade-5-bg) py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-1"
         >
-          <span class="text-base leading-none">🤩</span>
+          <Icon icon="ph:star-bold" class="h-5 w-5 text-(--grade-5-text)" />
           <span class="font-extrabold text-xs sm:text-sm text-(--grade-5-text)">Bardzo dobrze</span>
         </button>
       </div>
