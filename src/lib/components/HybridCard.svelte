@@ -63,20 +63,17 @@
         handleSelectOption(card.options[3]);
       }
     } else {
-      // Self-grade step: Enter/Space for smart default, or 1-4 / Z,X,C,V
-      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') {
-        e.preventDefault();
-        handleSelfGrade(isCorrect ? 5 : 0);
-      } else if (['1', 'z', 'Z'].includes(e.key)) {
+      // Self-grade step: ONLY numbers 1-4
+      if (e.key === '1') {
         e.preventDefault();
         handleSelfGrade(0);
-      } else if (['2', 'x', 'X'].includes(e.key)) {
+      } else if (e.key === '2') {
         e.preventDefault();
         handleSelfGrade(3);
-      } else if (['3', 'c', 'C'].includes(e.key)) {
+      } else if (e.key === '3') {
         e.preventDefault();
         handleSelfGrade(4);
-      } else if (['4', 'v', 'V'].includes(e.key)) {
+      } else if (e.key === '4') {
         e.preventDefault();
         handleSelfGrade(5);
       }
@@ -264,10 +261,7 @@
           Oceń, jak dobrze pamiętasz to słówko
         </p>
         <p class="text-[11px] font-semibold text-(--text-muted) mt-0.5 flex items-center justify-center gap-1">
-          <span>Użyj myszki lub skrótów:</span>
-          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-(--bg-surface) text-(--text-primary) rounded border border-(--border-default) shadow-2xs">
-            Enter ↵
-          </kbd>
+          <span>Wybierz myszką lub klawiszami 1-4:</span>
           <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-(--bg-surface) text-(--text-primary) rounded border border-(--border-default) shadow-2xs">
             1 - 4
           </kbd>
@@ -286,7 +280,7 @@
             <span class="font-extrabold text-xs sm:text-sm text-(--grade-0-text)">Bardzo słabo</span>
           </div>
           <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-0-text)">
-            [1 / Z] {!isCorrect ? '• Enter ↵' : ''}
+            [1]
           </span>
         </button>
 
@@ -301,7 +295,7 @@
             <span class="font-extrabold text-xs sm:text-sm text-(--grade-3-text)">Słabo</span>
           </div>
           <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-3-text)">
-            [2 / X]
+            [2]
           </span>
         </button>
 
@@ -316,7 +310,7 @@
             <span class="font-extrabold text-xs sm:text-sm text-(--grade-4-text)">Dobrze</span>
           </div>
           <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-4-text)">
-            [3 / C]
+            [3]
           </span>
         </button>
 
@@ -331,7 +325,7 @@
             <span class="font-extrabold text-xs sm:text-sm text-(--grade-5-text)">Bardzo dobrze</span>
           </div>
           <span class="hidden sm:inline-block text-[10px] font-mono font-bold opacity-75 text-(--grade-5-text)">
-            [4 / V] {isCorrect ? '• Enter ↵' : ''}
+            [4]
           </span>
         </button>
       </div>

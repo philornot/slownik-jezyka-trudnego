@@ -20,6 +20,7 @@
   }
 
   function handleNextWord() {
+    if (!isRevealed) return;
     if (currentIndex + 1 < words.length) {
       currentIndex++;
       isRevealed = false;
@@ -30,6 +31,8 @@
 
   /**
    * Handles keyboard navigation for revealing definitions and moving to the next word.
+   * Space is used ONLY for revealing the word definition.
+   * Enter is used ONLY for proceeding to the next word (after definition is revealed).
    *
    * @param e - The keyboard event object.
    */
@@ -45,11 +48,15 @@
       return;
     }
 
-    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (!isRevealed) {
+    if (!isRevealed) {
+      if (e.key === ' ') {
+        e.preventDefault();
         handleReveal();
-      } else {
+      }
+      // Enter is ignored if definition is not revealed yet
+    } else {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
         handleNextWord();
       }
     }
@@ -133,7 +140,7 @@
         role="button"
         tabindex="0"
         onclick={handleReveal}
-        onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && handleReveal()}
+        onkeydown={(e) => e.key === ' ' && handleReveal()}
         class="relative min-h-25 rounded-xl border border-(--border-default) bg-(--bg-surface-elevated) p-4 sm:p-5 shadow-xs transition-all cursor-pointer group hover:border-(--brand-primary)"
       >
         <p
@@ -155,7 +162,7 @@
               <Icon icon="ph:eye-bold" class="h-4 w-4 shrink-0" />
               <span>Stuknij, aby odsłonić definicję</span>
               <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
-                Spacja / Enter ↵
+                Spacja
               </kbd>
             </div>
           </div>
@@ -220,13 +227,20 @@
 
       <button
         type="button"
+        disabled={!isRevealed}
         onclick={handleNextWord}
-        class="btn-touch sm:w-auto sm:px-6 flex items-center justify-center gap-2"
+        class="btn-touch sm:w-auto sm:px-6 flex items-center justify-center gap-2 {!isRevealed ? 'opacity-50 cursor-not-allowed' : ''}"
       >
-        {#if currentIndex + 1 < words.length}
+        {#if !isRevealed}
+          <span>Najpierw odsłoń definicję</span>
+          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
+            Spacja
+          </kbd>
+          <Icon icon="ph:eye-bold" class="h-5 w-5" />
+        {:else if currentIndex + 1 < words.length}
           <span>Następne słowo</span>
           <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
-            {!isRevealed ? 'Spacja' : 'Enter ↵'}
+            Enter ↵
           </kbd>
           <Icon icon="ph:arrow-right-bold" class="h-5 w-5" />
         {:else}
