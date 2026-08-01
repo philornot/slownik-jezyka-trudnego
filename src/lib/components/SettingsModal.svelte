@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { UserSettings } from "../types";
   import { requestNotificationPermission } from "../notifications";
+  import { APP_VERSION } from "../version";
   import Icon from "@iconify/svelte";
 
   interface Props {
@@ -414,24 +415,27 @@
       {/if}
     </div>
 
-    <!-- Stopka z przyciskami -->
+    <!-- Stopka z przyciskami i wersją -->
     <div
       class="flex items-center justify-between border-t border-(--border-default) bg-(--bg-surface-elevated) p-4 sm:px-6"
     >
-      <button
-        type="button"
-        onclick={handleClose}
-        class="btn-secondary py-2.5 px-4"
-      >
-        Anuluj
-      </button>
-      <button
-        type="button"
-        onclick={handleSave}
-        class="btn-touch sm:w-auto sm:px-6"
-      >
-        Zapisz zmiany
-      </button>
+      <span class="text-[11px] font-mono text-(--text-muted)/50 select-none">v{APP_VERSION}</span>
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          onclick={handleClose}
+          class="btn-secondary py-2.5 px-4"
+        >
+          Anuluj
+        </button>
+        <button
+          type="button"
+          onclick={handleSave}
+          class="btn-touch sm:w-auto sm:px-6"
+        >
+          Zapisz zmiany
+        </button>
+      </div>
     </div>
   </div>
 </div>
