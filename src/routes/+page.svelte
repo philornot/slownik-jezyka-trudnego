@@ -11,6 +11,7 @@
     saveLocalSettings,
     loadProgressFromCloud,
     syncProgressToCloud,
+    flushSyncProgressToCloud,
     clearAllProgress,
     saveSettingsToCloud,
     loadSettingsFromCloud
@@ -203,6 +204,7 @@
       currentCardIndex++;
     } else {
       sessionCompleted = true;
+      flushSyncProgressToCloud();
     }
   }
 
@@ -242,6 +244,8 @@
    * @param e - The keyboard event object.
    */
   function handlePageKeydown(e: KeyboardEvent) {
+    if (e.repeat) return;
+
     const target = e.target as HTMLElement | null;
     if (
       target &&

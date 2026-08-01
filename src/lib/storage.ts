@@ -125,18 +125,55 @@ export function saveLocalSettings(settings: UserSettings): void {
   }
 }
 
+let syncDebounceTimer: ReturnType<typeof setTimeout> | null = null;
+let pendingSyncUid: string | null = null;
+let pendingSyncMap: Record<string, UserWordProgress> | null = null;
+
 /**
- * Synchronizuje postęp do chmury Firebase Firestore
+ * Natychmiastowo wysyła oczekujący postęp do chmury Firestore (o ile istnieje w kolejce).
  */
-export async function syncProgressToCloud(userId: string, progressMap: Record<string, UserWordProgress>): Promise<void> {
-  try {
-    const db = getFirebaseDb();
-    if (!db) return;
-    const userDocRef = doc(db, 'users', userId);
-    await setDoc(userDocRef, { progressMap, updatedAt: new Date().toISOString() }, { merge: true });
-  } catch (e) {
-    console.warn('Nie udało się zsynchronizować z Firebase Firestore:', e);
+export async function flushSyncProgressToCloud(): Promise<void> {
+  if (syncDebounceTimer) {
+    clearTimeout(syncDebounceTimer);
+    syncDebounceTimer = null;
   }
+  if (pendingSyncUid && pendingSyncMap) {
+    const uid = pendingSyncUid;
+    const map = pendingSyncMap;
+    pendingSyncUid = null;
+    pendingSyncMap = null;
+    try {
+      const db = getFirebaseDb();
+      if (!db) return;
+      const userDocRef = doc(db, 'users', uid);
+      await setDoc(userDocRef, { progressMap: map, updatedAt: new Date().toISOString() }, { merge: true });
+    } catch (e) {
+      console.warn('Nie udało się zsynchronizować z Firebase Firestore:', e);
+    }
+  }
+}
+
+/**
+ * Synchronizuje postęp do chmury Firebase Firestore z debouncingiem (2.5 sekundy).
+ * Ochrona przed spamem zapytaniami i nadmiernym zużyciem limitów Firestore.
+ */
+export function syncProgressToCloud(userId: string, progressMap: Record<string, UserWordProgress>): void {
+  pendingSyncUid = userId;
+  pendingSyncMap = progressMap;
+
+  if (syncDebounceTimer) {
+    clearTimeout(syncDebounceTimer);
+  }
+
+  syncDebounceTimer = setTimeout(() => {
+    flushSyncProgressToCloud();
+  }, 2500);
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('beforeunload', () => {
+    flushSyncProgressToCloud();
+  });
 }
 
 /**

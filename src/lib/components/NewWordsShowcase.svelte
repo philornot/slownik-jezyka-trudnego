@@ -37,6 +37,8 @@
    * @param e - The keyboard event object.
    */
   function handleKeydown(e: KeyboardEvent) {
+    if (e.repeat) return;
+
     const target = e.target as HTMLElement | null;
     if (
       target &&

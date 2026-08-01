@@ -14,18 +14,33 @@
   let isAnswered = $derived(selectedOption !== null);
   let isCorrect = $derived(selectedOption === card.word.shortDefinition);
 
+  // Blokada zapobiegająca natychmiastowemu nakładaniu się akcji po przytrzymaniu klawisza lub szybkim klikaniu
+  let isActionLocked = $state(false);
+
   // Reset stanu po zmianie karty słówka
   $effect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     card.word.id;
     selectedOption = null;
+    isActionLocked = false;
   });
 
+  function lockActionTemporarily() {
+    isActionLocked = true;
+    setTimeout(() => {
+      isActionLocked = false;
+    }, 200);
+  }
+
   function handleSelectOption(option: string) {
+    if (isActionLocked) return;
+    lockActionTemporarily();
     selectedOption = option;
   }
 
   function handleSelfGrade(grade: ReviewGrade) {
+    if (isActionLocked) return;
+    lockActionTemporarily();
     onGrade(grade);
     selectedOption = null;
   }
@@ -36,6 +51,10 @@
    * @param e - The keyboard event object.
    */
   function handleKeydown(e: KeyboardEvent) {
+    // Ignorujemy powtórzenia klawiszy przy przytrzymaniu (auto-repeat)
+    if (e.repeat) return;
+    if (isActionLocked) return;
+
     const target = e.target as HTMLElement | null;
     if (
       target &&
