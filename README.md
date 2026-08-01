@@ -1,7 +1,7 @@
 # Słownik Języka Trudnego / Dictionary of Sophisticated Polish Words
 
-> Interaktywna aplikacja webowa do nauki i poszerzania zasobu słownictwa o rzadkie, wyszukane i trudne pojęcia w języku polskim.  
-> *An interactive web application to learn, review, and master sophisticated Polish vocabulary.*
+Aplikacja webowa do nauki i poszerzania zasobu słownictwa o rzadkie, wyszukane i trudne pojęcia w języku polskim.  
+*An interactive web application to learn, review, and master sophisticated Polish vocabulary.*
 
 ---
 
