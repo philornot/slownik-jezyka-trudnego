@@ -1,5 +1,8 @@
 node_modules
 
+# Agents & IDE config
+.agents
+
 # Output
 .output
 .vercel
