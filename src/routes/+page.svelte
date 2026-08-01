@@ -364,7 +364,7 @@
             >
               <Icon icon="ph:arrows-clockwise-bold" class="h-5 w-5" />
               <span>Powtórz dodatkowo</span>
-              <kbd class="hidden sm:inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
+              <kbd class="hidden sm:inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-bold bg-current/15 text-current rounded border border-current/25">
                 Enter ↵
               </kbd>
             </button>

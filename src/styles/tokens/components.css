@@ -94,6 +94,13 @@
     transform: scale(0.97);
   }
 
+  .btn-primary kbd,
+  .btn-touch kbd {
+    background-color: color-mix(in srgb, currentColor 15%, transparent);
+    color: currentColor;
+    border-color: color-mix(in srgb, currentColor 25%, transparent);
+  }
+
   /* Odznaki i Etykiety */
   .badge-neutral {
     display: inline-flex;

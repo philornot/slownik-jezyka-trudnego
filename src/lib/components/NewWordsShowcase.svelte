@@ -163,7 +163,7 @@
             >
               <Icon icon="ph:eye-bold" class="h-4 w-4 shrink-0" />
               <span>Stuknij, aby odsłonić definicję</span>
-              <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
+              <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-current/15 text-current rounded border border-current/25">
                 Spacja
               </kbd>
             </div>
@@ -235,19 +235,19 @@
       >
         {#if !isRevealed}
           <span>Najpierw odsłoń definicję</span>
-          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
+          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-current/15 text-current rounded border border-current/25">
             Spacja
           </kbd>
           <Icon icon="ph:eye-bold" class="h-5 w-5" />
         {:else if currentIndex + 1 < words.length}
           <span>Następne słowo</span>
-          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
+          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-current/15 text-current rounded border border-current/25">
             Enter ↵
           </kbd>
           <Icon icon="ph:arrow-right-bold" class="h-5 w-5" />
         {:else}
           <span>Przejdź do testu wiedzy</span>
-          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-white/20 text-white rounded border border-white/30">
+          <kbd class="hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono font-bold bg-current/15 text-current rounded border border-current/25">
             Enter ↵
           </kbd>
           <Icon icon="ph:check-bold" class="h-5 w-5" />

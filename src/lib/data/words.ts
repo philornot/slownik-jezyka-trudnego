@@ -7,7 +7,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[im-pon-de-ra-bi-lia]',
     shortDefinition: 'Rzeczy nieuchwytne i niematerialne, wywierające przemożny wpływ na sytuację.',
     fullDefinition: 'Rzeczy nieuchwytne, trudne do zmierzenia lub ujęcia w cyfry, które jednak wywierają decydujący i przemożny wpływ na rozwój wydarzeń lub ludzkie decyzje.',
-    etymology: 'Z łaciny: imponderabilis – nie dający się poważyć (in- + ponderabilis).',
+    etymology: 'Z łaciny: imponderabilis - nie dający się poważyć (in- + ponderabilis).',
     examples: [
       'O sukcesie tej kampanii zdecydowały nie tylko finanse, lecz przede wszystkim psychologiczne imponderabilia.',
       'W relacjach międzyludzkich to właśnie imponderabilia często decydują o trwałości więzi.'
@@ -26,7 +26,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[ab-ne-gat]',
     shortDefinition: 'Osoba niedbająca o własny wygląd, korzyści materialne lub wygody.',
     fullDefinition: 'Człowiek, który świadomie lub z niedbalstwa rezygnuje z własnych wygód, osobistych korzyści oraz porządnego wyglądu zewnętrznego.',
-    etymology: 'Z łaciny: abnegare – odmawiać sobie czegoś, wyrzekać się.',
+    etymology: 'Z łaciny: abnegare - odmawiać sobie czegoś, wyrzekać się.',
     examples: [
       'Mimo znacznego majątku żył jak abnegat, nie zwracając uwagi na to, co nosi i gdzie mieszka.',
       'Młody artysta pozował na abnegata, by podkreślić swój dystans do społecznych konwenansów.'
@@ -45,7 +45,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[a-po-dyk-tycz-ny]',
     shortDefinition: 'Narzucający własne zdanie i nieznoszący sprzeciwu.',
     fullDefinition: 'Stawiający sprawy bezdyskusyjnie, narzucający swoją wolę i opinie innym w sposób kategoryczny oraz arbitralny.',
-    etymology: 'Z greki: apodeiktikós – bezsprzeczny, udowodniony.',
+    etymology: 'Z greki: apodeiktikós - bezsprzeczny, udowodniony.',
     examples: [
       'Jego apodyktyczny ton sprawiał, że współpracownicy rzadko odważali się na własną inicjatywę.',
       'Rządy dyrektora były apodyktyczne, choć w sprawach kluczowych potrafił działać skutecznie.'
@@ -64,7 +64,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[e-pi-fa-nia]',
     shortDefinition: 'Nagłe objawienie, głęboki przebłysk zrozumienia sensu.',
     fullDefinition: 'Moment nagłego olśnienia, w którym człowiek zaczyna nagle rozumieć istotę zjawiska, sens życia lub ukrytą dotąd prawdę.',
-    etymology: 'Z greki: epiphaneia – objawienie się, ukazanie się.',
+    etymology: 'Z greki: epiphaneia - objawienie się, ukazanie się.',
     examples: [
       'Przechadzając się samotnie nad brzegiem morza, doświadczył epifanii, która zmieniła jego podejście do twórczości.',
       'Książka opisuje epifanię głównego bohatera podczas prozaicznej rozmowy przy porannej kawie.'
@@ -83,7 +83,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[sy-ba-ry-ta]',
     shortDefinition: 'Człowiek zamiłowany w wykwintnym, wygodnym i zmysłowym życiu.',
     fullDefinition: 'Osoba unikająca wszelkiego trudu i niedogodności, nastawiona wyłącznie na wygodę, wykwintne przyjemności i luksus.',
-    etymology: 'Od Sybaris – starożytnego miasta greckiego w Italii, słynącego z bogactwa i zbytku mieszkańców.',
+    etymology: 'Od Sybaris - starożytnego miasta greckiego w Italii, słynącego z bogactwa i zbytku mieszkańców.',
     examples: [
       'Prawdziwy sybaryta spędzał popołudnia na miękkich otomana, racząc się egzotycznymi owocami.',
       'Przekształcił swoją rezydencję w samotnię sybaryty, odcinając się od problemów świata.'
@@ -102,7 +102,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[e-fe-me-rycz-ny]',
     shortDefinition: 'Krótkotrwały, ulotny, szybko przemijający.',
     fullDefinition: 'Istniejący lub trwający bardzo krótko, niepozostawiający po sobie trwałego śladu, przemijający niczym zjawisko jednodniowe.',
-    etymology: 'Z greki: ephēmeros – jednodniowy, trwający dzień (epi- + hēmera).',
+    etymology: 'Z greki: ephēmeros - jednodniowy, trwający dzień (epi- + hēmera).',
     examples: [
       'Popularność tego zespołu okazała się efemeryczna, bo zaledwie po roku mało kto o nim pamiętał.',
       'Zachwyt zachodem słońca ma w sobie niezwykły, efemeryczny czar.'
@@ -121,7 +121,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[no-men o-men]',
     shortDefinition: 'Imię jest wróżbą, nazwisko lub nazwa trafnie opisuje daną osobę.',
     fullDefinition: 'Łacińskie sformułowanie stosowane w komentarzu, gdy nazwisko, imię lub nazwa własna w niezwykły sposób odpowiada cechom, zawodowi lub losowi opisywanej postaci.',
-    etymology: 'Z łaciny: nomen omen – imię jest znakiem (wróżbą).',
+    etymology: 'Z łaciny: nomen omen - imię jest znakiem (wróżbą).',
     examples: [
       'Pan Młotek, nomen omen, od trzydziestu lat prowadził sklep z narzędziami budowlanymi.',
       'Zatrudnili na stanowisko kierownika osobę o nazwisku Szybki, co nomen omen przełożyło się na tempo prac.'
@@ -140,7 +140,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[kon-fa-bu-la-cja]',
     shortDefinition: 'Zmyślanie lub zniekształcanie wspomnień bez chęci oszustwa.',
     fullDefinition: 'Wypełnianie luk w pamięci zmyślonymi informacjami, w które sam mówiący głęboko wierzy, bez świadomej intencji wprowadzania w błąd.',
-    etymology: 'Z łaciny: confabulatio – rozmowa, gawęda (con- + fabulari).',
+    etymology: 'Z łaciny: confabulatio - rozmowa, gawęda (con- + fabulari).',
     examples: [
       'Staruszek opowiadał niezwykłe historie z młodości, lecz rodzina wiedziała, że to urocza konfabulacja.',
       'Świadek nie kłamał celowo, jego relacja była wynikiem stresu i konfabulacji.'
@@ -159,7 +159,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[kve-ren-da]',
     shortDefinition: 'Poszukiwanie informacji lub dokumentów w archiwach i bazach.',
     fullDefinition: 'Szczegółowe poszukiwanie danych, materiałów źródłowych lub dokumentów przeprowadzane w archiwach, bibliotekach lub bazach danych w celach naukowych lub urzędowych.',
-    etymology: 'Z łaciny: querenda – rzeczy, których należy szukać (quaerere – szukać).',
+    etymology: 'Z łaciny: querenda - rzeczy, których należy szukać (quaerere - szukać).',
     examples: [
       'Przed napisaniem powieści historycznej spędziła trzy miesiące na kwerendzie w Archiwum Głównym.',
       'Kwerenda archiwalna pozwoliła odnaleźć nieznane dotąd listy poety.'
@@ -178,7 +178,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[an-ty-no-mia]',
     shortDefinition: 'Sprzeczność między dwoma uzasadnionymi, lecz wykluczającymi się twierdzeniami.',
     fullDefinition: 'Sprzeczność dwóch twierdzeń, z których każde wydaje się równie dobrze uzasadnione i logicznie poprawne, co tworzy nierozwiązalny paradoks.',
-    etymology: 'Z greki: antinomia – sprzeczność praw (anti- + nomos).',
+    etymology: 'Z greki: antinomia - sprzeczność praw (anti- + nomos).',
     examples: [
       'Wątek wolnej woli i determinizmu stanowi klasyczną antynomię filozoficzną.',
       'Antynomia między potrzebą wolności a pragnieniem bezpieczeństwa towarzyszy ludzkości od zawsze.'
@@ -197,7 +197,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[re-sen-ty-ment]',
     shortDefinition: 'Uraz, żal i niechęć połączona z poczuciem własnej bezsilności.',
     fullDefinition: 'Uczucie żalu, zazdrości lub wrogości wobec kogoś, komu się powodzi, połączone z poczuciem własnej niższości i braku możliwości zmiany własnego położenia.',
-    etymology: 'Z francuskiego: ressentiment – żal, odczuwanie na nowo (łac. re- + sentire).',
+    etymology: 'Z francuskiego: ressentiment - żal, odczuwanie na nowo (łac. re- + sentire).',
     examples: [
       'Jego wypowiedzi były pełne resentymentu wobec sukcesów dawnych kolegów z uczelni.',
       'Nietzsche poświęcił wiele uwagi pojęciu resentymentu w swojej analizie moralności.'
@@ -216,7 +216,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[im-ma-nent-ny]',
     shortDefinition: 'Tkwiący wewnątrz czegoś, nieodłącznie z nim związany.',
     fullDefinition: 'Właściwy jakiemuś zjawisku z samej jego natury, nieodłączny, wynikający z jego wewnętrznych właściwości.',
-    etymology: 'Z łaciny: immanens – pozostający wewnątrz (in- + manere).',
+    etymology: 'Z łaciny: immanens - pozostający wewnątrz (in- + manere).',
     examples: [
       'Ryzyko jest cechą immanentną każdego przedsięwzięcia biznesowego.',
       'Poszukiwanie sensu wydaje się immanentną potrzebą ludzkiego umysłu.'
@@ -235,7 +235,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[tran-scen-dent-ny]',
     shortDefinition: 'Wykraczający poza granice ludzkiego doświadczenia i poznania.',
     fullDefinition: 'Istniejący na zewnątrz świata materialnego, wykraczający poza zasięg ludzkiego poznania zmysłowego i rozumu.',
-    etymology: 'Z łaciny: transcendens – przekraczający (trans- + scandere).',
+    etymology: 'Z łaciny: transcendens - przekraczający (trans- + scandere).',
     examples: [
       'Muzyka tego kompozytora dotykała spraw transcendentnych, przenosząc słuchaczy w inny wymiar.',
       'Pytanie o wymiar transcendentny towarzyszy wielkim rozważaniom teologicznym.'
@@ -254,7 +254,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[eg-zal-ta-cja]',
     shortDefinition: 'Przesadna entuzjastyczność, nienaturalne ożywienie uczuciowe.',
     fullDefinition: 'Stan przesadnego zachwytu, sztucznego ożywienia i nadmiernego uzewnętrzniania emocji, często nieadekwatny do sytuacji.',
-    etymology: 'Z łaciny: exaltatio – wywyższenie, uniesienie (ex- + altus).',
+    etymology: 'Z łaciny: exaltatio - wywyższenie, uniesienie (ex- + altus).',
     examples: [
       'Mówiła z powszechną dla niej egzaltacją, używając samych wielkich i podniosłych słów.',
       'Unikaj zbędnej egzaltacji w tekście prasowym, stawiaj na chłodne fakty.'
@@ -273,7 +273,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[se-ren-dip-ność]',
     shortDefinition: 'Dar dokonywania szczęśliwych odkryć przez przypadek.',
     fullDefinition: 'Zdolność lub właściwość polegająca na przypadkowym odnajdywaniu wartościowych, pięknych lub cennych rzeczy, podczas gdy szukało się czegoś zupełnie innego.',
-    etymology: 'Z angielskiego: serendipity (od dawnej nazwy Sri Lanki – Serendib).',
+    etymology: 'Z angielskiego: serendipity (od dawnej nazwy Sri Lanki - Serendib).',
     examples: [
       'Odkrycie penicyliny było klasycznym przykładem serendipności w nauce.',
       'Dzięki serendipności trafił w antykwariacie na pierwsze wydanie ukochanej książki.'
@@ -292,7 +292,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[a-ta-wizm]',
     shortDefinition: 'Wystąpienie u kogoś pierwotnych, dawnych cech przodków.',
     fullDefinition: 'Pojawienie się u osobnika cech budowy lub zachowania właściwych jego odległym przodkom.',
-    etymology: 'Z łaciny: atavus – praprzodek.',
+    etymology: 'Z łaciny: atavus - praprzodek.',
     examples: [
       'Strach przed ciemnością bywa tłumaczony jako atawizm z czasów prahistorycznych.',
       'Gwałtowny odruch obronny był typowym atawizmem.'
@@ -307,7 +307,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[be-ha-wio-ral-ny]',
     shortDefinition: 'Dotyczący zachowania się ludzi lub zwierząt.',
     fullDefinition: 'Odnoszący się do obserwowalnego zachowania jednostki, jego wzorców oraz reakcji na bodźce otoczenia.',
-    etymology: 'Z angielskiego: behavioral (od behavior – zachowanie).',
+    etymology: 'Z angielskiego: behavioral (od behavior - zachowanie).',
     examples: [
       'Terapia behawioralna pomaga w zwalczaniu lęków i fobii.',
       'Zauważono wyraźne zmiany behawioralne u zwierząt przed trzęsieniem ziemi.'
@@ -352,7 +352,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[chi-me-rycz-ny]',
     shortDefinition: 'Kapryśny, zmienny w nastrojach i nierealny.',
     fullDefinition: 'Cechujący się zmiennością nastrojów, nieracjonalnymi zachciankami lub nierealnymi wyobrażeniami.',
-    etymology: 'Od Chimery – mitologicznego potwora.',
+    etymology: 'Od Chimery - mitologicznego potwora.',
     examples: [
       'Artysta znany był ze swojego chimerycznego usposobienia.',
       'Jej plany były chimeryczne i niemożliwe do zrealizowania.'
@@ -367,7 +367,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[de-ka-den-cja]',
     shortDefinition: 'Schyłek, spadek sił życiowych i wyczerpanie kultury.',
     fullDefinition: 'Nastroje schyłkowości, przesyconego brakiem wiary wyczerpania kulturowego oraz poczucia upadku.',
-    etymology: 'Z francuskiego: décadence – upadek.',
+    etymology: 'Z francuskiego: décadence - upadek.',
     examples: [
       'Literacki ruch dekadencji z końca XIX wieku przesiąknięty był smutkiem.',
       'W atmosferze pałacu czuć było wyraźną dekadencję.'
@@ -382,7 +382,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[de-ma-go-gia]',
     shortDefinition: 'Wprowadzanie ludzi w błąd łatwymi obietnicami.',
     fullDefinition: 'Sposób zyskiwania poparcia poprzez składanie nierealnych obietnic, pochlebstwa i żerowanie na emocjach.',
-    etymology: 'Z greki: dēmagōgia (dēmos – lud + agōgos – prowadzący).',
+    etymology: 'Z greki: dēmagōgia (dēmos - lud + agōgos - prowadzący).',
     examples: [
       'Przemówienie było pełne taniej demagogii politycznej.',
       'Trudno dyskutować z kimś, kto stosuje bezczelną demagogię.'
@@ -427,9 +427,9 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[ek-lek-tycz-ny]',
     shortDefinition: 'Łączący elementy pochodzące z różnych stylów i źródeł.',
     fullDefinition: 'Cechujący się świadomym lub przypadkowym łączeniem pojęć, stylów i elementów zróżnicowanych pochodzeniowo.',
-    etymology: 'Z greki: eklektikos – wybierający.',
+    etymology: 'Z greki: eklektikos - wybierający.',
     examples: [
-      'Wnętrze mieszkania miało charakter eklektyczny – nowoczesne meble stały obok antyków.',
+      'Wnętrze mieszkania miało charakter eklektyczny - nowoczesne meble stały obok antyków.',
       'Jego styl muzyczny jest wysoce eklektyczny.'
     ],
     category: 'Sztuka i Literatura',
@@ -442,7 +442,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[e-lok-wen-cja]',
     shortDefinition: 'Zdolność łatwego, pięknego i przekonującego mówienia.',
     fullDefinition: 'Umiejętność płynnego, wykwintnego, obrazowego i przekonującego posługiwania się słowem w mowie i piśmie.',
-    etymology: 'Z łaciny: eloquentia – piękna mowa.',
+    etymology: 'Z łaciny: eloquentia - piękna mowa.',
     examples: [
       'Błysnął elokwencją podczas dyskusji na uniwersytecie.',
       'Jej elokwencja zachwyciła sędziów i publiczność.'
@@ -457,7 +457,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[e-ru-dy-cja]',
     shortDefinition: 'Wszechstronna, głęboka wiedza zdobyta przez czytanie.',
     fullDefinition: 'Rozległa, gruntowna i wszechstronna wiedza naukowa lub literacka zdobyta w wyniku studiów.',
-    etymology: 'Z łaciny: eruditio – wykształcenie.',
+    etymology: 'Z łaciny: eruditio - wykształcenie.',
     examples: [
       'Profesor zaimponował wszystkim swoją niezwykłą erudycją.',
       'Jego książki są owocem wieloletniej erudycji.'
@@ -472,7 +472,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[fa-ta-lizm]',
     shortDefinition: 'Przekonanie, że los człowieka jest z góry nieuchronnie przesądzony.',
     fullDefinition: 'Wiara w nieuchronność losu i przeznaczenia, poczucie bezsilności wobec wyższych wyroków.',
-    etymology: 'Z łaciny: fatalis – przeznaczony przez los.',
+    etymology: 'Z łaciny: fatalis - przeznaczony przez los.',
     examples: [
       'Ulegał fatalizmowi, uważając, że cokolwiek zrobi, i tak poniesie klęskę.',
       'Powieść przepełniona jest duchowym fatalizmem.'
@@ -487,7 +487,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[he-do-nizm]',
     shortDefinition: 'Pogląd uznający przyjemność za najwyższe dobro w życiu.',
     fullDefinition: 'Postawa życiowa uznająca szukanie zmysłowych przyjemności za główny cel człowieka.',
-    etymology: 'Z greki: hēdonismos (hēdonē – przyjemność).',
+    etymology: 'Z greki: hēdonismos (hēdonē - przyjemność).',
     examples: [
       'Jego skrajny hedonizm zaprowadził go do utraty zdrowia.',
       'Literatura współczesna często krytykuje pusty hedonizm.'
@@ -502,7 +502,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[im-pe-ra-tyw]',
     shortDefinition: 'Niewzruszony nakaz moralny lub bezwzględna konieczność.',
     fullDefinition: 'Bezwzględny nakaz kategoryczny, reguła moralna lub wewnętrzna konieczność podjęcia działania.',
-    etymology: 'Z łaciny: imperativus – rozkazujący.',
+    etymology: 'Z łaciny: imperativus - rozkazujący.',
     examples: [
       'Pomoc słabszym była dla niego wewnętrznym imperatywem moralnym.',
       'Imperatyw kategoryczny Kanta jest podstawą etyki.'
@@ -517,7 +517,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[im-per-ty-nen-cja]',
     shortDefinition: 'Bezczelna uwaga lub zuchwałe zachowanie.',
     fullDefinition: 'Niestosowna, bezczelna i lekceważąca wypowiedź lub czyn naruszający granice dobrego wychowania.',
-    etymology: 'Z łaciny: impertinentia – niestosowność.',
+    etymology: 'Z łaciny: impertinentia - niestosowność.',
     examples: [
       'Nie będę tolerował takich impertynencji w moim domu!',
       'Uraził wszystkich swoją wyjątkową impertynencją.'
@@ -532,7 +532,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[in-do-len-cja]',
     shortDefinition: 'Niewrażliwość, bierne niedbalstwo i nieudolność.',
     fullDefinition: 'Postawa biernego lenistwa, nieudolności, braku zaradności i obojętności na własne obowiązki.',
-    etymology: 'Z łaciny: indolentia – wolność od bólu.',
+    etymology: 'Z łaciny: indolentia - wolność od bólu.',
     examples: [
       'Urzędnicza indolencja opóźniła budowę drogi o rok.',
       'Zarząd był oburzony indolencją kierownika.'
@@ -547,7 +547,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[in-dok-try-na-cja]',
     shortDefinition: 'Wymuszone wpajanie określonych poglądów i idei.',
     fullDefinition: 'Systematyczne narzucanie ludziom określonych poglądów politycznych lub ideologicznych.',
-    etymology: 'Z łaciny: doctrina – nauka.',
+    etymology: 'Z łaciny: doctrina - nauka.',
     examples: [
       'Reżim stosował bezwzględną indoktrynację młodzieży w szkołach.',
       'Trudno uchronić się przed indoktrynacją bez wolnych mediów.'
@@ -950,17 +950,17 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     id: 'ataraksja',
     word: 'Ataraksja',
     phonetic: '[a-ta-rak-sja]',
-    shortDefinition: 'Zupelny spokoj ducha, stan niepoddawania sie namiętnościom.',
-    fullDefinition: 'W filozofii starozytnej: idealny stan niezachwianego spokoju wewnetrznego, w ktorym dusza pozostaje wolna od wszelkich namiętności, lękow i niepokojow.',
-    etymology: 'Z greki: ataraksía – spokoj ducha (a- + tarassein – niepokoic).',
+    shortDefinition: 'Zupełny spokój ducha, stan niepoddawania się namiętnościom.',
+    fullDefinition: 'W filozofii starożytnej: idealny stan niezachwianego spokoju wewnętrznego, w którym dusza pozostaje wolna od wszelkich namiętności, lęków i niepokojów.',
+    etymology: 'Z greki: ataraksía - spokój ducha (a- + tarassein - niepokoić).',
     examples: [
-      'Epikurejczycy widzieli w ataraksji najwyzsze spelnienie – zycie wolne od bolu i leku.',
-      'Mimo nagromadzonych nieszczęść zachowal ataraksję stoika, nie skarząc się nikomu.'
+      'Epikurejczycy widzieli w ataraksji najwyższe spełnienie - życie wolne od bólu i lęku.',
+      'Mimo nagromadzonych nieszczęść zachował ataraksję stoika, nie skarżąc się nikomu.'
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/ataraksja.html',
     distractors: [
-      'Gwaltown wybuch gniewu wywołany niesprawiedliwością.',
+      'Gwałtowny wybuch gniewu wywołany niesprawiedliwością.',
       'Stan głębokiego żalu i rozpaczy po stracie.',
       'Nadmierny lęk przed przyszłymi wydarzeniami.'
     ]
@@ -971,7 +971,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[hy-bris]',
     shortDefinition: 'Nieposkromiona pycha i zuchwałość obrażająca porządek boski.',
     fullDefinition: 'W myśli starożytnej Grecji: zuchwała pycha i arogancja, które obraziły bogów i nieuchronnie prowadziły do kary (nemezis).',
-    etymology: 'Z greki: hýbris – pycha, zuchwałość.',
+    etymology: 'Z greki: hýbris - pycha, zuchwałość.',
     examples: [
       'Hybris Edypa polegała na przekonaniu, że zdoła oszukać wyrocznię i uciec przed przeznaczeniem.',
       'Wielcy zdobywcy, od Aleksandra do Napoleona, padali ofiarą własnego hybris.'
@@ -990,7 +990,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[i-dio-syn-kra-zja]',
     shortDefinition: 'Wrodzona, wyjątkowa niechęć lub nadwrażliwość na kogoś lub coś.',
     fullDefinition: 'Wstręt lub głęboka niechęć do kogoś lub czegoś; też: wrodzona nadwrażliwość organizmu na pewne substancje.',
-    etymology: 'Z fr. idiosyncrasie (z gr. ídios – indywidualny + sýnkrasis – zmieszanie).',
+    etymology: 'Z fr. idiosyncrasie (z gr. ídios - indywidualny + sýnkrasis - zmieszanie).',
     examples: [
       'Miał głęboko zakorzenioną idiosynkrazję wobec wszelkiej biurokracji.',
       'U niektórych pacjentów stwierdzono idiosynkrazję na powszechnie stosowane leki.'
@@ -1009,7 +1009,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[eu-daj-mo-nia]',
     shortDefinition: 'Szczęście jako pełnia ludzkich cnót i rozkwit istoty człowieka.',
     fullDefinition: 'W filozofii Arystotelesa: najwyższe dobro i cel życia, osiągane przez rozwijanie cnót i postępowanie zgodne z ludzką rozumną naturą.',
-    etymology: 'Z greki: eudaimonia (eu- – dobry + daimon – duch opiekuńczy).',
+    etymology: 'Z greki: eudaimonia (eu- - dobry + daimon - duch opiekuńczy).',
     examples: [
       'Arystoteles uznawał eudajmonię za cel wszelkiej działalności ludzkiej, nie zaś chwilową przyjemność.',
       'Współczesna psychologia pozytywna nawiązuje do starożytnej idei eudajmonii.'
@@ -1028,9 +1028,9 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[me-ta-no-ja]',
     shortDefinition: 'Głęboka przemiana duchowa i zmiana sposobu myślenia.',
     fullDefinition: 'Radykalna zmiana myślenia i postawy, wewnętrzne nawrócenie lub transformacja duchowa prowadząca do całkowicie nowego spojrzenia na życie.',
-    etymology: 'Z greki: metanoia (meta- – po/ponad + nous – umysł).',
+    etymology: 'Z greki: metanoia (meta- - po/ponad + nous - umysł).',
     examples: [
-      'Pobyt w więzieniu stał się dla niego metanoją — wyszedł stamtąd zupełnie innym człowiekiem.',
+      'Pobyt w więzieniu stał się dla niego metanoją - wyszedł stamtąd zupełnie innym człowiekiem.',
       'Filozofowie stoiccy opisywali metanoję jako wewnętrzny przewrót, który wyzwala od namiętności.'
     ],
     category: 'Filozofia i Pojęcia',
@@ -1047,7 +1047,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[mi-zan-tro-pia]',
     shortDefinition: 'Głęboka niechęć i pogarda wobec ludzkości.',
     fullDefinition: 'Postawa skrajnej nieufności, wrogości i pogardy wobec rodzaju ludzkiego, wyrażająca się ucieczką od towarzystwa.',
-    etymology: 'Z greki: misanthropía (misein – nienawidzić + anthropos – człowiek).',
+    etymology: 'Z greki: misanthropía (misein - nienawidzić + anthropos - człowiek).',
     examples: [
       'Molierowski Alcest z Mizantropa był człowiekiem, którego szczerość zrodziła nieuchronną mizantropię.',
       'Po kolejnym rozczarowaniu przyjacielem zamknął się w chacie i dał się pochłonąć mizantropii.'
@@ -1066,10 +1066,10 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[ni-hi-lizm]',
     shortDefinition: 'Odrzucenie wszelkich wartości, norm i sensu istnienia.',
     fullDefinition: 'Pogląd filozoficzny uznający, że nie istnieje żadna obiektywna prawda, wartość ani cel, a istnienie jest pozbawione sensu.',
-    etymology: 'Z łaciny: nihil – nic.',
+    etymology: 'Z łaciny: nihil - nic.',
     examples: [
       'Nihilizm Nietzschego nie był ostateczną odpowiedzią, lecz punktem wyjścia do nowych wartości.',
-      'Bohater powieści wpadł w nihilizm po śmierci bliskich — wszystko wydawało mu się bez znaczenia.'
+      'Bohater powieści wpadł w nihilizm po śmierci bliskich - wszystko wydawało mu się bez znaczenia.'
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/nihilizm.html',
@@ -1085,7 +1085,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[pa-re-mia]',
     shortDefinition: 'Ludowe przysłowie lub krótkie powiedzenie mądrościowe.',
     fullDefinition: 'Krótkie, utrwalone w tradycji powiedzenie ludowe zawierające praktyczną mądrość lub obserwację etyczną.',
-    etymology: 'Z greki: paroimia – przysłowie.',
+    etymology: 'Z greki: paroimia - przysłowie.',
     examples: [
       'Badacz zebrał w swym dziele setki polskich paremiów, od staropolskich przysłów po regionalne sentencje.',
       'Paremia „Nie ma dymu bez ognia" okazała się niestety trafna w tej sprawie.'
@@ -1104,7 +1104,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[pa-rok-syzm]',
     shortDefinition: 'Nagłe i gwałtowne nasilenie objawów, uczucia lub stanu.',
     fullDefinition: 'Nagłe, niezwykle silne nasilenie objawów chorobowych lub uczuć; chwilowe osiągnięcie skrajnego natężenia.',
-    etymology: 'Z greki: paroxysmos – zaostrzenie (paroxynein – drażnić, zaostrzać).',
+    etymology: 'Z greki: paroxysmos - zaostrzenie (paroxynein - drażnić, zaostrzać).',
     examples: [
       'Wiadomość o śmierci przyjaciela wywołała w niej paroksyzm szlochu.',
       'Gorączka osiągnęła paroksyzm w środku nocy, po czym gwałtownie opadła.'
@@ -1123,10 +1123,10 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[pre-des-ty-na-cja]',
     shortDefinition: 'Boskie z góry przeznaczenie losu i zbawienia człowieka.',
     fullDefinition: 'W teologii: doktryna głosząca, że Bóg z góry przeznaczył jednych ludzi do zbawienia, innych do potępienia, niezależnie od ich uczynków.',
-    etymology: 'Z łaciny: praedestinatio – uprzednie przeznaczenie (prae- + destinare).',
+    etymology: 'Z łaciny: praedestinatio - uprzednie przeznaczenie (prae- + destinare).',
     examples: [
       'Kalwinizm głosił surową predestynację: los człowieka był przesądzony zanim się urodził.',
-      'Bohater powieści czuł się ofiarą predestynacji — wszystko, co robił, prowadziło do zagłady.'
+      'Bohater powieści czuł się ofiarą predestynacji - wszystko, co robił, prowadziło do zagłady.'
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/predestynacja.html',
@@ -1142,10 +1142,10 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[re-i-fi-ka-cja]',
     shortDefinition: 'Uprzedmiotowienie, traktowanie abstrakcji lub ludzi jak rzeczy.',
     fullDefinition: 'Proces lub błąd myślowy polegający na traktowaniu pojęcia abstrakcyjnego, wartości lub osoby tak, jakby były materialnym przedmiotem.',
-    etymology: 'Z łaciny: res – rzecz + facere – czynić.',
+    etymology: 'Z łaciny: res - rzecz + facere - czynić.',
     examples: [
       'Marks opisywał reifikację jako stan, w którym relacje między ludźmi przybierają pozór stosunków między rzeczami.',
-      'Reklama doprowadza do reifikacji miłości — uczucie staje się produktem do nabycia.'
+      'Reklama doprowadza do reifikacji miłości - uczucie staje się produktem do nabycia.'
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/reifikacja.html',
@@ -1161,7 +1161,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[ru-mi-na-cja]',
     shortDefinition: 'Obsesyjne, bezproduktywne powracanie myślami do tych samych problemów.',
     fullDefinition: 'W psychologii: skłonność do nawracającego, kompulsywnego rozważania negatywnych myśli lub bolesnych doświadczeń bez dochodzenia do rozwiązania.',
-    etymology: 'Z łaciny: ruminatio – przeżuwanie (ruminare – przeżuwać).',
+    etymology: 'Z łaciny: ruminatio - przeżuwanie (ruminare - przeżuwać).',
     examples: [
       'Terapia poznawcza pomaga przerwać destrukcyjny cykl ruminacji po niepowodzeniu.',
       'Całą noc spędził na ruminacji nad słowami, które wypowiedział nierozważnie podczas kłótni.'
@@ -1180,9 +1180,9 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[so-fiz-mat]',
     shortDefinition: 'Pozornie logiczny, lecz fałszywy argument z ukrytym błędem.',
     fullDefinition: 'Rozumowanie zbudowane w celu wprowadzenia w błąd: zewnętrznie poprawne i przekonujące, lecz skrywające celowy błąd logiczny.',
-    etymology: 'Z greki: sophisma – podstęp, biegłość (sophizein – stosować wybiegi).',
+    etymology: 'Z greki: sophisma - podstęp, biegłość (sophizein - stosować wybiegi).',
     examples: [
-      'Klasycznym sofizmatem jest: „Kłamca mówi, że kłamie — skoro mówi prawdę, jest kłamcą".',
+      'Klasycznym sofizmatem jest: „Kłamca mówi, że kłamie - skoro mówi prawdę, jest kłamcą".',
       'Polityk posłużył się sofizmatem, by uchylić się od odpowiedzi na pytanie o budżet.'
     ],
     category: 'Nauka i Logika',
@@ -1199,7 +1199,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[sy-mu-la-krum]',
     shortDefinition: 'Kopia bez oryginału, pozór wypierający rzeczywistość.',
     fullDefinition: 'W filozofii Baudrillarda: obraz lub znak, który nie odnosi się do żadnego rzeczywistego oryginału, lecz tworzy wrażenie autentyczności z niczego.',
-    etymology: 'Z łaciny: simulacrum – wizerunek, pozór (simulare – udawać).',
+    etymology: 'Z łaciny: simulacrum - wizerunek, pozór (simulare - udawać).',
     examples: [
       'Parki rozrywki zbudowane na wzór historycznych miejsc są dla Baudrillarda doskonałymi symulakrami.',
       'Media kreują symulakrum polityki: widzowie oglądają spektakl udający rzeczywistość.'
@@ -1218,7 +1218,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[syn-kre-tyzm]',
     shortDefinition: 'Łączenie różnych, niekiedy sprzecznych systemów filozoficznych lub religijnych.',
     fullDefinition: 'Tendencja do mieszania i godzenia ze sobą odmiennych, niekiedy sprzecznych kierunków religijnych, filozoficznych lub kulturowych.',
-    etymology: 'Z greki: synkrētismos – połączenie (syn- – razem).',
+    etymology: 'Z greki: synkrētismos - połączenie (syn- - razem).',
     examples: [
       'Wiele kultów starożytnego Bliskiego Wschodu rozwijało się w duchu synkretyzmu.',
       'Nowe ruchy duchowe opierają się na synkretyzmie: mieszają hinduizm, buddyzm i chrześcijaństwo.'
@@ -1237,7 +1237,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[te-o-dy-ce-a]',
     shortDefinition: 'Filozoficzne uzasadnienie dobroci Boga wobec istnienia zła na świecie.',
     fullDefinition: 'Dział filozofii lub teologii próbujący pogodzić istnienie wszechmocnego i dobrego Boga z faktem istnienia zła i cierpienia w świecie.',
-    etymology: 'Termin ukuty przez Leibniza (1710) z greki: theos – Bóg + dike – sprawiedliwość.',
+    etymology: 'Termin ukuty przez Leibniza (1710) z greki: theos - Bóg + dike - sprawiedliwość.',
     examples: [
       'Leibniz pisał teodycee, by wykazać, że Bóg stworzył najlepszy z możliwych światów.',
       'Auschwitz stał się dla wielu myślicieli ostatecznym argumentem przeciwko wszelkiej teodycei.'
@@ -1255,8 +1255,8 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     word: 'Wanitatywny',
     phonetic: '[wa-ni-ta-tyw-ny]',
     shortDefinition: 'Dotyczący marności, ulotności i próżności istnienia.',
-    fullDefinition: 'Odnoszący się do motywu vanitas — głębokiego poczucia przemijania, nietrwałości dóbr i życia oraz jego ostatecznej marności.',
-    etymology: 'Z łaciny: vanitas – próżność, marność (vanus – pusty, próżny).',
+    fullDefinition: 'Odnoszący się do motywu vanitas - głębokiego poczucia przemijania, nietrwałości dóbr i życia oraz jego ostatecznej marności.',
+    etymology: 'Z łaciny: vanitas - próżność, marność (vanus - pusty, próżny).',
     examples: [
       'Martwe natury holenderskie XVII w. nasycone były symboliką wanitatywną: czaszki, zegarki i kwiaty.',
       'Poeta w swoich ostatnich sonetach przyjął ton głęboko wanitatywny.'
@@ -1275,7 +1275,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[wi-wi-sek-cja]',
     shortDefinition: 'Sekcja żywego organizmu; przenośnie: bezlitosna, wnikliwa analiza.',
     fullDefinition: 'Dosłownie: operacja na żywym zwierzęciu; przenośnie: bezduszna, okrutnie szczegółowa analiza lub obnażenie czegoś.',
-    etymology: 'Z łaciny: vivus – żywy + sectio – cięcie.',
+    etymology: 'Z łaciny: vivus - żywy + sectio - cięcie.',
     examples: [
       'Powieść była literacką wiwisekcją małżeństwa: bezlitośnie obnażała jego mechanizmy.',
       'Krytyk dokonał wiwisekcji scenariusza, wykazując każdy logiczny błąd fabuły.'
@@ -1294,9 +1294,9 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[ka-bo-ty-nizm]',
     shortDefinition: 'Powierzchowna, napuszona sztuczność artysty grającego na efekt.',
     fullDefinition: 'Zachowanie aktora lub artysty polegające na pozerskim przeakcentowaniu i graniu pod publiczkę, kosztem prawdziwego talentu.',
-    etymology: 'Z fr. cabotin – wędrowny aktor, pozer.',
+    etymology: 'Z fr. cabotin - wędrowny aktor, pozer.',
     examples: [
-      'Krytyk zarzucił aktorowi kabotynizm — zamiast gry, widz dostawał jedynie popis egocentryzmu.',
+      'Krytyk zarzucił aktorowi kabotynizm - zamiast gry, widz dostawał jedynie popis egocentryzmu.',
       'Polityk wpadł w pułapkę kabotynizmu: każde przemówienie było bardziej teatrem niż treścią.'
     ],
     category: 'Sztuka i Literatura',
@@ -1313,7 +1313,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[ka-zu-is-ty-ka]',
     shortDefinition: 'Metoda rozstrzygania spraw moralnych przez analizę konkretnych przypadków.',
     fullDefinition: 'W etyce i prawie: szczegółowe stosowanie ogólnych zasad do konkretnych, skomplikowanych przypadków; pogardliwie: sofistyczne szukanie wykrętów.',
-    etymology: 'Z łaciny: casus – przypadek.',
+    etymology: 'Z łaciny: casus - przypadek.',
     examples: [
       'Jezuicka kazuistyka pozwalała na niezwykle elastyczną interpretację zasad moralnych.',
       'Prawnicy uciekali się do kazuistyki, by uniknąć prostego rozstrzygnięcia.'
@@ -1335,7 +1335,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     etymology: 'Od Niccola Machiavellego, autora Księcia (Il Principe, 1513).',
     examples: [
       'Dyrektor stosował czysty makiawelizm: manipulował zarówno sojusznikami, jak i wrogami.',
-      'Historyk oskarżył ministra o makiawelizm — wszystkie obietnice składał z pełną świadomością, że ich nie dotrzyma.'
+      'Historyk oskarżył ministra o makiawelizm - wszystkie obietnice składał z pełną świadomością, że ich nie dotrzyma.'
     ],
     category: 'Etyka i Moralność',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/makiawelizm.html',
@@ -1353,7 +1353,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     fullDefinition: 'Starożytna religia i doktryna filozoficzna głosząca, że świat jest polem wiecznej walki dwóch równorzędnych zasad: dobra i zła, ducha i materii.',
     etymology: 'Od imienia Maniego (III w. n.e.), perskiego proroka.',
     examples: [
-      'Jego ocena polityków była naiwnie manicheistyczna — wszyscy byli albo aniołami, albo demonami.',
+      'Jego ocena polityków była naiwnie manicheistyczna - wszyscy byli albo aniołami, albo demonami.',
       'Manicheizm wpłynął na wczesnochrześcijańskie spory o naturę zła.'
     ],
     category: 'Filozofia i Pojęcia',
@@ -1370,9 +1370,9 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[ma-razm]',
     shortDefinition: 'Zastój, odrętwienie i głęboki upadek sił oraz aktywności.',
     fullDefinition: 'Stan głębokiego zastoju, stopniowego zaniku sił witalnych, postępująca apatia i bezwładność instytucji lub jednostki.',
-    etymology: 'Z greki: marasmos – wyczerpanie, marnienie (marainein – wygasać).',
+    etymology: 'Z greki: marasmos - wyczerpanie, marnienie (marainein - wygasać).',
     examples: [
-      'Po latach prosperity branżę ogarnął marazm — nowych projektów nie było, stare się wlokły.',
+      'Po latach koniunktury branżę ogarnął marazm - nowych projektów nie było, stare się wlokły.',
       'Kraj wychodził powoli z wieloletniego marazmu ekonomicznego i politycznego.'
     ],
     category: 'Czas i Zjawiska',
@@ -1389,7 +1389,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[pa-li-no-dia]',
     shortDefinition: 'Odwołanie wcześniej wygłoszonej opinii lub poematu.',
     fullDefinition: 'Utwór literacki lub wypowiedź, w której autor odwołuje lub zaprzecza temu, co wcześniej twierdził lub pisał.',
-    etymology: 'Z greki: palinōdia (palin – z powrotem + ōde – pieśń).',
+    etymology: 'Z greki: palinōdia (palin - z powrotem + ōde - pieśń).',
     examples: [
       'Poeta napisał palinodię, odwołując swoje wcześniejsze uwielbienie dla władcy.',
       'Filozof opublikował palinodię po tym, jak nowe dowody obaliły jego wcześniejszą teorię.'
@@ -1408,10 +1408,10 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[o-ni-rycz-ny]',
     shortDefinition: 'Mający charakter snu, sennych wizji lub marzeń.',
     fullDefinition: 'Odnoszący się do sfery snów i marzeń sennych; o nieuchwytnej, jakby śnionej atmosferze.',
-    etymology: 'Z greki: óneiros – sen (por. oniryzm).',
+    etymology: 'Z greki: óneiros - sen (por. oniryzm).',
     examples: [
       'Proza poetki miała oniryczny charakter: obrazy przenikały się jak we śnie, bez przyczynowego porządku.',
-      'Film zbudowany był z sekwencji onirycznych — granica między jawą a snem zacierała się celowo.'
+      'Film zbudowany był z sekwencji onirycznych - granica między jawą a snem zacierała się celowo.'
     ],
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/oniryczny.html',
@@ -1427,7 +1427,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[sub-sy-diar-ność]',
     shortDefinition: 'Zasada rozwiązywania problemów na możliwie najniższym szczeblu władzy.',
     fullDefinition: 'Zasada organizacji politycznej stanowiąca, że decyzje powinny być podejmowane na szczeblu możliwie najbliższym obywatelowi, a wyższe organy wkraczają wyłącznie gdy niższe są niewystarczające.',
-    etymology: 'Z łaciny: subsidium – wsparcie, pomoc (sub – pod + sedere – siedzieć).',
+    etymology: 'Z łaciny: subsidium - wsparcie, pomoc (sub - pod + sedere - siedzieć).',
     examples: [
       'Traktat z Maastricht uczynił subsydiarność jedną z fundamentalnych zasad Unii Europejskiej.',
       'Reforma samorządowa opierała się na subsydiarności: gmina decyduje o tym, czego centrum nie umie lepiej.'
@@ -1446,7 +1446,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[pro-we-nien-cja]',
     shortDefinition: 'Udokumentowane pochodzenie i historia własności dzieła lub obiektu.',
     fullDefinition: 'Historia kolejnych właścicieli i miejsc, w których przebywało dzieło sztuki, zabytek lub rękopis; szerzej: udokumentowane pochodzenie czegoś.',
-    etymology: 'Z łaciny: provenire – wywodzić się, pochodzić.',
+    etymology: 'Z łaciny: provenire - wywodzić się, pochodzić.',
     examples: [
       'Dom aukcyjny nie mógł wystawić obrazu, bo proweniencja wskazywała na rabunek wojenny.',
       'Biblioteka pieczołowicie dokumentuje proweniencję każdego rękopisu z XV wieku.'
@@ -1465,9 +1465,9 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[lo-go-ma-chia]',
     shortDefinition: 'Spór o słowa zamiast o meritum zagadnienia.',
     fullDefinition: 'Jałowy spór, w którym strony kłócą się o znaczenie słów lub terminów, nie docierając do istoty zagadnienia.',
-    etymology: 'Z greki: logos – słowo + mache – walka.',
+    etymology: 'Z greki: logos - słowo + mache - walka.',
     examples: [
-      'Konferencja zamieniła się w logomachię — filozofowie przez dwie godziny spierali się o definicję słowa świadomość.',
+      'Konferencja zamieniła się w logomachię - filozofowie przez dwie godziny spierali się o definicję słowa świadomość.',
       'Unikaj logomachii w negocjacjach: lepiej uzgodnić znaczenie pojęć na początku.'
     ],
     category: 'Język i Mowa',
@@ -1484,9 +1484,9 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[i-ner-cja]',
     shortDefinition: 'Bezwładność, bierność i oporność na zmiany.',
     fullDefinition: 'W fizyce: własność ciał polegająca na zachowaniu stanu ruchu lub spoczynku; przenośnie: niezdolność do zmian i opór wobec wszelkiej aktywności.',
-    etymology: 'Z łaciny: inertia – bezczynność, bezwładność (iners – bezczynny).',
+    etymology: 'Z łaciny: inertia - bezczynność, bezwładność (iners - bezczynny).',
     examples: [
-      'Instytucje rządowe wyróżniają się szczególną inercją — każda zmiana napotyka opór biurokracji.',
+      'Instytucje rządowe wyróżniają się szczególną inercją - każda zmiana napotyka opór biurokracji.',
       'Długoletnia inercja polityczna sprawiła, że kraj stracił dekady możliwego rozwoju.'
     ],
     category: 'Czas i Zjawiska',
@@ -1503,7 +1503,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[ple-o-nazm]',
     shortDefinition: 'Nadmiarowe użycie słów o tym samym znaczeniu.',
     fullDefinition: 'Błąd językowy lub świadomy zabieg polegający na użyciu wyrazów zbędnych, zawierających informację już wyrażoną przez inne słowo.',
-    etymology: 'Z greki: pleonasmos – nadmiar (pleon – więcej).',
+    etymology: 'Z greki: pleonasmos - nadmiar (pleon - więcej).',
     examples: [
       'Wyrażenie masło maślane jest klasycznym przykładem pleonazmu.',
       'Redaktor wykreślił z tekstu wszystkie pleonazmy, takie jak cofnąć się z powrotem.'
@@ -1522,7 +1522,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[in-ter-reg-num]',
     shortDefinition: 'Okres bezkrólewia lub braku władzy między rządami.',
     fullDefinition: 'Czas między śmiercią lub abdykacją jednego władcy a objęciem tronu przez kolejnego; szerzej: każdy okres bezwładzy instytucjonalnej.',
-    etymology: 'Z łaciny: inter – pomiędzy + regnum – panowanie, królestwo.',
+    etymology: 'Z łaciny: inter - pomiędzy + regnum - panowanie, królestwo.',
     examples: [
       'Polska republika szlachecka słynęła z burzliwych interregnów, gdy magnaci rywalizowali o wpływ.',
       'Po upadku rządu kraj przez miesiąc trwał w politycznym interregnum.'
@@ -1541,7 +1541,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     phonetic: '[ka-tar-sis]',
     shortDefinition: 'Duchowe oczyszczenie przez przeżycie sztuki lub silnych emocji.',
     fullDefinition: 'Uczucie duchowego ulżenia i oczyszczenia z tłumionych emocji, które wywołuje wielka sztuka lub intensywne przeżycie.',
-    etymology: 'Z greki: katharsis – oczyszczenie.',
+    etymology: 'Z greki: katharsis - oczyszczenie.',
     examples: [
       'Finał spektaklu przyniósł widzom prawdziwe katharsis.',
       'Płacz okazał się dla niej oczyszczającym katharsis po miesiącach tłumionych emocji.'
