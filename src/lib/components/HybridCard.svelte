@@ -61,7 +61,7 @@
     <!-- Słowo główne i wymowa -->
     <div class="text-center py-2 sm:py-0">
       <h2
-        class="title-serif text-3xl sm:text-4xl tracking-wide"
+        class="title-serif text-2xl sm:text-4xl tracking-wide break-words"
       >
         {card.word.word}
       </h2>
@@ -107,7 +107,7 @@
 
       <!-- ETAP 2: ODSŁONIĘCIE KONTEKSTU I SAMOOCENA -->
     {:else}
-      <div class="space-y-5 sm:space-y-6 animate-in fade-in duration-300">
+      <div class="space-y-5 sm:space-y-6 animate-in fade-in duration-300 pb-32 sm:pb-0">
         <!-- Wynik z quizu -->
         <div
           class="flex items-center justify-center gap-2 rounded-xl p-3.5 text-sm font-bold {isCorrect
@@ -196,20 +196,20 @@
           </div>
         {/if}
 
-        <!-- PRZYCISKI SAMOOCENY (Duże cele dotykowe 52px) -->
-        <div class="border-t border-[var(--border-default)] pt-4 sm:pt-6">
+        <!-- PRZYCISKI SAMOOCENY (Dokowane na dole nad paska nawigacji na mobile) -->
+        <div class="fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] left-0 right-0 z-30 border-t border-[var(--border-default)] bg-[var(--bg-surface)]/95 backdrop-blur-md px-3.5 py-3 shadow-2xl sm:relative sm:bottom-auto sm:z-auto sm:border-t sm:bg-transparent sm:px-0 sm:py-0 sm:shadow-none pt-3 sm:pt-6">
           <p
-            class="mb-3 text-center text-xs font-extrabold tracking-wider text-[var(--text-muted)] uppercase"
+            class="mb-2 sm:mb-3 text-center text-[11px] sm:text-xs font-extrabold tracking-wider text-[var(--text-muted)] uppercase"
           >
             Jak dobrze pamiętasz to słówko?
           </p>
 
-          <div class="grid grid-cols-2 gap-2.5 sm:gap-3.5 sm:grid-cols-4">
+          <div class="grid grid-cols-2 gap-2 sm:gap-3.5 sm:grid-cols-4 max-w-2xl mx-auto">
             <!-- Bardzo trudne (Ocena 0 - Czerwony/Różowy) -->
             <button
               type="button"
               onclick={() => handleSelfGrade(0)}
-              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-0-border)] bg-[var(--grade-0-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-0-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
+              class="flex min-h-[48px] sm:min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-0-border)] bg-[var(--grade-0-bg)] py-2.5 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-0-text)] transition-all active:scale-[0.96] hover:opacity-80 shadow-xs"
             >
               <span>Bardzo trudne</span>
             </button>
@@ -218,7 +218,7 @@
             <button
               type="button"
               onclick={() => handleSelfGrade(3)}
-              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-3-border)] bg-[var(--grade-3-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-3-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
+              class="flex min-h-[48px] sm:min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-3-border)] bg-[var(--grade-3-bg)] py-2.5 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-3-text)] transition-all active:scale-[0.96] hover:opacity-80 shadow-xs"
             >
               <span>Trudne</span>
             </button>
@@ -227,7 +227,7 @@
             <button
               type="button"
               onclick={() => handleSelfGrade(4)}
-              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-4-border)] bg-[var(--grade-4-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-4-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
+              class="flex min-h-[48px] sm:min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-4-border)] bg-[var(--grade-4-bg)] py-2.5 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-4-text)] transition-all active:scale-[0.96] hover:opacity-80 shadow-xs"
             >
               <span>Średnie</span>
             </button>
@@ -236,7 +236,7 @@
             <button
               type="button"
               onclick={() => handleSelfGrade(5)}
-              class="flex min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-5-border)] bg-[var(--grade-5-bg)] py-3 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-5-text)] transition-all active:scale-[0.97] hover:opacity-80 shadow-xs"
+              class="flex min-h-[48px] sm:min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-5-border)] bg-[var(--grade-5-bg)] py-2.5 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-5-text)] transition-all active:scale-[0.96] hover:opacity-80 shadow-xs"
             >
               <span>Łatwe</span>
             </button>

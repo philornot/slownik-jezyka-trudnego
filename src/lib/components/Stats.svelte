@@ -469,7 +469,7 @@
         >
           <div>
             <h2
-              class="title-serif text-2xl"
+              class="title-serif text-2xl break-words"
             >
               {activeWord.word}
             </h2>

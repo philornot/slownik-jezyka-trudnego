@@ -232,8 +232,8 @@
 />
 
 <!-- Główna zawartość -->
-<!-- pb-24 na mobile = miejsce na bottom tab bar + trochę oddechu -->
-<main class="mx-auto max-w-5xl px-0 sm:px-6 py-4 sm:py-8 pb-24 sm:pb-8">
+<!-- pb na mobile = wyliczony margines pod bottom tab bar z uwzględnieniem gestów -->
+<main class="mx-auto max-w-5xl px-0 sm:px-6 py-3 sm:py-8 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] sm:pb-8">
   
   {#if activeTab === 'lesson'}
     <!-- WIDOK LEKCJI -->

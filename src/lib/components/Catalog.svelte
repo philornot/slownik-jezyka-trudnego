@@ -66,7 +66,7 @@
 <div class="mx-auto max-w-5xl space-y-4 sm:space-y-6 px-3 sm:px-0">
 
   <!-- Zwięzły pasek wyszukiwania i filtrów z tokenami (sticky na mobile) -->
-  <div class="app-card p-3.5 sm:p-5 sticky top-14 z-30 sm:relative sm:top-0 shadow-md sm:shadow-xs">
+  <div class="app-card p-3.5 sm:p-5 sticky top-[calc(53px+env(safe-area-inset-top,0px))] z-30 sm:relative sm:top-0 shadow-md sm:shadow-xs">
     <div class="flex flex-col gap-3 md:flex-row md:items-center justify-between">
       
       <!-- Szukajka -->
@@ -126,7 +126,7 @@
           >
             <div>
               <div class="flex items-start justify-between gap-2">
-                <h4 class="title-serif text-lg sm:text-xl group-hover:text-[var(--brand-primary)] transition-colors">{word.word}</h4>
+                <h4 class="title-serif text-lg sm:text-xl break-words group-hover:text-[var(--brand-primary)] transition-colors">{word.word}</h4>
                 {#if status}
                   <span class="{status.badgeClass} text-[10px] py-0.5 px-2 shrink-0">
                     {status.label}

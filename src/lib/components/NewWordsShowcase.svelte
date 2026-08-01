@@ -59,11 +59,11 @@
     </div>
   </div>
 
-  <div class="p-4 sm:p-8 space-y-5 sm:space-y-6">
+  <div class="p-4 sm:p-8 space-y-5 sm:space-y-6 pb-24 sm:pb-6">
     <!-- Słowo i wymowa -->
     <div class="text-center py-2 sm:py-0">
       <h2
-        class="title-serif text-3xl sm:text-4xl tracking-wide"
+        class="title-serif text-2xl sm:text-4xl tracking-wide break-words"
       >
         {currentWord.word}
       </h2>
@@ -168,9 +168,9 @@
       </div>
     {/if}
 
-    <!-- Odnośnik PWN i Przycisk Przejścia -->
+    <!-- Odnośnik PWN i Przycisk Przejścia (Dokowane na dole na mobile) -->
     <div
-      class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[var(--border-default)] pt-5"
+      class="fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] left-0 right-0 z-30 border-t border-[var(--border-default)] bg-[var(--bg-surface)]/95 backdrop-blur-md px-4 py-3 shadow-2xl sm:relative sm:bottom-auto sm:z-auto sm:border-t sm:bg-transparent sm:px-0 sm:py-0 sm:shadow-none flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 sm:pt-5"
     >
       {#if currentWord.sjpUrl}
         <a

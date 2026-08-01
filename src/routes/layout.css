@@ -8,6 +8,7 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
 
 @theme {
+  --breakpoint-xs: 400px;
   --font-serif: 'Libre Baskerville', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
   
@@ -29,11 +30,18 @@
   }
 }
 
+html, body {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 body {
   background-color: var(--bg-app);
   color: var(--text-primary);
   font-family: var(--font-sans);
   min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
 }
 
 /* Reguły przejścia motywów View Transitions API z angmatura.pl */

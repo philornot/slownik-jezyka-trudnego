@@ -40,21 +40,20 @@
 <!-- ============================== -->
 <!-- HEADER - widoczny na wszystkich rozmiarach -->
 <!-- ============================== -->
-<header class="sticky top-0 z-40 border-b border-[var(--border-default)] bg-[var(--bg-app)]/95 backdrop-blur-md shadow-xs transition-colors duration-200">
-  <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-2.5 sm:py-3 sm:px-6">
+<header class="sticky top-0 z-40 border-b border-[var(--border-default)] bg-[var(--bg-app)]/95 backdrop-blur-md shadow-xs transition-colors duration-200 pt-[env(safe-area-inset-top,0px)]">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3">
     
     <!-- Logo -->
     <div class="flex items-center gap-2.5">
-      <div class="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--brand-primary)] to-[var(--brand-primary-hover)] shadow-xs">
+      <div class="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--brand-primary)] to-[var(--brand-primary-hover)] shadow-xs shrink-0">
         <Icon icon="ph:book-open-duotone" class="h-5 w-5 sm:h-6 sm:w-6 text-white" />
       </div>
-      <div class="hidden xs:block">
-        <h1 class="title-serif text-base sm:text-xl tracking-tight">Słownik Języka Trudnego</h1>
+      <div>
+        <h1 class="title-serif text-base sm:text-xl tracking-tight leading-tight">
+          <span class="hidden xs:inline">Słownik Języka Trudnego</span>
+          <span class="inline xs:hidden font-bold">Słownik Trudny</span>
+        </h1>
         <p class="hidden sm:block text-xs font-semibold text-[var(--text-muted)]">Codzienna porcja wykwintnej polszczyzny</p>
-      </div>
-      <!-- Na bardzo małych ekranach: tylko skrócona nazwa -->
-      <div class="block xs:hidden">
-        <h1 class="title-serif text-base font-bold tracking-tight">SJT</h1>
       </div>
     </div>
 
@@ -63,7 +62,7 @@
       <button
         type="button"
         onclick={() => onTabChange('lesson')}
-        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all {activeTab === 'lesson' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--brand-primary)]'}"
+        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all active:scale-95 {activeTab === 'lesson' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--brand-primary)]'}"
       >
         <Icon icon="ph:book-open-bold" class="h-4 w-4" />
         <span>Lekcja</span>
@@ -71,7 +70,7 @@
       <button
         type="button"
         onclick={() => onTabChange('catalog')}
-        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all {activeTab === 'catalog' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--brand-primary)]'}"
+        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all active:scale-95 {activeTab === 'catalog' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--brand-primary)]'}"
       >
         <Icon icon="ph:bookmark-bold" class="h-4 w-4" />
         <span>Katalog</span>
@@ -79,7 +78,7 @@
       <button
         type="button"
         onclick={() => onTabChange('stats')}
-        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all {activeTab === 'stats' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--brand-primary)]'}"
+        class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-bold transition-all active:scale-95 {activeTab === 'stats' ? 'bg-[var(--brand-primary)] text-white shadow-xs' : 'text-[var(--text-primary)] hover:text-[var(--brand-primary)]'}"
       >
         <Icon icon="ph:chart-bar-bold" class="h-4 w-4" />
         <span>Statystyki</span>
@@ -99,7 +98,7 @@
           type="button"
           onclick={onLogout}
           title="Wyloguj się"
-          class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-muted)] hover:text-[var(--rose-icon)] hover:border-[var(--rose-border)] transition-all"
+          class="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-muted)] hover:text-[var(--rose-icon)] hover:border-[var(--rose-border)] active:scale-95 transition-all"
         >
           <Icon icon="ph:sign-out-bold" class="h-4 w-4" />
         </button>
@@ -117,7 +116,7 @@
           type="button"
           onclick={onLogin}
           title="Zaloguj się"
-          class="flex sm:hidden h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-primary)] hover:border-[var(--brand-primary)] transition-all"
+          class="flex sm:hidden h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-primary)] hover:border-[var(--brand-primary)] active:scale-95 transition-all"
         >
           <Icon icon="ph:sign-in-bold" class="h-4 w-4" />
         </button>
@@ -129,7 +128,7 @@
         onpointerdown={handlePointerDown}
         onclick={handleThemeToggle}
         title={theme.current === 'dark' ? 'Jasny motyw' : 'Ciemny motyw'}
-        class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] transition-all"
+        class="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] active:scale-95 transition-all"
       >
         {#if theme.current === 'dark'}
           <Icon icon="ph:sun-bold" class="h-4 w-4 text-[var(--text-secondary)]" />
@@ -143,7 +142,7 @@
         type="button"
         onclick={onOpenSettings}
         title="Ustawienia"
-        class="flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] transition-all"
+        class="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] active:scale-95 transition-all"
       >
         <Icon icon="ph:gear-six-bold" class="h-4 w-4" />
       </button>
@@ -158,13 +157,11 @@
   <button
     type="button"
     onclick={() => onTabChange('lesson')}
-    class="bottom-tab-item {activeTab === 'lesson' ? 'active' : ''}"
+    class="bottom-tab-item relative {activeTab === 'lesson' ? 'active' : ''}"
     aria-current={activeTab === 'lesson' ? 'page' : undefined}
   >
     {#if activeTab === 'lesson'}
-      <div class="sheet-handle" style="padding: 0; position: absolute; top: 0; left: 50%; transform: translateX(-50%);">
-        <div style="width: 2rem; height: 3px; background: var(--brand-primary); border-radius: 0 0 9999px 9999px;"></div>
-      </div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[3px] bg-[var(--brand-primary)] rounded-b-full shadow-xs"></div>
     {/if}
     <Icon
       icon={activeTab === 'lesson' ? 'ph:book-open-fill' : 'ph:book-open'}
@@ -176,11 +173,11 @@
   <button
     type="button"
     onclick={() => onTabChange('catalog')}
-    class="bottom-tab-item {activeTab === 'catalog' ? 'active' : ''}"
+    class="bottom-tab-item relative {activeTab === 'catalog' ? 'active' : ''}"
     aria-current={activeTab === 'catalog' ? 'page' : undefined}
   >
     {#if activeTab === 'catalog'}
-      <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 2rem; height: 3px; background: var(--brand-primary); border-radius: 0 0 9999px 9999px;"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[3px] bg-[var(--brand-primary)] rounded-b-full shadow-xs"></div>
     {/if}
     <Icon
       icon={activeTab === 'catalog' ? 'ph:bookmark-fill' : 'ph:bookmark'}
@@ -192,11 +189,11 @@
   <button
     type="button"
     onclick={() => onTabChange('stats')}
-    class="bottom-tab-item {activeTab === 'stats' ? 'active' : ''}"
+    class="bottom-tab-item relative {activeTab === 'stats' ? 'active' : ''}"
     aria-current={activeTab === 'stats' ? 'page' : undefined}
   >
     {#if activeTab === 'stats'}
-      <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 2rem; height: 3px; background: var(--brand-primary); border-radius: 0 0 9999px 9999px;"></div>
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[3px] bg-[var(--brand-primary)] rounded-b-full shadow-xs"></div>
     {/if}
     <Icon
       icon={activeTab === 'stats' ? 'ph:chart-bar-fill' : 'ph:chart-bar'}
