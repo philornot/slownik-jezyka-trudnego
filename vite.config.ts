@@ -17,5 +17,22 @@ export default defineConfig({
 			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 			adapter: adapter()
 		})
-	]
+	],
+	build: {
+		chunkSizeWarningLimit: 1000,
+		rollupOptions: {
+			output: {
+				manualChunks(id) {
+					if (id.includes('node_modules')) {
+						if (id.includes('firebase')) {
+							return 'vendor-firebase';
+						}
+						if (id.includes('@iconify') || id.includes('lucide') || id.includes('@tabler')) {
+							return 'vendor-icons';
+						}
+					}
+				}
+			}
+		}
+	}
 });

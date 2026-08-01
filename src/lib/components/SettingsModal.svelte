@@ -15,7 +15,11 @@
   let { settings, onClose, onSave, onPreview, onResetProgress }: Props =
     $props();
 
-  let localSettings = $state<UserSettings>({ ...settings });
+  function getInitialSettings(): UserSettings {
+    return { ...settings };
+  }
+
+  let localSettings = $state<UserSettings>(getInitialSettings());
   let message = $state<string | null>(null);
 
   // Stan dla przycisku bezpiecznego resetowania (odliczanie 5 sekund)
