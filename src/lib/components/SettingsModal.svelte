@@ -107,7 +107,7 @@
     tabindex="0"
     onclick={(e) => e.stopPropagation()}
     onkeydown={(e) => e.stopPropagation()}
-    class="sheet-container sm:modal-container max-w-md overflow-hidden cursor-default"
+    class="sheet-container sm:modal-container max-w-md cursor-default"
   >
     <!-- Uchwyt do przeciągania na mobile -->
     <div class="sheet-handle sm:hidden"></div>
@@ -131,7 +131,7 @@
       </button>
     </div>
 
-    <div class="p-4 sm:p-6 space-y-5 sm:space-y-6">
+    <div class="overflow-y-auto flex-1 p-4 sm:p-6 space-y-5 sm:space-y-6">
       {#if message}
         <div
           class="flex items-center gap-2 rounded-xl bg-(--badge-amber-bg) border border-(--badge-amber-border) p-3 text-xs font-bold text-(--badge-amber-text)"

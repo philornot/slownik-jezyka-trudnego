@@ -30,16 +30,16 @@
 </script>
 
 <div
-  class="w-full sm:max-w-2xl border-y sm:border border-[var(--border-default)] bg-[var(--bg-surface)] sm:rounded-2xl sm:shadow-2xl transition-all duration-300"
+  class="w-full sm:max-w-2xl border-y sm:border border-(--border-default) bg-(--bg-surface) sm:rounded-2xl sm:shadow-2xl transition-all duration-300"
 >
   <!-- Nagłówek Prezentacji Nowych Słów -->
   <div
-    class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-4 sm:px-6 py-3.5 sm:rounded-t-2xl"
+    class="flex items-center justify-between border-b border-(--border-default) bg-(--bg-surface-elevated) px-4 sm:px-6 py-3.5 sm:rounded-t-2xl"
   >
     <div class="flex items-center gap-2">
-      <Icon icon="ph:sparkle-bold" class="h-4 w-4 text-[var(--brand-primary)] shrink-0" />
+      <Icon icon="ph:sparkle-bold" class="h-4 w-4 text-(--brand-primary) shrink-0" />
       <span
-        class="text-xs font-bold tracking-wider text-[var(--text-primary)] uppercase"
+        class="text-xs font-bold tracking-wider text-(--text-primary) uppercase"
       >
         Prezentacja ({currentIndex + 1}/{words.length})
       </span>
@@ -50,10 +50,10 @@
       {#each words as _, idx}
         <div
           class="h-2 w-4 sm:w-5 rounded-full transition-all {idx === currentIndex
-            ? 'bg-[var(--brand-primary)]'
+            ? 'bg-(--brand-primary)'
             : idx < currentIndex
-              ? 'bg-[var(--bar-secondary)]'
-              : 'bg-[var(--progress-track)]'}"
+              ? 'bg-(--bar-secondary)'
+              : 'bg-(--progress-track)'}"
         ></div>
       {/each}
     </div>
@@ -63,13 +63,13 @@
     <!-- Słowo i wymowa -->
     <div class="text-center py-2 sm:py-0">
       <h2
-        class="title-serif text-2xl sm:text-4xl tracking-wide break-words"
+        class="title-serif text-2xl sm:text-4xl tracking-wide wrap-break-word"
       >
         {currentWord.word}
       </h2>
       {#if currentWord.phonetic}
         <p
-          class="mt-1 text-sm tracking-widest text-[var(--text-muted)] italic font-bold"
+          class="mt-1 text-sm tracking-widest text-(--text-muted) italic font-bold"
         >
           {currentWord.phonetic}
         </p>
@@ -85,13 +85,13 @@
     <div class="space-y-2">
       <div class="flex items-center justify-between">
         <h3
-          class="text-xs font-extrabold tracking-wider text-[var(--brand-primary)] uppercase"
+          class="text-xs font-extrabold tracking-wider text-(--brand-primary) uppercase"
         >
           Definicja i znaczenie
         </h3>
         {#if !isRevealed}
           <span
-            class="inline-flex items-center gap-1 text-[11px] font-extrabold text-[var(--brand-primary)] animate-pulse"
+            class="inline-flex items-center gap-1 text-[11px] font-extrabold text-(--brand-primary) animate-pulse"
           >
             <Icon icon="ph:eye-bold" class="h-4 w-4" />
             <span>Stuknij, aby odsłonić</span>
@@ -105,11 +105,11 @@
         tabindex="0"
         onclick={handleReveal}
         onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && handleReveal()}
-        class="relative min-h-[100px] rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-4 sm:p-5 shadow-xs transition-all cursor-pointer group hover:border-[var(--brand-primary)]"
+        class="relative min-h-25 rounded-xl border border-(--border-default) bg-(--bg-surface-elevated) p-4 sm:p-5 shadow-xs transition-all cursor-pointer group hover:border-(--brand-primary)"
       >
         <p
           class="text-base leading-relaxed font-semibold transition-all duration-300 {isRevealed
-            ? 'text-[var(--text-primary)] blur-none'
+            ? 'text-(--text-primary) blur-none'
             : 'text-transparent select-none blur-md group-hover:blur-sm'}"
         >
           {currentWord.fullDefinition}
@@ -118,7 +118,7 @@
         <!-- Przycisk z kłódką/okiem zachęcający do kliknięcia -->
         {#if !isRevealed}
           <div
-            class="absolute inset-0 flex items-center justify-center rounded-xl bg-[var(--brand-primary)]/15 backdrop-blur-[2px] transition-all group-hover:bg-[var(--brand-primary)]/20 p-4"
+            class="absolute inset-0 flex items-center justify-center rounded-xl bg-(--brand-primary)/15 backdrop-blur-[2px] transition-all group-hover:bg-(--brand-primary)/20 p-4"
           >
             <div
               class="btn-primary py-2.5 px-4 text-xs sm:text-sm text-center"
@@ -132,15 +132,15 @@
 
       {#if currentWord.etymology}
         <div
-          class="rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-4"
+          class="rounded-xl border border-(--border-default) bg-(--bg-surface-elevated) p-4"
         >
           <h4
-            class="text-xs font-extrabold text-[var(--text-muted)] uppercase"
+            class="text-xs font-extrabold text-(--text-muted) uppercase"
           >
             Etymologia
           </h4>
           <p
-            class="mt-1 text-xs font-semibold text-[var(--text-secondary)]"
+            class="mt-1 text-xs font-semibold text-(--text-secondary)"
           >
             {currentWord.etymology}
           </p>
@@ -152,14 +152,14 @@
     {#if currentWord.examples && currentWord.examples.length > 0}
       <div class="space-y-2">
         <h3
-          class="text-xs font-extrabold tracking-wider text-[var(--text-muted)] uppercase"
+          class="text-xs font-extrabold tracking-wider text-(--text-muted) uppercase"
         >
           Przykłady użycia
         </h3>
         <div class="space-y-2">
           {#each currentWord.examples as example}
             <blockquote
-              class="border-l-4 border-[var(--brand-primary)] bg-[var(--blockquote-bg)] py-3 px-4 rounded-r-xl font-sans text-sm font-semibold leading-relaxed text-[var(--blockquote-text)]"
+              class="border-l-4 border-(--brand-primary) bg-(--blockquote-bg) py-3 px-4 rounded-r-xl font-sans text-sm font-semibold leading-relaxed text-(--blockquote-text)"
             >
               "{example}"
             </blockquote>
@@ -170,14 +170,14 @@
 
     <!-- Odnośnik PWN i Przycisk Przejścia (Dokowane na dole na mobile) -->
     <div
-      class="fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] left-0 right-0 z-30 border-t border-[var(--border-default)] bg-[var(--bg-surface)]/95 backdrop-blur-md px-4 py-3 shadow-2xl sm:relative sm:bottom-auto sm:z-auto sm:border-t sm:bg-transparent sm:px-0 sm:py-0 sm:shadow-none flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 sm:pt-5"
+      class="fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] left-0 right-0 z-30 border-t border-(--border-default) bg-(--bg-surface)/95 backdrop-blur-md px-4 py-3 shadow-2xl sm:relative sm:bottom-auto sm:z-auto sm:border-t sm:bg-transparent sm:px-0 sm:py-0 sm:shadow-none flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 sm:pt-5"
     >
       {#if currentWord.sjpUrl}
         <a
           href={currentWord.sjpUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--text-amber-brand)] hover:underline py-1"
+          class="inline-flex items-center gap-1.5 text-xs font-bold text-(--text-amber-brand) hover:underline py-1"
         >
           <span>Zobacz w SJP PWN</span>
           <Icon icon="ph:arrow-square-out-bold" class="h-4 w-4" />

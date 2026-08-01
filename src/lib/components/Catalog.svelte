@@ -76,7 +76,7 @@
           type="text"
           bind:value={searchQuery}
           placeholder="Szukaj w słówkach..."
-          class="w-full rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] pl-10 pr-4 py-2.5 text-xs sm:text-xs font-bold text-body-primary placeholder:text-body-muted focus:border-[var(--brand-primary)] focus:outline-hidden"
+          class="w-full rounded-xl border border-(--border-default) bg-(--bg-surface-elevated) pl-10 pr-4 py-2.5 text-xs sm:text-xs font-bold text-body-primary placeholder:text-body-muted focus:border-(--brand-primary) focus:outline-hidden"
         />
       </div>
 
@@ -84,7 +84,7 @@
       <div class="flex items-center justify-between gap-2.5">
         <select
           bind:value={selectedCategory}
-          class="flex-1 sm:flex-none rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-3 py-2 text-xs font-bold text-body-primary focus:border-[var(--brand-primary)] focus:outline-hidden"
+          class="flex-1 sm:flex-none rounded-xl border border-(--border-default) bg-(--bg-surface-elevated) px-3 py-2 text-xs font-bold text-body-primary focus:border-(--brand-primary) focus:outline-hidden"
         >
           <option value="all">Wszystkie kategorie</option>
           {#each categories as cat}
@@ -92,7 +92,7 @@
           {/each}
         </select>
 
-        <span class="badge-neutral px-2.5 py-2 text-[11px] sm:text-xs shrink-0 flex items-center gap-1.5 text-[var(--text-secondary)]">
+        <span class="badge-neutral px-2.5 py-2 text-[11px] sm:text-xs shrink-0 flex items-center gap-1.5 text-(--text-secondary)">
           <Icon icon="ph:sparkle-bold" class="h-3.5 w-3.5 text-current shrink-0" />
           <span>{unlockedWords.length} / {words.length}</span>
         </span>
@@ -103,7 +103,7 @@
 
   <!-- SEKCJA 1: ODBLOKOWANE / POZNANE SŁÓWKA -->
   <div class="space-y-3 sm:space-y-4">
-    <div class="flex items-center justify-between border-b border-[var(--border-default)] pb-2">
+    <div class="flex items-center justify-between border-b border-(--border-default) pb-2">
       <div class="flex items-center gap-2">
         <Icon icon="ph:check-circle-bold" class="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
         <h3 class="title-serif text-lg sm:text-xl">
@@ -122,11 +122,11 @@
             tabindex="0"
             onclick={() => (activeWord = word)}
             onkeydown={(e) => (e.key === 'Enter' || e.key === ' ') && (activeWord = word)}
-            class="app-card-interactive group flex flex-col justify-between p-4 sm:p-5 min-h-[110px]"
+            class="app-card-interactive group flex flex-col justify-between p-4 sm:p-5 min-h-27.5"
           >
             <div>
               <div class="flex items-start justify-between gap-2">
-                <h4 class="title-serif text-lg sm:text-xl break-words group-hover:text-[var(--brand-primary)] transition-colors">{word.word}</h4>
+                <h4 class="title-serif text-lg sm:text-xl wrap-break-word group-hover:text-(--brand-primary) transition-colors">{word.word}</h4>
                 {#if status}
                   <span class="{status.badgeClass} text-[10px] py-0.5 px-2 shrink-0">
                     {status.label}
@@ -143,10 +143,10 @@
               </p>
             </div>
 
-            <div class="mt-4 flex items-center justify-between border-t border-[var(--border-default)] pt-2.5">
-              <span class="text-[11px] font-extrabold text-[var(--text-amber-brand)]">{word.category}</span>
+            <div class="mt-4 flex items-center justify-between border-t border-(--border-default) pt-2.5">
+              <span class="text-[11px] font-extrabold text-(--text-amber-brand)">{word.category}</span>
               
-              <span class="inline-flex items-center gap-1 text-xs font-bold text-[var(--brand-primary)] group-hover:underline py-0.5">
+              <span class="inline-flex items-center gap-1 text-xs font-bold text-(--brand-primary) group-hover:underline py-0.5">
                 <span>Szczegóły</span>
                 <Icon icon="ph:book-open-bold" class="h-3.5 w-3.5" />
               </span>
@@ -155,7 +155,7 @@
         {/each}
       </div>
     {:else}
-      <div class="rounded-2xl border border-dashed border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-6 sm:p-8 text-center">
+      <div class="rounded-2xl border border-dashed border-(--border-default) bg-(--bg-surface-elevated) p-6 sm:p-8 text-center">
         <p class="text-xs font-bold text-body-muted">
           Nie rozpocząłeś jeszcze nauki słówek z wybranymi filtrami. Przejdź do zakładki Lekcja!
         </p>
@@ -165,9 +165,9 @@
 
   <!-- SEKCJA 2: ZABLOKOWANE SŁÓWKA -->
   <div class="space-y-3 sm:space-y-4 pt-2 sm:pt-4">
-    <div class="flex items-center justify-between border-b border-[var(--border-default)] pb-2">
+    <div class="flex items-center justify-between border-b border-(--border-default) pb-2">
       <div class="flex items-center gap-2">
-        <Icon icon="ph:lock-key-bold" class="h-5 w-5 text-[var(--brand-primary)] shrink-0" />
+        <Icon icon="ph:lock-key-bold" class="h-5 w-5 text-(--brand-primary) shrink-0" />
         <h3 class="title-serif text-lg sm:text-xl">
           Oczekujące na Odblokowanie ({filteredLockedWords.length})
         </h3>
@@ -178,14 +178,14 @@
       <div class="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {#each filteredLockedWords as word}
           <div
-            class="relative flex flex-col justify-between rounded-2xl border border-dashed border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-4 sm:p-5 opacity-90"
+            class="relative flex flex-col justify-between rounded-2xl border border-dashed border-(--border-default) bg-(--bg-surface-elevated) p-4 sm:p-5 opacity-90"
           >
             <div>
               <div class="flex items-start justify-between gap-2">
                 <h4 class="title-serif text-base sm:text-lg text-body-muted">
                   {word.word}
                 </h4>
-                <span class="inline-flex items-center gap-1 rounded-full border border-[var(--border-default)] bg-[var(--bg-surface)] px-2 py-0.5 text-[10px] font-extrabold text-body-muted shrink-0">
+                <span class="inline-flex items-center gap-1 rounded-full border border-(--border-default) bg-(--bg-surface) px-2 py-0.5 text-[10px] font-extrabold text-body-muted shrink-0">
                   <Icon icon="ph:lock-key-bold" class="h-3 w-3" />
                   <span>Zablokowane</span>
                 </span>
@@ -201,15 +201,15 @@
               </p>
             </div>
 
-            <div class="mt-3 flex items-center justify-between border-t border-[var(--border-default)] pt-2.5">
+            <div class="mt-3 flex items-center justify-between border-t border-(--border-default) pt-2.5">
               <span class="text-[11px] font-bold text-body-muted">{word.category}</span>
-              <span class="text-[10px] font-extrabold text-[var(--brand-primary)]">Poznasz w lekcji</span>
+              <span class="text-[10px] font-extrabold text-(--brand-primary)">Poznasz w lekcji</span>
             </div>
           </div>
         {/each}
       </div>
     {:else}
-      <div class="rounded-2xl border border-dashed border-[var(--border-default)] bg-[var(--bg-surface-elevated)] p-6 text-center">
+      <div class="rounded-2xl border border-dashed border-(--border-default) bg-(--bg-surface-elevated) p-6 text-center">
         <p class="text-xs font-bold text-body-muted">
           Wszystkie słówka z wybranej kategorii zostały już odblokowane!
         </p>
@@ -217,7 +217,6 @@
     {/if}
   </div>
 
-  <!-- Modal Szczegółów Otwartych Słów (Bottom Sheet na mobile) -->
   {#if activeWord}
     <div
       role="button"
@@ -232,71 +231,71 @@
         tabindex="0"
         onclick={(e) => e.stopPropagation()}
         onkeydown={(e) => e.stopPropagation()}
-        class="sheet-container sm:modal-container p-5 sm:p-6 space-y-4 sm:space-y-5 cursor-default max-w-xl"
+        class="sheet-container sm:modal-container cursor-default max-w-xl"
       >
         <!-- Uchwyt przeciągania na mobile -->
         <div class="sheet-handle sm:hidden"></div>
 
-        <div class="flex items-start justify-between border-b border-[var(--border-default)] pb-3">
+        <!-- Nagłówek -->
+        <div class="flex items-start justify-between border-b border-(--border-default) px-5 py-4 sm:px-6 shrink-0">
           <div>
-            <h2 class="title-serif text-2xl">{activeWord.word}</h2>
+            <h2 class="title-serif text-2xl wrap-break-word">{activeWord.word}</h2>
             {#if activeWord.phonetic}
-              <p class="text-xs font-bold text-body-muted italic">{activeWord.phonetic}</p>
+              <p class="text-xs font-bold text-(--text-muted) italic mt-0.5">{activeWord.phonetic}</p>
             {/if}
           </div>
           <button
             type="button"
             onclick={() => (activeWord = null)}
-            class="btn-secondary py-1 px-3"
+            class="rounded-lg p-1.5 text-(--text-muted) hover:bg-(--bg-surface-muted) hover:text-(--text-primary) transition-colors ml-2 shrink-0"
+            aria-label="Zamknij"
           >
-            Zamknij
+            <Icon icon="ph:x-bold" class="h-5 w-5" />
           </button>
         </div>
 
-        <div>
-          <h3 class="text-xs font-extrabold text-[var(--brand-primary)] uppercase">Pełna Definicja</h3>
-          <p class="mt-1.5 text-sm font-semibold text-body-primary leading-relaxed">{activeWord.fullDefinition}</p>
-        </div>
-
-        {#if activeWord.etymology}
+        <!-- Treść przewijalna -->
+        <div class="overflow-y-auto flex-1 px-5 py-4 sm:px-6 space-y-4 sm:space-y-5">
           <div>
-            <h3 class="text-xs font-extrabold text-body-muted uppercase">Etymologia</h3>
-            <p class="mt-1 text-xs font-semibold text-body-primary">{activeWord.etymology}</p>
+            <h3 class="text-xs font-extrabold text-(--brand-primary) uppercase">Pełna Definicja</h3>
+            <p class="mt-1.5 text-sm font-semibold text-body-primary leading-relaxed">{activeWord.fullDefinition}</p>
           </div>
-        {/if}
 
-        {#if activeWord.examples && activeWord.examples.length > 0}
-          <div>
-            <h3 class="text-xs font-extrabold text-body-muted uppercase">Przykłady z literatury</h3>
-            <div class="mt-1.5 space-y-2">
-              {#each activeWord.examples as ex}
-                <blockquote class="border-l-4 border-[var(--brand-primary)] bg-[var(--bg-surface-elevated)] p-3 rounded-r-xl font-sans text-xs font-semibold text-body-primary leading-relaxed">
-                  "{ex}"
-                </blockquote>
-              {/each}
+          {#if activeWord.etymology}
+            <div>
+              <h3 class="text-xs font-extrabold text-body-muted uppercase">Etymologia</h3>
+              <p class="mt-1 text-xs font-semibold text-body-primary">{activeWord.etymology}</p>
             </div>
+          {/if}
+
+          {#if activeWord.examples && activeWord.examples.length > 0}
+            <div>
+              <h3 class="text-xs font-extrabold text-body-muted uppercase">Przykłady z literatury</h3>
+              <div class="mt-1.5 space-y-2">
+                {#each activeWord.examples as ex}
+                  <blockquote class="border-l-4 border-(--brand-primary) bg-(--bg-surface-elevated) p-3 rounded-r-xl font-sans text-xs font-semibold text-body-primary leading-relaxed">
+                    "{ex}"
+                  </blockquote>
+                {/each}
+              </div>
+            </div>
+          {/if}
+        </div>
+
+        <!-- Stopka -->
+        {#if activeWord.sjpUrl}
+          <div class="flex items-center justify-between border-t border-(--border-default) bg-(--bg-surface-elevated) px-5 py-3.5 sm:px-6 shrink-0">
+            <a
+              href={activeWord.sjpUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-(--brand-primary) hover:underline py-1 w-full justify-center"
+            >
+              <span>Otwórz w SJP PWN</span>
+              <Icon icon="ph:arrow-square-out-bold" class="h-4 w-4" />
+            </a>
           </div>
         {/if}
-
-        <div class="flex items-center justify-between border-t border-[var(--border-default)] pt-4">
-          <a
-            href={activeWord.sjpUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--brand-primary)] hover:underline py-1"
-          >
-            <span>Otwórz w SJP PWN</span>
-            <Icon icon="ph:arrow-square-out-bold" class="h-4 w-4" />
-          </a>
-
-          <button
-            type="button"
-            onclick={() => (activeWord = null)}
-            class="btn-primary py-2 px-5"
-          >
-            Zamknij
-          </button>
-        </div>
 
       </div>
     </div>
