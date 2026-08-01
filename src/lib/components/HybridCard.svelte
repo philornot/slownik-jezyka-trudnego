@@ -107,7 +107,7 @@
 
       <!-- ETAP 2: ODSŁONIĘCIE KONTEKSTU I SAMOOCENA -->
     {:else}
-      <div class="space-y-5 sm:space-y-6 animate-in fade-in duration-300 pb-32 sm:pb-0">
+      <div class="space-y-4 sm:space-y-5 animate-in fade-in duration-300 pb-4 sm:pb-0">
         <!-- Wynik z quizu -->
         <div
           class="flex items-center justify-center gap-2 rounded-xl p-3.5 text-sm font-bold {isCorrect
@@ -197,51 +197,61 @@
         {/if}
 
         <!-- PRZYCISKI SAMOOCENY (Dokowane na dole nad paska nawigacji na mobile) -->
-        <div class="fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] left-0 right-0 z-30 border-t border-[var(--border-default)] bg-[var(--bg-surface)]/95 backdrop-blur-md px-3.5 py-3 shadow-2xl sm:relative sm:bottom-auto sm:z-auto sm:border-t sm:bg-transparent sm:px-0 sm:py-0 sm:shadow-none pt-3 sm:pt-6">
-          <p
-            class="mb-2 sm:mb-3 text-center text-[11px] sm:text-xs font-extrabold tracking-wider text-[var(--text-muted)] uppercase"
-          >
-            Jak dobrze pamiętasz to słówko?
-          </p>
+        <div class="fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] left-0 right-0 z-30 border-t-2 border-[var(--brand-primary)]/30 bg-[var(--bg-surface)]/97 backdrop-blur-md px-3.5 py-3 shadow-2xl sm:relative sm:bottom-auto sm:z-auto sm:border-t-0 sm:bg-transparent sm:px-0 sm:py-0 sm:shadow-none pt-3 sm:pt-6">
+
+          <!-- CTA: instrukcja dla użytkownika -->
+          <div class="mb-2.5 sm:mb-3 flex flex-col items-center gap-0.5">
+            <p class="text-xs sm:text-sm font-extrabold tracking-wide text-[var(--text-primary)]">
+              Oceń, jak dobrze pamiętasz to słówko
+            </p>
+            <p class="text-[11px] font-semibold text-[var(--text-muted)]">
+              Kliknij przycisk, żeby przejść dalej
+            </p>
+          </div>
 
           <div class="grid grid-cols-2 gap-2 sm:gap-3.5 sm:grid-cols-4 max-w-2xl mx-auto">
-            <!-- Bardzo trudne (Ocena 0 - Czerwony/Różowy) -->
+            <!-- Bardzo słabo (Ocena 0 - Czerwony/Różowy) -->
             <button
               type="button"
               onclick={() => handleSelfGrade(0)}
-              class="flex min-h-[48px] sm:min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-0-border)] bg-[var(--grade-0-bg)] py-2.5 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-0-text)] transition-all active:scale-[0.96] hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] sm:min-h-[56px] flex-col items-center justify-center rounded-xl border border-[var(--grade-0-border)] bg-[var(--grade-0-bg)] py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5"
             >
-              <span>Bardzo trudne</span>
+              <span class="text-base leading-none">😰</span>
+              <span class="font-extrabold text-xs sm:text-sm text-[var(--grade-0-text)]">Bardzo słabo</span>
             </button>
 
-            <!-- Trudne (Ocena 3 - Bursztynowy/Pomarańczowy) -->
+            <!-- Słabo (Ocena 3 - Bursztynowy/Pomarańczowy) -->
             <button
               type="button"
               onclick={() => handleSelfGrade(3)}
-              class="flex min-h-[48px] sm:min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-3-border)] bg-[var(--grade-3-bg)] py-2.5 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-3-text)] transition-all active:scale-[0.96] hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] sm:min-h-[56px] flex-col items-center justify-center rounded-xl border border-[var(--grade-3-border)] bg-[var(--grade-3-bg)] py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5"
             >
-              <span>Trudne</span>
+              <span class="text-base leading-none">😕</span>
+              <span class="font-extrabold text-xs sm:text-sm text-[var(--grade-3-text)]">Słabo</span>
             </button>
 
-            <!-- Średnie (Ocena 4 - Stonowany Błękit) -->
+            <!-- Dobrze (Ocena 4 - Stonowany Błękit) -->
             <button
               type="button"
               onclick={() => handleSelfGrade(4)}
-              class="flex min-h-[48px] sm:min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-4-border)] bg-[var(--grade-4-bg)] py-2.5 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-4-text)] transition-all active:scale-[0.96] hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] sm:min-h-[56px] flex-col items-center justify-center rounded-xl border border-[var(--grade-4-border)] bg-[var(--grade-4-bg)] py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5"
             >
-              <span>Średnie</span>
+              <span class="text-base leading-none">🙂</span>
+              <span class="font-extrabold text-xs sm:text-sm text-[var(--grade-4-text)]">Dobrze</span>
             </button>
 
-            <!-- Łatwe (Ocena 5 - Szmaragdowa Zieleń) -->
+            <!-- Bardzo dobrze (Ocena 5 - Szmaragdowa Zieleń) -->
             <button
               type="button"
               onclick={() => handleSelfGrade(5)}
-              class="flex min-h-[48px] sm:min-h-[52px] items-center justify-center rounded-xl border border-[var(--grade-5-border)] bg-[var(--grade-5-bg)] py-2.5 px-2 text-center font-extrabold text-xs sm:text-sm text-[var(--grade-5-text)] transition-all active:scale-[0.96] hover:opacity-80 shadow-xs"
+              class="flex min-h-[52px] sm:min-h-[56px] flex-col items-center justify-center rounded-xl border border-[var(--grade-5-border)] bg-[var(--grade-5-bg)] py-2.5 px-2 text-center transition-all active:scale-[0.96] hover:opacity-85 hover:shadow-md shadow-xs gap-0.5"
             >
-              <span>Łatwe</span>
+              <span class="text-base leading-none">🤩</span>
+              <span class="font-extrabold text-xs sm:text-sm text-[var(--grade-5-text)]">Bardzo dobrze</span>
             </button>
           </div>
         </div>
+
       </div>
     {/if}
   </div>

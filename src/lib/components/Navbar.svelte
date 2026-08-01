@@ -1,6 +1,7 @@
 <script lang="ts">
   import { theme, toggleTheme } from "../theme.svelte";
   import Icon from "@iconify/svelte";
+  import { onMount } from "svelte";
 
   interface Props {
     activeTab: "lesson" | "catalog" | "stats";
@@ -25,6 +26,26 @@
   }: Props = $props();
 
   let pointerCoords = { x: 0, y: 0 };
+
+  /** Popup onboarding – widoczny przy pierwszej wizycie */
+  let showOnboardingPopup = $state(false);
+  const ONBOARDING_KEY = 'sjt_onboarding_seen_v1';
+
+  function dismissOnboarding() {
+    showOnboardingPopup = false;
+    try { localStorage.setItem(ONBOARDING_KEY, '1'); } catch {}
+  }
+
+  onMount(() => {
+    try {
+      if (!localStorage.getItem(ONBOARDING_KEY)) {
+        // Pokaż popup po chwili, żeby strona zdążyła się załadować
+        setTimeout(() => { showOnboardingPopup = true; }, 800);
+        // Automatycznie schowaj po 6 sekundach
+        setTimeout(() => { dismissOnboarding(); }, 6800);
+      }
+    } catch {}
+  });
 
   function handlePointerDown(e: PointerEvent) {
     pointerCoords = { x: e.clientX, y: e.clientY };
@@ -173,14 +194,46 @@
       </button>
 
       <!-- Ustawienia -->
-      <button
-        type="button"
-        onclick={onOpenSettings}
-        title="Ustawienia"
-        class="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] active:scale-95 transition-all"
-      >
-        <Icon icon="ph:gear-six-bold" class="h-4 w-4" />
-      </button>
+      <div class="relative">
+        <button
+          type="button"
+          onclick={onOpenSettings}
+          title="Ustawienia"
+          class="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface)] text-[var(--text-secondary)] hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] active:scale-95 transition-all"
+        >
+          <Icon icon="ph:gear-six-bold" class="h-4 w-4" />
+        </button>
+
+        <!-- Popup onboarding -->
+        {#if showOnboardingPopup}
+          <div
+            role="tooltip"
+            class="onboarding-popup"
+          >
+            <!-- Strzałka wskazująca na przycisk -->
+            <div class="onboarding-arrow"></div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-xl leading-none shrink-0">👋</span>
+              <div>
+                <p class="text-xs font-extrabold text-[var(--text-primary)] leading-tight">
+                  Hej, tu są ustawienia!
+                </p>
+                <p class="text-[11px] font-semibold text-[var(--text-muted)] mt-0.5 leading-snug">
+                  Dostępność, animacje, limit słówek i więcej.
+                </p>
+              </div>
+              <button
+                type="button"
+                onclick={dismissOnboarding}
+                class="shrink-0 ml-1 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+                aria-label="Zamknij"
+              >
+                <Icon icon="ph:x-bold" class="h-3.5 w-3.5" />
+              </button>
+            </div>
+          </div>
+        {/if}
+      </div>
     </div>
   </div>
 </header>

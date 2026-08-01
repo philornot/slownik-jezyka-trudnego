@@ -161,3 +161,8 @@
   outline: 3px solid var(--brand-primary) !important;
   outline-offset: 2px !important;
 }
+
+/* Popup onboarding bez animacji w trybie redukcji ruchu */
+[data-a11y-motion="reduced"] .onboarding-popup {
+  animation: none !important;
+}

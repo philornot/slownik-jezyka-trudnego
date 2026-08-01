@@ -49,10 +49,22 @@ function prefersReducedMotion(): boolean {
   return typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
+/** Sprawdza ustawienie redukcji animacji z localStorage aplikacji. */
+function appReducedMotion(): boolean {
+  try {
+    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem('sjt_user_settings_v1') : null;
+    if (!raw) return false;
+    const parsed = JSON.parse(raw);
+    return parsed?.reducedMotion === true;
+  } catch {
+    return false;
+  }
+}
+
 export function runThemeWave(origin: WaveOrigin | null, apply: () => void): void {
   if (transitionInFlight) return;
 
-  if (prefersReducedMotion()) {
+  if (prefersReducedMotion() || appReducedMotion()) {
     apply();
     return;
   }

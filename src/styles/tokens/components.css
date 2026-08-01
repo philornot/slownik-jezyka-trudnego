@@ -323,4 +323,50 @@
     background-color: var(--brand-primary);
     transition: all 0.2s ease;
   }
+
+  /* =========================================== */
+  /* Popup Onboarding (pierwsza wizyta)           */
+  /* =========================================== */
+
+  .onboarding-popup {
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+    z-index: 60;
+    min-width: 220px;
+    max-width: 260px;
+    padding: 0.75rem 0.875rem;
+    border-radius: 0.875rem;
+    border: 1px solid var(--border-default);
+    background-color: var(--bg-surface-elevated);
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.12),
+      0 2px 6px rgba(0, 0, 0, 0.08);
+    animation: onboarding-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  /* Strzałka popup */
+  .onboarding-arrow {
+    position: absolute;
+    top: -6px;
+    right: 12px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--bg-surface-elevated);
+    border-left: 1px solid var(--border-default);
+    border-top: 1px solid var(--border-default);
+    transform: rotate(45deg);
+    border-radius: 2px 0 0 0;
+  }
+}
+
+@keyframes onboarding-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
