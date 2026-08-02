@@ -1,6 +1,7 @@
 import type { UserWordProgress, UserSettings } from './types';
 import { getFirebaseDb } from './firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { getTodayDateString } from './supermemo';
 
 const PROGRESS_STORAGE_KEY = 'sjt_user_progress_v1';
 const SETTINGS_STORAGE_KEY = 'sjt_user_settings_v1';
@@ -16,7 +17,9 @@ export const DEFAULT_SETTINGS: UserSettings = {
 };
 
 /**
- * Pobiera metodę ostatniego logowania
+ * Retrieves the last authentication method used by the user.
+ *
+ * @returns Last login method string or null if unavailable.
  */
 export function getLastLoginMethod(): string | null {
   if (typeof window === 'undefined') return null;
@@ -28,19 +31,23 @@ export function getLastLoginMethod(): string | null {
 }
 
 /**
- * Zapisuje metodę ostatniego logowania
+ * Persists the last authentication method used by the user.
+ *
+ * @param method - Authentication method name (e.g., 'google', 'email').
  */
 export function saveLastLoginMethod(method: string): void {
   if (typeof window === 'undefined') return;
   try {
     localStorage.setItem(LAST_LOGIN_METHOD_KEY, method);
   } catch (e) {
-    console.warn('Nie udało się zapisać metody logowania:', e);
+    console.warn('Failed to save login method to localStorage:', e);
   }
 }
 
 /**
- * Pobiera mapę postępu użytkownika z LocalStorage
+ * Retrieves the user progress map from localStorage.
+ *
+ * @returns Record mapping word IDs to user word progress.
  */
 export function getLocalProgressMap(): Record<string, UserWordProgress> {
   if (typeof window === 'undefined') return {};
@@ -49,13 +56,15 @@ export function getLocalProgressMap(): Record<string, UserWordProgress> {
     if (!raw) return {};
     return JSON.parse(raw);
   } catch (err) {
-    console.error('Błąd odczytu postępu z localStorage:', err);
+    console.error('Failed to read user progress from localStorage:', err);
     return {};
   }
 }
 
 /**
- * Zapisuje postęp dla pojedynczego słowa w LocalStorage
+ * Saves progress for a single word to localStorage.
+ *
+ * @param progress - Updated word progress object.
  */
 export function saveLocalWordProgress(progress: UserWordProgress): void {
   if (typeof window === 'undefined') return;
@@ -64,24 +73,28 @@ export function saveLocalWordProgress(progress: UserWordProgress): void {
     currentMap[progress.wordId] = progress;
     localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(currentMap));
   } catch (err) {
-    console.error('Błąd zapisu postępu w localStorage:', err);
+    console.error('Failed to save word progress to localStorage:', err);
   }
 }
 
 /**
- * Zapisuje całą mapę postępu w LocalStorage
+ * Saves the entire word progress map to localStorage.
+ *
+ * @param progressMap - Complete user word progress map.
  */
 export function saveAllLocalProgress(progressMap: Record<string, UserWordProgress>): void {
   if (typeof window === 'undefined') return;
   try {
     localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(progressMap));
   } catch (err) {
-    console.error('Błąd zapisu mapy postępu:', err);
+    console.error('Failed to save progress map to localStorage:', err);
   }
 }
 
 /**
- * Resetuje całą historię nauki użytkownika (localStorage oraz opcjonalnie w chmurze Firestore)
+ * Clears all local user study progress and resets Firestore user progress if logged in.
+ *
+ * @param userId - Optional user ID for resetting Firestore data.
  */
 export async function clearAllProgress(userId?: string): Promise<void> {
   if (typeof window === 'undefined') return;
@@ -95,12 +108,14 @@ export async function clearAllProgress(userId?: string): Promise<void> {
       }
     }
   } catch (e) {
-    console.error('Błąd czyszczenia danych postępu:', e);
+    console.error('Failed to clear progress data:', e);
   }
 }
 
 /**
- * Pobiera ustawienia użytkownika z LocalStorage
+ * Retrieves user settings from localStorage.
+ *
+ * @returns UserSettings object merged with defaults.
  */
 export function getLocalSettings(): UserSettings {
   if (typeof window === 'undefined') return DEFAULT_SETTINGS;
@@ -114,14 +129,16 @@ export function getLocalSettings(): UserSettings {
 }
 
 /**
- * Zapisuje ustawienia użytkownika w LocalStorage
+ * Saves user settings to localStorage.
+ *
+ * @param settings - User settings object to persist.
  */
 export function saveLocalSettings(settings: UserSettings): void {
   if (typeof window === 'undefined') return;
   try {
     localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
   } catch (err) {
-    console.error('Błąd zapisu ustawień:', err);
+    console.error('Failed to save user settings to localStorage:', err);
   }
 }
 
@@ -130,7 +147,7 @@ let pendingSyncUid: string | null = null;
 let pendingSyncMap: Record<string, UserWordProgress> | null = null;
 
 /**
- * Natychmiastowo wysyła oczekujący postęp do chmury Firestore (o ile istnieje w kolejce).
+ * Flushes any pending progress sync queue immediately to Firestore.
  */
 export async function flushSyncProgressToCloud(): Promise<void> {
   if (syncDebounceTimer) {
@@ -148,14 +165,16 @@ export async function flushSyncProgressToCloud(): Promise<void> {
       const userDocRef = doc(db, 'users', uid);
       await setDoc(userDocRef, { progressMap: map, updatedAt: new Date().toISOString() }, { merge: true });
     } catch (e) {
-      console.warn('Nie udało się zsynchronizować z Firebase Firestore:', e);
+      console.warn('Failed to sync progress to Firebase Firestore:', e);
     }
   }
 }
 
 /**
- * Synchronizuje postęp do chmury Firebase Firestore z debouncingiem (2.5 sekundy).
- * Ochrona przed spamem zapytaniami i nadmiernym zużyciem limitów Firestore.
+ * Schedules a debounced sync of user progress to Firestore (2.5 seconds delay).
+ *
+ * @param userId - Firebase User ID.
+ * @param progressMap - Complete user word progress map.
  */
 export function syncProgressToCloud(userId: string, progressMap: Record<string, UserWordProgress>): void {
   pendingSyncUid = userId;
@@ -174,10 +193,18 @@ if (typeof window !== 'undefined') {
   window.addEventListener('beforeunload', () => {
     flushSyncProgressToCloud();
   });
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') {
+      flushSyncProgressToCloud();
+    }
+  });
 }
 
 /**
- * Pobiera postęp użytkownika z chmury Firebase Firestore
+ * Retrieves user progress map from Firebase Firestore.
+ *
+ * @param userId - Firebase User ID.
+ * @returns Progress map or null if empty/failed.
  */
 export async function loadProgressFromCloud(userId: string): Promise<Record<string, UserWordProgress> | null> {
   try {
@@ -189,13 +216,16 @@ export async function loadProgressFromCloud(userId: string): Promise<Record<stri
       return snap.data().progressMap as Record<string, UserWordProgress>;
     }
   } catch (e) {
-    console.warn('Nie udało się pobrać danych z Firebase Firestore:', e);
+    console.warn('Failed to load user progress from Firebase Firestore:', e);
   }
   return null;
 }
 
 /**
- * Zapisuje ustawienia użytkownika do chmury Firebase Firestore
+ * Saves user settings to Firebase Firestore.
+ *
+ * @param userId - Firebase User ID.
+ * @param settings - User settings object.
  */
 export async function saveSettingsToCloud(userId: string, settings: UserSettings): Promise<void> {
   try {
@@ -204,12 +234,15 @@ export async function saveSettingsToCloud(userId: string, settings: UserSettings
     const userDocRef = doc(db, 'users', userId);
     await setDoc(userDocRef, { settings, updatedAt: new Date().toISOString() }, { merge: true });
   } catch (e) {
-    console.warn('Nie udało się zapisać ustawień do Firebase Firestore:', e);
+    console.warn('Failed to save settings to Firebase Firestore:', e);
   }
 }
 
 /**
- * Wczytuje ustawienia użytkownika z chmury Firebase Firestore
+ * Loads user settings from Firebase Firestore.
+ *
+ * @param userId - Firebase User ID.
+ * @returns UserSettings object or null if not found.
  */
 export async function loadSettingsFromCloud(userId: string): Promise<UserSettings | null> {
   try {
@@ -221,7 +254,7 @@ export async function loadSettingsFromCloud(userId: string): Promise<UserSetting
       return { ...DEFAULT_SETTINGS, ...snap.data().settings } as UserSettings;
     }
   } catch (e) {
-    console.warn('Nie udało się wczytać ustawień z Firebase Firestore:', e);
+    console.warn('Failed to load settings from Firebase Firestore:', e);
   }
   return null;
 }
@@ -236,13 +269,19 @@ export interface SavedSessionProgress {
 
 const ACTIVE_SESSION_STORAGE_KEY = 'sjt_active_session_state_v1';
 
+/**
+ * Retrieves the saved session progress state for today.
+ * Uses local timezone date string matching for date validation.
+ *
+ * @returns SavedSessionProgress or null if expired/not found.
+ */
 export function getSavedSessionState(): SavedSessionProgress | null {
   if (typeof window === 'undefined') return null;
   try {
     const raw = localStorage.getItem(ACTIVE_SESSION_STORAGE_KEY);
     if (!raw) return null;
     const parsed: SavedSessionProgress = JSON.parse(raw);
-    const today = new Date().toISOString().split('T')[0];
+    const today = getTodayDateString();
     if (parsed.date === today) {
       return parsed;
     }
@@ -250,6 +289,11 @@ export function getSavedSessionState(): SavedSessionProgress | null {
   return null;
 }
 
+/**
+ * Persists the current session state to localStorage.
+ *
+ * @param state - Session state object.
+ */
 export function saveSessionState(state: SavedSessionProgress): void {
   if (typeof window === 'undefined') return;
   try {
@@ -257,6 +301,9 @@ export function saveSessionState(state: SavedSessionProgress): void {
   } catch {}
 }
 
+/**
+ * Clears saved session state from localStorage.
+ */
 export function clearSavedSessionState(): void {
   if (typeof window === 'undefined') return;
   try {
@@ -302,4 +349,5 @@ export function mergeProgressMaps(
 
   return merged;
 }
+
 
