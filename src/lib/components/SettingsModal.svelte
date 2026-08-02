@@ -419,7 +419,28 @@
     <div
       class="flex items-center justify-between border-t border-(--border-default) bg-(--bg-surface-elevated) p-4 sm:px-6"
     >
-      <span class="text-[11px] font-mono text-(--text-muted)/50 select-none">v{APP_VERSION}</span>
+      <div class="flex items-center gap-1.5 text-[11px] font-mono text-(--text-muted)/60 select-none">
+        <span>v{APP_VERSION}</span>
+        <span class="text-(--text-muted)/30">•</span>
+        <div class="relative group inline-flex items-center">
+          <button
+            type="button"
+            class="inline-flex items-center justify-center p-0.5 rounded-full text-rose-600/70 dark:text-rose-400/80 hover:text-rose-600 dark:hover:text-rose-400 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-rose-400"
+            aria-label="Autor loga i faviconu"
+          >
+            <Icon icon="ph:heart-fill" class="h-3.5 w-3.5" />
+          </button>
+
+          <!-- Dymek (Tooltip) podziękowania -->
+          <div
+            class="absolute bottom-full left-0 mb-2 hidden group-hover:flex group-focus-within:flex items-center whitespace-nowrap rounded-lg border border-(--border-default) bg-(--bg-surface-elevated) px-2.5 py-1 text-[11px] font-sans font-medium text-(--text-primary) shadow-lg backdrop-blur-md transition-all duration-200 z-50 pointer-events-none"
+            role="tooltip"
+          >
+            <span>Autor logo strony: Dawid Siekielski</span>
+            <div class="absolute -bottom-1 left-2 w-2 h-2 rotate-45 border-r border-b border-(--border-default) bg-(--bg-surface-elevated)"></div>
+          </div>
+        </div>
+      </div>
       <div class="flex items-center gap-2">
         <button
           type="button"
