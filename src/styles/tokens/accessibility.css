@@ -147,13 +147,27 @@
   scroll-behavior: auto !important;
 }
 
-[data-a11y-motion="reduced"] .animate-pulse {
+[data-a11y-motion="reduced"] .animate-pulse,
+[data-a11y-motion="reduced"] .animate-bounce,
+[data-a11y-motion="reduced"] .animate-spin {
   animation: none !important;
 }
 
+[data-a11y-motion="reduced"] .hover\:scale-110:hover,
+[data-a11y-motion="reduced"] .hover\:scale-105:hover,
+[data-a11y-motion="reduced"] .active\:scale-95:active,
+[data-a11y-motion="reduced"] .active\:scale-98:active,
+[data-a11y-motion="reduced"] .hover\:-translate-y-0\.5:hover,
+[data-a11y-motion="reduced"] .hover\:-translate-y-1:hover {
+  transform: none !important;
+}
+
 /* Wyłączenie View Transitions API w trybie redukcji ruchu */
-[data-a11y-motion="reduced"] ::view-transition-group(root) {
-  animation-duration: 0ms;
+[data-a11y-motion="reduced"] ::view-transition-group(root),
+[data-a11y-motion="reduced"] ::view-transition-old(root),
+[data-a11y-motion="reduced"] ::view-transition-new(root) {
+  animation-duration: 0ms !important;
+  animation: none !important;
 }
 
 /* Focus ring dla lepszej widoczności w trybie wysokiego kontrastu */
