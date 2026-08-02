@@ -168,7 +168,7 @@
       
       <div class="mt-1 flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-amber-600 dark:text-amber-400">
         <Icon icon="ph:sparkle-fill" class="h-3 w-3 shrink-0" />
-        <span class="truncate">Codzienna dyscyplina</span>
+        <span class="truncate">Dni z rzędu</span>
       </div>
     </div>
 
