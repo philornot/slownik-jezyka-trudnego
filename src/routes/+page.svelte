@@ -29,11 +29,13 @@
   import Stats from '$lib/components/Stats.svelte';
   import SettingsModal from '$lib/components/SettingsModal.svelte';
   import AuthModal from '$lib/components/AuthModal.svelte';
+  import ConfirmLogoutModal from '$lib/components/ConfirmLogoutModal.svelte';
   import Icon from '@iconify/svelte';
 
   let activeTab = $state<'lesson' | 'catalog' | 'stats'>('lesson');
   let isSettingsOpen = $state(false);
   let isAuthOpen = $state(false);
+  let isConfirmLogoutOpen = $state(false);
   let currentUser = $state<User | null>(null);
 
   // Faza sesji: 'showcase' (prezentacja wszystkich nowych haseł) lub 'quiz' (sprawdzanie i powtórki)
@@ -284,7 +286,7 @@
   onTabChange={(tab) => (activeTab = tab)}
   onOpenSettings={() => (isSettingsOpen = true)}
   onLogin={() => (isAuthOpen = true)}
-  onLogout={handleLogout}
+  onLogout={() => (isConfirmLogoutOpen = true)}
 />
 
 <!-- Główna zawartość -->
@@ -420,5 +422,14 @@
   <AuthModal
     onClose={() => (isAuthOpen = false)}
     onSuccess={() => startSession()}
+  />
+{/if}
+
+<!-- Customowe Modal Potwierdzenia Wylogowania -->
+{#if isConfirmLogoutOpen}
+  <ConfirmLogoutModal
+    userEmail={currentUser?.email || null}
+    onClose={() => (isConfirmLogoutOpen = false)}
+    onConfirm={handleLogout}
   />
 {/if}

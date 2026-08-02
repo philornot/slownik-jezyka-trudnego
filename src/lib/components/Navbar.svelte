@@ -170,9 +170,9 @@
           type="button"
           onclick={onLogout}
           title="Wyloguj się"
-          class="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-(--border-default) bg-(--bg-surface) text-(--text-muted) hover:text-(--rose-icon) hover:border-(--rose-border) active:scale-95 transition-all"
+          class="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-(--rose-border) bg-(--rose-bg) text-(--rose-icon) hover:bg-(--rose-border)/30 active:scale-95 transition-all shadow-xs"
         >
-          <Icon icon="ph:sign-out-bold" class="h-4 w-4" />
+          <Icon icon="ph:sign-out-bold" class="h-4.5 w-4.5 sm:h-4 sm:w-4" />
         </button>
       {:else}
         <button
