@@ -47,19 +47,50 @@ export function calculateAdaptiveNewWordsLimit(
 }
 
 /**
- * Pobiera adaptacyjną paczkę nowych słów do nauki z losowej puli niepoznanych słówek
+/**
+ * Prosty generator liczb pseudolosowych z ziarnem (Mulberry32).
+ * Zapewnia deterministyczne losowanie słówek i dystraktorów w danym dniu.
+ */
+export function createSeededRandom(seedString: string): () => number {
+  let h = 2166136261 ^ seedString.length;
+  for (let i = 0; i < seedString.length; i++) {
+    h = Math.imul(h ^ seedString.charCodeAt(i), 16777619);
+  }
+  let a = h >>> 0;
+  return function random(): number {
+    let t = (a += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/**
+ * Mieszanie tablicy wg podanego generatora liczb losowych
+ */
+export function shuffleArray<T>(array: T[], randomFn: () => number = Math.random): T[] {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(randomFn() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+/**
+ * Pobiera adaptacyjną paczkę nowych słów do nauki z deterministycznie wymieszanej puli
  */
 export function getNewWordsToLearn(
   progressMap: Record<string, UserWordProgress>,
   allWords: DictionaryWord[],
-  userConfiguredLimit: number
+  userConfiguredLimit: number,
+  randomFn: () => number = Math.random
 ): DictionaryWord[] {
   const effectiveLimit = calculateAdaptiveNewWordsLimit(progressMap, userConfiguredLimit);
   if (effectiveLimit <= 0) return [];
 
   const unstartedWords = allWords.filter((word) => !progressMap[word.id]);
-  // Losujemy kolejność niepoznanych słówek, aby każda lekcja była zaskakująca
-  const shuffled = [...unstartedWords].sort(() => 0.5 - Math.random());
+  const shuffled = shuffleArray(unstartedWords, randomFn);
   return shuffled.slice(0, effectiveLimit);
 }
 
@@ -68,20 +99,21 @@ export function getNewWordsToLearn(
  */
 export function generateQuizOptions(
   correctWord: DictionaryWord,
-  allWords: DictionaryWord[]
+  allWords: DictionaryWord[],
+  randomFn: () => number = Math.random
 ): string[] {
   let distractors: string[] = [];
 
   if (correctWord.distractors && correctWord.distractors.length >= 3) {
-    distractors = [...correctWord.distractors].sort(() => 0.5 - Math.random()).slice(0, 3);
+    distractors = shuffleArray(correctWord.distractors, randomFn).slice(0, 3);
   } else {
     const otherWords = allWords.filter((w) => w.id !== correctWord.id);
-    const shuffled = [...otherWords].sort(() => 0.5 - Math.random());
+    const shuffled = shuffleArray(otherWords, randomFn);
     distractors = shuffled.slice(0, 3).map((w) => w.shortDefinition);
   }
 
   const allOptions = [correctWord.shortDefinition, ...distractors];
-  return allOptions.sort(() => 0.5 - Math.random());
+  return shuffleArray(allOptions, randomFn);
 }
 
 /**
@@ -90,38 +122,42 @@ export function generateQuizOptions(
 export function createDailySession(
   progressMap: Record<string, UserWordProgress>,
   settings: UserSettings,
-  allWords: DictionaryWord[]
+  allWords: DictionaryWord[],
+  customSeed?: string
 ): { cards: SessionCard[]; adaptiveLimit: number; unmasteredCount: number } {
+  const seed = customSeed || getTodayDateString();
+  const randomFn = createSeededRandom(seed);
+
   const dueReviews = getDueReviewWords(progressMap, allWords);
   const adaptiveLimit = calculateAdaptiveNewWordsLimit(progressMap, settings.dailyNewWordsLimit);
-  const newWords = getNewWordsToLearn(progressMap, allWords, settings.dailyNewWordsLimit);
+  const newWords = getNewWordsToLearn(progressMap, allWords, settings.dailyNewWordsLimit, randomFn);
   const unmasteredCount = getUnmasteredWordsCount(progressMap);
 
   const reviewCards: SessionCard[] = dueReviews.map((word) => ({
     word,
     isNew: false,
     userProgress: progressMap[word.id],
-    options: generateQuizOptions(word, allWords)
+    options: generateQuizOptions(word, allWords, randomFn)
   }));
 
   const newCards: SessionCard[] = newWords.map((word) => ({
     word,
     isNew: true,
     userProgress: progressMap[word.id],
-    options: generateQuizOptions(word, allWords)
+    options: generateQuizOptions(word, allWords, randomFn)
   }));
 
-  // Łączymy nowe karty i powtórki w wymieszaną losową kolejność
-  let cards = [...newCards, ...reviewCards].sort(() => 0.5 - Math.random());
+  // Łączymy nowe karty i powtórki w deterministycznie wymieszaną kolejność dla danego dnia
+  let cards = shuffleArray([...newCards, ...reviewCards], randomFn);
 
   if (cards.length === 0 && unmasteredCount > 0) {
     const unmasteredWords = allWords.filter((w) => progressMap[w.id] && progressMap[w.id].repetitions < 3);
-    const shuffledUnmastered = [...unmasteredWords].sort(() => 0.5 - Math.random());
+    const shuffledUnmastered = shuffleArray(unmasteredWords, randomFn);
     const trainingCards: SessionCard[] = shuffledUnmastered.slice(0, 5).map((word) => ({
       word,
       isNew: false,
       userProgress: progressMap[word.id],
-      options: generateQuizOptions(word, allWords)
+      options: generateQuizOptions(word, allWords, randomFn)
     }));
     cards = trainingCards;
   }

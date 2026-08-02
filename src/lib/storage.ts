@@ -225,3 +225,41 @@ export async function loadSettingsFromCloud(userId: string): Promise<UserSetting
   }
   return null;
 }
+
+export interface SavedSessionProgress {
+  date: string;
+  sessionPhase: 'showcase' | 'quiz';
+  currentCardIndex: number;
+  cardsReviewedInSession: number;
+  sessionCompleted: boolean;
+}
+
+const ACTIVE_SESSION_STORAGE_KEY = 'sjt_active_session_state_v1';
+
+export function getSavedSessionState(): SavedSessionProgress | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = localStorage.getItem(ACTIVE_SESSION_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed: SavedSessionProgress = JSON.parse(raw);
+    const today = new Date().toISOString().split('T')[0];
+    if (parsed.date === today) {
+      return parsed;
+    }
+  } catch {}
+  return null;
+}
+
+export function saveSessionState(state: SavedSessionProgress): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(ACTIVE_SESSION_STORAGE_KEY, JSON.stringify(state));
+  } catch {}
+}
+
+export function clearSavedSessionState(): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.removeItem(ACTIVE_SESSION_STORAGE_KEY);
+  } catch {}
+}

@@ -14,7 +14,10 @@
     flushSyncProgressToCloud,
     clearAllProgress,
     saveSettingsToCloud,
-    loadSettingsFromCloud
+    loadSettingsFromCloud,
+    getSavedSessionState,
+    saveSessionState,
+    clearSavedSessionState
   } from '$lib/storage';
   import { createDailySession } from '$lib/session';
   import { registerServiceWorker } from '$lib/notifications';
@@ -117,28 +120,53 @@
     }
   });
 
-  function startSession() {
+  function persistActiveSessionState() {
+    saveSessionState({
+      date: getTodayDateString(),
+      sessionPhase,
+      currentCardIndex,
+      cardsReviewedInSession,
+      sessionCompleted
+    });
+  }
+
+  function startSession(forceNew = false) {
+    if (forceNew) {
+      clearSavedSessionState();
+    }
+
     const sessionData = createDailySession(progressMap, settings, INITIAL_WORDS);
     sessionCards = sessionData.cards;
-    currentCardIndex = 0;
-    sessionCompleted = sessionCards.length === 0;
-    cardsReviewedInSession = 0;
 
-    // Wyciągamy nowe słówka z tej sesji do fazy pierwszej (Showcase)
-    const newWords = sessionCards.filter((c) => c.isNew).map((c) => c.word);
-    
-    // Jeśli są nowe słówka, zaczynamy od Fazy 1 (Prezentacji)
-    if (newWords.length > 0) {
-      newWordsToLearn = newWords;
-      sessionPhase = 'showcase';
+    const savedState = !forceNew ? getSavedSessionState() : null;
+
+    if (savedState) {
+      sessionPhase = savedState.sessionPhase;
+      currentCardIndex = Math.min(savedState.currentCardIndex, Math.max(0, sessionCards.length - 1));
+      cardsReviewedInSession = savedState.cardsReviewedInSession;
+      sessionCompleted = savedState.sessionCompleted;
+      newWordsToLearn = sessionCards.filter((c) => c.isNew).map((c) => c.word);
     } else {
-      newWordsToLearn = [];
-      sessionPhase = 'quiz';
+      currentCardIndex = 0;
+      sessionCompleted = sessionCards.length === 0;
+      cardsReviewedInSession = 0;
+
+      const newWords = sessionCards.filter((c) => c.isNew).map((c) => c.word);
+      if (newWords.length > 0) {
+        newWordsToLearn = newWords;
+        sessionPhase = 'showcase';
+      } else {
+        newWordsToLearn = [];
+        sessionPhase = 'quiz';
+      }
+
+      persistActiveSessionState();
     }
   }
 
   function handleFinishShowcase() {
     sessionPhase = 'quiz';
+    persistActiveSessionState();
   }
 
   function calculateStreak(map: Record<string, UserWordProgress>): number {
@@ -212,6 +240,7 @@
       sessionCompleted = true;
       flushSyncProgressToCloud();
     }
+    persistActiveSessionState();
   }
 
   function handleSaveSettings(newSettings: UserSettings) {
@@ -365,7 +394,7 @@
           <div class="flex flex-col gap-3 p-5">
             <button
               type="button"
-              onclick={startSession}
+              onclick={() => startSession(true)}
               class="btn-touch flex items-center justify-center gap-2"
             >
               <Icon icon="ph:arrows-clockwise-bold" class="h-5 w-5" />
