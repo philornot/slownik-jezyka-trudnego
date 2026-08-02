@@ -151,54 +151,79 @@
 <div class="mx-auto max-w-5xl space-y-4 sm:space-y-6 px-3 sm:px-0">
   <!-- SEKCJA 1: 4 Kluczowe Wskaźniki KPI (2 kolumny na mobile) -->
   <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-    <!-- Seria dni -->
-    <div class="app-card border-(--border-amber) p-3.5 sm:p-5 transition-all hover:border-(--brand-primary)">
+    <!-- 1. Seria dni (Flame Amber) -->
+    <div class="relative overflow-hidden rounded-2xl border border-(--border-default) bg-(--bg-surface-elevated) p-3.5 sm:p-5 shadow-xs transition-all duration-200 hover:border-amber-500/50 group">
+      <div class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-amber-500 to-orange-500"></div>
+
       <div class="flex items-center justify-between">
-        <span class="text-[11px] sm:text-xs font-extrabold text-(--text-amber-brand)">Seria Nauki</span>
-        <div class="rounded-xl bg-(--icon-bg-amber) p-1.5 sm:p-2">
-          <Icon icon="ph:fire-bold" class="h-4 w-4 sm:h-5 sm:w-5 text-(--brand-primary)" />
+        <span class="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-(--text-muted)">Seria Nauki</span>
+        <div class="rounded-xl bg-amber-500/15 border border-amber-600/30 dark:border-amber-500/25 p-1.5 sm:p-2 text-amber-600 dark:text-amber-400 shrink-0">
+          <Icon icon="ph:fire-fill" class="h-4 w-4 sm:h-5 sm:w-5" />
         </div>
       </div>
-      <p class="mt-2 sm:mt-3 font-serif text-2xl sm:text-3xl font-bold text-(--text-serif-title)">
+      
+      <p class="mt-2.5 sm:mt-3 font-serif text-2xl sm:text-3xl font-bold text-(--text-serif-title) group-hover:translate-x-0.5 transition-transform">
         {streakDays} {streakDays === 1 ? "dzień" : "dni"}
       </p>
-      <p class="mt-0.5 sm:mt-1 text-[10px] sm:text-xs font-bold text-(--text-muted) line-clamp-1">Codzienna dyscyplina</p>
+      
+      <div class="mt-1 flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-amber-600 dark:text-amber-400">
+        <Icon icon="ph:sparkle-fill" class="h-3 w-3 shrink-0" />
+        <span class="truncate">Codzienna dyscyplina</span>
+      </div>
     </div>
 
-    <!-- Łączne powtórki -->
-    <div class="app-card p-3.5 sm:p-5 transition-all hover:border-(--brand-primary)">
+    <!-- 2. Łączne powtórki (Brand Emerald) -->
+    <div class="relative overflow-hidden rounded-2xl border border-(--border-default) bg-(--bg-surface-elevated) p-3.5 sm:p-5 shadow-xs transition-all duration-200 hover:border-(--brand-primary) group">
+      <div class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-(--brand-primary) to-(--brand-primary-hover)"></div>
+
       <div class="flex items-center justify-between">
-        <span class="text-[11px] sm:text-xs font-extrabold text-(--text-primary)">Powtórki</span>
-        <div class="rounded-xl bg-(--icon-bg-stone) p-1.5 sm:p-2">
-          <Icon icon="ph:arrows-clockwise-bold" class="h-4 w-4 sm:h-5 sm:w-5 text-(--brand-primary)" />
+        <span class="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-(--text-muted)">Powtórki</span>
+        <div class="rounded-xl bg-(--brand-primary)/15 border border-(--brand-primary)/30 p-1.5 sm:p-2 text-(--brand-primary) shrink-0">
+          <Icon icon="ph:arrows-clockwise-bold" class="h-4 w-4 sm:h-5 sm:w-5" />
         </div>
       </div>
-      <p class="mt-2 sm:mt-3 font-serif text-2xl sm:text-3xl font-bold text-(--text-serif-title)">{totalReviewsPerformed}</p>
-      <p class="mt-0.5 sm:mt-1 text-[10px] sm:text-xs font-bold text-(--text-muted) line-clamp-1">Liczba odpowiedzi</p>
+
+      <p class="mt-2.5 sm:mt-3 font-serif text-2xl sm:text-3xl font-bold text-(--text-serif-title) group-hover:translate-x-0.5 transition-transform">
+        {totalReviewsPerformed}
+      </p>
+
+      <p class="mt-1 text-[10px] sm:text-xs font-bold text-(--text-muted) truncate">Liczba odpowiedzi</p>
     </div>
 
-    <!-- Opanowane słowa -->
-    <div class="app-card border-(--emerald-border) p-3.5 sm:p-5 transition-all hover:border-(--emerald-icon)">
+    <!-- 3. Opanowane słowa (Mint Green) -->
+    <div class="relative overflow-hidden rounded-2xl border border-(--border-default) bg-(--bg-surface-elevated) p-3.5 sm:p-5 shadow-xs transition-all duration-200 hover:border-emerald-500/50 group">
+      <div class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-500 to-teal-400"></div>
+
       <div class="flex items-center justify-between">
-        <span class="text-[11px] sm:text-xs font-extrabold text-(--emerald-text)">Opanowane</span>
-        <div class="rounded-xl bg-(--icon-bg-emerald) p-1.5 sm:p-2">
-          <Icon icon="ph:check-circle-bold" class="h-4 w-4 sm:h-5 sm:w-5 text-(--emerald-icon)" />
+        <span class="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-(--text-muted)">Opanowane</span>
+        <div class="rounded-xl bg-emerald-500/15 border border-emerald-600/30 dark:border-emerald-500/25 p-1.5 sm:p-2 text-emerald-700 dark:text-emerald-400 shrink-0">
+          <Icon icon="ph:check-circle-fill" class="h-4 w-4 sm:h-5 sm:w-5" />
         </div>
       </div>
-      <p class="mt-2 sm:mt-3 font-serif text-2xl sm:text-3xl font-bold text-(--text-serif-title)">{learnedWords}</p>
-      <p class="mt-0.5 sm:mt-1 text-[10px] sm:text-xs font-bold text-(--text-muted) line-clamp-1">Trwale w pamięci</p>
+
+      <p class="mt-2.5 sm:mt-3 font-serif text-2xl sm:text-3xl font-bold text-(--text-serif-title) group-hover:translate-x-0.5 transition-transform">
+        {learnedWords}
+      </p>
+
+      <p class="mt-1 text-[10px] sm:text-xs font-bold text-emerald-700 dark:text-emerald-400 truncate">Trwale w pamięci</p>
     </div>
 
-    <!-- W trakcie -->
-    <div class="app-card border-(--border-amber) p-3.5 sm:p-5 transition-all hover:border-(--brand-primary)">
+    <!-- 4. W trakcie (Sky Blue) -->
+    <div class="relative overflow-hidden rounded-2xl border border-(--border-default) bg-(--bg-surface-elevated) p-3.5 sm:p-5 shadow-xs transition-all duration-200 hover:border-sky-500/50 group">
+      <div class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-sky-500 to-indigo-400"></div>
+
       <div class="flex items-center justify-between">
-        <span class="text-[11px] sm:text-xs font-extrabold text-(--text-amber-brand)">W Trakcie</span>
-        <div class="rounded-xl bg-(--icon-bg-amber) p-1.5 sm:p-2">
-          <Icon icon="ph:clock-bold" class="h-4 w-4 sm:h-5 sm:w-5 text-(--brand-primary)" />
+        <span class="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-(--text-muted)">W Trakcie</span>
+        <div class="rounded-xl bg-sky-500/15 border border-sky-600/30 dark:border-sky-500/25 p-1.5 sm:p-2 text-sky-700 dark:text-sky-400 shrink-0">
+          <Icon icon="ph:clock-fill" class="h-4 w-4 sm:h-5 sm:w-5" />
         </div>
       </div>
-      <p class="mt-2 sm:mt-3 font-serif text-2xl sm:text-3xl font-bold text-(--text-serif-title)">{inProgressWords}</p>
-      <p class="mt-0.5 sm:mt-1 text-[10px] sm:text-xs font-bold text-(--text-muted) line-clamp-1">Aktywnie utrwalane</p>
+
+      <p class="mt-2.5 sm:mt-3 font-serif text-2xl sm:text-3xl font-bold text-(--text-serif-title) group-hover:translate-x-0.5 transition-transform">
+        {inProgressWords}
+      </p>
+
+      <p class="mt-1 text-[10px] sm:text-xs font-bold text-sky-700 dark:text-sky-400 truncate">Aktywnie utrwalane</p>
     </div>
   </div>
 
