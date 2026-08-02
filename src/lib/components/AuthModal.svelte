@@ -34,7 +34,15 @@
       onSuccess();
       onClose();
     } catch (err: any) {
-      errorMessage = err.message || 'Wystąpił błąd podczas logowania przez Google.';
+      console.warn('Google login error:', err);
+      const msg = err?.message || '';
+      if (msg.includes('closing') || msg.includes('hidden') || err?.code === 'auth/popup-closed-by-user') {
+        errorMessage = 'Połączenie zostało odświeżone. Stuknij "Kontynuuj z Google" ponownie.';
+      } else if (err?.code === 'auth/popup-blocked') {
+        errorMessage = 'Przeglądarka zablokowała wyskakujące okienko logowania. Zezwól na wyskakujące okienka.';
+      } else {
+        errorMessage = msg || 'Wystąpił błąd podczas logowania przez Google.';
+      }
     } finally {
       isSubmitting = false;
     }
