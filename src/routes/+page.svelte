@@ -19,7 +19,7 @@
   import { createDailySession } from '$lib/session';
   import { registerServiceWorker } from '$lib/notifications';
   import { getFirebaseAuth } from '$lib/firebase';
-  import { signOut, onAuthStateChanged, type User } from 'firebase/auth';
+  import { signOut, onAuthStateChanged, getRedirectResult, type User } from 'firebase/auth';
   import { initTheme } from '$lib/theme.svelte';
 
   import Navbar from '$lib/components/Navbar.svelte';
@@ -85,6 +85,10 @@
     try {
       const auth = getFirebaseAuth();
       if (auth) {
+        getRedirectResult(auth).catch((e) => {
+          console.warn('Google Redirect Result handler:', e);
+        });
+
         onAuthStateChanged(auth, async (user) => {
           currentUser = user;
           if (user) {

@@ -6,7 +6,7 @@
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword
   } from '../firebase';
-  import { signInWithPopup } from 'firebase/auth';
+  import { signInWithPopup, signInWithRedirect } from 'firebase/auth';
   import { getLastLoginMethod, saveLastLoginMethod } from '../storage';
 
   interface Props {
@@ -29,19 +29,43 @@
     errorMessage = null;
     try {
       const auth = getFirebaseAuth();
-      await signInWithPopup(auth, googleProvider);
-      saveLastLoginMethod('google');
-      onSuccess();
-      onClose();
-    } catch (err: any) {
-      console.warn('Google login error:', err);
-      const msg = err?.message || '';
-      if (msg.includes('closing') || msg.includes('hidden') || err?.code === 'auth/popup-closed-by-user') {
-        errorMessage = 'Połączenie zostało odświeżone. Stuknij "Kontynuuj z Google" ponownie.';
-      } else if (err?.code === 'auth/popup-blocked') {
-        errorMessage = 'Przeglądarka zablokowała wyskakujące okienko logowania. Zezwól na wyskakujące okienka.';
+      const isMobile = typeof navigator !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        // Na urządzeniach mobilnych zalecaną przez Firebase metodą jest przekierowanie
+        await signInWithRedirect(auth, googleProvider);
       } else {
-        errorMessage = msg || 'Wystąpił błąd podczas logowania przez Google.';
+        try {
+          await signInWithPopup(auth, googleProvider);
+          saveLastLoginMethod('google');
+          onSuccess();
+          onClose();
+        } catch (popupErr: any) {
+          console.warn('Błąd wyskakującego okienka, próba przekierowania:', popupErr);
+          if (
+            popupErr?.code === 'auth/popup-blocked' ||
+            popupErr?.code === 'auth/popup-closed-by-user' ||
+            popupErr?.code === 'auth/operation-not-supported-in-this-environment' ||
+            (popupErr?.message && popupErr.message.includes('closing'))
+          ) {
+            await signInWithRedirect(auth, googleProvider);
+          } else {
+            throw popupErr;
+          }
+        }
+      }
+    } catch (err: any) {
+      console.error('Błąd logowania przez Google:', err);
+      const code = err?.code || '';
+      const msg = err?.message || '';
+      
+      if (code === 'auth/unauthorized-domain') {
+        const host = typeof window !== 'undefined' ? window.location.hostname : '';
+        errorMessage = `IP/Domena "${host}" nie jest w autoryzowanych domenach Firebase. Dodaj ją w Firebase Console -> Auth -> Settings -> Authorized Domains.`;
+      } else if (code === 'auth/popup-blocked') {
+        errorMessage = 'Przeglądarka zablokowała okienko logowania. Zezwól na wyskakujące okienka.';
+      } else {
+        errorMessage = msg || `Błąd logowania przez Google (${code || 'brak kodu'}).`;
       }
     } finally {
       isSubmitting = false;
