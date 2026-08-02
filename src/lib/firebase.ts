@@ -9,21 +9,41 @@ import {
 } from 'firebase/auth';
 import { getFirestore, type Firestore } from 'firebase/firestore';
 
+const apiKey = import.meta.env.VITE_FIREBASE_API_KEY;
+const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID;
+
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyDemoKeyForSltOnly12345",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "slownik-jezyka-trudnego.firebaseapp.com",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "slownik-jezyka-trudnego",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "slownik-jezyka-trudnego.appspot.com",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "1234567890",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:1234567890:web:abcdef123456"
+  apiKey,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 let app: FirebaseApp | undefined;
 let auth: Auth | undefined;
 let db: Firestore | undefined;
 
+/**
+ * Initializes and returns the FirebaseApp instance.
+ * Throws an error if key environment variables (API Key and Project ID) are not configured.
+ *
+ * @returns Initialized FirebaseApp instance.
+ * @throws Error if Firebase environment variables are missing.
+ */
 export function getFirebaseApp(): FirebaseApp {
   if (typeof window === 'undefined') return undefined as unknown as FirebaseApp;
+
+  if (!apiKey || !projectId) {
+    console.error(
+      'Firebase configuration error: VITE_FIREBASE_API_KEY and VITE_FIREBASE_PROJECT_ID environment variables must be defined.'
+    );
+    throw new Error(
+      'Firebase environment variables missing (VITE_FIREBASE_API_KEY, VITE_FIREBASE_PROJECT_ID).'
+    );
+  }
+
   if (!getApps().length) {
     app = initializeApp(firebaseConfig);
   } else {
@@ -32,6 +52,11 @@ export function getFirebaseApp(): FirebaseApp {
   return app;
 }
 
+/**
+ * Returns the FirebaseAuth instance.
+ *
+ * @returns FirebaseAuth instance.
+ */
 export function getFirebaseAuth(): Auth {
   if (!auth) {
     const firebaseApp = getFirebaseApp();
@@ -40,6 +65,11 @@ export function getFirebaseAuth(): Auth {
   return auth;
 }
 
+/**
+ * Returns the Firestore database instance.
+ *
+ * @returns Firestore instance.
+ */
 export function getFirebaseDb(): Firestore {
   if (!db) {
     const firebaseApp = getFirebaseApp();
@@ -55,3 +85,4 @@ export {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail
 };
+

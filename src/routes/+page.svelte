@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import type { DictionaryWord, UserWordProgress, SessionCard, UserSettings, ReviewGrade } from '$lib/types';
   import { INITIAL_WORDS } from '$lib/data/words';
-  import { calculateSM2, getTodayDateString } from '$lib/supermemo';
+  import { calculateSM2, getTodayDateString, calculateStreak } from '$lib/supermemo';
   import {
     getLocalProgressMap,
     saveLocalWordProgress,
@@ -17,7 +17,8 @@
     loadSettingsFromCloud,
     getSavedSessionState,
     saveSessionState,
-    clearSavedSessionState
+    clearSavedSessionState,
+    mergeProgressMaps
   } from '$lib/storage';
   import { createDailySession } from '$lib/session';
   import { registerServiceWorker } from '$lib/notifications';
@@ -97,10 +98,10 @@
         onAuthStateChanged(auth, async (user) => {
           currentUser = user;
           if (user) {
-            // Po zalogowaniu wczytujemy dane z chmury i scalamy z lokalnymi
+            // Po zalogowaniu wczytujemy dane z chmury i scalamy z lokalnymi według najnowszej daty lastReviewedAt
             const cloudProgress = await loadProgressFromCloud(user.uid);
             if (cloudProgress) {
-              progressMap = { ...cloudProgress, ...progressMap };
+              progressMap = mergeProgressMaps(progressMap, cloudProgress);
               saveAllLocalProgress(progressMap);
               await syncProgressToCloud(user.uid, progressMap);
               startSession();
@@ -167,41 +168,6 @@
   function handleFinishShowcase() {
     sessionPhase = 'quiz';
     persistActiveSessionState();
-  }
-
-  function calculateStreak(map: Record<string, UserWordProgress>): number {
-    const dates = new Set<string>();
-    for (const prog of Object.values(map)) {
-      if (prog.history) {
-        for (const h of prog.history) {
-          if (h.date) dates.add(h.date);
-        }
-      }
-    }
-    const today = getTodayDateString();
-    if (dates.size === 0) return 0;
-
-    let count = 0;
-    let curr = new Date(today);
-    while (true) {
-      const dateStr = curr.toISOString().split('T')[0];
-      if (dates.has(dateStr)) {
-        count++;
-        curr.setDate(curr.getDate() - 1);
-      } else {
-        if (count === 0) {
-          curr.setDate(curr.getDate() - 1);
-          const yesterdayStr = curr.toISOString().split('T')[0];
-          if (dates.has(yesterdayStr)) {
-            count++;
-            curr.setDate(curr.getDate() - 1);
-            continue;
-          }
-        }
-        break;
-      }
-    }
-    return Math.max(count, 1);
   }
 
   function handleGradeCard(grade: ReviewGrade) {

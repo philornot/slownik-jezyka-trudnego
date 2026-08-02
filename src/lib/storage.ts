@@ -263,3 +263,43 @@ export function clearSavedSessionState(): void {
     localStorage.removeItem(ACTIVE_SESSION_STORAGE_KEY);
   } catch {}
 }
+
+/**
+ * Merges local and cloud progress maps for user word progress.
+ * For each word ID present in either map, the entry with the most recent `lastReviewedAt` timestamp wins.
+ * If timestamps are equal or missing, the local entry is preferred.
+ *
+ * @param local - The local word progress map.
+ * @param cloud - The cloud word progress map.
+ * @returns The merged progress map.
+ */
+export function mergeProgressMaps(
+  local: Record<string, UserWordProgress>,
+  cloud: Record<string, UserWordProgress>
+): Record<string, UserWordProgress> {
+  const merged: Record<string, UserWordProgress> = { ...cloud, ...local };
+  const allWordIds = new Set([...Object.keys(local), ...Object.keys(cloud)]);
+
+  for (const wordId of allWordIds) {
+    const localEntry = local[wordId];
+    const cloudEntry = cloud[wordId];
+
+    if (localEntry && cloudEntry) {
+      const localTime = localEntry.lastReviewedAt ?? '';
+      const cloudTime = cloudEntry.lastReviewedAt ?? '';
+
+      if (cloudTime > localTime) {
+        merged[wordId] = cloudEntry;
+      } else {
+        merged[wordId] = localEntry;
+      }
+    } else if (localEntry) {
+      merged[wordId] = localEntry;
+    } else if (cloudEntry) {
+      merged[wordId] = cloudEntry;
+    }
+  }
+
+  return merged;
+}
+
