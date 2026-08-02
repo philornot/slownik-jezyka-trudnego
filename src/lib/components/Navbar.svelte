@@ -71,30 +71,48 @@
   <div
     class="mx-auto flex max-w-5xl items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3"
   >
-    <!-- Logo -->
-    <div class="flex items-center gap-2.5">
-      <div
-        class="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-linear-to-br from-(--brand-primary) to-(--brand-primary-hover) shadow-xs shrink-0"
-      >
-        <Icon
-          icon="ph:book-open-duotone"
-          class="h-5 w-5 sm:h-6 sm:w-6 text-white"
-        />
-      </div>
-      <div>
-        <h1
-          class="title-serif text-base sm:text-xl tracking-tight leading-tight"
-        >
+    <!-- Logo & Brand Header -->
+    <button
+      type="button"
+      onclick={() => onTabChange("lesson")}
+      class="flex items-center gap-2.5 cursor-pointer text-left focus:outline-none transition-transform active:scale-95 group"
+      aria-label="Słownik Języka Trudnego - Strona Główna"
+    >
+      <!-- Mobile: Kwadratowe Logo + Tytuł (< sm) -->
+      <div class="flex sm:hidden items-center gap-2.5">
+        <div class="relative h-9 w-9 logo-crossfade shrink-0">
+          <img
+            src="/logo_kwadratowe_ciemne.png"
+            alt="Słownik Języka Trudnego Logo Ciemne"
+            class="logo-img logo-dark"
+          />
+          <img
+            src="/logo_kwadratowe_jasne.png"
+            alt="Słownik Języka Trudnego Logo Jasne"
+            class="logo-img logo-light"
+          />
+        </div>
+        <h1 class="title-serif text-base tracking-tight leading-tight">
           <span class="hidden xs:inline">Słownik Języka Trudnego</span>
           <span class="inline xs:hidden font-bold">Słownik Trudny</span>
         </h1>
-        <p
-          class="hidden sm:block text-xs font-semibold text-(--text-muted)"
-        >
-          Codzienna porcja polszczyzny
-        </p>
       </div>
-    </div>
+
+      <!-- Desktop: Szerokie Logo (>= sm) -->
+      <div class="hidden sm:block relative h-11 w-52 sm:w-56 logo-crossfade shrink-0">
+        <h1 class="sr-only">Słownik Języka Trudnego</h1>
+        <img
+          src="/logo_szerokie_ciemne.png"
+          alt="Słownik Języka Trudnego"
+          class="logo-img logo-dark object-left"
+        />
+          <img
+          src="/logo_szerokie_jasne.png"
+          alt="Słownik Języka Trudnego"
+          class="logo-img logo-light object-left"
+        />
+      </div>
+    </button>
 
     <!-- Desktop: nawigacja zakładkowa w środku headera -->
     <nav
@@ -310,3 +328,35 @@
     <span>Statystyki</span>
   </button>
 </div>
+
+<style>
+  .logo-crossfade {
+    position: relative;
+    display: inline-block;
+  }
+
+  .logo-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
+  }
+
+  :global([data-theme="dark"]) .logo-dark {
+    opacity: 1;
+  }
+  :global([data-theme="dark"]) .logo-light {
+    opacity: 0;
+  }
+
+  :global([data-theme="light"]) .logo-dark {
+    opacity: 0;
+  }
+  :global([data-theme="light"]) .logo-light {
+    opacity: 1;
+  }
+</style>
