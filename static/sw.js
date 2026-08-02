@@ -13,7 +13,7 @@ self.addEventListener('push', (event) => {
   let data = {
     title: 'Słownik Języka Trudnego',
     body: 'Czas na Twoją dzienną lekcję pięknych polskich słów!',
-    icon: '/favicon.png'
+    icon: '/apple-touch-icon.png'
   };
 
   if (event.data) {
@@ -26,8 +26,8 @@ self.addEventListener('push', (event) => {
 
   const options = {
     body: data.body,
-    icon: data.icon || '/favicon.png',
-    badge: '/favicon.png',
+    icon: data.icon || '/apple-touch-icon.png',
+    badge: '/apple-touch-icon.png',
     vibrate: [100, 50, 100],
     data: {
       url: self.location.origin

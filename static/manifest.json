@@ -1,0 +1,34 @@
+{
+  "name": "Słownik Języka Trudnego",
+  "short_name": "Słownik Trudny",
+  "description": "Aplikacja do nauki rzadkich polskich słów przy użyciu inteligentnego systemu powtórek.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0e1411",
+  "theme_color": "#0e1411",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon_354x354.png",
+      "sizes": "354x354",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
