@@ -134,19 +134,19 @@
     <div class="sheet-handle sm:hidden"></div>
 
     <!-- Nagłówek -->
-    <div class="flex items-center justify-between border-b border-[var(--border-default)] bg-[var(--bg-surface-elevated)] px-4 sm:px-6 py-3.5 sm:py-4">
+    <div class="flex items-center justify-between border-b border-(--border-default) bg-(--bg-surface-elevated) px-4 sm:px-6 py-3.5 sm:py-4">
       <div>
         <h2 class="title-serif text-xl">
           {mode === 'login' ? 'Zaloguj się' : 'Utwórz nowe konto'}
         </h2>
-        <p class="text-xs font-bold text-[var(--text-muted)]">
+        <p class="text-xs font-bold text-(--text-muted)">
           Zapisuj swój postęp i synchronizuj słówka
         </p>
       </div>
       <button
         type="button"
         onclick={onClose}
-        class="rounded-lg p-1.5 text-[var(--text-muted)] hover:bg-[var(--bg-surface-muted)] hover:text-[var(--text-primary)]"
+        class="rounded-lg p-1.5 text-(--text-muted) hover:bg-(--bg-surface-muted) hover:text-(--text-primary)"
       >
         <Icon icon="ph:x-bold" class="h-5 w-5" />
       </button>
@@ -155,15 +155,15 @@
     <div class="p-4 sm:p-6 space-y-4 sm:space-y-5">
       <!-- Komunikaty o błędach / sukcesie -->
       {#if errorMessage}
-        <div class="flex items-center gap-2 rounded-xl bg-[var(--rose-bg)] border border-[var(--rose-border)] p-3 text-xs font-bold text-[var(--rose-text)]">
-          <Icon icon="ph:warning-circle-bold" class="h-4 w-4 shrink-0 text-[var(--rose-icon)]" />
+        <div class="flex items-center gap-2 rounded-xl bg-(--rose-bg) border border-(--rose-border) p-3 text-xs font-bold text-(--rose-text)">
+          <Icon icon="ph:warning-circle-bold" class="h-4 w-4 shrink-0 text-(--rose-icon)" />
           <span>{errorMessage}</span>
         </div>
       {/if}
 
       {#if successMessage}
-        <div class="flex items-center gap-2 rounded-xl bg-[var(--emerald-bg)] border border-[var(--emerald-border)] p-3 text-xs font-bold text-[var(--emerald-text)]">
-          <Icon icon="ph:check-circle-bold" class="h-4 w-4 shrink-0 text-[var(--emerald-icon)]" />
+        <div class="flex items-center gap-2 rounded-xl bg-(--emerald-bg) border border-(--emerald-border) p-3 text-xs font-bold text-(--emerald-text)">
+          <Icon icon="ph:check-circle-bold" class="h-4 w-4 shrink-0 text-(--emerald-icon)" />
           <span>{successMessage}</span>
         </div>
       {/if}
@@ -174,7 +174,7 @@
           type="button"
           disabled={isSubmitting}
           onclick={handleGoogleLogin}
-          class="app-card-interactive relative flex w-full items-center justify-between p-3.5 min-h-[48px]"
+          class="app-card-interactive relative flex w-full items-center justify-between p-3.5 min-h-12"
         >
           <div class="flex items-center gap-3">
             <svg class="h-5 w-5" viewBox="0 0 24 24">
@@ -195,7 +195,7 @@
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
               />
             </svg>
-            <span class="text-xs font-bold text-[var(--text-primary)]">Kontynuuj z Google</span>
+            <span class="text-xs font-bold text-(--text-primary)">Kontynuuj z Google</span>
           </div>
 
           {#if lastUsedMethod === 'google'}
@@ -208,38 +208,38 @@
       </div>
 
       <div class="relative flex items-center justify-center">
-        <div class="w-full border-t border-[var(--border-default)]"></div>
-        <span class="absolute bg-[var(--bg-surface)] px-3 text-[10px] font-extrabold text-[var(--text-muted)] uppercase">lub e-mail</span>
+        <div class="w-full border-t border-(--border-default)"></div>
+        <span class="absolute bg-(--bg-surface) px-3 text-[10px] font-extrabold text-(--text-muted) uppercase">lub e-mail</span>
       </div>
 
       <!-- FORMULARZ LOGOWANIA EMAIL/HASŁO -->
       <form onsubmit={handleSubmitEmail} class="space-y-3.5">
         <div class="space-y-1.5">
-          <label for="auth-email-input" class="text-xs font-extrabold text-[var(--text-primary)] uppercase">Adres Email</label>
+          <label for="auth-email-input" class="text-xs font-extrabold text-(--text-primary) uppercase">Adres Email</label>
           <div class="relative">
-            <Icon icon="ph:envelope-bold" class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--text-muted)]" />
+            <Icon icon="ph:envelope-bold" class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-(--text-muted)" />
             <input
               id="auth-email-input"
               type="email"
               required
               bind:value={email}
               placeholder="twojadres@email.com"
-              class="w-full rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] pl-10 pr-4 py-3 text-xs font-bold text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--brand-primary)] focus:outline-hidden"
+              class="w-full rounded-xl border border-(--border-default) bg-(--bg-surface-elevated) pl-10 pr-4 py-3 text-xs font-bold text-(--text-primary) placeholder:text-(--text-muted) focus:border-(--brand-primary) focus:outline-hidden"
             />
           </div>
         </div>
 
         <div class="space-y-1.5">
-          <label for="auth-password-input" class="text-xs font-extrabold text-[var(--text-primary)] uppercase">Hasło</label>
+          <label for="auth-password-input" class="text-xs font-extrabold text-(--text-primary) uppercase">Hasło</label>
           <div class="relative">
-            <Icon icon="ph:lock-key-bold" class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--text-muted)]" />
+            <Icon icon="ph:lock-key-bold" class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-(--text-muted)" />
             <input
               id="auth-password-input"
               type="password"
               required
               bind:value={password}
               placeholder="••••••••"
-              class="w-full rounded-xl border border-[var(--border-default)] bg-[var(--bg-surface-elevated)] pl-10 pr-4 py-3 text-xs font-bold text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:border-[var(--brand-primary)] focus:outline-hidden"
+              class="w-full rounded-xl border border-(--border-default) bg-(--bg-surface-elevated) pl-10 pr-4 py-3 text-xs font-bold text-(--text-primary) placeholder:text-(--text-muted) focus:border-(--brand-primary) focus:outline-hidden"
             />
           </div>
         </div>
@@ -255,9 +255,9 @@
       </form>
 
       <!-- PRZEŁĄCZNIK LOGOWANIE / REJESTRACJA -->
-      <div class="border-t border-[var(--border-default)] pt-4 text-center pb-2">
+      <div class="border-t border-(--border-default) pt-4 text-center pb-2">
         {#if mode === 'login'}
-          <p class="text-xs font-bold text-[var(--text-muted)]">
+          <p class="text-xs font-bold text-(--text-muted)">
             Nie masz jeszcze konta?
             <button
               type="button"
@@ -265,13 +265,13 @@
                 mode = 'register';
                 errorMessage = null;
               }}
-              class="font-extrabold text-[var(--text-amber-brand)] hover:underline p-1"
+              class="font-extrabold text-(--text-amber-brand) hover:underline p-1"
             >
               Zarejestruj się
             </button>
           </p>
         {:else}
-          <p class="text-xs font-bold text-[var(--text-muted)]">
+          <p class="text-xs font-bold text-(--text-muted)">
             Masz już konto?
             <button
               type="button"
@@ -279,7 +279,7 @@
                 mode = 'login';
                 errorMessage = null;
               }}
-              class="font-extrabold text-[var(--text-amber-brand)] hover:underline p-1"
+              class="font-extrabold text-(--text-amber-brand) hover:underline p-1"
             >
               Przejdź do logowania
             </button>
