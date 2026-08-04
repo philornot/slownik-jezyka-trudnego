@@ -84,12 +84,16 @@
           <img
             src="/logo_kwadratowe_ciemne.png"
             alt="Słownik Języka Trudnego Logo"
-            class="absolute inset-0 h-full w-full object-contain transition-opacity duration-300 {theme.current === 'dark' ? 'opacity-100' : 'opacity-0'}"
+            width="324"
+            height="324"
+            class="logo-img absolute inset-0 h-full w-full object-contain transition-opacity duration-300 {theme.current === 'dark' ? 'opacity-100' : 'opacity-0'}"
           />
           <img
             src="/logo_kwadratowe_jasne.png"
             alt="Słownik Języka Trudnego Logo"
-            class="absolute inset-0 h-full w-full object-contain transition-opacity duration-300 {theme.current === 'light' ? 'opacity-100' : 'opacity-0'}"
+            width="324"
+            height="324"
+            class="logo-img absolute inset-0 h-full w-full object-contain transition-opacity duration-300 {theme.current === 'light' ? 'opacity-100' : 'opacity-0'}"
           />
         </div>
         <h1 class="title-serif text-base tracking-tight leading-tight">
@@ -99,17 +103,22 @@
       </div>
 
       <!-- Desktop: Szerokie Logo (>= sm) -->
-      <div class="hidden sm:block relative h-10 w-44 sm:h-11 sm:w-52 shrink-0">
+      <!-- Proporcje: 1282:334 = ~3.84:1, przy h-11 (44px) -> w = 169px -->
+      <div class="hidden sm:block relative h-10 w-[130px] sm:h-11 sm:w-[169px] shrink-0">
         <h1 class="sr-only">Słownik Języka Trudnego</h1>
         <img
           src="/logo_szerokie_ciemne.png"
           alt="Słownik Języka Trudnego"
-          class="absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300 {theme.current === 'dark' ? 'opacity-100' : 'opacity-0'}"
+          width="1282"
+          height="334"
+          class="logo-img absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300 {theme.current === 'dark' ? 'opacity-100' : 'opacity-0'}"
         />
         <img
           src="/logo_szerokie_jasne.png"
           alt="Słownik Języka Trudnego"
-          class="absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300 {theme.current === 'light' ? 'opacity-100' : 'opacity-0'}"
+          width="1282"
+          height="334"
+          class="logo-img absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300 {theme.current === 'light' ? 'opacity-100' : 'opacity-0'}"
         />
       </div>
     </button>

@@ -182,6 +182,16 @@
     font-weight: 600;
   }
 
+  /* Logo */
+  .logo-img {
+    /* Wymuś subpixel-aligned rendering i hardware compositing */
+    transform: translateZ(0);
+    will-change: opacity;
+    /* Wyłącz double antialiasing przy skalowaniu w dół */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
   /* Nagłówki i Teksty */
   .title-serif {
     font-family: var(--font-serif);
