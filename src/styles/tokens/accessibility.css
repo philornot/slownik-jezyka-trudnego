@@ -120,25 +120,43 @@
 }
 
 /* =============================================
-   POWIĘKSZONY TEKST (Larger Text Mode)
-   Klasa: [data-a11y-text="large"]
+   WIELKOŚĆ TEKSTU (Text Size Modes: small, medium, large)
    ============================================= */
 
-[data-a11y-text="large"] {
+/* Poziom 2: Średni (dotychczasowy powiększony) */
+[data-a11y-text="medium"] {
   font-size: 112.5%; /* 18px zamiast 16px base */
 }
 
-[data-a11y-text="large"] .text-xs {
+[data-a11y-text="medium"] .text-xs {
   font-size: 0.8125rem; /* 13px zamiast 12px */
 }
 
-[data-a11y-text="large"] .text-sm {
+[data-a11y-text="medium"] .text-sm {
   font-size: 0.9375rem; /* 15px zamiast 14px */
+}
+
+[data-a11y-text="medium"] .text-\[10px\],
+[data-a11y-text="medium"] .text-\[11px\] {
+  font-size: 0.75rem; /* 12px zamiast 10-11px */
+}
+
+/* Poziom 3: Duży (nowy bardzo powiększony tryb) */
+[data-a11y-text="large"] {
+  font-size: 125%; /* 20px zamiast 16px base */
+}
+
+[data-a11y-text="large"] .text-xs {
+  font-size: 0.875rem; /* 14px */
+}
+
+[data-a11y-text="large"] .text-sm {
+  font-size: 1.0625rem; /* 17px */
 }
 
 [data-a11y-text="large"] .text-\[10px\],
 [data-a11y-text="large"] .text-\[11px\] {
-  font-size: 0.75rem; /* 12px zamiast 10-11px */
+  font-size: 0.8125rem; /* 13px */
 }
 
 /* =============================================

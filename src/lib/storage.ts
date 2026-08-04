@@ -13,8 +13,22 @@ export const DEFAULT_SETTINGS: UserSettings = {
   dailyNewWordsLimit: 5,
   highContrast: false,
   reducedMotion: false,
-  largerText: false
+  textSize: 'small'
 };
+
+/**
+ * Normalizes user settings object to handle backward compatibility.
+ *
+ * @param raw - Partial or legacy user settings object.
+ * @returns Complete UserSettings object.
+ */
+export function normalizeUserSettings(raw: any): UserSettings {
+  const merged: UserSettings = { ...DEFAULT_SETTINGS, ...raw };
+  if (!merged.textSize) {
+    merged.textSize = raw?.largerText ? 'medium' : 'small';
+  }
+  return merged;
+}
 
 /**
  * Retrieves the last authentication method used by the user.
@@ -122,7 +136,7 @@ export function getLocalSettings(): UserSettings {
   try {
     const raw = localStorage.getItem(SETTINGS_STORAGE_KEY);
     if (!raw) return DEFAULT_SETTINGS;
-    return { ...DEFAULT_SETTINGS, ...JSON.parse(raw) };
+    return normalizeUserSettings(JSON.parse(raw));
   } catch (err) {
     return DEFAULT_SETTINGS;
   }
@@ -251,7 +265,7 @@ export async function loadSettingsFromCloud(userId: string): Promise<UserSetting
     const userDocRef = doc(db, 'users', userId);
     const snap = await getDoc(userDocRef);
     if (snap.exists() && snap.data()?.settings) {
-      return { ...DEFAULT_SETTINGS, ...snap.data().settings } as UserSettings;
+      return normalizeUserSettings(snap.data().settings);
     }
   } catch (e) {
     console.warn('Failed to load settings from Firebase Firestore:', e);

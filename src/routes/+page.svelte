@@ -66,7 +66,7 @@
     if (typeof document === 'undefined') return;
     const root = document.documentElement;
     root.setAttribute('data-a11y-contrast', s.highContrast ? 'high' : 'default');
-    root.setAttribute('data-a11y-text', s.largerText ? 'large' : 'default');
+    root.setAttribute('data-a11y-text', s.textSize || (s.largerText ? 'medium' : 'small'));
     root.setAttribute('data-a11y-motion', s.reducedMotion ? 'reduced' : 'default');
   }
 

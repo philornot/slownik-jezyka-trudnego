@@ -24,6 +24,8 @@ export interface UserWordProgress {
   }>;
 }
 
+export type TextSizeLevel = 'small' | 'medium' | 'large';
+
 export interface UserSettings {
   preferredNotificationHour: number; // np. 9 dla 09:00
   notificationsEnabled: boolean;
@@ -31,7 +33,8 @@ export interface UserSettings {
   // Accessibility
   highContrast: boolean;
   reducedMotion: boolean;
-  largerText: boolean;
+  textSize: TextSizeLevel;
+  largerText?: boolean; // legacy compatibility
 }
 
 export type ReviewGrade = 0 | 3 | 4 | 5;

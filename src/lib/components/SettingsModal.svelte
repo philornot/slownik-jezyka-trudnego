@@ -270,37 +270,65 @@
           </button>
         </div>
 
-        <!-- Powiększony Tekst -->
-        <div class="flex items-center justify-between">
-          <div class="space-y-0.5">
-            <div
-              class="flex items-center gap-2 text-xs font-extrabold text-(--text-primary)"
-            >
-              <Icon
-                icon="ph:text-aa-bold"
-                class="h-4 w-4 text-(--brand-primary)"
-              />
-              <span>Powiększony tekst</span>
+        <!-- Wielkość Tekstu (3 poziomy) -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="space-y-0.5">
+              <div
+                class="flex items-center gap-2 text-xs font-extrabold text-(--text-primary)"
+              >
+                <Icon
+                  icon="ph:text-aa-bold"
+                  class="h-4 w-4 text-(--brand-primary)"
+                />
+                <span>Wielkość tekstu</span>
+              </div>
+              <p class="text-[11px] font-semibold text-(--text-muted)">
+                Rozmiar czcionki w całej aplikacji
+              </p>
             </div>
-            <p class="text-[11px] font-semibold text-(--text-muted)">
-              Zwiększona wielkość czcionki
-            </p>
           </div>
 
-          <button
-            type="button"
-            aria-label="Przełącz powiększony tekst"
-            onclick={() => updateSetting("largerText", !localSettings.largerText)}
-            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.largerText
-              ? 'bg-(--brand-primary) border-transparent'
-              : 'bg-(--progress-track) border-(--progress-border)'}"
-          >
-            <span
-              class="pointer-events-none inline-block h-6 w-6 sm:h-5 sm:w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.largerText
-                ? 'translate-x-5 sm:translate-x-5'
-                : 'translate-x-0'}"
-            ></span>
-          </button>
+          <div class="grid grid-cols-3 gap-2 pt-1" role="radiogroup" aria-label="Wielkość tekstu">
+            <button
+              type="button"
+              role="radio"
+              aria-checked={localSettings.textSize === "small"}
+              onclick={() => updateSetting("textSize", "small")}
+              class="flex flex-col items-center justify-center gap-0.5 p-2.5 rounded-xl border-2 transition-all cursor-pointer text-center min-h-12 {localSettings.textSize === 'small'
+                ? 'bg-(--brand-primary) border-(--brand-primary) text-white font-extrabold shadow-xs'
+                : 'bg-(--bg-surface-elevated) border-(--border-default) text-(--text-muted) hover:text-(--text-primary) hover:border-(--brand-primary)'}"
+            >
+              <span class="text-xs">Mały</span>
+              <span class="text-[9px] opacity-75 font-mono uppercase">Domyślny</span>
+            </button>
+
+            <button
+              type="button"
+              role="radio"
+              aria-checked={localSettings.textSize === "medium"}
+              onclick={() => updateSetting("textSize", "medium")}
+              class="flex flex-col items-center justify-center gap-0.5 p-2.5 rounded-xl border-2 transition-all cursor-pointer text-center min-h-12 {localSettings.textSize === 'medium'
+                ? 'bg-(--brand-primary) border-(--brand-primary) text-white font-extrabold shadow-xs'
+                : 'bg-(--bg-surface-elevated) border-(--border-default) text-(--text-muted) hover:text-(--text-primary) hover:border-(--brand-primary)'}"
+            >
+              <span class="text-sm font-bold">Średni</span>
+              <span class="text-[9px] opacity-75 font-mono uppercase">Powiększony</span>
+            </button>
+
+            <button
+              type="button"
+              role="radio"
+              aria-checked={localSettings.textSize === "large"}
+              onclick={() => updateSetting("textSize", "large")}
+              class="flex flex-col items-center justify-center gap-0.5 p-2.5 rounded-xl border-2 transition-all cursor-pointer text-center min-h-12 {localSettings.textSize === 'large'
+                ? 'bg-(--brand-primary) border-(--brand-primary) text-white font-extrabold shadow-xs'
+                : 'bg-(--bg-surface-elevated) border-(--border-default) text-(--text-muted) hover:text-(--text-primary) hover:border-(--brand-primary)'}"
+            >
+              <span class="text-base font-extrabold">Duży</span>
+              <span class="text-[9px] opacity-75 font-mono uppercase">Maksymalny</span>
+            </button>
+          </div>
         </div>
 
         <!-- Redukcja Ruchu -->
