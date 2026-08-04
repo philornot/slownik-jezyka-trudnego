@@ -254,7 +254,7 @@
 
             <!-- Słupek -->
             <div
-              class="w-full max-w-8 sm:max-w-9 rounded-t-lg transition-all duration-500 {day.isToday
+              class="w-full max-w-8 sm:max-w-9 rounded-t-lg transition-all duration-500 border border-(--progress-border) {day.isToday
                 ? 'bg-(--bar-active) shadow-sm'
                 : day.count > 0
                   ? 'bg-(--bar-secondary)'
@@ -288,7 +288,7 @@
           </div>
 
           <!-- Pasek postępu dla kategorii -->
-          <div class="h-2 w-full overflow-hidden rounded-full bg-(--progress-track) flex">
+          <div class="h-2.5 w-full overflow-hidden rounded-full bg-(--progress-track) border border-(--progress-border) flex">
             <div
               class="bg-(--emerald-icon) transition-all duration-500"
               style="width: {cat.total > 0 ? (cat.learned / cat.total) * 100 : 0}%"

@@ -179,7 +179,7 @@
             max="20"
             bind:value={localSettings.dailyNewWordsLimit}
             oninput={() => onPreview({ ...localSettings })}
-            class="w-full h-3 sm:h-2 rounded-lg bg-(--progress-track) accent-(--brand-primary) cursor-pointer"
+            class="w-full h-3 sm:h-2 rounded-lg bg-(--progress-track) border border-(--progress-border) accent-(--brand-primary) cursor-pointer"
           />
           <div
             class="flex justify-between text-[10px] font-extrabold text-(--text-muted)"
@@ -211,13 +211,13 @@
             type="button"
             aria-label="Przełącz powiadomienia"
             onclick={handleToggleNotifications}
-            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.notificationsEnabled
-              ? 'bg-(--brand-primary)'
-              : 'bg-(--progress-track)'}"
+            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.notificationsEnabled
+              ? 'bg-(--brand-primary) border-transparent'
+              : 'bg-(--progress-track) border-(--progress-border)'}"
           >
             <span
               class="pointer-events-none inline-block h-6 w-6 sm:h-5 sm:w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.notificationsEnabled
-                ? 'translate-x-5'
+                ? 'translate-x-5 sm:translate-x-5'
                 : 'translate-x-0'}"
             ></span>
           </button>
@@ -258,13 +258,13 @@
             type="button"
             aria-label="Przełącz wysoki kontrast"
             onclick={() => updateSetting("highContrast", !localSettings.highContrast)}
-            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.highContrast
-              ? 'bg-(--brand-primary)'
-              : 'bg-(--progress-track)'}"
+            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.highContrast
+              ? 'bg-(--brand-primary) border-transparent'
+              : 'bg-(--progress-track) border-(--progress-border)'}"
           >
             <span
               class="pointer-events-none inline-block h-6 w-6 sm:h-5 sm:w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.highContrast
-                ? 'translate-x-5'
+                ? 'translate-x-5 sm:translate-x-5'
                 : 'translate-x-0'}"
             ></span>
           </button>
@@ -291,13 +291,13 @@
             type="button"
             aria-label="Przełącz powiększony tekst"
             onclick={() => updateSetting("largerText", !localSettings.largerText)}
-            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.largerText
-              ? 'bg-(--brand-primary)'
-              : 'bg-(--progress-track)'}"
+            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.largerText
+              ? 'bg-(--brand-primary) border-transparent'
+              : 'bg-(--progress-track) border-(--progress-border)'}"
           >
             <span
               class="pointer-events-none inline-block h-6 w-6 sm:h-5 sm:w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.largerText
-                ? 'translate-x-5'
+                ? 'translate-x-5 sm:translate-x-5'
                 : 'translate-x-0'}"
             ></span>
           </button>
@@ -324,13 +324,13 @@
             type="button"
             aria-label="Przełącz redukcję animacji"
             onclick={() => updateSetting("reducedMotion", !localSettings.reducedMotion)}
-            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.reducedMotion
-              ? 'bg-(--brand-primary)'
-              : 'bg-(--progress-track)'}"
+            class="relative inline-flex h-7 w-12 sm:h-6 sm:w-11 shrink-0 cursor-pointer rounded-full border-2 transition-colors duration-200 ease-in-out focus:outline-hidden {localSettings.reducedMotion
+              ? 'bg-(--brand-primary) border-transparent'
+              : 'bg-(--progress-track) border-(--progress-border)'}"
           >
             <span
               class="pointer-events-none inline-block h-6 w-6 sm:h-5 sm:w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out {localSettings.reducedMotion
-                ? 'translate-x-5'
+                ? 'translate-x-5 sm:translate-x-5'
                 : 'translate-x-0'}"
             ></span>
           </button>

@@ -52,6 +52,13 @@
 
   /* Tooltip */
   --tooltip-bg: #000000;
+
+  /* Wykres / progress bar */
+  --bar-active: #12241b;
+  --bar-secondary: #8a491e;
+  --bar-inactive: #627d6c;
+  --progress-track: #627d6c;
+  --progress-border: #12241b;
 }
 
 /* Dark Mode + High Contrast */
@@ -107,9 +114,9 @@
   /* Wykres */
   --bar-active: #68b090;
   --bar-secondary: rgba(245, 184, 135, 0.8);
-  --bar-inactive: #131c18;
-  --progress-track: #131c18;
-  --progress-border: #52997a;
+  --bar-inactive: #314d40;
+  --progress-track: #314d40;
+  --progress-border: #85d4b0;
 }
 
 /* =============================================

@@ -87,11 +87,11 @@
     <div class="flex items-center gap-1.5">
       {#each words as _, idx}
         <div
-          class="h-2 w-4 sm:w-5 rounded-full transition-all {idx === currentIndex
-            ? 'bg-(--brand-primary)'
+          class="h-2 rounded-full transition-all {idx === currentIndex
+            ? 'bg-(--brand-primary) w-8 border border-(--brand-primary-hover)'
             : idx < currentIndex
-              ? 'bg-(--bar-secondary)'
-              : 'bg-(--progress-track)'}"
+              ? 'bg-(--bar-secondary) w-4 sm:w-5 border border-(--border-default)'
+              : 'bg-(--progress-track) w-4 sm:w-5 border border-(--progress-border)'}"
         ></div>
       {/each}
     </div>

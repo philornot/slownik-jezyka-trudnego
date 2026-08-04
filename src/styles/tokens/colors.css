@@ -66,10 +66,10 @@
 
   /* Wykres / progress bar */
   --bar-active: #2e4d3e;
-  --bar-inactive: #bacbbf;
+  --bar-inactive: #a6c0b0;
   --bar-secondary: rgba(179, 107, 59, 0.7);
-  --progress-track: #d0ded4;
-  --progress-border: #bacbbf;
+  --progress-track: #b8ccbf;
+  --progress-border: #799983;
 
   /* Przyciski Samooceny SM-2 (Grade Buttons - Intuicyjne Kolory Trudności) */
   --grade-0-bg: #fde8e8;
@@ -180,10 +180,10 @@
 
   /* Wykres / progress bar */
   --bar-active: #52997a;
-  --bar-inactive: #16201b;
+  --bar-inactive: #1c2c23;
   --bar-secondary: rgba(224, 159, 103, 0.5);
-  --progress-track: #1f2e27;
-  --progress-border: #31473d;
+  --progress-track: #263b31;
+  --progress-border: #446654;
 
   /* Tooltip */
   --tooltip-bg: #2a3d34;

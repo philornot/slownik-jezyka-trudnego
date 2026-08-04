@@ -310,7 +310,7 @@
             <!-- Mobile: uproszczony pasek z liczbą -->
             <div class="flex items-center gap-3 mb-1">
               <span class="text-[11px] sm:text-xs font-extrabold text-(--brand-primary) shrink-0">Faza 2 &middot; {currentCardIndex + 1}/{sessionCards.length}</span>
-              <div class="flex-1 h-2 sm:h-2.5 rounded-full bg-(--progress-track) overflow-hidden">
+              <div class="flex-1 h-2 sm:h-2.5 rounded-full bg-(--progress-track) border border-(--progress-border) overflow-hidden">
                 <div
                   class="h-full bg-linear-to-r from-(--brand-primary) to-(--brand-primary-hover) transition-all duration-300"
                   style="width: {((currentCardIndex + 1) / sessionCards.length) * 100}%"
