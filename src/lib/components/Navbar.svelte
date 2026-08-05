@@ -2,7 +2,6 @@
   import { theme, toggleTheme } from "../theme.svelte";
   import Icon from "@iconify/svelte";
   import { onMount } from "svelte";
-  import WideLogo from "./WideLogo.svelte";
 
   interface Props {
     activeTab: "lesson" | "catalog" | "stats";
@@ -79,37 +78,26 @@
       class="flex items-center gap-2.5 cursor-pointer text-left focus:outline-none transition-transform active:scale-95 group"
       aria-label="Słownik Języka Trudnego - Strona Główna"
     >
-      <!-- Mobile: Kwadratowe Logo + Tytuł (< sm) -->
-      <div class="flex sm:hidden items-center gap-2.5">
-        <div class="relative h-9 w-9 shrink-0">
-          <img
-            src="/logo_kwadratowe_ciemne.png"
-            alt="Słownik Języka Trudnego Logo"
-            width="324"
-            height="324"
-            class="logo-img absolute inset-0 h-full w-full object-contain transition-opacity duration-300 {theme.current === 'dark' ? 'opacity-100' : 'opacity-0'}"
-          />
-          <img
-            src="/logo_kwadratowe_jasne.png"
-            alt="Słownik Języka Trudnego Logo"
-            width="324"
-            height="324"
-            class="logo-img absolute inset-0 h-full w-full object-contain transition-opacity duration-300 {theme.current === 'light' ? 'opacity-100' : 'opacity-0'}"
-          />
-        </div>
-        <h1 class="title-serif text-base tracking-tight leading-tight">
-          <span class="hidden xs:inline">Słownik Języka Trudnego</span>
-          <span class="inline xs:hidden font-bold">Słownik Trudny</span>
-        </h1>
+      <!-- Mobile: tylko okrągły emblemat (< sm) -->
+      <div class="flex sm:hidden h-9 w-9 shrink-0">
+        <img
+          src={theme.current === "dark" ? "/logo-circle-dark.png" : "/logo-circle.png"}
+          alt="Słownik Języka Trudnego"
+          width="600"
+          height="600"
+          class="h-full w-full object-contain"
+        />
       </div>
 
-      <!-- Desktop: Szerokie Logo (>= sm) -->
-      <!-- Wektorowe logo (emblemat + napis w dwóch liniach), viewBox 4480:1600 = 2.8:1. -->
-      <!-- Kolor to currentColor -> var(--brand-primary), więc jeden plik obsługuje motyw -->
-      <!-- jasny/ciemny i tryb wysokiego kontrastu bez potrzeby dwóch osobnych grafik. -->
-      <div class="hidden sm:flex items-center h-12 w-[134px] sm:h-14 sm:w-[157px] shrink-0">
-        <h1 class="sr-only">Słownik Języka Trudnego</h1>
-        <WideLogo class="h-full w-full text-(--brand-primary) transition-colors duration-300" />
+      <!-- Desktop: pełne logo z napisem (>= sm) -->
+      <div class="hidden sm:flex h-12 sm:h-14 shrink-0">
+        <img
+          src={theme.current === "dark" ? "/logo-wide-dark.png" : "/logo-wide.png"}
+          alt="Słownik Języka Trudnego"
+          width="1800"
+          height="511"
+          class="h-full w-auto object-contain"
+        />
       </div>
     </button>
 
