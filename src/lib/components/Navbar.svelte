@@ -2,6 +2,7 @@
   import { theme, toggleTheme } from "../theme.svelte";
   import Icon from "@iconify/svelte";
   import { onMount } from "svelte";
+  import WideLogo from "./WideLogo.svelte";
 
   interface Props {
     activeTab: "lesson" | "catalog" | "stats";
@@ -103,23 +104,12 @@
       </div>
 
       <!-- Desktop: Szerokie Logo (>= sm) -->
-      <!-- Proporcje: 1282:334 = ~3.84:1, przy h-11 (44px) -> w = 169px -->
-      <div class="hidden sm:block relative h-10 w-[130px] sm:h-11 sm:w-[169px] shrink-0">
+      <!-- Wektorowe logo (emblemat + napis w dwóch liniach), viewBox 4480:1600 = 2.8:1. -->
+      <!-- Kolor to currentColor -> var(--brand-primary), więc jeden plik obsługuje motyw -->
+      <!-- jasny/ciemny i tryb wysokiego kontrastu bez potrzeby dwóch osobnych grafik. -->
+      <div class="hidden sm:flex items-center h-12 w-[134px] sm:h-14 sm:w-[157px] shrink-0">
         <h1 class="sr-only">Słownik Języka Trudnego</h1>
-        <img
-          src="/logo_szerokie_ciemne.png"
-          alt="Słownik Języka Trudnego"
-          width="1282"
-          height="334"
-          class="logo-img absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300 {theme.current === 'dark' ? 'opacity-100' : 'opacity-0'}"
-        />
-        <img
-          src="/logo_szerokie_jasne.png"
-          alt="Słownik Języka Trudnego"
-          width="1282"
-          height="334"
-          class="logo-img absolute inset-0 h-full w-full object-contain object-left transition-opacity duration-300 {theme.current === 'light' ? 'opacity-100' : 'opacity-0'}"
-        />
+        <WideLogo class="h-full w-full text-(--brand-primary) transition-colors duration-300" />
       </div>
     </button>
 
