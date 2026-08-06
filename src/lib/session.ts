@@ -168,3 +168,54 @@ export function createDailySession(
     unmasteredCount
   };
 }
+
+export const COMPLETION_MESSAGES: Array<{ title: string; description: string }> = [
+  {
+    title: 'Plan na dziś wykonany',
+    description: 'Dzisiejsza porcja materiału została zaliczona. Powtórki będą dostępne jutro.'
+  },
+  {
+    title: 'Lekcja zakończona',
+    description: 'Słówka z dzisiejszej sesji zostały przetworzone. Nowy zestaw powtórek pojawi się jutro.'
+  },
+  {
+    title: 'Dzienna sesja zaliczona',
+    description: 'Materiał na dziś został przerobiony. Algorytm wyznaczy kolejne powtórki na jutro.'
+  },
+  {
+    title: 'Cel dzienny osiągnięty',
+    description: 'Wykonałeś zaplanowane powtórki. Odpoczynek sprzyja utrwalaniu wiedzy w pamięci.'
+  },
+  {
+    title: 'Powtórki ukończone',
+    description: 'Przerobiłeś wszystkie zaplanowane słówka. Kolejne zadania pojawią się jutro.'
+  },
+  {
+    title: 'Kolejny dzień zaliczony',
+    description: 'Regularna nauka w krótkich porcjach przynosi optymalne efekty w zapamiętywaniu.'
+  },
+  {
+    title: 'Sesja ukończona',
+    description: 'Przejrzałeś wyznaczone hasła. Wszystkie postępy zostały zapisane.'
+  },
+  {
+    title: 'Moduł na dziś zamknięty',
+    description: 'Wszystkie zaplanowane na ten dzień ćwiczenia zostały wykonane.'
+  }
+];
+
+/**
+ * Returns a deterministic completion message for a given date string.
+ *
+ * @param dateStr - Date string YYYY-MM-DD (defaults to today).
+ * @returns Title and description pair for the completion screen.
+ */
+export function getDailyCompletionMessage(dateStr: string = getTodayDateString()): {
+  title: string;
+  description: string;
+} {
+  const randomFn = createSeededRandom(`completion_${dateStr}`);
+  const index = Math.floor(randomFn() * COMPLETION_MESSAGES.length);
+  return COMPLETION_MESSAGES[index];
+}
+

@@ -20,7 +20,7 @@
     clearSavedSessionState,
     mergeProgressMaps
   } from '$lib/storage';
-  import { createDailySession } from '$lib/session';
+  import { createDailySession, getDailyCompletionMessage } from '$lib/session';
   import { registerServiceWorker } from '$lib/notifications';
   import { getFirebaseAuth } from '$lib/firebase';
   import { signOut, onAuthStateChanged, getRedirectResult, type User } from 'firebase/auth';
@@ -57,6 +57,7 @@
   let streakDays = $derived(calculateStreak(progressMap));
   let currentCard = $derived(sessionCards[currentCardIndex]);
   let learnedCount = $derived(Object.values(progressMap).filter((p) => p.repetitions >= 3).length);
+  let completionMessage = $derived(getDailyCompletionMessage());
 
   /**
    * Applies accessibility data attributes to the HTML element
@@ -337,9 +338,9 @@
               <Icon icon="ph:trophy-bold" class="h-11 w-11 text-white" />
             </div>
             <div>
-              <h2 class="title-serif text-3xl sm:text-4xl">Plan na dziś wykonany!</h2>
+              <h2 class="title-serif text-3xl sm:text-4xl">{completionMessage.title}</h2>
               <p class="mt-2 text-sm font-semibold text-(--text-muted) max-w-sm mx-auto">
-                Dzisiejsza porcja materiału została zaliczona. Wróć jutro po kolejne powtórki!
+                {completionMessage.description}
               </p>
             </div>
           </div>
@@ -350,7 +351,7 @@
               <Icon icon="ph:sparkle-bold" class="h-5 w-5" />
             </div>
             <p class="leading-relaxed">
-              Algorytm powtórek dba o trwałe zapamiętywanie. Najlepsze efekty daje regularna, codzienna nauka!
+              Algorytm powtórek dba o trwałe zapamiętywanie. Najlepsze efekty daje regularna, codzienna nauka.
             </p>
           </div>
 
