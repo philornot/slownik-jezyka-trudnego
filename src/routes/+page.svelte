@@ -97,6 +97,7 @@
           .then((res) => {
             if (res?.user) {
               saveLastLoginMethod('google');
+              isAuthOpen = false;
             }
           })
           .catch((e) => {
@@ -106,6 +107,7 @@
         onAuthStateChanged(auth, async (user) => {
           currentUser = user;
           if (user) {
+            isAuthOpen = false;
             // Po zalogowaniu wczytujemy dane z chmury i scalamy z lokalnymi według najnowszej daty lastReviewedAt
             const cloudProgress = await loadProgressFromCloud(user.uid);
             if (cloudProgress) {

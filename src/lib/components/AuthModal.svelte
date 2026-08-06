@@ -30,22 +30,31 @@
     try {
       const auth = getFirebaseAuth();
       try {
-        await signInWithPopup(auth, googleProvider);
-        saveLastLoginMethod('google');
-        onSuccess();
-        onClose();
+        const result = await signInWithPopup(auth, googleProvider);
+        if (result?.user) {
+          saveLastLoginMethod('google');
+          onSuccess();
+          onClose();
+        }
       } catch (popupErr: any) {
-        console.warn('Błąd wyskakującego okienka, próba przekierowania:', popupErr);
+        console.warn('Błąd okna logowania Google:', popupErr);
+        const code = popupErr?.code || '';
+        
+        // Jeśli użytkownik zamknął okienko lub logowanie w okienku zakończyło się, nie wywołujemy ponownego przekierowania
+        if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
+          return;
+        }
+
+        // Przekierowanie wywołujemy wyłącznie wtedy, gdy okienka pop-up są zablokowane
         if (
-          popupErr?.code === 'auth/popup-blocked' ||
-          popupErr?.code === 'auth/popup-closed-by-user' ||
-          popupErr?.code === 'auth/operation-not-supported-in-this-environment' ||
-          (popupErr?.message && popupErr.message.includes('closing'))
+          code === 'auth/popup-blocked' ||
+          code === 'auth/operation-not-supported-in-this-environment'
         ) {
           await signInWithRedirect(auth, googleProvider);
-        } else {
-          throw popupErr;
+          return;
         }
+
+        throw popupErr;
       }
     } catch (err: any) {
       console.error('Błąd logowania przez Google:', err);
@@ -57,7 +66,7 @@
         errorMessage = `IP/Domena "${host}" nie jest w autoryzowanych domenach Firebase. Dodaj ją w Firebase Console -> Auth -> Settings -> Authorized Domains.`;
       } else if (code === 'auth/popup-blocked') {
         errorMessage = 'Przeglądarka zablokowała okienko logowania. Zezwól na wyskakujące okienka.';
-      } else {
+      } else if (code !== 'auth/popup-closed-by-user' && code !== 'auth/cancelled-popup-request') {
         errorMessage = msg || `Błąd logowania przez Google (${code || 'brak kodu'}).`;
       }
     } finally {
