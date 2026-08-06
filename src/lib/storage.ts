@@ -1,7 +1,9 @@
-import type { UserWordProgress, UserSettings } from './types';
-import { getFirebaseDb } from './firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import type { UserWordProgress, UserSettings, DeviceSession, UserProfile } from './types';
+import { getFirebaseDb, getFirebaseAuth } from './firebase';
+import { doc, getDoc, setDoc, deleteDoc, onSnapshot } from 'firebase/firestore';
+import { updateProfile, deleteUser } from 'firebase/auth';
 import { getTodayDateString } from './supermemo';
+
 
 const PROGRESS_STORAGE_KEY = 'sjt_user_progress_v1';
 const SETTINGS_STORAGE_KEY = 'sjt_user_settings_v1';
@@ -375,5 +377,210 @@ export function mergeProgressMaps(
 
   return merged;
 }
+
+const DEVICE_ID_KEY = 'sjt_device_id_v1';
+
+/**
+ * Retrieves or generates a unique persistent device ID for this browser.
+ *
+ * @returns Persistent device ID string.
+ */
+export function getDeviceId(): string {
+  if (typeof window === 'undefined') return 'server';
+  try {
+    let id = localStorage.getItem(DEVICE_ID_KEY);
+    if (!id) {
+      id = typeof crypto !== 'undefined' && crypto.randomUUID
+        ? crypto.randomUUID()
+        : 'dev_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+      localStorage.setItem(DEVICE_ID_KEY, id);
+    }
+    return id;
+  } catch {
+    return 'dev_' + Date.now();
+  }
+}
+
+/**
+ * Returns a human-friendly label for the current device based on userAgent.
+ *
+ * @returns Device description string (e.g. "Chrome (Windows)").
+ */
+export function getDeviceInfo(): string {
+  if (typeof window === 'undefined') return 'Urządzenie komputera';
+  const ua = navigator.userAgent;
+  let os = 'System';
+  if (/windows/i.test(ua)) os = 'Windows';
+  else if (/macintosh|mac os x/i.test(ua)) os = 'macOS';
+  else if (/iphone|ipad|ipod/i.test(ua)) os = 'iOS';
+  else if (/android/i.test(ua)) os = 'Android';
+  else if (/linux/i.test(ua)) os = 'Linux';
+
+  let browser = 'Przeglądarka';
+  if (/edg/i.test(ua)) browser = 'Edge';
+  else if (/chrome|crios/i.test(ua)) browser = 'Chrome';
+  else if (/firefox|fxios/i.test(ua)) browser = 'Firefox';
+  else if (/safari/i.test(ua) && !/chrome|crios/i.test(ua)) browser = 'Safari';
+  else if (/opera|opr/i.test(ua)) browser = 'Opera';
+
+  return `${browser} (${os})`;
+}
+
+/**
+ * Registers or refreshes the current device session in Firestore user document.
+ *
+ * @param userId - Firebase User ID.
+ * @param userEmail - Optional email of the user.
+ * @returns Active DeviceSession object.
+ */
+export async function registerDeviceSession(userId: string, userEmail?: string | null): Promise<DeviceSession | null> {
+  try {
+    const db = getFirebaseDb();
+    if (!db) return null;
+    const deviceId = getDeviceId();
+    const deviceName = getDeviceInfo();
+    const now = new Date().toISOString();
+
+    const deviceData: DeviceSession = {
+      id: deviceId,
+      name: deviceName,
+      lastActive: now,
+      createdAt: now
+    };
+
+    const userDocRef = doc(db, 'users', userId);
+    const snap = await getDoc(userDocRef);
+
+    let existingDevices: Record<string, DeviceSession> = {};
+    if (snap.exists() && snap.data()?.devices) {
+      existingDevices = snap.data().devices;
+    }
+
+    if (existingDevices[deviceId]?.createdAt) {
+      deviceData.createdAt = existingDevices[deviceId].createdAt;
+    }
+
+    existingDevices[deviceId] = deviceData;
+
+    const payload: Record<string, any> = {
+      devices: existingDevices,
+      updatedAt: now
+    };
+    if (userEmail) {
+      payload.email = userEmail;
+    }
+
+    await setDoc(userDocRef, payload, { merge: true });
+    return { ...deviceData, isCurrent: true };
+  } catch (err) {
+    console.warn('Failed to register device session in Firestore:', err);
+    return null;
+  }
+}
+
+/**
+ * Loads user profile data (username, email, devices) from Firestore.
+ *
+ * @param userId - Firebase User ID.
+ * @returns UserProfile object or null.
+ */
+export async function loadUserProfileFromCloud(userId: string): Promise<UserProfile | null> {
+  try {
+    const db = getFirebaseDb();
+    if (!db) return null;
+    const userDocRef = doc(db, 'users', userId);
+    const snap = await getDoc(userDocRef);
+    if (snap.exists()) {
+      const data = snap.data();
+      return {
+        uid: userId,
+        email: data.email || null,
+        username: data.username || data.displayName || null,
+        devices: data.devices || {},
+        sessionRevokedAt: data.sessionRevokedAt || null,
+        updatedAt: data.updatedAt
+      };
+    }
+  } catch (err) {
+    console.warn('Failed to load user profile from Firestore:', err);
+  }
+  return null;
+}
+
+/**
+ * Saves or updates username in Firestore and Firebase Auth profile.
+ *
+ * @param userId - Firebase User ID.
+ * @param newUsername - New display username string.
+ */
+export async function saveUsernameToCloud(userId: string, newUsername: string): Promise<void> {
+  const trimmed = newUsername.trim();
+  try {
+    const db = getFirebaseDb();
+    if (db) {
+      const userDocRef = doc(db, 'users', userId);
+      await setDoc(userDocRef, { username: trimmed, displayName: trimmed, updatedAt: new Date().toISOString() }, { merge: true });
+    }
+
+    const auth = getFirebaseAuth();
+    if (auth && auth.currentUser) {
+      await updateProfile(auth.currentUser, { displayName: trimmed });
+    }
+  } catch (err) {
+    console.error('Failed to save username to cloud:', err);
+    throw err;
+  }
+}
+
+/**
+ * Revokes all device sessions for a user in Firestore.
+ *
+ * @param userId - Firebase User ID.
+ */
+export async function logoutAllDevicesInCloud(userId: string): Promise<void> {
+  try {
+    const db = getFirebaseDb();
+    if (!db) return;
+    const userDocRef = doc(db, 'users', userId);
+    await setDoc(
+      userDocRef,
+      {
+        devices: {},
+        sessionRevokedAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      },
+      { merge: true }
+    );
+  } catch (err) {
+    console.error('Failed to logout all devices in cloud:', err);
+    throw err;
+  }
+}
+
+/**
+ * Permanently deletes user cloud data and user account in Firebase Auth.
+ *
+ * @param userId - Firebase User ID.
+ */
+export async function deleteUserAccount(userId: string): Promise<void> {
+  try {
+    const db = getFirebaseDb();
+    if (db) {
+      const userDocRef = doc(db, 'users', userId);
+      await deleteDoc(userDocRef);
+    }
+
+    await clearAllProgress(userId);
+
+    const auth = getFirebaseAuth();
+    if (auth && auth.currentUser) {
+      await deleteUser(auth.currentUser);
+    }
+  } catch (err) {
+    console.error('Failed to delete user account:', err);
+    throw err;
+  }
+}
+
 
 

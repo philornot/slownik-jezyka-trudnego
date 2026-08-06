@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import type { DictionaryWord, UserWordProgress, SessionCard, UserSettings, ReviewGrade } from '$lib/types';
+  import type { DictionaryWord, UserWordProgress, SessionCard, UserSettings, ReviewGrade, DeviceSession } from '$lib/types';
   import { INITIAL_WORDS } from '$lib/data/words';
   import { calculateSM2, getTodayDateString, calculateStreak } from '$lib/supermemo';
   import {
@@ -19,12 +19,19 @@
     saveSessionState,
     clearSavedSessionState,
     saveLastLoginMethod,
-    mergeProgressMaps
+    mergeProgressMaps,
+    registerDeviceSession,
+    loadUserProfileFromCloud,
+    saveUsernameToCloud,
+    logoutAllDevicesInCloud,
+    deleteUserAccount,
+    getDeviceId
   } from '$lib/storage';
   import { createDailySession, getDailyCompletionMessage } from '$lib/session';
   import { registerServiceWorker } from '$lib/notifications';
-  import { getFirebaseAuth } from '$lib/firebase';
+  import { getFirebaseDb, getFirebaseAuth } from '$lib/firebase';
   import { signOut, onAuthStateChanged, getRedirectResult, type User } from 'firebase/auth';
+  import { doc, onSnapshot, type Unsubscribe } from 'firebase/firestore';
   import { initTheme } from '$lib/theme.svelte';
 
   import { initDebugLogger } from '$lib/debugLogger';
@@ -34,6 +41,7 @@
   import Catalog from '$lib/components/Catalog.svelte';
   import Stats from '$lib/components/Stats.svelte';
   import SettingsModal from '$lib/components/SettingsModal.svelte';
+  import AccountModal from '$lib/components/AccountModal.svelte';
   import AuthModal from '$lib/components/AuthModal.svelte';
   import ConfirmLogoutModal from '$lib/components/ConfirmLogoutModal.svelte';
   import DebugModal from '$lib/components/DebugModal.svelte';
@@ -43,12 +51,16 @@
 
   let activeTab = $state<'lesson' | 'catalog' | 'stats'>('lesson');
   let isSettingsOpen = $state(false);
+  let isAccountOpen = $state(false);
   let isAuthOpen = $state(false);
   let isConfirmLogoutOpen = $state(false);
   let isDebugLogsOpen = $state(false);
   let isPrivacyOpen = $state(false);
   let isContactOpen = $state(false);
   let currentUser = $state<User | null>(null);
+  let userUsername = $state<string | null>(null);
+  let userDevices = $state<Record<string, DeviceSession>>({});
+  let unsubscribeUserSnapshot: Unsubscribe | null = null;
 
   // Faza sesji: 'showcase' (prezentacja wszystkich nowych haseł) lub 'quiz' (sprawdzanie i powtórki)
   let sessionPhase = $state<'showcase' | 'quiz'>('showcase');
@@ -115,9 +127,44 @@
           });
 
         onAuthStateChanged(auth, async (user) => {
+          if (unsubscribeUserSnapshot) {
+            unsubscribeUserSnapshot();
+            unsubscribeUserSnapshot = null;
+          }
+
           currentUser = user;
           if (user) {
             isAuthOpen = false;
+
+            // Rejestracja obecnej sesji urządzenia w Firestore
+            await registerDeviceSession(user.uid, user.email);
+
+            // Wczytanie profilu użytkownika (username, devices)
+            const profile = await loadUserProfileFromCloud(user.uid);
+            userUsername = profile?.username || user.displayName || null;
+            userDevices = profile?.devices || {};
+
+            // Nasłuchiwanie zmian na żywo w dokumencie użytkownika (profil i weryfikacja sesji)
+            const db = getFirebaseDb();
+            if (db) {
+              const userDocRef = doc(db, 'users', user.uid);
+              unsubscribeUserSnapshot = onSnapshot(userDocRef, (snap) => {
+                if (snap.exists()) {
+                  const data = snap.data();
+                  userUsername = data.username || data.displayName || null;
+                  userDevices = data.devices || {};
+
+                  // Sprawdzenie czy sesja została wycofana (wyloguj ze wszystkich urządzeń)
+                  const currentDevId = getDeviceId();
+                  const isDeviceInList = data.devices && data.devices[currentDevId];
+
+                  if (data.sessionRevokedAt && !isDeviceInList) {
+                    signOut(auth).catch(() => {});
+                  }
+                }
+              });
+            }
+
             // Po zalogowaniu wczytujemy dane z chmury i scalamy z lokalnymi według najnowszej daty lastReviewedAt
             const cloudProgress = await loadProgressFromCloud(user.uid);
             if (cloudProgress) {
@@ -137,6 +184,10 @@
               saveLocalSettings(settings);
               applyA11ySettings(settings);
             }
+          } else {
+            userUsername = null;
+            userDevices = {};
+            isAccountOpen = false;
           }
         });
       }
@@ -268,6 +319,29 @@
     }
   }
 
+  async function handleSaveUsername(newUsername: string) {
+    if (!currentUser) return;
+    await saveUsernameToCloud(currentUser.uid, newUsername);
+    userUsername = newUsername;
+  }
+
+  async function handleLogoutAllDevices() {
+    if (!currentUser) return;
+    await logoutAllDevicesInCloud(currentUser.uid);
+    await handleLogout();
+  }
+
+  async function handleDeleteAccount() {
+    if (!currentUser) return;
+    const uid = currentUser.uid;
+    await deleteUserAccount(uid);
+    currentUser = null;
+    userUsername = null;
+    userDevices = {};
+    progressMap = {};
+    startSession(true);
+  }
+
   /**
    * Handles keyboard shortcuts when on the session summary screen.
    *
@@ -307,8 +381,10 @@
   {streakDays}
   {learnedCount}
   userEmail={currentUser?.email || null}
+  username={userUsername}
   onTabChange={(tab) => (activeTab = tab)}
   onOpenSettings={() => (isSettingsOpen = true)}
+  onOpenAccount={() => (isAccountOpen = true)}
   onLogin={() => (isAuthOpen = true)}
   onLogout={() => (isConfirmLogoutOpen = true)}
 />
@@ -488,3 +564,21 @@
 {#if isContactOpen}
   <ContactModal onClose={() => (isContactOpen = false)} />
 {/if}
+
+<!-- Modal Konta i Urządzeń -->
+{#if isAccountOpen && currentUser}
+  <AccountModal
+    userEmail={currentUser.email}
+    username={userUsername}
+    devices={userDevices}
+    onClose={() => (isAccountOpen = false)}
+    onSaveUsername={handleSaveUsername}
+    onLogoutAllDevices={handleLogoutAllDevices}
+    onLogout={() => {
+      isAccountOpen = false;
+      isConfirmLogoutOpen = true;
+    }}
+    onDeleteAccount={handleDeleteAccount}
+  />
+{/if}
+

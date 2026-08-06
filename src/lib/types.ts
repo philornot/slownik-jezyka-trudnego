@@ -45,3 +45,21 @@ export interface SessionCard {
   userProgress?: UserWordProgress;
   options: string[]; // 4 warianty odpowiedzi do quizu
 }
+
+export interface DeviceSession {
+  id: string;
+  name: string;
+  lastActive: string; // ISO String
+  createdAt: string; // ISO String
+  isCurrent?: boolean;
+}
+
+export interface UserProfile {
+  uid: string;
+  email: string | null;
+  username: string | null; // Nullable if not explicitly set (defaults to email display)
+  devices?: Record<string, DeviceSession>;
+  sessionRevokedAt?: string | null;
+  updatedAt?: string;
+}
+

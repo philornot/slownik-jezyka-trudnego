@@ -8,8 +8,10 @@
     streakDays: number;
     learnedCount: number;
     userEmail: string | null;
+    username?: string | null;
     onTabChange: (tab: "lesson" | "catalog" | "stats") => void;
     onOpenSettings: () => void;
+    onOpenAccount?: () => void;
     onLogin: () => void;
     onLogout: () => void;
   }
@@ -19,8 +21,10 @@
     streakDays,
     learnedCount,
     userEmail,
+    username = null,
     onTabChange,
     onOpenSettings,
+    onOpenAccount,
     onLogin,
     onLogout,
   }: Props = $props();
@@ -143,21 +147,24 @@
     <!-- Prawa strona - akcje użytkownika -->
     <div class="flex items-center gap-1.5 sm:gap-2">
       {#if userEmail}
-        <!-- Zalogowany: avatar/email i wylogowanie -->
-        <div
-          class="hidden md:flex items-center gap-1.5 rounded-xl border border-(--border-default) bg-(--bg-surface-elevated) px-2.5 py-1 text-xs font-semibold text-(--text-secondary)"
+        <!-- Zalogowany: przycisk profilu (username/email) i wylogowanie -->
+        <button
+          type="button"
+          onclick={onOpenAccount}
+          title="Zarządzaj kontem"
+          class="flex items-center gap-1.5 rounded-xl border border-(--border-default) bg-(--bg-surface-elevated) px-2.5 py-1 text-xs font-semibold text-(--text-secondary) hover:border-(--brand-primary) hover:text-(--brand-primary) transition-all active:scale-95 cursor-pointer"
         >
           <Icon
             icon="ph:user-bold"
             class="h-3.5 w-3.5 text-(--brand-primary)"
           />
-          <span class="max-w-32.5 truncate">{userEmail}</span>
-        </div>
+          <span class="max-w-28 sm:max-w-36 truncate font-extrabold">{username || userEmail}</span>
+        </button>
         <button
           type="button"
           onclick={onLogout}
           title="Wyloguj się"
-          class="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-(--rose-border) bg-(--rose-bg) text-(--rose-icon) hover:bg-(--rose-border)/30 active:scale-95 transition-all shadow-xs"
+          class="flex h-10 w-10 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-(--rose-border) bg-(--rose-bg) text-(--rose-icon) hover:bg-(--rose-border)/30 active:scale-95 transition-all shadow-xs shrink-0"
         >
           <Icon icon="ph:sign-out-bold" class="h-4.5 w-4.5 sm:h-4 sm:w-4" />
         </button>
