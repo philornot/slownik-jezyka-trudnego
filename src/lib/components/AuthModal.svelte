@@ -12,9 +12,10 @@
   interface Props {
     onClose: () => void;
     onSuccess: () => void;
+    onOpenPrivacy?: () => void;
   }
 
-  let { onClose, onSuccess }: Props = $props();
+  let { onClose, onSuccess, onOpenPrivacy }: Props = $props();
 
   let mode = $state<'login' | 'register'>('login');
   let email = $state('');
@@ -287,6 +288,20 @@
             </button>
           </p>
         {/if}
+      </div>
+
+      <div class="mt-2 text-center text-[11px] text-(--text-muted)">
+        Rejestrując się lub logując, akceptujesz 
+        <button
+          type="button"
+          onclick={() => {
+            onClose();
+            if (onOpenPrivacy) onOpenPrivacy();
+          }}
+          class="font-semibold underline hover:text-(--text-primary) transition-colors cursor-pointer"
+        >
+          Politykę Prywatności (RODO)
+        </button>
       </div>
     </div>
   </div>

@@ -12,10 +12,18 @@
     onPreview: (previewSettings: UserSettings) => void;
     onResetProgress?: () => void;
     onOpenDebugLogs?: () => void;
+    onOpenPrivacy?: () => void;
   }
 
-  let { settings, onClose, onSave, onPreview, onResetProgress, onOpenDebugLogs }: Props =
-    $props();
+  let {
+    settings,
+    onClose,
+    onSave,
+    onPreview,
+    onResetProgress,
+    onOpenDebugLogs,
+    onOpenPrivacy
+  }: Props = $props();
 
   function getInitialSettings(): UserSettings {
     return { ...settings };
@@ -469,8 +477,19 @@
     <div
       class="flex items-center justify-between border-t border-(--border-default) bg-(--bg-surface-elevated) p-4 sm:px-6"
     >
-      <div class="flex items-center gap-1.5 text-[11px] font-mono text-(--text-muted)/60 select-none">
+      <div class="flex items-center gap-1.5 text-[11px] font-mono text-(--text-muted)/60 select-none flex-wrap">
         <span>v{APP_VERSION}</span>
+        <span class="text-(--text-muted)/30">•</span>
+        <button
+          type="button"
+          onclick={() => {
+            onClose();
+            if (onOpenPrivacy) onOpenPrivacy();
+          }}
+          class="hover:underline hover:text-(--text-primary) transition-colors cursor-pointer"
+        >
+          RODO
+        </button>
         <span class="text-(--text-muted)/30">•</span>
         <div class="relative group inline-flex items-center">
           <button

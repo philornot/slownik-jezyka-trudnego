@@ -37,6 +37,8 @@
   import AuthModal from '$lib/components/AuthModal.svelte';
   import ConfirmLogoutModal from '$lib/components/ConfirmLogoutModal.svelte';
   import DebugModal from '$lib/components/DebugModal.svelte';
+  import PrivacyModal from '$lib/components/PrivacyModal.svelte';
+  import ContactModal from '$lib/components/ContactModal.svelte';
   import Icon from '@iconify/svelte';
 
   let activeTab = $state<'lesson' | 'catalog' | 'stats'>('lesson');
@@ -44,6 +46,8 @@
   let isAuthOpen = $state(false);
   let isConfirmLogoutOpen = $state(false);
   let isDebugLogsOpen = $state(false);
+  let isPrivacyOpen = $state(false);
+  let isContactOpen = $state(false);
   let currentUser = $state<User | null>(null);
 
   // Faza sesji: 'showcase' (prezentacja wszystkich nowych haseł) lub 'quiz' (sprawdzanie i powtórki)
@@ -437,6 +441,7 @@
     onPreview={handlePreviewSettings}
     onResetProgress={handleResetProgress}
     onOpenDebugLogs={() => (isDebugLogsOpen = true)}
+    onOpenPrivacy={() => (isPrivacyOpen = true)}
   />
 {/if}
 
@@ -445,6 +450,7 @@
   <AuthModal
     onClose={() => (isAuthOpen = false)}
     onSuccess={() => startSession()}
+    onOpenPrivacy={() => (isPrivacyOpen = true)}
   />
 {/if}
 
@@ -460,4 +466,17 @@
 <!-- Modal Logów Diagnostycznych -->
 {#if isDebugLogsOpen}
   <DebugModal onClose={() => (isDebugLogsOpen = false)} />
+{/if}
+
+<!-- Modal Polityki Prywatności (RODO) -->
+{#if isPrivacyOpen}
+  <PrivacyModal
+    onClose={() => (isPrivacyOpen = false)}
+    onOpenContact={() => (isContactOpen = true)}
+  />
+{/if}
+
+<!-- Modal Formularza Kontaktowego -->
+{#if isContactOpen}
+  <ContactModal onClose={() => (isContactOpen = false)} />
 {/if}
