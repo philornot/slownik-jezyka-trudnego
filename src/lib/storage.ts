@@ -244,7 +244,7 @@ export async function loadProgressFromCloud(userId: string): Promise<Record<stri
 }
 
 /**
- * Saves user settings to Firebase Firestore.
+ * Saves user settings to Firebase Firestore (excluding device-specific notifications setting).
  *
  * @param userId - Firebase User ID.
  * @param settings - User settings object.
@@ -254,14 +254,15 @@ export async function saveSettingsToCloud(userId: string, settings: UserSettings
     const db = getFirebaseDb();
     if (!db) return;
     const userDocRef = doc(db, 'users', userId);
-    await setDoc(userDocRef, { settings, updatedAt: new Date().toISOString() }, { merge: true });
+    const { notificationsEnabled, ...cloudSettings } = settings;
+    await setDoc(userDocRef, { settings: cloudSettings, updatedAt: new Date().toISOString() }, { merge: true });
   } catch (e) {
     console.warn('Failed to save settings to Firebase Firestore:', e);
   }
 }
 
 /**
- * Loads user settings from Firebase Firestore.
+ * Loads user settings from Firebase Firestore (excluding device-specific notifications setting).
  *
  * @param userId - Firebase User ID.
  * @returns UserSettings object or null if not found.
@@ -273,13 +274,16 @@ export async function loadSettingsFromCloud(userId: string): Promise<UserSetting
     const userDocRef = doc(db, 'users', userId);
     const snap = await getDoc(userDocRef);
     if (snap.exists() && snap.data()?.settings) {
-      return normalizeUserSettings(snap.data().settings);
+      const settingsData = { ...snap.data().settings };
+      delete settingsData.notificationsEnabled;
+      return normalizeUserSettings(settingsData);
     }
   } catch (e) {
     console.warn('Failed to load settings from Firebase Firestore:', e);
   }
   return null;
 }
+
 
 export interface SavedSessionProgress {
   date: string;

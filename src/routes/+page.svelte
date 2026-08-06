@@ -126,12 +126,16 @@
               await syncProgressToCloud(user.uid, progressMap);
               startSession();
             }
-            // Wczytaj ustawienia z chmury (chmura ma pierwszeństwo)
+            // Wczytaj ustawienia z chmury (z zachowaniem lokalnych ustawień powiadomień)
             const cloudSettings = await loadSettingsFromCloud(user.uid);
             if (cloudSettings) {
-              settings = cloudSettings;
-              saveLocalSettings(cloudSettings);
-              applyA11ySettings(cloudSettings);
+              const localNotificationsEnabled = settings.notificationsEnabled;
+              settings = {
+                ...cloudSettings,
+                notificationsEnabled: localNotificationsEnabled
+              };
+              saveLocalSettings(settings);
+              applyA11ySettings(settings);
             }
           }
         });
