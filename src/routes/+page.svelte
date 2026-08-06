@@ -441,7 +441,6 @@
     onPreview={handlePreviewSettings}
     onResetProgress={handleResetProgress}
     onOpenDebugLogs={() => (isDebugLogsOpen = true)}
-    onOpenPrivacy={() => (isPrivacyOpen = true)}
   />
 {/if}
 
