@@ -3,3 +3,13 @@
 
 [build.environment]
   BUN_VERSION = "1.1.0"
+
+# Transparent proxy for the Firebase Auth helper.
+# Must be status 200 (rewrite), NOT a 302 redirect, so the browser
+# never sees the firebaseapp.com domain and cross-domain storage
+# access keeps working during the OAuth popup/redirect flow.
+[[redirects]]
+  from = "/__/auth/*"
+  to = "https://slownik-jezyka-trudnego-v1.firebaseapp.com/__/auth/:splat"
+  status = 200
+  force = true
