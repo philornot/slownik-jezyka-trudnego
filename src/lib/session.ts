@@ -23,30 +23,65 @@ export function getUnmasteredWordsCount(progressMap: Record<string, UserWordProg
 }
 
 /**
- * Adaptacyjne wyliczanie ile nowych słów można dodać dzisiaj:
- * - Jeśli użytkownik ma dużo nieopanowanych słów (>= 8), nie dodajemy nowych słów wcale.
- * - Jeśli ma 5-7 nieopanowanych słów, dodajemy maksymalnie 1 nowe słowo.
- * - Jeśli ma 3-4 nieopanowane słowa, dodajemy maksymalnie 2 nowe słowa.
- * - Jeśli ma poniżej 3 nieopanowanych słów, dodajemy pełny ustalony limit.
+ * Zwraca liczbę słów rozpoczętych przed dzisiejszym dniem, które nie zostały jeszcze w pełni opanowane.
  */
-export function calculateAdaptiveNewWordsLimit(
+export function getUnmasteredWordsFromPreviousDaysCount(
   progressMap: Record<string, UserWordProgress>,
-  userConfiguredLimit: number
+  todayStr: string = getTodayDateString()
 ): number {
-  const unmastered = getUnmasteredWordsCount(progressMap);
-
-  if (unmastered >= 8) {
-    return 0;
-  } else if (unmastered >= 5) {
-    return Math.min(1, userConfiguredLimit);
-  } else if (unmastered >= 3) {
-    return Math.min(2, userConfiguredLimit);
-  } else {
-    return userConfiguredLimit;
-  }
+  return Object.values(progressMap).filter((p) => {
+    if (p.repetitions >= 3) return false;
+    const firstDate = p.history && p.history.length > 0 ? p.history[0].date : null;
+    return !firstDate || firstDate < todayStr;
+  }).length;
 }
 
 /**
+ * Zwraca liczbę nowych słów rozpoczętych dzisiaj.
+ */
+export function getWordsStartedTodayCount(
+  progressMap: Record<string, UserWordProgress>,
+  todayStr: string = getTodayDateString()
+): number {
+  return Object.values(progressMap).filter((p) => {
+    const firstDate = p.history && p.history.length > 0 ? p.history[0].date : null;
+    return firstDate === todayStr;
+  }).length;
+}
+
+/**
+ * Adaptacyjne wyliczanie ile nowych słów można dodać dzisiaj:
+ * - Odejmuje słowa już rozpoczęte dzisiaj od dzisiejszego limitu użytkownika.
+ * - Jeśli użytkownik ma dużo nieopanowanych słów z poprzednich dni (>= 8), nie dodajemy nowych słów.
+ * - Jeśli ma 5-7 nieopanowanych słów z poprzednich dni, dodajemy maksymalnie 1 nowe słowo.
+ * - Jeśli ma 3-4 nieopanowane słowa z poprzednich dni, dodajemy maksymalnie 2 nowe słowa.
+ * - Jeśli ma poniżej 3 nieopanowanych słów z poprzednich dni, pozwala na pozostały ustalony limit.
+ */
+export function calculateAdaptiveNewWordsLimit(
+  progressMap: Record<string, UserWordProgress>,
+  userConfiguredLimit: number,
+  todayStr: string = getTodayDateString()
+): number {
+  const startedToday = getWordsStartedTodayCount(progressMap, todayStr);
+  const maxRemaining = Math.max(0, userConfiguredLimit - startedToday);
+
+  if (maxRemaining <= 0) {
+    return 0;
+  }
+
+  const unmasteredPrev = getUnmasteredWordsFromPreviousDaysCount(progressMap, todayStr);
+
+  if (unmasteredPrev >= 8) {
+    return 0;
+  } else if (unmasteredPrev >= 5) {
+    return Math.min(1, maxRemaining);
+  } else if (unmasteredPrev >= 3) {
+    return Math.min(2, maxRemaining);
+  } else {
+    return maxRemaining;
+  }
+}
+
 /**
  * Prosty generator liczb pseudolosowych z ziarnem (Mulberry32).
  * Zapewnia deterministyczne losowanie słówek i dystraktorów w danym dniu.
@@ -84,9 +119,10 @@ export function getNewWordsToLearn(
   progressMap: Record<string, UserWordProgress>,
   allWords: DictionaryWord[],
   userConfiguredLimit: number,
-  randomFn: () => number = Math.random
+  randomFn: () => number = Math.random,
+  todayStr: string = getTodayDateString()
 ): DictionaryWord[] {
-  const effectiveLimit = calculateAdaptiveNewWordsLimit(progressMap, userConfiguredLimit);
+  const effectiveLimit = calculateAdaptiveNewWordsLimit(progressMap, userConfiguredLimit, todayStr);
   if (effectiveLimit <= 0) return [];
 
   const unstartedWords = allWords.filter((word) => !progressMap[word.id]);
@@ -127,10 +163,11 @@ export function createDailySession(
 ): { cards: SessionCard[]; adaptiveLimit: number; unmasteredCount: number } {
   const seed = customSeed || getTodayDateString();
   const randomFn = createSeededRandom(seed);
+  const today = getTodayDateString();
 
   const dueReviews = getDueReviewWords(progressMap, allWords);
-  const adaptiveLimit = calculateAdaptiveNewWordsLimit(progressMap, settings.dailyNewWordsLimit);
-  const newWords = getNewWordsToLearn(progressMap, allWords, settings.dailyNewWordsLimit, randomFn);
+  const adaptiveLimit = calculateAdaptiveNewWordsLimit(progressMap, settings.dailyNewWordsLimit, today);
+  const newWords = getNewWordsToLearn(progressMap, allWords, settings.dailyNewWordsLimit, randomFn, today);
   const unmasteredCount = getUnmasteredWordsCount(progressMap);
 
   const reviewCards: SessionCard[] = dueReviews.map((word) => ({

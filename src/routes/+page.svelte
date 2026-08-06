@@ -230,12 +230,17 @@
   }
 
   function handleSaveSettings(newSettings: UserSettings) {
+    const oldLimit = settings.dailyNewWordsLimit;
     settings = newSettings;
     saveLocalSettings(newSettings);
     applyA11ySettings(newSettings);
     // Synchronizacja w tle z Firebase jeśli zalogowany
     if (currentUser?.uid) {
       saveSettingsToCloud(currentUser.uid, newSettings);
+    }
+    // Jeśli zmieniono limit słówek, przelicz sesję na dziś
+    if (newSettings.dailyNewWordsLimit !== oldLimit) {
+      startSession(true);
     }
   }
 
