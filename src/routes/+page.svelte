@@ -18,6 +18,7 @@
     getSavedSessionState,
     saveSessionState,
     clearSavedSessionState,
+    saveLastLoginMethod,
     mergeProgressMaps
   } from '$lib/storage';
   import { createDailySession, getDailyCompletionMessage } from '$lib/session';
@@ -92,9 +93,15 @@
     try {
       const auth = getFirebaseAuth();
       if (auth) {
-        getRedirectResult(auth).catch((e) => {
-          console.warn('Google Redirect Result handler:', e);
-        });
+        getRedirectResult(auth)
+          .then((res) => {
+            if (res?.user) {
+              saveLastLoginMethod('google');
+            }
+          })
+          .catch((e) => {
+            console.warn('Google Redirect Result handler:', e);
+          });
 
         onAuthStateChanged(auth, async (user) => {
           currentUser = user;
@@ -228,7 +235,7 @@
   async function handleResetProgress() {
     await clearAllProgress(currentUser?.uid || undefined);
     progressMap = {};
-    startSession();
+    startSession(true);
   }
 
   async function handleLogout() {

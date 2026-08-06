@@ -113,7 +113,15 @@ export function saveAllLocalProgress(progressMap: Record<string, UserWordProgres
 export async function clearAllProgress(userId?: string): Promise<void> {
   if (typeof window === 'undefined') return;
   try {
+    if (syncDebounceTimer) {
+      clearTimeout(syncDebounceTimer);
+      syncDebounceTimer = null;
+    }
+    pendingSyncUid = null;
+    pendingSyncMap = null;
+
     localStorage.removeItem(PROGRESS_STORAGE_KEY);
+    clearSavedSessionState();
     if (userId) {
       const db = getFirebaseDb();
       if (db) {

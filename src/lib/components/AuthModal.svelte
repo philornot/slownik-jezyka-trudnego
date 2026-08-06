@@ -29,29 +29,22 @@
     errorMessage = null;
     try {
       const auth = getFirebaseAuth();
-      const isMobile = typeof navigator !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      
-      if (isMobile) {
-        // Na urządzeniach mobilnych zalecaną przez Firebase metodą jest przekierowanie
-        await signInWithRedirect(auth, googleProvider);
-      } else {
-        try {
-          await signInWithPopup(auth, googleProvider);
-          saveLastLoginMethod('google');
-          onSuccess();
-          onClose();
-        } catch (popupErr: any) {
-          console.warn('Błąd wyskakującego okienka, próba przekierowania:', popupErr);
-          if (
-            popupErr?.code === 'auth/popup-blocked' ||
-            popupErr?.code === 'auth/popup-closed-by-user' ||
-            popupErr?.code === 'auth/operation-not-supported-in-this-environment' ||
-            (popupErr?.message && popupErr.message.includes('closing'))
-          ) {
-            await signInWithRedirect(auth, googleProvider);
-          } else {
-            throw popupErr;
-          }
+      try {
+        await signInWithPopup(auth, googleProvider);
+        saveLastLoginMethod('google');
+        onSuccess();
+        onClose();
+      } catch (popupErr: any) {
+        console.warn('Błąd wyskakującego okienka, próba przekierowania:', popupErr);
+        if (
+          popupErr?.code === 'auth/popup-blocked' ||
+          popupErr?.code === 'auth/popup-closed-by-user' ||
+          popupErr?.code === 'auth/operation-not-supported-in-this-environment' ||
+          (popupErr?.message && popupErr.message.includes('closing'))
+        ) {
+          await signInWithRedirect(auth, googleProvider);
+        } else {
+          throw popupErr;
         }
       }
     } catch (err: any) {
