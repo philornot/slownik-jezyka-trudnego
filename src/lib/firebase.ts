@@ -1,6 +1,8 @@
 import { initializeApp, getApps, type FirebaseApp } from 'firebase/app';
 import {
   getAuth,
+  setPersistence,
+  browserLocalPersistence,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -53,7 +55,7 @@ export function getFirebaseApp(): FirebaseApp {
 }
 
 /**
- * Returns the FirebaseAuth instance.
+ * Returns the FirebaseAuth instance configured with browserLocalPersistence.
  *
  * @returns FirebaseAuth instance.
  */
@@ -61,6 +63,9 @@ export function getFirebaseAuth(): Auth {
   if (!auth) {
     const firebaseApp = getFirebaseApp();
     auth = getAuth(firebaseApp);
+    setPersistence(auth, browserLocalPersistence).catch((err) => {
+      console.warn('Firebase setPersistence warning:', err);
+    });
   }
   return auth;
 }

@@ -27,6 +27,7 @@
   import { signOut, onAuthStateChanged, getRedirectResult, type User } from 'firebase/auth';
   import { initTheme } from '$lib/theme.svelte';
 
+  import { initDebugLogger } from '$lib/debugLogger';
   import Navbar from '$lib/components/Navbar.svelte';
   import NewWordsShowcase from '$lib/components/NewWordsShowcase.svelte';
   import HybridCard from '$lib/components/HybridCard.svelte';
@@ -35,12 +36,14 @@
   import SettingsModal from '$lib/components/SettingsModal.svelte';
   import AuthModal from '$lib/components/AuthModal.svelte';
   import ConfirmLogoutModal from '$lib/components/ConfirmLogoutModal.svelte';
+  import DebugModal from '$lib/components/DebugModal.svelte';
   import Icon from '@iconify/svelte';
 
   let activeTab = $state<'lesson' | 'catalog' | 'stats'>('lesson');
   let isSettingsOpen = $state(false);
   let isAuthOpen = $state(false);
   let isConfirmLogoutOpen = $state(false);
+  let isDebugLogsOpen = $state(false);
   let currentUser = $state<User | null>(null);
 
   // Faza sesji: 'showcase' (prezentacja wszystkich nowych haseł) lub 'quiz' (sprawdzanie i powtórki)
@@ -73,6 +76,9 @@
   }
 
   onMount(() => {
+    // Inicjalizacja rejestratora logów dla debugowania
+    initDebugLogger();
+
     // Inicjalizacja motywu
     initTheme();
 
@@ -430,6 +436,7 @@
     onSave={handleSaveSettings}
     onPreview={handlePreviewSettings}
     onResetProgress={handleResetProgress}
+    onOpenDebugLogs={() => (isDebugLogsOpen = true)}
   />
 {/if}
 
@@ -448,4 +455,9 @@
     onClose={() => (isConfirmLogoutOpen = false)}
     onConfirm={handleLogout}
   />
+{/if}
+
+<!-- Modal Logów Diagnostycznych -->
+{#if isDebugLogsOpen}
+  <DebugModal onClose={() => (isDebugLogsOpen = false)} />
 {/if}
