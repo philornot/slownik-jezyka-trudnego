@@ -400,16 +400,6 @@
         <div
           class="border-t border-(--border-default) pt-4 sm:pt-5 space-y-3"
         >
-          <div
-            class="flex items-center gap-2 text-xs font-extrabold text-(--rose-text) uppercase tracking-wider"
-          >
-            <Icon
-              icon="ph:trash-bold"
-              class="h-4 w-4 text-(--rose-icon)"
-            />
-            <span>Niebezpieczne ustawienia</span>
-          </div>
-
           {#if !isResetConfirmOpen}
             <button
               type="button"
