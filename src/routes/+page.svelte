@@ -259,12 +259,12 @@
     }
 
     if (activeTab === 'lesson' && sessionCompleted) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        startSession();
-      } else if (e.key === 'k' || e.key === 'K') {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'k' || e.key === 'K') {
         e.preventDefault();
         activeTab = 'catalog';
+      } else if (e.key === 's' || e.key === 'S') {
+        e.preventDefault();
+        activeTab = 'stats';
       }
     }
   }
@@ -329,7 +329,7 @@
         
         <!-- EKRAN PODSUMOWANIA LEKCJI -->
         <!-- Na mobile: edge-to-edge, brak zaokrągleń po bokach -->
-        <div class="w-full sm:max-w-xl sm:rounded-2xl border-y sm:border border-(--border-default) bg-(--bg-surface) sm:shadow-xl animate-in fade-in duration-300">
+        <div class="w-full sm:max-w-xl sm:rounded-2xl border-y sm:border border-(--border-default) bg-(--bg-surface) sm:shadow-xl animate-in fade-in duration-300 overflow-hidden">
           
           <!-- Górna sekcja -->
           <div class="flex flex-col items-center text-center px-6 pt-10 pb-6 gap-4">
@@ -337,11 +337,21 @@
               <Icon icon="ph:trophy-bold" class="h-11 w-11 text-white" />
             </div>
             <div>
-              <h2 class="title-serif text-3xl sm:text-4xl">Wspaniała praca!</h2>
-              <p class="mt-2 text-sm font-semibold text-(--text-muted) max-w-xs mx-auto">
-                Dzisiejsza lekcja zakończona. Twój zasób słownictwa rośnie!
+              <h2 class="title-serif text-3xl sm:text-4xl">Plan na dziś wykonany!</h2>
+              <p class="mt-2 text-sm font-semibold text-(--text-muted) max-w-sm mx-auto">
+                Dzisiejsza porcja materiału została zaliczona. Wróć jutro po kolejne powtórki!
               </p>
             </div>
+          </div>
+
+          <!-- Baner edukacyjny SRS -->
+          <div class="mx-5 mb-5 p-4 rounded-xl bg-(--brand-primary)/10 border border-(--brand-primary)/20 text-xs font-medium text-(--text-primary) flex items-center gap-3">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-(--brand-primary)/20 text-(--brand-primary)">
+              <Icon icon="ph:sparkle-bold" class="h-5 w-5" />
+            </div>
+            <p class="leading-relaxed">
+              Algorytm powtórek dba o trwałe zapamiętywanie. Najlepsze efekty daje regularna, codzienna nauka!
+            </p>
           </div>
 
           <!-- Statystyki sesji -->
@@ -356,27 +366,28 @@
             </div>
           </div>
 
-          <!-- Akcje - duże, dotykowe z kbd dla dekstopa -->
+          <!-- Akcje -->
           <div class="flex flex-col gap-3 p-5">
             <button
               type="button"
-              onclick={() => startSession(true)}
+              onclick={() => (activeTab = 'catalog')}
               class="btn-touch flex items-center justify-center gap-2"
             >
-              <Icon icon="ph:arrows-clockwise-bold" class="h-5 w-5" />
-              <span>Powtórz dodatkowo</span>
+              <Icon icon="ph:book-open-bold" class="h-5 w-5" />
+              <span>Przeglądaj Słowniczek</span>
               <kbd class="hidden sm:inline-flex">
                 Enter ↵
               </kbd>
             </button>
             <button
               type="button"
-              onclick={() => (activeTab = 'catalog')}
+              onclick={() => (activeTab = 'stats')}
               class="btn-secondary w-full py-3 text-sm flex items-center justify-center gap-2"
             >
-              <span>Przeglądaj Słowniczek</span>
+              <Icon icon="ph:chart-bar-bold" class="h-4 w-4" />
+              <span>Zobacz Statystyki</span>
               <kbd class="hidden sm:inline-flex">
-                K
+                S
               </kbd>
             </button>
           </div>
