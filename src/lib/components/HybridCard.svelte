@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { tick } from "svelte";
   import type { SessionCard, ReviewGrade } from "../types";
   import Icon from "@iconify/svelte";
 
@@ -40,9 +39,6 @@
     if (isActionLocked) return;
     lockActionTemporarily();
     selectedOption = option;
-    tick().then(() => {
-      cardRef?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
   }
 
   function handleSelfGrade(grade: ReviewGrade) {

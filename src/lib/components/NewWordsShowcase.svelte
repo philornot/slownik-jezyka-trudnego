@@ -97,7 +97,7 @@
     </div>
   </div>
 
-  <div class="p-4 sm:p-8 space-y-5 sm:space-y-6 pb-24 sm:pb-6">
+  <div class="p-4 sm:p-8 space-y-5 sm:space-y-6">
     <!-- Słowo i wymowa -->
     <div class="text-center py-2 sm:py-0">
       <h2
@@ -209,50 +209,51 @@
       </div>
     {/if}
 
-    <!-- Odnośnik PWN i Przycisk Przejścia (Dokowane na dole na mobile) -->
-    <div
-      class="fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] left-0 right-0 z-30 border-t border-(--border-default) bg-(--bg-surface)/95 backdrop-blur-md px-4 py-3 shadow-2xl sm:relative sm:bottom-auto sm:z-auto sm:border-t sm:bg-transparent sm:px-0 sm:py-0 sm:shadow-none flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 sm:pt-5"
-    >
-      {#if currentWord.sjpUrl}
+    <!-- Odnośnik PWN (część normalnego przepływu treści, NIE dokowany) -->
+    {#if currentWord.sjpUrl}
+      <div class="flex justify-end">
         <a
           href={currentWord.sjpUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 text-xs font-bold text-(--text-amber-brand) hover:underline py-1"
+          class="inline-flex items-center gap-1.5 text-xs font-bold text-(--text-amber-brand) hover:underline py-1 px-2"
         >
           <span>Zobacz w SJP PWN</span>
           <Icon icon="ph:arrow-square-out-bold" class="h-4 w-4" />
         </a>
-      {:else}
-        <div></div>
-      {/if}
+      </div>
+    {/if}
+  </div>
 
-      <button
-        type="button"
-        disabled={!isRevealed}
-        onclick={handleNextWord}
-        class="btn-touch sm:w-auto sm:px-6 flex items-center justify-center gap-2 {!isRevealed ? 'opacity-50 cursor-not-allowed' : ''}"
-      >
-        {#if !isRevealed}
-          <span>Najpierw odsłoń definicję</span>
-          <kbd class="hidden sm:inline-flex">
-            Spacja
-          </kbd>
-          <Icon icon="ph:eye-bold" class="h-5 w-5" />
-        {:else if currentIndex + 1 < words.length}
-          <span>Następne słowo</span>
-          <kbd class="hidden sm:inline-flex">
-            Enter ↵
-          </kbd>
-          <Icon icon="ph:arrow-right-bold" class="h-5 w-5" />
-        {:else}
-          <span>Przejdź do testu wiedzy</span>
-          <kbd class="hidden sm:inline-flex">
-            Enter ↵
-          </kbd>
-          <Icon icon="ph:check-bold" class="h-5 w-5" />
-        {/if}
-      </button>
-    </div>
+  <!-- Przycisk Przejścia – jedyny element dokowany na dole na mobile -->
+  <div
+    class="sticky bottom-[calc(3.5rem+env(safe-area-inset-bottom,0px))] z-20 sm:static border-t border-(--border-default) bg-(--bg-surface-elevated) px-3 sm:px-6 py-2.5 sm:py-4 sm:rounded-b-2xl shadow-[0_-4px_16px_rgba(0,0,0,0.15)] sm:shadow-none transition-all"
+  >
+    <button
+      type="button"
+      disabled={!isRevealed}
+      onclick={handleNextWord}
+      class="btn-touch w-full sm:w-auto sm:px-6 flex items-center justify-center gap-2 {!isRevealed ? 'opacity-50 cursor-not-allowed' : ''}"
+    >
+      {#if !isRevealed}
+        <span>Najpierw odsłoń definicję</span>
+        <kbd class="hidden sm:inline-flex">
+          Spacja
+        </kbd>
+        <Icon icon="ph:eye-bold" class="h-5 w-5" />
+      {:else if currentIndex + 1 < words.length}
+        <span>Następne słowo</span>
+        <kbd class="hidden sm:inline-flex">
+          Enter ↵
+        </kbd>
+        <Icon icon="ph:arrow-right-bold" class="h-5 w-5" />
+      {:else}
+        <span>Przejdź do testu wiedzy</span>
+        <kbd class="hidden sm:inline-flex">
+          Enter ↵
+        </kbd>
+        <Icon icon="ph:check-bold" class="h-5 w-5" />
+      {/if}
+    </button>
   </div>
 </div>
