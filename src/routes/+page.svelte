@@ -34,7 +34,6 @@
   import { doc, onSnapshot, type Unsubscribe } from 'firebase/firestore';
   import { initTheme } from '$lib/theme.svelte';
 
-  import { initDebugLogger } from '$lib/debugLogger';
   import Navbar from '$lib/components/Navbar.svelte';
   import NewWordsShowcase from '$lib/components/NewWordsShowcase.svelte';
   import HybridCard from '$lib/components/HybridCard.svelte';
@@ -44,7 +43,6 @@
   import AccountModal from '$lib/components/AccountModal.svelte';
   import AuthModal from '$lib/components/AuthModal.svelte';
   import ConfirmLogoutModal from '$lib/components/ConfirmLogoutModal.svelte';
-  import DebugModal from '$lib/components/DebugModal.svelte';
   import PrivacyModal from '$lib/components/PrivacyModal.svelte';
   import ContactModal from '$lib/components/ContactModal.svelte';
   import Icon from '@iconify/svelte';
@@ -54,7 +52,6 @@
   let isAccountOpen = $state(false);
   let isAuthOpen = $state(false);
   let isConfirmLogoutOpen = $state(false);
-  let isDebugLogsOpen = $state(false);
   let isPrivacyOpen = $state(false);
   let isContactOpen = $state(false);
   let currentUser = $state<User | null>(null);
@@ -92,9 +89,6 @@
   }
 
   onMount(() => {
-    // Inicjalizacja rejestratora logów dla debugowania
-    initDebugLogger();
-
     // Inicjalizacja motywu
     initTheme();
 
@@ -525,7 +519,6 @@
     onSave={handleSaveSettings}
     onPreview={handlePreviewSettings}
     onResetProgress={handleResetProgress}
-    onOpenDebugLogs={() => (isDebugLogsOpen = true)}
   />
 {/if}
 
@@ -545,11 +538,6 @@
     onClose={() => (isConfirmLogoutOpen = false)}
     onConfirm={handleLogout}
   />
-{/if}
-
-<!-- Modal Logów Diagnostycznych -->
-{#if isDebugLogsOpen}
-  <DebugModal onClose={() => (isDebugLogsOpen = false)} />
 {/if}
 
 <!-- Modal Polityki Prywatności (RODO) -->

@@ -11,7 +11,6 @@
     /** Podgląd na żywo – wywoływany przy każdej zmianie ustawienia */
     onPreview: (previewSettings: UserSettings) => void;
     onResetProgress?: () => void;
-    onOpenDebugLogs?: () => void;
   }
 
   let {
@@ -19,8 +18,7 @@
     onClose,
     onSave,
     onPreview,
-    onResetProgress,
-    onOpenDebugLogs
+    onResetProgress
   }: Props = $props();
 
   function getInitialSettings(): UserSettings {
@@ -371,27 +369,6 @@
           </button>
         </div>
       </div>
-
-      {#if onOpenDebugLogs}
-        <div class="border-t border-(--border-default) pt-4 sm:pt-5 space-y-3">
-          <div class="flex items-center gap-2 text-xs font-extrabold text-(--text-primary) uppercase tracking-wider">
-            <Icon icon="ph:terminal-window-bold" class="h-4 w-4 text-(--brand-primary)" />
-            <span>Diagnostyka aplikacji</span>
-          </div>
-
-          <button
-            type="button"
-            onclick={() => {
-              onClose();
-              onOpenDebugLogs();
-            }}
-            class="flex w-full items-center justify-center gap-2 rounded-xl border border-(--border-default) bg-(--bg-surface-elevated) py-3 px-4 text-xs font-extrabold text-(--text-primary) hover:border-(--brand-primary) transition-all shadow-xs min-h-11"
-          >
-            <Icon icon="ph:bug-bold" class="h-4 w-4 text-(--brand-primary)" />
-            <span>Otwórz konsolę logów diagnostycznych</span>
-          </button>
-        </div>
-      {/if}
 
       <!-- ========================================== -->
       <!-- SEKCJA: Resetowanie danych nauki -->
