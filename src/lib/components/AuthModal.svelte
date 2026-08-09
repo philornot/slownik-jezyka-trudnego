@@ -218,7 +218,15 @@
       <!-- FORMULARZ LOGOWANIA EMAIL/HASŁO -->
       <form onsubmit={handleSubmitEmail} class="space-y-3.5">
         <div class="space-y-1.5">
-          <label for="auth-email-input" class="text-xs font-extrabold text-(--text-primary) uppercase">Adres Email</label>
+          <div class="flex items-center justify-between">
+            <label for="auth-email-input" class="text-xs font-extrabold text-(--text-primary) uppercase">Adres Email</label>
+            {#if lastUsedMethod === 'email'}
+              <span class="badge-amber text-[10px] py-0.5">
+                <Icon icon="ph:sparkle-bold" class="h-3 w-3" />
+                <span>Ostatnio użyte</span>
+              </span>
+            {/if}
+          </div>
           <div class="relative">
             <Icon icon="ph:envelope-bold" class="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-(--text-muted)" />
             <input
