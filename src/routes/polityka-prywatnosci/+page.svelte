@@ -5,6 +5,14 @@
 <svelte:head>
   <title>Polityka Prywatności i RODO - Słownik Języka Trudnego</title>
   <meta name="description" content="Informacje o ochronie danych osobowych, zasadach przetwarzania danych oraz prawach użytkownika zgodnie z RODO (GDPR) w aplikacji Słownik Języka Trudnego." />
+  <link rel="canonical" href="https://www.slownik-jezyka-trudnego.pl/polityka-prywatnosci" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.slownik-jezyka-trudnego.pl/polityka-prywatnosci" />
+  <meta property="og:title" content="Polityka Prywatności i RODO - Słownik Języka Trudnego" />
+  <meta property="og:description" content="Informacje o ochronie danych osobowych, zasadach przetwarzania danych oraz prawach użytkownika zgodnie z RODO (GDPR) w aplikacji Słownik Języka Trudnego." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Polityka Prywatności i RODO - Słownik Języka Trudnego" />
+  <meta name="twitter:description" content="Informacje o ochronie danych osobowych i zasadach przetwarzania danych w aplikacji Słownik Języka Trudnego." />
 </svelte:head>
 
 <div class="min-h-screen bg-(--bg-app) text-(--text-primary) p-4 sm:p-8 flex flex-col items-center">
