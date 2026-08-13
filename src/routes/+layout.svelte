@@ -1,6 +1,10 @@
 <script lang="ts">
 	import './layout.css';
 	import { APP_VERSION } from '$lib/version';
+	// Registers the bundled Phosphor icon subset so <Icon icon="ph:..."> never
+	// hits api.iconify.design at runtime (previously 700ms-1.5s blocking
+	// requests sitting on the critical rendering path, see PSI report).
+	import '$lib/icons/register';
 
 	let { children } = $props();
 </script>

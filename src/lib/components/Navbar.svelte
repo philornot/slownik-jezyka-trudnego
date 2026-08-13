@@ -84,24 +84,38 @@
     >
       <!-- Mobile: tylko okrągły emblemat (< sm) -->
       <div class="flex sm:hidden h-9 w-9 shrink-0">
-        <img
-          src={theme.current === "dark" ? "/logo-circle-dark.png" : "/logo-circle.png"}
-          alt="Słownik Języka Trudnego"
-          width="600"
-          height="600"
-          class="h-full w-full object-contain"
-        />
+        <picture>
+          <source
+            srcset={theme.current === "dark" ? "/logo-circle-dark.webp" : "/logo-circle.webp"}
+            type="image/webp"
+          />
+          <img
+            src={theme.current === "dark" ? "/logo-circle-dark.png" : "/logo-circle.png"}
+            alt="Słownik Języka Trudnego"
+            width="128"
+            height="128"
+            fetchpriority="high"
+            class="h-full w-full object-contain"
+          />
+        </picture>
       </div>
 
       <!-- Desktop: pełne logo z napisem (>= sm) -->
       <div class="hidden sm:flex h-12 sm:h-14 shrink-0">
-        <img
-          src={theme.current === "dark" ? "/logo-wide-dark.png" : "/logo-wide.png"}
-          alt="Słownik Języka Trudnego"
-          width="1800"
-          height="511"
-          class="h-full w-auto object-contain"
-        />
+        <picture>
+          <source
+            srcset={theme.current === "dark" ? "/logo-wide-dark.webp" : "/logo-wide.webp"}
+            type="image/webp"
+          />
+          <img
+            src={theme.current === "dark" ? "/logo-wide-dark.png" : "/logo-wide.png"}
+            alt="Słownik Języka Trudnego"
+            width="400"
+            height="114"
+            fetchpriority="high"
+            class="h-full w-auto object-contain"
+          />
+        </picture>
       </div>
     </button>
 

@@ -12,6 +12,8 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
+		"@iconify-json/ph": "^1.2.2",
+		"@iconify/utils": "^3.1.4",
 		"@sveltejs/adapter-auto": "^7.0.1",
 		"@sveltejs/kit": "^2.63.0",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
@@ -25,9 +27,6 @@
 	},
 	"dependencies": {
 		"@iconify/svelte": "^5.2.2",
-		"@lucide/svelte": "^1.28.0",
-		"@tabler/icons-svelte": "^3.46.0",
-		"firebase": "^12.17.0",
-		"lucide-svelte": "^1.0.1"
+		"firebase": "^12.17.0"
 	}
 }

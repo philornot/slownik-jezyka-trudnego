@@ -9,7 +9,24 @@ const META_COLOR: Record<ThemeName, string> = {
   dark: '#0e1411'
 };
 
-let current = $state<ThemeName>('dark');
+/**
+ * Determines the theme to use for the very first client-side render.
+ *
+ * app.html runs an inline script (before hydration) that reads the stored
+ * preference and applies the `dark` class to <html> synchronously. If this
+ * module instead always started from a hardcoded 'dark' default, any user
+ * whose real preference is 'light' would render dark-themed logo images
+ * (see Navbar.svelte) for one frame, then swap to the light logo once
+ * initTheme() ran inside onMount - an extra image request plus a visible
+ * flash/reflow that shows up as layout shift. Reading the class the inline
+ * script already set keeps the two perfectly in sync from frame one.
+ */
+function getInitialTheme(): ThemeName {
+  if (typeof document === 'undefined') return 'dark';
+  return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+}
+
+let current = $state<ThemeName>(getInitialTheme());
 
 function isThemeName(value: string | null): value is ThemeName {
   return value === 'light' || value === 'dark';

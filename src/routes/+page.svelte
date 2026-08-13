@@ -105,7 +105,20 @@
     // Utworzenie sesji
     startSession();
 
-    // Listener Firebase Auth
+    // Listener Firebase Auth - odroczony do czasu bezczynności przeglądarki.
+    // Wcześniej getFirebaseAuth()/getAuth() był wywoływany natychmiast, co
+    // wyzwalało blokujące żądanie sieciowe (getProjectConfig, ~1.8-1.9s
+    // w raportach PageSpeed) leżące na ścieżce krytycznej i opóźniające LCP.
+    // Ekran gościa działa w pełni na localStorage, więc logowanie może
+    // poczekać do momentu, gdy przeglądarka skończy renderować pierwszy widok.
+    const idle =
+      typeof requestIdleCallback === 'function'
+        ? requestIdleCallback
+        : (cb: () => void) => setTimeout(cb, 200);
+    idle(() => initFirebaseAuthListener());
+  });
+
+  function initFirebaseAuthListener() {
     try {
       const auth = getFirebaseAuth();
       if (auth) {
@@ -188,7 +201,7 @@
     } catch (e) {
       console.warn('Firebase Auth w trybie offline / nieskonfigurowany.');
     }
-  });
+  }
 
   function persistActiveSessionState() {
     saveSessionState({
