@@ -70,9 +70,21 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!--
+		Google Fonts CSS is fetched asynchronously (media="print" trick) so it no
+		longer blocks the initial render. Custom fallback fonts with matched
+		metrics (below, in layout.css) keep layout shift near-zero while the
+		real fonts load, since font-display:swap otherwise reflows text once
+		Inter / Libre Baskerville arrive.
+	-->
 	<link
 		href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-		rel="stylesheet">
+		rel="stylesheet" media="print" onload="this.media='all'">
+	<noscript>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+			rel="stylesheet">
+	</noscript>
 	<script>
 		(function () {
 			try {

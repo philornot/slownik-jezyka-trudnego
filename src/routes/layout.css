@@ -7,10 +7,36 @@
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
 
+/*
+ * Metric-matched fallback fonts.
+ * These local fallbacks are sized/spaced to closely match the real
+ * webfonts (Inter / Libre Baskerville), so that when the Google Fonts
+ * stylesheet finishes loading and the browser swaps fonts, text does not
+ * visibly reflow. This is the main fix for the large Cumulative Layout
+ * Shift (CLS) reported by PageSpeed Insights.
+ */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 90.2%;
+  descent-override: 22.48%;
+  line-gap-override: 0%;
+  size-adjust: 107.4%;
+}
+
+@font-face {
+  font-family: 'Libre Baskerville Fallback';
+  src: local('Georgia');
+  ascent-override: 84%;
+  descent-override: 21%;
+  line-gap-override: 0%;
+  size-adjust: 112%;
+}
+
 @theme {
   --breakpoint-xs: 400px;
-  --font-serif: 'Libre Baskerville', Georgia, serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Libre Baskerville', 'Libre Baskerville Fallback', Georgia, serif;
+  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
   
   --color-bg-app: var(--bg-app);
   --color-bg-surface: var(--bg-surface);
@@ -23,10 +49,10 @@
 
 @layer utilities {
   .font-serif {
-    font-family: 'Libre Baskerville', Georgia, serif;
+    font-family: 'Libre Baskerville', 'Libre Baskerville Fallback', Georgia, serif;
   }
   .font-sans {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', 'Inter Fallback', system-ui, sans-serif;
   }
 }
 

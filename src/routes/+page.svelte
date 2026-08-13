@@ -9,43 +9,53 @@
     saveAllLocalProgress,
     getLocalSettings,
     saveLocalSettings,
-    loadProgressFromCloud,
-    syncProgressToCloud,
-    flushSyncProgressToCloud,
-    clearAllProgress,
-    saveSettingsToCloud,
-    loadSettingsFromCloud,
+    clearLocalProgress,
     getSavedSessionState,
     saveSessionState,
     clearSavedSessionState,
     saveLastLoginMethod,
     mergeProgressMaps,
-    registerDeviceSession,
-    loadUserProfileFromCloud,
-    saveUsernameToCloud,
-    logoutAllDevicesInCloud,
-    deleteUserAccount,
     getDeviceId
   } from '$lib/storage';
   import { createDailySession, getDailyCompletionMessage } from '$lib/session';
   import { registerServiceWorker } from '$lib/notifications';
-  import { getFirebaseDb, getFirebaseAuth } from '$lib/firebase';
-  import { signOut, onAuthStateChanged, getRedirectResult, type User } from 'firebase/auth';
-  import { doc, onSnapshot, type Unsubscribe } from 'firebase/firestore';
+  import type { Auth, User, Unsubscribe } from 'firebase/auth';
   import { initTheme } from '$lib/theme.svelte';
 
   import Navbar from '$lib/components/Navbar.svelte';
   import NewWordsShowcase from '$lib/components/NewWordsShowcase.svelte';
   import HybridCard from '$lib/components/HybridCard.svelte';
-  import Catalog from '$lib/components/Catalog.svelte';
-  import Stats from '$lib/components/Stats.svelte';
-  import SettingsModal from '$lib/components/SettingsModal.svelte';
-  import AccountModal from '$lib/components/AccountModal.svelte';
-  import AuthModal from '$lib/components/AuthModal.svelte';
-  import ConfirmLogoutModal from '$lib/components/ConfirmLogoutModal.svelte';
-  import PrivacyModal from '$lib/components/PrivacyModal.svelte';
-  import ContactModal from '$lib/components/ContactModal.svelte';
   import Icon from '@iconify/svelte';
+
+  // Firebase (auth + firestore) and every modal/tab below are loaded lazily
+  // on demand instead of being bundled into the initial page load. This is
+  // what keeps the first-load JS small (PageSpeed previously flagged ~130 KB
+  // of unused JS coming from these, since they were statically imported but
+  // rarely needed on first paint).
+  let cloudModulePromise: Promise<typeof import('$lib/storage.cloud')> | null = null;
+  function getCloudStorage() {
+    if (!cloudModulePromise) {
+      cloudModulePromise = import('$lib/storage.cloud');
+    }
+    return cloudModulePromise;
+  }
+
+  let firebaseAuthModulePromise: Promise<typeof import('firebase/auth')> | null = null;
+  function getFirebaseAuthModule() {
+    if (!firebaseAuthModulePromise) {
+      firebaseAuthModulePromise = import('firebase/auth');
+    }
+    return firebaseAuthModulePromise;
+  }
+
+  let firebaseFirestoreModulePromise: Promise<typeof import('firebase/firestore')> | null = null;
+  function getFirebaseFirestoreModule() {
+    if (!firebaseFirestoreModulePromise) {
+      firebaseFirestoreModulePromise = import('firebase/firestore');
+    }
+    return firebaseFirestoreModulePromise;
+  }
+
 
   let activeTab = $state<'lesson' | 'catalog' | 'stats'>('lesson');
   let isSettingsOpen = $state(false);
@@ -118,9 +128,19 @@
     idle(() => initFirebaseAuthListener());
   });
 
-  function initFirebaseAuthListener() {
+  async function initFirebaseAuthListener() {
     try {
-      const auth = getFirebaseAuth();
+      const [{ getFirebaseAuth, getFirebaseDb }, authMod, firestoreMod, cloud] = await Promise.all([
+        import('$lib/firebase'),
+        getFirebaseAuthModule(),
+        getFirebaseFirestoreModule(),
+        getCloudStorage()
+      ]);
+      const { signOut, onAuthStateChanged, getRedirectResult } = authMod;
+      const { doc, onSnapshot } = firestoreMod;
+      const { registerDeviceSession, loadUserProfileFromCloud, loadProgressFromCloud, syncProgressToCloud, loadSettingsFromCloud } = cloud;
+
+      const auth: Auth = getFirebaseAuth();
       if (auth) {
         getRedirectResult(auth)
           .then((res) => {
@@ -265,7 +285,7 @@
 
     // Synchronizacja w tle z Firebase Firestore jeśli zalogowany
     if (currentUser?.uid) {
-      syncProgressToCloud(currentUser.uid, progressMap);
+      getCloudStorage().then((cloud) => cloud.syncProgressToCloud(currentUser!.uid, progressMap));
     }
 
     // Jeśli ocena to "Bardzo trudne" (0), słówko wraca na koniec obecnej sesji
@@ -286,7 +306,9 @@
       currentCardIndex++;
     } else {
       sessionCompleted = true;
-      flushSyncProgressToCloud();
+      if (currentUser?.uid) {
+        getCloudStorage().then((cloud) => cloud.flushSyncProgressToCloud());
+      }
     }
     persistActiveSessionState();
   }
@@ -298,7 +320,7 @@
     applyA11ySettings(newSettings);
     // Synchronizacja w tle z Firebase jeśli zalogowany
     if (currentUser?.uid) {
-      saveSettingsToCloud(currentUser.uid, newSettings);
+      getCloudStorage().then((cloud) => cloud.saveSettingsToCloud(currentUser!.uid, newSettings));
     }
     // Jeśli zmieniono limit słówek, przelicz sesję na dziś
     if (newSettings.dailyNewWordsLimit !== oldLimit) {
@@ -312,13 +334,21 @@
   }
 
   async function handleResetProgress() {
-    await clearAllProgress(currentUser?.uid || undefined);
+    clearLocalProgress();
+    if (currentUser?.uid) {
+      const cloud = await getCloudStorage();
+      await cloud.clearCloudProgress(currentUser.uid);
+    }
     progressMap = {};
     startSession(true);
   }
 
   async function handleLogout() {
     try {
+      const [{ getFirebaseAuth }, { signOut }] = await Promise.all([
+        import('$lib/firebase'),
+        getFirebaseAuthModule()
+      ]);
       const auth = getFirebaseAuth();
       await signOut(auth);
     } catch (err) {
@@ -328,20 +358,23 @@
 
   async function handleSaveUsername(newUsername: string) {
     if (!currentUser) return;
-    await saveUsernameToCloud(currentUser.uid, newUsername);
+    const cloud = await getCloudStorage();
+    await cloud.saveUsernameToCloud(currentUser.uid, newUsername);
     userUsername = newUsername;
   }
 
   async function handleLogoutAllDevices() {
     if (!currentUser) return;
-    await logoutAllDevicesInCloud(currentUser.uid);
+    const cloud = await getCloudStorage();
+    await cloud.logoutAllDevicesInCloud(currentUser.uid);
     await handleLogout();
   }
 
   async function handleDeleteAccount() {
     if (!currentUser) return;
     const uid = currentUser.uid;
-    await deleteUserAccount(uid);
+    const cloud = await getCloudStorage();
+    await cloud.deleteUserAccount(uid);
     currentUser = null;
     userUsername = null;
     userDevices = {};
@@ -511,14 +544,18 @@
     </div>
 
   {:else if activeTab === 'catalog'}
-    
-    <!-- WIDOK KATALOGU / SŁOWNICZKA -->
-    <Catalog words={INITIAL_WORDS} {progressMap} />
+
+    <!-- WIDOK KATALOGU / SŁOWNICZKA (lazy-loaded, not needed on first paint) -->
+    {#await import('$lib/components/Catalog.svelte') then { default: Catalog }}
+      <Catalog words={INITIAL_WORDS} {progressMap} />
+    {/await}
 
   {:else if activeTab === 'stats'}
 
-    <!-- WIDOK STATYSTYK -->
-    <Stats words={INITIAL_WORDS} {progressMap} {streakDays} />
+    <!-- WIDOK STATYSTYK (lazy-loaded, not needed on first paint) -->
+    {#await import('$lib/components/Stats.svelte') then { default: Stats }}
+      <Stats words={INITIAL_WORDS} {progressMap} {streakDays} />
+    {/await}
 
   {/if}
 
@@ -526,60 +563,74 @@
 
 <!-- Modal Ustawień -->
 {#if isSettingsOpen}
-  <SettingsModal
-    {settings}
-    onClose={() => (isSettingsOpen = false)}
-    onSave={handleSaveSettings}
-    onPreview={handlePreviewSettings}
-    onResetProgress={handleResetProgress}
-  />
+  {#await import('$lib/components/SettingsModal.svelte') then { default: SettingsModal }}
+    <SettingsModal
+      {settings}
+      onClose={() => (isSettingsOpen = false)}
+      onSave={handleSaveSettings}
+      onPreview={handlePreviewSettings}
+      onResetProgress={handleResetProgress}
+    />
+  {/await}
 {/if}
 
 <!-- Modal Logowania i Rejestracji -->
 {#if isAuthOpen}
-  <AuthModal
-    onClose={() => (isAuthOpen = false)}
-    onSuccess={() => startSession()}
-    onOpenPrivacy={() => (isPrivacyOpen = true)}
-  />
+  {#await import('$lib/components/AuthModal.svelte') then { default: AuthModal }}
+    <AuthModal
+      onClose={() => (isAuthOpen = false)}
+      onSuccess={() => startSession()}
+      onOpenPrivacy={() => (isPrivacyOpen = true)}
+    />
+  {/await}
 {/if}
 
 <!-- Customowe Modal Potwierdzenia Wylogowania -->
 {#if isConfirmLogoutOpen}
-  <ConfirmLogoutModal
-    userEmail={currentUser?.email || null}
-    onClose={() => (isConfirmLogoutOpen = false)}
-    onConfirm={handleLogout}
-  />
+  {#await import('$lib/components/ConfirmLogoutModal.svelte') then { default: ConfirmLogoutModal }}
+    <ConfirmLogoutModal
+      userEmail={currentUser?.email || null}
+      onClose={() => (isConfirmLogoutOpen = false)}
+      onConfirm={handleLogout}
+    />
+  {/await}
 {/if}
 
 <!-- Modal Polityki Prywatności (RODO) -->
 {#if isPrivacyOpen}
-  <PrivacyModal
-    onClose={() => (isPrivacyOpen = false)}
-    onOpenContact={() => (isContactOpen = true)}
-  />
+  {#await import('$lib/components/PrivacyModal.svelte') then { default: PrivacyModal }}
+    <PrivacyModal
+      onClose={() => (isPrivacyOpen = false)}
+      onOpenContact={() => (isContactOpen = true)}
+    />
+  {/await}
 {/if}
 
 <!-- Modal Formularza Kontaktowego -->
 {#if isContactOpen}
-  <ContactModal onClose={() => (isContactOpen = false)} />
+  {#await import('$lib/components/ContactModal.svelte') then { default: ContactModal }}
+    <ContactModal onClose={() => (isContactOpen = false)} />
+  {/await}
 {/if}
 
 <!-- Modal Konta i Urządzeń -->
 {#if isAccountOpen && currentUser}
-  <AccountModal
-    userEmail={currentUser.email}
-    username={userUsername}
-    devices={userDevices}
-    onClose={() => (isAccountOpen = false)}
-    onSaveUsername={handleSaveUsername}
-    onLogoutAllDevices={handleLogoutAllDevices}
-    onLogout={() => {
-      isAccountOpen = false;
-      isConfirmLogoutOpen = true;
-    }}
-    onDeleteAccount={handleDeleteAccount}
-  />
+  {#await import('$lib/components/AccountModal.svelte') then { default: AccountModal }}
+    <AccountModal
+      userEmail={currentUser.email}
+      username={userUsername}
+      devices={userDevices}
+      onClose={() => (isAccountOpen = false)}
+      onSaveUsername={handleSaveUsername}
+      onLogoutAllDevices={handleLogoutAllDevices}
+      onLogout={() => {
+        isAccountOpen = false;
+        isConfirmLogoutOpen = true;
+      }}
+      onDeleteAccount={handleDeleteAccount}
+    />
+  {/await}
 {/if}
+
+
 
