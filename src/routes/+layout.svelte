@@ -16,6 +16,8 @@
 	<a href="/polityka-prywatnosci" class="hover:underline hover:text-(--text-primary) transition-colors">
 		Polityka prywatności
 	</a>
+	<span>•</span>
+	<a href="/usun-konto" class="hover:underline hover:text-(--text-primary) transition-colors">
+		Usuwanie konta i danych
+	</a>
 </footer>
-
-
