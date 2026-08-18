@@ -22,7 +22,7 @@ export async function clearCloudProgress(userId: string): Promise<void> {
     const db = getFirebaseDb();
     if (!db) return;
     const userDocRef = doc(db, 'users', userId);
-    await setDoc(userDocRef, { progressMap: {}, updatedAt: new Date().toISOString() }, { merge: true });
+    await setDoc(userDocRef, { progressMap: {}, lastCompletedSessionDate: null, cardsReviewedToday: 0, updatedAt: new Date().toISOString() }, { merge: true });
   } catch (e) {
     console.error('Failed to clear cloud progress data:', e);
   }
@@ -113,6 +113,63 @@ export async function loadProgressFromCloud(userId: string): Promise<Record<stri
  * @param userId - Firebase User ID.
  * @param settings - User settings object.
  */
+/**
+ * Saves today's session completion metadata to Firebase Firestore.
+ *
+ * @param userId - Firebase User ID.
+ * @param date - Date of completion formatted as YYYY-MM-DD.
+ * @param cardsReviewedCount - Number of cards reviewed in today's session.
+ */
+export async function syncSessionCompletionToCloud(
+  userId: string,
+  date: string,
+  cardsReviewedCount: number
+): Promise<void> {
+  try {
+    const db = getFirebaseDb();
+    if (!db) return;
+    const userDocRef = doc(db, 'users', userId);
+    await setDoc(
+      userDocRef,
+      {
+        lastCompletedSessionDate: date,
+        cardsReviewedToday: cardsReviewedCount,
+        updatedAt: new Date().toISOString()
+      },
+      { merge: true }
+    );
+  } catch (e) {
+    console.warn('Failed to sync session completion to Firestore:', e);
+  }
+}
+
+/**
+ * Loads session completion metadata from Firebase Firestore.
+ *
+ * @param userId - Firebase User ID.
+ * @returns Object with date and count or null.
+ */
+export async function loadSessionCompletionFromCloud(
+  userId: string
+): Promise<{ lastCompletedSessionDate: string | null; cardsReviewedToday: number | null } | null> {
+  try {
+    const db = getFirebaseDb();
+    if (!db) return null;
+    const userDocRef = doc(db, 'users', userId);
+    const snap = await getDoc(userDocRef);
+    if (snap.exists()) {
+      const data = snap.data();
+      return {
+        lastCompletedSessionDate: data?.lastCompletedSessionDate || null,
+        cardsReviewedToday: typeof data?.cardsReviewedToday === 'number' ? data.cardsReviewedToday : null
+      };
+    }
+  } catch (e) {
+    console.warn('Failed to load session completion from Firestore:', e);
+  }
+  return null;
+}
+
 export async function saveSettingsToCloud(userId: string, settings: UserSettings): Promise<void> {
   try {
     const db = getFirebaseDb();

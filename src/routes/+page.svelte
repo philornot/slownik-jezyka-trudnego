@@ -138,7 +138,7 @@
       ]);
       const { signOut, onAuthStateChanged, getRedirectResult } = authMod;
       const { doc, onSnapshot } = firestoreMod;
-      const { registerDeviceSession, loadUserProfileFromCloud, loadProgressFromCloud, syncProgressToCloud, loadSettingsFromCloud } = cloud;
+      const { registerDeviceSession, loadUserProfileFromCloud, loadProgressFromCloud, syncProgressToCloud, loadSettingsFromCloud, loadSessionCompletionFromCloud, syncSessionCompletionToCloud } = cloud;
 
       const auth: Auth = getFirebaseAuth();
       if (auth) {
@@ -187,6 +187,28 @@
 
                   if (data.sessionRevokedAt && !isDeviceInList) {
                     signOut(auth).catch(() => {});
+                    return;
+                  }
+
+                  const today = getTodayDateString();
+                  if (data.lastCompletedSessionDate === today) {
+                    sessionCompleted = true;
+                    if (typeof data.cardsReviewedToday === 'number') {
+                      cardsReviewedInSession = data.cardsReviewedToday;
+                    }
+                    persistActiveSessionState();
+                  }
+
+                  if (data.progressMap) {
+                    const remote = data.progressMap;
+                    const merged = mergeProgressMaps(progressMap, remote);
+                    if (JSON.stringify(merged) !== JSON.stringify(progressMap)) {
+                      progressMap = merged;
+                      saveAllLocalProgress(progressMap);
+                      if (data.lastCompletedSessionDate !== today) {
+                        startSession();
+                      }
+                    }
                   }
                 }
               });
@@ -199,6 +221,14 @@
               saveAllLocalProgress(progressMap);
               await syncProgressToCloud(user.uid, progressMap);
               startSession();
+            }
+            const cloudSession = await loadSessionCompletionFromCloud(user.uid);
+            if (cloudSession?.lastCompletedSessionDate === getTodayDateString()) {
+              sessionCompleted = true;
+              if (typeof cloudSession.cardsReviewedToday === 'number') {
+                cardsReviewedInSession = cloudSession.cardsReviewedToday;
+              }
+              persistActiveSessionState();
             }
             // Wczytaj ustawienia z chmury (z zachowaniem lokalnych ustawień powiadomień)
             const cloudSettings = await loadSettingsFromCloud(user.uid);
@@ -307,7 +337,10 @@
     } else {
       sessionCompleted = true;
       if (currentUser?.uid) {
-        getCloudStorage().then((cloud) => cloud.flushSyncProgressToCloud());
+        getCloudStorage().then((cloud) => {
+          cloud.flushSyncProgressToCloud();
+          cloud.syncSessionCompletionToCloud(currentUser!.uid, getTodayDateString(), cardsReviewedInSession);
+        });
       }
     }
     persistActiveSessionState();
