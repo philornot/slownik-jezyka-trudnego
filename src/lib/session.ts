@@ -39,6 +39,22 @@ export function getUnmasteredWordsFromPreviousDaysCount(
 /**
  * Zwraca liczbę nowych słów rozpoczętych dzisiaj.
  */
+
+/**
+ * Zwraca liczbę słów powtórzonych dzisiaj.
+ */
+export function getWordsReviewedTodayCount(
+  progressMap: Record<string, UserWordProgress>,
+  todayStr: string = getTodayDateString()
+): number {
+  return Object.values(progressMap).filter((p) => {
+    return (
+      (p.history && p.history.some((h) => h.date === todayStr)) ||
+      (p.lastReviewedAt && p.lastReviewedAt.startsWith(todayStr))
+    );
+  }).length;
+}
+
 export function getWordsStartedTodayCount(
   progressMap: Record<string, UserWordProgress>,
   todayStr: string = getTodayDateString()
@@ -187,16 +203,27 @@ export function createDailySession(
   // Łączymy nowe karty i powtórki w deterministycznie wymieszaną kolejność dla danego dnia
   let cards = shuffleArray([...newCards, ...reviewCards], randomFn);
 
-  if (cards.length === 0 && unmasteredCount > 0) {
-    const unmasteredWords = allWords.filter((w) => progressMap[w.id] && progressMap[w.id].repetitions < 3);
-    const shuffledUnmastered = shuffleArray(unmasteredWords, randomFn);
-    const trainingCards: SessionCard[] = shuffledUnmastered.slice(0, 5).map((word) => ({
-      word,
-      isNew: false,
-      userProgress: progressMap[word.id],
-      options: generateQuizOptions(word, allWords, randomFn)
-    }));
-    cards = trainingCards;
+  if (cards.length === 0) {
+    const reviewedToday = getWordsReviewedTodayCount(progressMap, today);
+    if (reviewedToday > 0) {
+      return {
+        cards: [],
+        adaptiveLimit,
+        unmasteredCount
+      };
+    }
+
+    if (unmasteredCount > 0) {
+      const unmasteredWords = allWords.filter((w) => progressMap[w.id] && progressMap[w.id].repetitions < 3);
+      const shuffledUnmastered = shuffleArray(unmasteredWords, randomFn);
+      const trainingCards: SessionCard[] = shuffledUnmastered.slice(0, 5).map((word) => ({
+        word,
+        isNew: false,
+        userProgress: progressMap[word.id],
+        options: generateQuizOptions(word, allWords, randomFn)
+      }));
+      cards = trainingCards;
+    }
   }
 
   return {

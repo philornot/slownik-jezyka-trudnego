@@ -17,7 +17,7 @@
     mergeProgressMaps,
     getDeviceId
   } from '$lib/storage';
-  import { createDailySession, getDailyCompletionMessage } from '$lib/session';
+  import { createDailySession, getDailyCompletionMessage, getWordsReviewedTodayCount } from '$lib/session';
   import { registerServiceWorker } from '$lib/notifications';
   import type { Auth, User, Unsubscribe } from 'firebase/auth';
   import { initTheme } from '$lib/theme.svelte';
@@ -272,17 +272,19 @@
     sessionCards = sessionData.cards;
 
     const savedState = !forceNew ? getSavedSessionState() : null;
+    const today = getTodayDateString();
+    const reviewedToday = getWordsReviewedTodayCount(progressMap, today);
 
-    if (savedState) {
+    if (savedState && savedState.date === today) {
       sessionPhase = savedState.sessionPhase;
       currentCardIndex = Math.min(savedState.currentCardIndex, Math.max(0, sessionCards.length - 1));
-      cardsReviewedInSession = savedState.cardsReviewedInSession;
-      sessionCompleted = savedState.sessionCompleted;
+      cardsReviewedInSession = savedState.cardsReviewedInSession || reviewedToday;
+      sessionCompleted = savedState.sessionCompleted || (sessionCards.length === 0 && reviewedToday > 0);
       newWordsToLearn = sessionCards.filter((c) => c.isNew).map((c) => c.word);
     } else {
       currentCardIndex = 0;
       sessionCompleted = sessionCards.length === 0;
-      cardsReviewedInSession = 0;
+      cardsReviewedInSession = sessionCards.length === 0 ? reviewedToday : 0;
 
       const newWords = sessionCards.filter((c) => c.isNew).map((c) => c.word);
       if (newWords.length > 0) {
