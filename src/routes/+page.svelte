@@ -17,7 +17,15 @@
     mergeProgressMaps,
     getDeviceId
   } from '$lib/storage';
-  import { createDailySession, getDailyCompletionMessage, getWordsReviewedTodayCount } from '$lib/session';
+  import {
+    createDailySession,
+    createExtraNewWordsSession,
+    createHardWordsPracticeSession,
+    getDailyCompletionMessage,
+    getWordsReviewedTodayCount,
+    hasUnstartedWords,
+    hasWordsToPractice
+  } from '$lib/session';
   import { registerServiceWorker } from '$lib/notifications';
   import type { Auth, User, Unsubscribe } from 'firebase/auth';
   import { initTheme } from '$lib/theme.svelte';
@@ -304,6 +312,49 @@
     persistActiveSessionState();
   }
 
+  /**
+   * Starts an extra lesson with new words from the dictionary.
+   *
+   * @param count - Number of new words to include.
+   */
+  function startExtraLesson(count: number) {
+    const extraCards = createExtraNewWordsSession(progressMap, INITIAL_WORDS, count);
+    if (extraCards.length === 0) return;
+
+    sessionCards = extraCards;
+    currentCardIndex = 0;
+    sessionCompleted = false;
+
+    const newWords = extraCards.filter((c) => c.isNew).map((c) => c.word);
+    if (newWords.length > 0) {
+      newWordsToLearn = newWords;
+      sessionPhase = 'showcase';
+    } else {
+      newWordsToLearn = [];
+      sessionPhase = 'quiz';
+    }
+
+    persistActiveSessionState();
+  }
+
+  /**
+   * Starts a practice session with the hardest words.
+   *
+   * @param count - Number of hard words to practice.
+   */
+  function startReviewPractice(count: number) {
+    const practiceCards = createHardWordsPracticeSession(progressMap, INITIAL_WORDS, count);
+    if (practiceCards.length === 0) return;
+
+    sessionCards = practiceCards;
+    currentCardIndex = 0;
+    sessionCompleted = false;
+    newWordsToLearn = [];
+    sessionPhase = 'quiz';
+
+    persistActiveSessionState();
+  }
+
   function handleGradeCard(grade: ReviewGrade) {
     if (!currentCard) return;
 
@@ -437,12 +488,22 @@
     }
 
     if (activeTab === 'lesson' && sessionCompleted) {
-      if (e.key === 'Enter' || e.key === ' ' || e.key === 'k' || e.key === 'K') {
+      if (e.key === 'k' || e.key === 'K') {
         e.preventDefault();
         activeTab = 'catalog';
       } else if (e.key === 's' || e.key === 'S') {
         e.preventDefault();
         activeTab = 'stats';
+      } else if (e.key === 'Enter' || e.key === ' ' || e.key === 'l' || e.key === 'L') {
+        e.preventDefault();
+        if (hasUnstartedWords(progressMap, INITIAL_WORDS)) {
+          startExtraLesson(settings.dailyNewWordsLimit);
+        }
+      } else if (e.key === 'r' || e.key === 'R') {
+        e.preventDefault();
+        if (hasWordsToPractice(progressMap)) {
+          startReviewPractice(5);
+        }
       }
     }
   }
@@ -546,30 +607,52 @@
             </div>
           </div>
 
-          <!-- Akcje -->
+          <!-- On-demand learning actions -->
           <div class="flex flex-col gap-3 p-5">
-            <button
-              type="button"
-              onclick={() => (activeTab = 'catalog')}
-              class="btn-touch flex items-center justify-center gap-2"
-            >
-              <Icon icon="ph:book-open-bold" class="h-5 w-5" />
-              <span>Przeglądaj Słowniczek</span>
-              <kbd class="hidden sm:inline-flex">
-                Enter ↵
-              </kbd>
-            </button>
-            <button
-              type="button"
-              onclick={() => (activeTab = 'stats')}
-              class="btn-secondary w-full py-3 text-sm flex items-center justify-center gap-2"
-            >
-              <Icon icon="ph:chart-bar-bold" class="h-4 w-4" />
-              <span>Zobacz Statystyki</span>
-              <kbd class="hidden sm:inline-flex">
-                S
-              </kbd>
-            </button>
+            {#if hasUnstartedWords(progressMap, INITIAL_WORDS)}
+              <button
+                type="button"
+                onclick={() => startExtraLesson(settings.dailyNewWordsLimit)}
+                class="btn-touch flex items-center justify-center gap-2"
+              >
+                <Icon icon="ph:arrow-right-bold" class="h-5 w-5" />
+                <span>Ucz się dalej (+{settings.dailyNewWordsLimit} nowe słowa)</span>
+              </button>
+            {/if}
+            {#if hasWordsToPractice(progressMap)}
+              <button
+                type="button"
+                onclick={() => startReviewPractice(5)}
+                class="btn-secondary w-full py-3 text-sm flex items-center justify-center gap-2"
+              >
+                <Icon icon="ph:arrows-clockwise-bold" class="h-4 w-4" />
+                <span>Powtórz trudne słówka</span>
+              </button>
+            {/if}
+            <div class="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onclick={() => (activeTab = 'catalog')}
+                class="btn-secondary w-full py-3 text-sm flex items-center justify-center gap-2"
+              >
+                <Icon icon="ph:book-open-bold" class="h-4 w-4" />
+                <span>Słowniczek</span>
+                <kbd class="hidden sm:inline-flex">
+                  K
+                </kbd>
+              </button>
+              <button
+                type="button"
+                onclick={() => (activeTab = 'stats')}
+                class="btn-secondary w-full py-3 text-sm flex items-center justify-center gap-2"
+              >
+                <Icon icon="ph:chart-bar-bold" class="h-4 w-4" />
+                <span>Statystyki</span>
+                <kbd class="hidden sm:inline-flex">
+                  S
+                </kbd>
+              </button>
+            </div>
           </div>
 
         </div>

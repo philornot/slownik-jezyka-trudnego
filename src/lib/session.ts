@@ -2,7 +2,11 @@ import type { DictionaryWord, UserWordProgress, SessionCard, UserSettings } from
 import { isWordDueToday, getTodayDateString } from './supermemo';
 
 /**
- * Zwraca słowa wymagające powtórki na dzisiaj
+ * Returns words that are due for review today.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param allWords - Full dictionary.
+ * @returns Array of words due for review.
  */
 export function getDueReviewWords(
   progressMap: Record<string, UserWordProgress>,
@@ -16,14 +20,21 @@ export function getDueReviewWords(
 }
 
 /**
- * Zwraca liczbę słów w trakcie nauki, które nie zostały jeszcze w pełni opanowane (repetitions < 3).
+ * Returns the count of words in progress that are not yet fully mastered (repetitions < 3).
+ *
+ * @param progressMap - Current progress for all words.
+ * @returns Count of unmastered words.
  */
 export function getUnmasteredWordsCount(progressMap: Record<string, UserWordProgress>): number {
   return Object.values(progressMap).filter((p) => p.repetitions < 3).length;
 }
 
 /**
- * Zwraca liczbę słów rozpoczętych przed dzisiejszym dniem, które nie zostały jeszcze w pełni opanowane.
+ * Returns the count of words started before today that are not yet fully mastered.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param todayStr - Today's date string (YYYY-MM-DD).
+ * @returns Count of unmastered words from previous days.
  */
 export function getUnmasteredWordsFromPreviousDaysCount(
   progressMap: Record<string, UserWordProgress>,
@@ -37,11 +48,11 @@ export function getUnmasteredWordsFromPreviousDaysCount(
 }
 
 /**
- * Zwraca liczbę nowych słów rozpoczętych dzisiaj.
- */
-
-/**
- * Zwraca liczbę słów powtórzonych dzisiaj.
+ * Returns the count of words reviewed today.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param todayStr - Today's date string (YYYY-MM-DD).
+ * @returns Count of words reviewed today.
  */
 export function getWordsReviewedTodayCount(
   progressMap: Record<string, UserWordProgress>,
@@ -55,6 +66,13 @@ export function getWordsReviewedTodayCount(
   }).length;
 }
 
+/**
+ * Returns the count of new words started today.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param todayStr - Today's date string (YYYY-MM-DD).
+ * @returns Count of words started today.
+ */
 export function getWordsStartedTodayCount(
   progressMap: Record<string, UserWordProgress>,
   todayStr: string = getTodayDateString()
@@ -66,41 +84,46 @@ export function getWordsStartedTodayCount(
 }
 
 /**
- * Adaptacyjne wyliczanie ile nowych słów można dodać dzisiaj:
- * - Odejmuje słowa już rozpoczęte dzisiaj od dzisiejszego limitu użytkownika.
- * - Jeśli użytkownik ma dużo nieopanowanych słów z poprzednich dni (>= 8), nie dodajemy nowych słów.
- * - Jeśli ma 5-7 nieopanowanych słów z poprzednich dni, dodajemy maksymalnie 1 nowe słowo.
- * - Jeśli ma 3-4 nieopanowane słowa z poprzednich dni, dodajemy maksymalnie 2 nowe słowa.
- * - Jeśli ma poniżej 3 nieopanowanych słów z poprzednich dni, pozwala na pozostały ustalony limit.
+ * Calculates the adaptive new-words limit for today.
+ *
+ * Respects the user-configured daily limit from Settings. The only throttle
+ * kicks in when there is a genuine backlog of overdue reviews (> 20 due words),
+ * halving the new-words budget so the user catches up before drowning in more
+ * new material.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param userConfiguredLimit - Daily new-words cap from user settings.
+ * @param dueWordsCount - Number of words due for review today.
+ * @param todayStr - Today's date string (YYYY-MM-DD).
+ * @returns Number of new words to include in today's session.
  */
 export function calculateAdaptiveNewWordsLimit(
   progressMap: Record<string, UserWordProgress>,
   userConfiguredLimit: number,
+  dueWordsCount: number = 0,
   todayStr: string = getTodayDateString()
 ): number {
   const startedToday = getWordsStartedTodayCount(progressMap, todayStr);
-  const maxRemaining = Math.max(0, userConfiguredLimit - startedToday);
+  let maxRemaining = Math.max(0, userConfiguredLimit - startedToday);
 
   if (maxRemaining <= 0) {
     return 0;
   }
 
-  const unmasteredPrev = getUnmasteredWordsFromPreviousDaysCount(progressMap, todayStr);
-
-  if (unmasteredPrev >= 8) {
-    return 0;
-  } else if (unmasteredPrev >= 5) {
-    return Math.min(1, maxRemaining);
-  } else if (unmasteredPrev >= 3) {
-    return Math.min(2, maxRemaining);
-  } else {
-    return maxRemaining;
+  // Only throttle when there is a genuine review backlog
+  if (dueWordsCount > 20) {
+    maxRemaining = Math.max(1, Math.floor(maxRemaining / 2));
   }
+
+  return maxRemaining;
 }
 
 /**
- * Prosty generator liczb pseudolosowych z ziarnem (Mulberry32).
- * Zapewnia deterministyczne losowanie słówek i dystraktorów w danym dniu.
+ * Simple seeded pseudo-random number generator (Mulberry32).
+ * Ensures deterministic word and distractor shuffling for a given day.
+ *
+ * @param seedString - Seed string for the PRNG.
+ * @returns A function that returns a pseudo-random number in [0, 1).
  */
 export function createSeededRandom(seedString: string): () => number {
   let h = 2166136261 ^ seedString.length;
@@ -117,7 +140,11 @@ export function createSeededRandom(seedString: string): () => number {
 }
 
 /**
- * Mieszanie tablicy wg podanego generatora liczb losowych
+ * Shuffles an array using a given random number generator.
+ *
+ * @param array - Array to shuffle.
+ * @param randomFn - Random number generator function.
+ * @returns A new shuffled array.
  */
 export function shuffleArray<T>(array: T[], randomFn: () => number = Math.random): T[] {
   const result = [...array];
@@ -129,16 +156,30 @@ export function shuffleArray<T>(array: T[], randomFn: () => number = Math.random
 }
 
 /**
- * Pobiera adaptacyjną paczkę nowych słów do nauki z deterministycznie wymieszanej puli
+ * Gets an adaptive batch of new words to learn from a deterministically shuffled pool.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param allWords - Full dictionary.
+ * @param userConfiguredLimit - Daily new-words cap from user settings.
+ * @param randomFn - Random number generator function.
+ * @param todayStr - Today's date string (YYYY-MM-DD).
+ * @param dueWordsCount - Number of words due for review today.
+ * @returns Array of new words to learn.
  */
 export function getNewWordsToLearn(
   progressMap: Record<string, UserWordProgress>,
   allWords: DictionaryWord[],
   userConfiguredLimit: number,
   randomFn: () => number = Math.random,
-  todayStr: string = getTodayDateString()
+  todayStr: string = getTodayDateString(),
+  dueWordsCount: number = 0
 ): DictionaryWord[] {
-  const effectiveLimit = calculateAdaptiveNewWordsLimit(progressMap, userConfiguredLimit, todayStr);
+  const effectiveLimit = calculateAdaptiveNewWordsLimit(
+    progressMap,
+    userConfiguredLimit,
+    dueWordsCount,
+    todayStr
+  );
   if (effectiveLimit <= 0) return [];
 
   const unstartedWords = allWords.filter((word) => !progressMap[word.id]);
@@ -147,7 +188,12 @@ export function getNewWordsToLearn(
 }
 
 /**
- * Generuje błędne opcje (dystraktory) dla quizu
+ * Generates wrong answer options (distractors) for a quiz card.
+ *
+ * @param correctWord - The correct word for the quiz.
+ * @param allWords - Full dictionary.
+ * @param randomFn - Random number generator function.
+ * @returns Array of 4 answer options (1 correct + 3 distractors), shuffled.
  */
 export function generateQuizOptions(
   correctWord: DictionaryWord,
@@ -169,7 +215,13 @@ export function generateQuizOptions(
 }
 
 /**
- * Tworzy sesję dzienną obejmującą adaptacyjne nowe słówka oraz powtórki SM-2
+ * Creates the daily session including adaptive new words and SM-2 reviews.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param settings - User settings including daily new words limit.
+ * @param allWords - Full dictionary.
+ * @param customSeed - Optional custom seed for deterministic shuffling.
+ * @returns Session cards, adaptive limit, and unmastered count.
  */
 export function createDailySession(
   progressMap: Record<string, UserWordProgress>,
@@ -182,8 +234,20 @@ export function createDailySession(
   const today = getTodayDateString();
 
   const dueReviews = getDueReviewWords(progressMap, allWords);
-  const adaptiveLimit = calculateAdaptiveNewWordsLimit(progressMap, settings.dailyNewWordsLimit, today);
-  const newWords = getNewWordsToLearn(progressMap, allWords, settings.dailyNewWordsLimit, randomFn, today);
+  const adaptiveLimit = calculateAdaptiveNewWordsLimit(
+    progressMap,
+    settings.dailyNewWordsLimit,
+    dueReviews.length,
+    today
+  );
+  const newWords = getNewWordsToLearn(
+    progressMap,
+    allWords,
+    settings.dailyNewWordsLimit,
+    randomFn,
+    today,
+    dueReviews.length
+  );
   const unmasteredCount = getUnmasteredWordsCount(progressMap);
 
   const reviewCards: SessionCard[] = dueReviews.map((word) => ({
@@ -200,7 +264,7 @@ export function createDailySession(
     options: generateQuizOptions(word, allWords, randomFn)
   }));
 
-  // Łączymy nowe karty i powtórki w deterministycznie wymieszaną kolejność dla danego dnia
+  // Combine new cards and reviews in a deterministically shuffled order for the day
   let cards = shuffleArray([...newCards, ...reviewCards], randomFn);
 
   if (cards.length === 0) {
@@ -231,6 +295,102 @@ export function createDailySession(
     adaptiveLimit,
     unmasteredCount
   };
+}
+
+/**
+ * Creates an on-demand session of additional new words from the dictionary.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param allWords - Full dictionary.
+ * @param count - Number of new words to include.
+ * @returns Session cards for new words (showcase + quiz), or empty if none available.
+ */
+export function createExtraNewWordsSession(
+  progressMap: Record<string, UserWordProgress>,
+  allWords: DictionaryWord[],
+  count: number
+): SessionCard[] {
+  const unstartedWords = allWords.filter((word) => !progressMap[word.id]);
+  if (unstartedWords.length === 0) return [];
+
+  const randomFn = createSeededRandom(`extra_${getTodayDateString()}_${Date.now()}`);
+  const shuffled = shuffleArray(unstartedWords, randomFn);
+  const selected = shuffled.slice(0, Math.min(count, unstartedWords.length));
+
+  return selected.map((word) => ({
+    word,
+    isNew: true,
+    userProgress: undefined,
+    options: generateQuizOptions(word, allWords, randomFn)
+  }));
+}
+
+/**
+ * Creates an on-demand practice session with the hardest words.
+ *
+ * Selects words the user has started but finds most difficult, sorted by
+ * ascending easeFactor (hardest first), then lowest recent grade.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param allWords - Full dictionary.
+ * @param count - Number of words to include.
+ * @returns Session cards for practice, or empty if none available.
+ */
+export function createHardWordsPracticeSession(
+  progressMap: Record<string, UserWordProgress>,
+  allWords: DictionaryWord[],
+  count: number
+): SessionCard[] {
+  const startedWords = allWords.filter((word) => progressMap[word.id]);
+  if (startedWords.length === 0) return [];
+
+  // Sort by easeFactor ascending, then by last grade ascending (hardest first)
+  const sorted = [...startedWords].sort((a, b) => {
+    const pa = progressMap[a.id];
+    const pb = progressMap[b.id];
+    const efDiff = pa.easeFactor - pb.easeFactor;
+    if (efDiff !== 0) return efDiff;
+
+    const lastGradeA = pa.history?.length ? pa.history[pa.history.length - 1].grade : 5;
+    const lastGradeB = pb.history?.length ? pb.history[pb.history.length - 1].grade : 5;
+    return lastGradeA - lastGradeB;
+  });
+
+  const selected = sorted.slice(0, Math.min(count, sorted.length));
+  const randomFn = createSeededRandom(`practice_${getTodayDateString()}_${Date.now()}`);
+
+  return selected.map((word) => ({
+    word,
+    isNew: false,
+    userProgress: progressMap[word.id],
+    options: generateQuizOptions(word, allWords, randomFn)
+  }));
+}
+
+/**
+ * Checks if there are unstarted words available in the dictionary.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param allWords - Full dictionary.
+ * @returns True if at least one word has not been started yet.
+ */
+export function hasUnstartedWords(
+  progressMap: Record<string, UserWordProgress>,
+  allWords: DictionaryWord[]
+): boolean {
+  return allWords.some((word) => !progressMap[word.id]);
+}
+
+/**
+ * Checks if there are started words available for practice.
+ *
+ * @param progressMap - Current progress for all words.
+ * @returns True if at least one word has been started.
+ */
+export function hasWordsToPractice(
+  progressMap: Record<string, UserWordProgress>
+): boolean {
+  return Object.keys(progressMap).length > 0;
 }
 
 export const COMPLETION_MESSAGES: Array<{ title: string; description: string }> = [
@@ -282,4 +442,3 @@ export function getDailyCompletionMessage(dateStr: string = getTodayDateString()
   const index = Math.floor(randomFn() * COMPLETION_MESSAGES.length);
   return COMPLETION_MESSAGES[index];
 }
-
