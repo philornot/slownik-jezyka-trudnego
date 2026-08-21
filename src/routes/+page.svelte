@@ -213,7 +213,10 @@
                     if (JSON.stringify(merged) !== JSON.stringify(progressMap)) {
                       progressMap = merged;
                       saveAllLocalProgress(progressMap);
-                      if (data.lastCompletedSessionDate !== today) {
+                      // Przebuduj sesję tylko gdy nie jest aktywna (ukończona lub jeszcze nie wystartowana).
+                      // Wywołanie startSession() w trakcie quizu resetowałoby bieżącą kartę, bo
+                      // onSnapshot odpala się po każdym syncProgressToCloud (czyli po każdej ocenie).
+                      if (sessionCompleted && data.lastCompletedSessionDate !== today) {
                         startSession();
                       }
                     }
@@ -228,7 +231,12 @@
               progressMap = mergeProgressMaps(progressMap, cloudProgress);
               saveAllLocalProgress(progressMap);
               await syncProgressToCloud(user.uid, progressMap);
-              startSession();
+              // Przebuduj sesję po zalogowaniu tylko gdy użytkownik nie jest w trakcie quizu.
+              // Jeśli sesja jest aktywna, zaktualizowany progressMap wystarczy –
+              // bieżące karty w sessionCards pozostają nieruszone.
+              if (sessionCompleted || currentCardIndex === 0) {
+                startSession();
+              }
             }
             const cloudSession = await loadSessionCompletionFromCloud(user.uid);
             if (cloudSession?.lastCompletedSessionDate === getTodayDateString()) {
