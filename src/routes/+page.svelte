@@ -372,7 +372,9 @@
     // Zapis postępu lokalnego
     saveLocalWordProgress(updatedProgress);
     progressMap[currentCard.word.id] = updatedProgress;
-    cardsReviewedInSession++;
+    if (grade !== 0) {
+      cardsReviewedInSession++;
+    }
 
     // Synchronizacja w tle z Firebase Firestore jeśli zalogowany
     if (currentUser?.uid) {

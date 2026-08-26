@@ -91,7 +91,13 @@ export function calculateSM2(
   let repetitions = currentProgress?.repetitions ?? 0;
   let easeFactor = currentProgress?.easeFactor ?? 2.5;
   let interval = currentProgress?.interval ?? 1;
-  const history = currentProgress?.history ? [...currentProgress.history, historyItem] : [historyItem];
+  const existingHistory = currentProgress?.history ?? [];
+  const history =
+    existingHistory.length > 0 &&
+    existingHistory[existingHistory.length - 1].date === today &&
+    existingHistory[existingHistory.length - 1].grade < 3
+      ? [...existingHistory.slice(0, -1), historyItem]
+      : [...existingHistory, historyItem];
 
   if (grade < 3) {
     repetitions = 0;
