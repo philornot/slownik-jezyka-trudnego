@@ -1024,7 +1024,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
   },
   {
     id: 'metanoia',
-    word: 'Metanoia',
+    word: 'Metanoja',
     phonetic: '[me-ta-no-ja]',
     shortDefinition: 'Głęboka przemiana duchowa i zmiana sposobu myślenia.',
     fullDefinition: 'Radykalna zmiana myślenia i postawy, wewnętrzne nawrócenie lub transformacja duchowa prowadząca do całkowicie nowego spojrzenia na życie.',
@@ -1034,7 +1034,7 @@ export const INITIAL_WORDS: DictionaryWord[] = [
       'Filozofowie stoiccy opisywali metanoję jako wewnętrzny przewrót, który wyzwala od namiętności.'
     ],
     category: 'Filozofia i Pojęcia',
-    sjpUrl: 'https://sjp.pwn.pl/szukaj/metanoia.html',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/metanoja.html',
     distractors: [
       'Powierzchowna zmiana przyzwyczajeń bez głębszej refleksji.',
       'Stopniowe zapominanie dawnych przekonań.',

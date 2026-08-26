@@ -572,7 +572,9 @@
           </div>
 
           <!-- Hybrydowa Karta Słówka dla Quizu -->
-          <HybridCard card={currentCard} onGrade={handleGradeCard} />
+          {#key currentCardIndex}
+            <HybridCard card={currentCard} onGrade={handleGradeCard} />
+          {/key}
 
         {/if}
 
