@@ -21,8 +21,13 @@
     createDailySession,
     createExtraNewWordsSession,
     createHardWordsPracticeSession,
+    createQuickPracticeSession,
+    canStartNewLessonToday,
+    getRemainingNewLessonsToday,
+    MAX_DAILY_NEW_LESSONS,
     getDailyCompletionMessage,
     getWordsReviewedTodayCount,
+    getWordsStartedTodayCount,
     hasUnstartedWords,
     hasWordsToPractice
   } from '$lib/session';
@@ -93,6 +98,9 @@
   let currentCard = $derived(sessionCards[currentCardIndex]);
   let learnedCount = $derived(Object.values(progressMap).filter((p) => p.repetitions >= 3).length);
   let completionMessage = $derived(getDailyCompletionMessage());
+  let canLearnMoreToday = $derived(canStartNewLessonToday(progressMap, settings.dailyNewWordsLimit, INITIAL_WORDS));
+  let remainingLessonsToday = $derived(getRemainingNewLessonsToday(progressMap, settings.dailyNewWordsLimit));
+  let wordsStartedToday = $derived(getWordsStartedTodayCount(progressMap));
 
   /**
    * Applies accessibility data attributes to the HTML element
@@ -363,6 +371,24 @@
     persistActiveSessionState();
   }
 
+  /**
+   * Starts a quick general practice session with previously learned words.
+   *
+   * @param count - Number of words to practice.
+   */
+  function startQuickPractice(count: number = 5) {
+    const practiceCards = createQuickPracticeSession(progressMap, INITIAL_WORDS, count);
+    if (practiceCards.length === 0) return;
+
+    sessionCards = practiceCards;
+    currentCardIndex = 0;
+    sessionCompleted = false;
+    newWordsToLearn = [];
+    sessionPhase = 'quiz';
+
+    persistActiveSessionState();
+  }
+
   function handleGradeCard(grade: ReviewGrade) {
     if (!currentCard) return;
 
@@ -506,13 +532,20 @@
         activeTab = 'stats';
       } else if (e.key === 'Enter' || e.key === ' ' || e.key === 'l' || e.key === 'L') {
         e.preventDefault();
-        if (hasUnstartedWords(progressMap, INITIAL_WORDS)) {
+        if (canLearnMoreToday) {
           startExtraLesson(settings.dailyNewWordsLimit);
+        } else if (hasWordsToPractice(progressMap)) {
+          startQuickPractice(5);
         }
       } else if (e.key === 'r' || e.key === 'R') {
         e.preventDefault();
         if (hasWordsToPractice(progressMap)) {
           startReviewPractice(5);
+        }
+      } else if (e.key === 't' || e.key === 'T' || e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        if (hasWordsToPractice(progressMap)) {
+          startQuickPractice(5);
         }
       }
     }
@@ -597,15 +630,29 @@
             </div>
           </div>
 
-          <!-- Baner edukacyjny SRS -->
-          <div class="mx-5 mb-5 p-4 rounded-xl bg-(--brand-primary)/10 border border-(--brand-primary)/20 text-xs font-medium text-(--text-primary) flex items-center gap-3">
-            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-(--brand-primary)/20 text-(--brand-primary)">
-              <Icon icon="ph:sparkle-bold" class="h-5 w-5" />
+          <!-- Baner edukacyjny / limitu nowych słówek -->
+          {#if canLearnMoreToday}
+            <div class="mx-5 mb-5 p-4 rounded-xl bg-(--brand-primary)/10 border border-(--brand-primary)/20 text-xs font-medium text-(--text-primary) flex items-center gap-3">
+              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-(--brand-primary)/20 text-(--brand-primary)">
+                <Icon icon="ph:sparkle-bold" class="h-5 w-5" />
+              </div>
+              <p class="leading-relaxed">
+                Algorytm powtórek dba o trwałe zapamiętywanie. Najlepsze efekty daje regularna, codzienna nauka.
+              </p>
             </div>
-            <p class="leading-relaxed">
-              Algorytm powtórek dba o trwałe zapamiętywanie. Najlepsze efekty daje regularna, codzienna nauka.
-            </p>
-          </div>
+          {:else}
+            <div class="mx-5 mb-5 p-4 rounded-xl bg-(--badge-amber-bg) border border-(--badge-amber-border) text-xs font-medium text-(--badge-amber-text) flex items-start gap-3">
+              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-(--brand-primary)/20 text-(--brand-primary) mt-0.5">
+                <Icon icon="ph:brain-bold" class="h-5 w-5" />
+              </div>
+              <div>
+                <p class="font-bold text-(--text-primary)">Dzienny limit nowych słówek osiągnięty</p>
+                <p class="mt-1 leading-relaxed text-(--text-muted)">
+                  Mózg potrzebuje odpoczynku na trwałą konsolidację haseł. Kolejna porcja pojawi się jutro, a teraz możesz utrwalać wiedzę w nielimitowanym treningu.
+                </p>
+              </div>
+            </div>
+          {/if}
 
           <!-- Statystyki sesji -->
           <div class="grid grid-cols-2 divide-x divide-(--border-default) border-y border-(--border-default) text-center">
@@ -621,26 +668,61 @@
 
           <!-- On-demand learning actions -->
           <div class="flex flex-col gap-3 p-5">
-            {#if hasUnstartedWords(progressMap, INITIAL_WORDS)}
+            {#if canLearnMoreToday}
               <button
                 type="button"
                 onclick={() => startExtraLesson(settings.dailyNewWordsLimit)}
                 class="btn-touch flex items-center justify-center gap-2"
               >
                 <Icon icon="ph:arrow-right-bold" class="h-5 w-5" />
-                <span>Ucz się dalej (+{settings.dailyNewWordsLimit} nowe słowa)</span>
+                <span>Kolejna lekcja (+{settings.dailyNewWordsLimit} nowe słowa) &middot; {MAX_DAILY_NEW_LESSONS - remainingLessonsToday + 1}/{MAX_DAILY_NEW_LESSONS}</span>
               </button>
-            {/if}
-            {#if hasWordsToPractice(progressMap)}
+            {:else if hasWordsToPractice(progressMap)}
               <button
                 type="button"
-                onclick={() => startReviewPractice(5)}
-                class="btn-secondary w-full py-3 text-sm flex items-center justify-center gap-2"
+                onclick={() => startQuickPractice(5)}
+                class="btn-touch flex items-center justify-center gap-2"
               >
-                <Icon icon="ph:arrows-clockwise-bold" class="h-4 w-4" />
-                <span>Powtórz trudne słówka</span>
+                <Icon icon="ph:lightning-bold" class="h-5 w-5" />
+                <span>Szybki trening utrwalający (5 słówek)</span>
               </button>
             {/if}
+
+            {#if hasWordsToPractice(progressMap)}
+              {#if canLearnMoreToday}
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <button
+                    type="button"
+                    onclick={() => startQuickPractice(5)}
+                    class="btn-secondary w-full py-2.5 text-xs sm:text-sm flex items-center justify-center gap-2"
+                  >
+                    <Icon icon="ph:lightning-bold" class="h-4 w-4 text-(--brand-primary)" />
+                    <span>Szybki trening</span>
+                    <kbd class="hidden sm:inline-flex">T</kbd>
+                  </button>
+                  <button
+                    type="button"
+                    onclick={() => startReviewPractice(5)}
+                    class="btn-secondary w-full py-2.5 text-xs sm:text-sm flex items-center justify-center gap-2"
+                  >
+                    <Icon icon="ph:arrows-clockwise-bold" class="h-4 w-4 text-(--brand-primary)" />
+                    <span>Trudne słówka</span>
+                    <kbd class="hidden sm:inline-flex">R</kbd>
+                  </button>
+                </div>
+              {:else}
+                <button
+                  type="button"
+                  onclick={() => startReviewPractice(5)}
+                  class="btn-secondary w-full py-3 text-sm flex items-center justify-center gap-2"
+                >
+                  <Icon icon="ph:arrows-clockwise-bold" class="h-4 w-4 text-(--brand-primary)" />
+                  <span>Powtórz trudne słówka</span>
+                  <kbd class="hidden sm:inline-flex">R</kbd>
+                </button>
+              {/if}
+            {/if}
+
             <div class="grid grid-cols-2 gap-3">
               <button
                 type="button"

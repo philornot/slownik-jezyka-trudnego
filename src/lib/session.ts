@@ -367,6 +367,84 @@ export function createHardWordsPracticeSession(
 }
 
 /**
+ * Maximum number of new-word lessons a user is recommended to take per day.
+ * Prevents spaced-repetition cognitive overload and future review spikes.
+ */
+export const MAX_DAILY_NEW_LESSONS = 2;
+
+/**
+ * Calculates the number of remaining new-word lessons the user can complete today.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param dailyNewWordsLimit - User configured daily new words limit.
+ * @param maxLessons - Maximum lessons allowed per day (default 2).
+ * @param todayStr - Today's date string (YYYY-MM-DD).
+ * @returns Number of remaining new lessons allowed today (0, 1, or 2).
+ */
+export function getRemainingNewLessonsToday(
+  progressMap: Record<string, UserWordProgress>,
+  dailyNewWordsLimit: number,
+  maxLessons: number = MAX_DAILY_NEW_LESSONS,
+  todayStr: string = getTodayDateString()
+): number {
+  const startedToday = getWordsStartedTodayCount(progressMap, todayStr);
+  const maxNewWordsAllowed = dailyNewWordsLimit * maxLessons;
+  const remainingWordsBudget = Math.max(0, maxNewWordsAllowed - startedToday);
+  return Math.ceil(remainingWordsBudget / Math.max(1, dailyNewWordsLimit));
+}
+
+/**
+ * Checks whether the user can start another new-word lesson today.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param dailyNewWordsLimit - User configured daily new words limit.
+ * @param allWords - Full dictionary.
+ * @param maxLessons - Maximum lessons allowed per day (default 2).
+ * @param todayStr - Today's date string (YYYY-MM-DD).
+ * @returns True if the daily new-word quota is not exceeded and unstarted words exist.
+ */
+export function canStartNewLessonToday(
+  progressMap: Record<string, UserWordProgress>,
+  dailyNewWordsLimit: number,
+  allWords: DictionaryWord[],
+  maxLessons: number = MAX_DAILY_NEW_LESSONS,
+  todayStr: string = getTodayDateString()
+): boolean {
+  if (!hasUnstartedWords(progressMap, allWords)) return false;
+  return getRemainingNewLessonsToday(progressMap, dailyNewWordsLimit, maxLessons, todayStr) > 0;
+}
+
+/**
+ * Creates an on-demand general practice session from previously learned words.
+ *
+ * Provides unlimited practice without scheduling new cards or causing review spikes.
+ *
+ * @param progressMap - Current progress for all words.
+ * @param allWords - Full dictionary.
+ * @param count - Number of words to practice (default 5).
+ * @returns Session cards for practice, or empty if no words started yet.
+ */
+export function createQuickPracticeSession(
+  progressMap: Record<string, UserWordProgress>,
+  allWords: DictionaryWord[],
+  count: number = 5
+): SessionCard[] {
+  const startedWords = allWords.filter((word) => progressMap[word.id]);
+  if (startedWords.length === 0) return [];
+
+  const randomFn = createSeededRandom(`quick_${getTodayDateString()}_${Date.now()}`);
+  const shuffled = shuffleArray(startedWords, randomFn);
+  const selected = shuffled.slice(0, Math.min(count, startedWords.length));
+
+  return selected.map((word) => ({
+    word,
+    isNew: false,
+    userProgress: progressMap[word.id],
+    options: generateQuizOptions(word, allWords, randomFn)
+  }));
+}
+
+/**
  * Checks if there are unstarted words available in the dictionary.
  *
  * @param progressMap - Current progress for all words.
