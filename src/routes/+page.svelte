@@ -637,18 +637,18 @@
                 <Icon icon="ph:sparkle-bold" class="h-5 w-5" />
               </div>
               <p class="leading-relaxed">
-                Algorytm powtórek dba o trwałe zapamiętywanie. Najlepsze efekty daje regularna, codzienna nauka.
+                Świetnie Ci idzie! Możesz zrobić jeszcze jedną lekcję dzisiaj lub poćwiczyć znane słowa.
               </p>
             </div>
           {:else}
             <div class="mx-5 mb-5 p-4 rounded-xl bg-(--badge-amber-bg) border border-(--badge-amber-border) text-xs font-medium text-(--badge-amber-text) flex items-start gap-3">
               <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-(--brand-primary)/20 text-(--brand-primary) mt-0.5">
-                <Icon icon="ph:brain-bold" class="h-5 w-5" />
+                <Icon icon="ph:trophy-bold" class="h-5 w-5" />
               </div>
               <div>
-                <p class="font-bold text-(--text-primary)">Dzienny limit nowych słówek osiągnięty</p>
+                <p class="font-bold text-(--text-primary)">Dzisiejszy cel zaliczony!</p>
                 <p class="mt-1 leading-relaxed text-(--text-muted)">
-                  Mózg potrzebuje odpoczynku na trwałą konsolidację haseł. Kolejna porcja pojawi się jutro, a teraz możesz utrwalać wiedzę w nielimitowanym treningu.
+                  Nowe słówka odblokują się jutro. Masz ochotę na więcej? Sprawdź się w szybkim quizie lub dopracuj trudniejsze hasła.
                 </p>
               </div>
             </div>
@@ -676,6 +676,7 @@
               >
                 <Icon icon="ph:arrow-right-bold" class="h-5 w-5" />
                 <span>Kolejna lekcja (+{settings.dailyNewWordsLimit} nowe słowa) &middot; {MAX_DAILY_NEW_LESSONS - remainingLessonsToday + 1}/{MAX_DAILY_NEW_LESSONS}</span>
+                <kbd class="hidden sm:inline-flex ml-1 bg-white/20 text-white border-white/30">Enter</kbd>
               </button>
             {:else if hasWordsToPractice(progressMap)}
               <button
@@ -684,7 +685,8 @@
                 class="btn-touch flex items-center justify-center gap-2"
               >
                 <Icon icon="ph:lightning-bold" class="h-5 w-5" />
-                <span>Szybki trening utrwalający (5 słówek)</span>
+                <span>Szybki quiz (5 słówek)</span>
+                <kbd class="hidden sm:inline-flex ml-1 bg-white/20 text-white border-white/30">Enter</kbd>
               </button>
             {/if}
 
@@ -697,7 +699,7 @@
                     class="btn-secondary w-full py-2.5 text-xs sm:text-sm flex items-center justify-center gap-2"
                   >
                     <Icon icon="ph:lightning-bold" class="h-4 w-4 text-(--brand-primary)" />
-                    <span>Szybki trening</span>
+                    <span>Szybki quiz</span>
                     <kbd class="hidden sm:inline-flex">T</kbd>
                   </button>
                   <button

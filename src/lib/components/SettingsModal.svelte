@@ -165,34 +165,68 @@
           <span>Parametry Nauki</span>
         </div>
 
-        <!-- Liczba nowych słów na sesję -->
+        <!-- Tempo nauki (Nowe słowa na lekcję) -->
         <div class="space-y-2">
-          <label
-            for="daily-target-input"
-            class="flex items-center justify-between text-xs font-extrabold text-(--text-primary)"
-          >
-            <span>Nowe słowa na dzienną sesję</span>
-            <span class="text-sm font-extrabold text-(--text-amber-brand)"
-              >{localSettings.dailyNewWordsLimit}</span
-            >
-          </label>
-
-          <input
-            id="daily-target-input"
-            type="range"
-            min="1"
-            max="20"
-            bind:value={localSettings.dailyNewWordsLimit}
-            oninput={() => onPreview({ ...localSettings })}
-            class="w-full h-3 sm:h-2 rounded-lg bg-(--progress-track) border border-(--progress-border) accent-(--brand-primary) cursor-pointer"
-          />
-          <div
-            class="flex justify-between text-[10px] font-extrabold text-(--text-muted)"
-          >
-            <span>1 słowo</span>
-            <span>10 słów</span>
-            <span>20 słów</span>
+          <div class="flex items-center justify-between">
+            <div class="space-y-0.5">
+              <div
+                class="flex items-center gap-2 text-xs font-extrabold text-(--text-primary)"
+              >
+                <Icon
+                  icon="ph:gauge-bold"
+                  class="h-4 w-4 text-(--brand-primary)"
+                />
+                <span>Tempo nauki</span>
+              </div>
+              <p class="text-[11px] font-semibold text-(--text-muted)">
+                Liczba nowych słówek w jednej lekcji
+              </p>
+            </div>
           </div>
+
+          <div class="grid grid-cols-3 gap-2 pt-1" role="radiogroup" aria-label="Tempo nauki">
+            <button
+              type="button"
+              role="radio"
+              aria-checked={localSettings.dailyNewWordsLimit === 3}
+              onclick={() => updateSetting("dailyNewWordsLimit", 3)}
+              class="flex flex-col items-center justify-center gap-0.5 p-2.5 rounded-xl border-2 transition-all cursor-pointer text-center min-h-12 {localSettings.dailyNewWordsLimit === 3
+                ? 'bg-(--brand-primary) border-(--brand-primary) text-white font-extrabold shadow-xs'
+                : 'bg-(--bg-surface-elevated) border-(--border-default) text-(--text-muted) hover:text-(--text-primary) hover:border-(--brand-primary)'}"
+            >
+              <span class="text-xs font-bold">Spokojne</span>
+              <span class="text-[10px] opacity-80">3 słowa</span>
+            </button>
+
+            <button
+              type="button"
+              role="radio"
+              aria-checked={localSettings.dailyNewWordsLimit === 5}
+              onclick={() => updateSetting("dailyNewWordsLimit", 5)}
+              class="flex flex-col items-center justify-center gap-0.5 p-2.5 rounded-xl border-2 transition-all cursor-pointer text-center min-h-12 {localSettings.dailyNewWordsLimit === 5
+                ? 'bg-(--brand-primary) border-(--brand-primary) text-white font-extrabold shadow-xs'
+                : 'bg-(--bg-surface-elevated) border-(--border-default) text-(--text-muted) hover:text-(--text-primary) hover:border-(--brand-primary)'}"
+            >
+              <span class="text-xs font-bold">Standard</span>
+              <span class="text-[10px] opacity-80">5 słów</span>
+            </button>
+
+            <button
+              type="button"
+              role="radio"
+              aria-checked={localSettings.dailyNewWordsLimit === 8}
+              onclick={() => updateSetting("dailyNewWordsLimit", 8)}
+              class="flex flex-col items-center justify-center gap-0.5 p-2.5 rounded-xl border-2 transition-all cursor-pointer text-center min-h-12 {localSettings.dailyNewWordsLimit === 8
+                ? 'bg-(--brand-primary) border-(--brand-primary) text-white font-extrabold shadow-xs'
+                : 'bg-(--bg-surface-elevated) border-(--border-default) text-(--text-muted) hover:text-(--text-primary) hover:border-(--brand-primary)'}"
+            >
+              <span class="text-xs font-bold">Intensywne</span>
+              <span class="text-[10px] opacity-80">8 słów</span>
+            </button>
+          </div>
+          <p class="text-[10px] font-semibold text-(--text-muted) leading-tight pt-0.5">
+            Zalecamy 3 lub 5 słów. Mniejsze dawki ułatwiają trwałe zapamiętywanie bez zaległości.
+          </p>
         </div>
 
         <!-- Powiadomienia -->
