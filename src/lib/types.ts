@@ -8,7 +8,6 @@ export interface DictionaryWord {
   examples: string[];
   category: string;
   sjpUrl: string;
-  distractors: string[];
 }
 
 export interface UserWordProgress {

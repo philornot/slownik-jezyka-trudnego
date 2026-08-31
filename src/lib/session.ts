@@ -190,6 +190,11 @@ export function getNewWordsToLearn(
 /**
  * Generates wrong answer options (distractors) for a quiz card.
  *
+ * Distractors are always drawn from the short definitions of other words in
+ * the dictionary. This makes the quiz genuinely challenging (no artificial
+ * near-synonyms or antonyms that hint at the answer) and educational (the
+ * user encounters real definitions of other words while choosing).
+ *
  * @param correctWord - The correct word for the quiz.
  * @param allWords - Full dictionary.
  * @param randomFn - Random number generator function.
@@ -200,15 +205,9 @@ export function generateQuizOptions(
   allWords: DictionaryWord[],
   randomFn: () => number = Math.random
 ): string[] {
-  let distractors: string[] = [];
-
-  if (correctWord.distractors && correctWord.distractors.length >= 3) {
-    distractors = shuffleArray(correctWord.distractors, randomFn).slice(0, 3);
-  } else {
-    const otherWords = allWords.filter((w) => w.id !== correctWord.id);
-    const shuffled = shuffleArray(otherWords, randomFn);
-    distractors = shuffled.slice(0, 3).map((w) => w.shortDefinition);
-  }
+  const otherWords = allWords.filter((w) => w.id !== correctWord.id);
+  const shuffled = shuffleArray(otherWords, randomFn);
+  const distractors = shuffled.slice(0, 3).map((w) => w.shortDefinition);
 
   const allOptions = [correctWord.shortDefinition, ...distractors];
   return shuffleArray(allOptions, randomFn);

@@ -14,11 +14,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/imponderabilia.html',
-    distractors: [
-      'Przedmioty o ogromnej masie i ciężarze fizycznym.',
-      'Zjawiska pogodowe występujące w strefie równikowej.',
-      'Zbiór przepisów prawnych regulujących finanse państwa.'
-    ]
   },
   {
     id: 'abnegat',
@@ -33,11 +28,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Osobowość i Postawy',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/abnegat.html',
-    distractors: [
-      'Człowiek nadmiernie skupiony na gromadzeniu majątku i luksusie.',
-      'Osoba kierująca się bezwzględnym egoizmem i chciwością.',
-      'Wybitny znawca i koneser sztuki oraz dobrego smaku.'
-    ]
   },
   {
     id: 'apodyktyczny',
@@ -52,11 +42,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Osobowość i Postawy',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/apodyktyczny.html',
-    distractors: [
-      'Cechujący się wyjątkową ustępliwością i ulegnością.',
-      'Zmienny w poglądach i wykazujący stałe niezdecydowanie.',
-      'Delikatny i subtelny w wyrażaniu własnych prośb.'
-    ]
   },
   {
     id: 'epifania',
@@ -71,11 +56,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/epifania.html',
-    distractors: [
-      'Długotrwałe przygnębienie wynikające z braku nadziei.',
-      'Stopniowe zapominanie faktów z dzieciństwa.',
-      'Gwałtowna kłótnia oparta na nieporozumieniu.'
-    ]
   },
   {
     id: 'sybaryta',
@@ -90,11 +70,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Osobowość i Postawy',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/sybaryta.html',
-    distractors: [
-      'Pustelnik żyjący w ścisłej ascezie i ubóstwie.',
-      'Żołnierz słynący z surowej dyscypliny i twardego charakteru.',
-      'Pracowity rzemieślnik stroniący od rozrywek.'
-    ]
   },
   {
     id: 'efemeryczny',
@@ -109,11 +84,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Czas i Zjawiska',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/efemeryczny.html',
-    distractors: [
-      'Niezniszczalny i trwający wiecznie mimo upływu stuleci.',
-      'Wyjątkowo ciężki i nieporęczny w przenoszeniu.',
-      'Posiadający stałą, niezmienną strukturę chemiczną.'
-    ]
   },
   {
     id: 'nomen-omen',
@@ -128,11 +98,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/nomen%20omen.html',
-    distractors: [
-      'Błąd ortograficzny w oficjalnym dokumencie urzędowym.',
-      'Sformułowanie oznaczające bezpowrotną utratę majątku.',
-      'Przestarzały nagłówek listu dyplomatycznego.'
-    ]
   },
   {
     id: 'konfabulacja',
@@ -147,11 +112,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/konfabulacja.html',
-    distractors: [
-      'Celowe oszustwo finansowe zaplanowane na chłodno.',
-      'Publiczne odczytanie aktu oskarżenia w sądzie.',
-      'Wyraz głębokiego szacunku złożony dostojnikowi.'
-    ]
   },
   {
     id: 'kwerenda',
@@ -166,11 +126,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/kwerenda.html',
-    distractors: [
-      'Gwałtowna dyskusja na forum publicznym.',
-      'Krótka przerwa w podróży służbowej.',
-      'Rodzaj dawnego tańca dworskiego.'
-    ]
   },
   {
     id: 'antynomia',
@@ -185,11 +140,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/antynomia.html',
-    distractors: [
-      'Zgodne porozumienie dwóch zwaśnionych stron.',
-      'Umowa handlowa zawierana na czas nieokreślony.',
-      'Rodzaj minerału o właściwościach magnetycznych.'
-    ]
   },
   {
     id: 'resentyment',
@@ -204,11 +154,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/resentyment.html',
-    distractors: [
-      'Głębokie uczucie wdzięczności za okazaną pomoc.',
-      'Stan pełnego spokoju i harmonii duchowej.',
-      'Zdolność do szybkiego zapamiętywania liczb.'
-    ]
   },
   {
     id: 'immanentny',
@@ -223,11 +168,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/immanentny.html',
-    distractors: [
-      'Pochodzący z zewnątrz i narzucony sztucznie.',
-      'Niezwykle rzadki i trudny do zaobserwowania.',
-      'Szkodliwy dla środowiska naturalnego.'
-    ]
   },
   {
     id: 'transcendentny',
@@ -242,11 +182,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/transcendentny.html',
-    distractors: [
-      'Całkowicie namacalny i łatwy do zmierzenia miarką.',
-      'Powszechny w codziennym życiu każdego człowieka.',
-      'Opisany precyzyjnie w prostych wzorach fizycznych.'
-    ]
   },
   {
     id: 'egzaltacja',
@@ -261,11 +196,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/egzaltacja.html',
-    distractors: [
-      'Zimna obojętność i brak jakichkolwiek uczuć.',
-      'Głęboka depresja i milczenie.',
-      'Precyzyjna analiza matematyczna danych.'
-    ]
   },
   {
     id: 'serendypnosc',
@@ -280,11 +210,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/serendypno%C5%9B%C4%87.html',
-    distractors: [
-      'Ciężka praca fizyczna wykonywana według planu.',
-      'Poczucie winy wynikające z popełnionego błędu.',
-      'Szybkie uleganie pokusom i braki w silnej woli.'
-    ]
   },
   {
     id: 'atawizm',
@@ -299,7 +224,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/atawizm.html',
-    distractors: ['Nowoczesny wynalazek techniczny.', 'Złudzenie optyczne na pustyni.', 'Nauka o gwiazdozbiorach.']
   },
   {
     id: 'behawioralny',
@@ -314,7 +238,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/behawioralny.html',
-    distractors: ['Związany z budową kości człowieka.', 'Odnoszący się do starożytnych języków.', 'Dotyczący zmian pogodowych.']
   },
   {
     id: 'benedyktynski',
@@ -329,7 +252,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Osobowość i Postawy',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/benedykty%C5%84ski.html',
-    distractors: ['Wykonany szybko i bez dbałości o detale.', 'Związany z produkcją bakalii.', 'Cechujący się głośnym zachowaniem.']
   },
   {
     id: 'bigoteria',
@@ -344,7 +266,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Etyka i Moralność',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/bigoteria.html',
-    distractors: ['Głębokie zrozumienie innych wyznań.', 'Radość z życia w zgodzie z naturą.', 'Zbiór przepisów kulinarnych.']
   },
   {
     id: 'chimeryczny',
@@ -359,7 +280,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/chimeryczny.html',
-    distractors: ['Stały w poglądach i przewidywalny.', 'Wykonany z żelaza i stali.', 'Spokojny jak skała.']
   },
   {
     id: 'dekadencja',
@@ -374,7 +294,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/dekadencja.html',
-    distractors: ['Świt nowej ery gospodarczej.', 'Młodzieńczy zapał fizyczny.', 'Zbiór przepisów prawnych.']
   },
   {
     id: 'demagogia',
@@ -389,7 +308,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Społeczeństwo i Polityka',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/demagogia.html',
-    distractors: ['Precyzyjny wywód naukowy.', 'Skromne i ciche milczenie.', 'Podział majątku spadkowego.']
   },
   {
     id: 'dyletant',
@@ -404,7 +322,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/dyletant.html',
-    distractors: ['Wybitny profesor nauk ścisłych.', 'Pracownik z wieloletnim stażem.', 'Malarz znany na całym świecie.']
   },
   {
     id: 'dychotomia',
@@ -419,7 +336,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/dychotomia.html',
-    distractors: ['Połączenie trzech elementów w jeden.', 'Gładka linia bez załamań.', 'Rodzaj dawnego instrumentu.']
   },
   {
     id: 'eklektyczny',
@@ -434,7 +350,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/eklektyczny.html',
-    distractors: ['Ściśle trzymający się jednego stylu.', 'Zrobiony wyłącznie z drewna dębowego.', 'Prosty i bezbarwny.']
   },
   {
     id: 'elokwencja',
@@ -449,7 +364,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/elokwencja.html',
-    distractors: ['Mylenie słów i jąkanie się.', 'Ciche milczenie ze wstydu.', 'Pisanie krótko i bezbarwnie.']
   },
   {
     id: 'erudycja',
@@ -464,7 +378,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/erudycja.html',
-    distractors: ['Powierzchowna znajomość faktów z prasy.', 'Brak znajomości ortografii.', 'Zdolność do szybkiego biegania.']
   },
   {
     id: 'fatalizm',
@@ -479,7 +392,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/fatalizm.html',
-    distractors: ['Wiara we własne siły i pełną wolność.', 'Radosne dążenie do sukcesu.', 'Planowanie budowy domu.']
   },
   {
     id: 'hedonizm',
@@ -494,7 +406,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/hedonizm.html',
-    distractors: ['Życie w ubóstwie i ścisłym postach.', 'Ciężka praca bez chwili odpoczynku.', 'Dążenie do głębokiej pobożności.']
   },
   {
     id: 'imperatyw',
@@ -509,7 +420,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Etyka i Moralność',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/imperatyw.html',
-    distractors: ['Luźna i niezobowiązująca prośba.', 'Zakaz wstępu do lasu.', 'Przepis na ciasto drożdżowe.']
   },
   {
     id: 'impertynencja',
@@ -524,7 +434,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/impertynencja.html',
-    distractors: ['Wyraz głębokiego ukłonu i szacunku.', 'Cichi szept zachwytu.', 'Podziękowanie za prezent.']
   },
   {
     id: 'indolencja',
@@ -539,7 +448,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Osobowość i Postawy',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/indolencja.html',
-    distractors: ['Niezwykła pracowitość i zapał.', 'Szybkie rozstrzyganie sporu.', 'Wysoki kunszt artystyczny.']
   },
   {
     id: 'indoktrynacja',
@@ -554,7 +462,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Społeczeństwo i Polityka',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/indoktrynacja.html',
-    distractors: ['Nauka samodzielnego myślenia.', 'Wolna dyskusja naukowa.', 'Sprzedaż książek przygodowych.']
   },
   {
     id: 'insynuacja',
@@ -569,7 +476,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/insynuacja.html',
-    distractors: ['Oficjalna pochwała za osiągnięcia.', 'Wyraz wdzięczności na piśmie.', 'Prawdziwy komplement.']
   },
   {
     id: 'inwektywa',
@@ -584,7 +490,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/inwektywa.html',
-    distractors: ['Uprzejme powitanie.', 'Komplement wygłoszony szczerze.', 'Przeprosiny za spóźnienie.']
   },
   {
     id: 'jowialny',
@@ -599,7 +504,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Osobowość i Postawy',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/jowialny.html',
-    distractors: ['Ponury, zgorzkniały i milczący.', 'Groźny jak burza.', 'Bojący się własnego cienia.']
   },
   {
     id: 'kredybilnosc',
@@ -614,7 +518,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/kredybilno%C5%9B%C4%87.html',
-    distractors: ['Oszukańczy charakter relacji.', 'Trudność w czytaniu tekstu.', 'Brak pieniędzy na koncie.']
   },
   {
     id: 'lapsus',
@@ -629,7 +532,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/lapsus.html',
-    distractors: ['Zaplanowane oszustwo w umowie.', 'Wybitny wiersz poetki.', 'Złamanie nogi na lodzie.']
   },
   {
     id: 'letarg',
@@ -644,7 +546,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/letarg.html',
-    distractors: ['Gorączkowy bieg po zakupy.', 'Głośna zabawa na dyskotece.', 'Praca na trzy zmiany.']
   },
   {
     id: 'lukratywny',
@@ -659,7 +560,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/lukratywny.html',
-    distractors: ['Przynoszący same straty.', 'Darmowy i wolontariacki.', 'Bolesny dla zdrowia.']
   },
   {
     id: 'mistyfikacja',
@@ -674,7 +574,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Społeczeństwo i Polityka',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/mistyfikacja.html',
-    distractors: ['Oficjalny komunikat rządowy.', 'Darmowy koncert na rynku.', 'Prawdziwy dokument tożsamości.']
   },
   {
     id: 'niuans',
@@ -689,7 +588,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/niuans.html',
-    distractors: ['Wielki, widoczny z daleka błąd.', 'Głośny huk uderzenia.', 'Ciężka przeszkoda na drodze.']
   },
   {
     id: 'obligatoryjny',
@@ -704,7 +602,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/obligatoryjny.html',
-    distractors: ['Dobrowolny i nieobowiązkowy.', 'Zaplanowany na wakacje.', 'Darmowy i dostępny dla każdego.']
   },
   {
     id: 'ortodoksyjny',
@@ -719,7 +616,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Społeczeństwo i Polityka',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/ortodoksyjny.html',
-    distractors: ['Nowoczesny i pełen swobody.', 'Bardzo zmienny w decyzjach.', 'Mylący się na każdym kroku.']
   },
   {
     id: 'perfidia',
@@ -734,7 +630,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Etyka i Moralność',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/perfidia.html',
-    distractors: ['Szczera i serdeczna pomoc przyjaciołom.', 'Niewinna dziecięca zabawa.', 'Zdolność do szybkiego liczenia.']
   },
   {
     id: 'polemika',
@@ -749,7 +644,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/polemika.html',
-    distractors: ['Zgodne milczenie na zebraniu.', 'Instrukcja montażu mebli.', 'Taniec ludowy.']
   },
   {
     id: 'prekursor',
@@ -764,7 +658,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/prekursor.html',
-    distractors: ['Osoba kopiująca pomysły innych.', 'Uczeń powtarzający klasę.', 'Kolekcjoner starych monet.']
   },
   {
     id: 'prelegent',
@@ -779,7 +672,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/prelegent.html',
-    distractors: ['Osoba słuchająca wykładu.', 'Kierowca autobusowy.', 'Pracownik szatni w teatrze.']
   },
   {
     id: 'presumpcja',
@@ -794,7 +686,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/presumpcja.html',
-    distractors: ['Złośliwe kłamstwo skazujące.', 'Wyrok skazujący na karę.', 'Brak dowodów w sprawie.']
   },
   {
     id: 'prowizoryczny',
@@ -809,7 +700,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Czas i Zjawiska',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/prowizoryczny.html',
-    distractors: ['Wykonany z litego kamienia na wieki.', 'Oficjalnie zatwierdzony przez sejm.', 'Drogi i luksusowy.']
   },
   {
     id: 'puryzm',
@@ -824,7 +714,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/puryzm.html',
-    distractors: ['Zasypywanie języka wulgaryzmami.', 'Niedbalstwo o wygląd domu.', 'Brak czystości na podłodze.']
   },
   {
     id: 'reminiscencja',
@@ -839,7 +728,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/reminiscencja.html',
-    distractors: ['Zapomnienie imienia sąsiada.', 'Planowanie jutrzejszych zakupów.', 'Szybki bieg na 100 metrów.']
   },
   {
     id: 'rygoryzm',
@@ -854,7 +742,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Etyka i Moralność',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/rygoryzm.html',
-    distractors: ['Brak jakiejkolwiek dyscypliny.', 'Pobłażliwość dla błędów.', 'Wesołe spędzanie czasu.']
   },
   {
     id: 'sceptycyzm',
@@ -869,7 +756,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/sceptycyzm.html',
-    distractors: ['Ślepa wiara w każde słowo.', 'Zamiłowanie do podróży.', 'Chęć pomagania innym.']
   },
   {
     id: 'scjentyzm',
@@ -884,7 +770,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/scjentyzm.html',
-    distractors: ['Wiara w wróżby i horoskopy.', 'Zamiłowanie do poezji miłosnej.', 'Śpiewanie w chórze.']
   },
   {
     id: 'snobizm',
@@ -899,7 +784,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Osobowość i Postawy',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/snobizm.html',
-    distractors: ['Skromność i unikanie rozgłosu.', 'Ciężka praca na roli.', 'Pomoc ubogim bez rozgłosu.']
   },
   {
     id: 'solipsyzm',
@@ -914,7 +798,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/solipsyzm.html',
-    distractors: ['Wiara w istnienie duchów.', 'Lęk przed samotnością.', 'Nauka o minerałach.']
   },
   {
     id: 'wstrzemiezliwosc',
@@ -929,7 +812,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Etyka i Moralność',
     sjpUrl: 'https://sjp.pwn.pl/slowniki/wstrzemi%C4%99%C5%BAliwo%C5%9B%C4%87.html',
-    distractors: ['Objadanie się bez umiaru.', 'Uleganie wszelkim zachciankom.', 'Głośny krzyk w miejscu publicznym.']
   },
   {
     id: 'znikomosc',
@@ -944,7 +826,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Czas i Zjawiska',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/znikomo%C5%9B%C4%87.html',
-    distractors: ['Ogromna masa skały.', 'Wielki majątek w banku.', 'Głośny huk gromu.']
   },
   {
     id: 'ataraksja',
@@ -959,11 +840,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/ataraksja.html',
-    distractors: [
-      'Gwałtowny wybuch gniewu wywołany niesprawiedliwością.',
-      'Stan głębokiego żalu i rozpaczy po stracie.',
-      'Nadmierny lęk przed przyszłymi wydarzeniami.'
-    ]
   },
   {
     id: 'hybris',
@@ -978,11 +854,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/hybris.html',
-    distractors: [
-      'Głęboka pokora i posłuszeństwo wobec autorytetów.',
-      'Naukowe wyjaśnienie przyczyn zjawisk atmosferycznych.',
-      'Umiejętność ustępowania w sporach.'
-    ]
   },
   {
     id: 'idiosynkrazja',
@@ -997,11 +868,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/idiosynkrazja.html',
-    distractors: [
-      'Niezwykły talent do naśladowania głosów.',
-      'Zdolność do szybkiego uczenia się języków obcych.',
-      'Głęboka miłość do muzyki klasycznej.'
-    ]
   },
   {
     id: 'eudajmonia',
@@ -1016,11 +882,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/eudajmonia.html',
-    distractors: [
-      'Krótkotrwała zmysłowa rozkosz.',
-      'Dorobek materialny zgromadzony przez lata pracy.',
-      'Stan nieświadomości wywołany lekami.'
-    ]
   },
   {
     id: 'metanoia',
@@ -1035,11 +896,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/metanoja.html',
-    distractors: [
-      'Powierzchowna zmiana przyzwyczajeń bez głębszej refleksji.',
-      'Stopniowe zapominanie dawnych przekonań.',
-      'Nagłe pogorszenie stanu zdrowia psychicznego.'
-    ]
   },
   {
     id: 'mizantropia',
@@ -1054,11 +910,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/mizantropia.html',
-    distractors: [
-      'Głęboka miłość do ludzkości i chęć pomocy innym.',
-      'Towarzyski charakter i potrzeba przebywania w tłumie.',
-      'Nadmierne zaufanie do obcych i naiwna dobroć.'
-    ]
   },
   {
     id: 'nihilizm',
@@ -1073,11 +924,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/nihilizm.html',
-    distractors: [
-      'Głęboka wiara w sens ludzkiego cierpienia.',
-      'Przekonanie, że nauka wyjaśni wszelkie tajemnice.',
-      'Poszukiwanie wartości w tradycji i religii.'
-    ]
   },
   {
     id: 'paremia',
@@ -1092,11 +938,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/paremia.html',
-    distractors: [
-      'Skomplikowany wywód retoryczny skierowany do uczonych.',
-      'Naukowe opracowanie historii języka.',
-      'Nowatorski slogan reklamowy skierowany do młodzieży.'
-    ]
   },
   {
     id: 'paroksyzm',
@@ -1111,11 +952,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/paroksyzm.html',
-    distractors: [
-      'Stopniowe, łagodne narastanie niepokoju.',
-      'Spokojne trwanie w harmonii z otoczeniem.',
-      'Powolne słabnięcie objawów choroby.'
-    ]
   },
   {
     id: 'predestynacja',
@@ -1130,11 +966,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/predestynacja.html',
-    distractors: [
-      'Wiara w możliwość zmiany swojego losu przez wolną wolę.',
-      'Nagroda przyznawana za wyjątkowe zasługi w życiu publicznym.',
-      'Filozofia głosząca, że przyszłości nie można przewidzieć.'
-    ]
   },
   {
     id: 'reifikacja',
@@ -1149,11 +980,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/reifikacja.html',
-    distractors: [
-      'Nadawanie duchowego wymiaru przedmiotom materialnym.',
-      'Dosłowna interpretacja tekstów religijnych.',
-      'Naukowe badanie właściwości substancji chemicznych.'
-    ]
   },
   {
     id: 'ruminacja',
@@ -1168,11 +994,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/ruminacja.html',
-    distractors: [
-      'Spokojne, konstruktywne planowanie przyszłości.',
-      'Zdolność do szybkiego zapomnienia o błędach.',
-      'Technika medytacyjna prowadząca do jasności umysłu.'
-    ]
   },
   {
     id: 'sofizmat',
@@ -1187,11 +1008,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/sofizmat.html',
-    distractors: [
-      'Poprawny sylogizm prowadzący do prawdziwego wniosku.',
-      'Intuicyjne przeczucie bez żadnych argumentów.',
-      'Dowód matematyczny oparty na aksjomatach.'
-    ]
   },
   {
     id: 'symulakrum',
@@ -1206,11 +1022,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/symulakrum.html',
-    distractors: [
-      'Dokładna kopia dzieła sztuki wykonana z tego samego materiału.',
-      'Cyfrowe odwzorowanie realnego budynku dla celów archiwizacji.',
-      'Model naukowy upraszczający złożone procesy.'
-    ]
   },
   {
     id: 'synkretyzm',
@@ -1225,11 +1036,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/synkretyzm.html',
-    distractors: [
-      'Konsekwentne trzymanie się jednej tradycji religijnej.',
-      'Naukowe porównywanie systemów filozoficznych bez ich łączenia.',
-      'Ruch sprzeciwiający się wszelkiemu wpływowi obcych kultur.'
-    ]
   },
   {
     id: 'teodycea',
@@ -1244,11 +1050,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/teodycea.html',
-    distractors: [
-      'Naukowe wyjaśnienie ewolucji systemów religijnych.',
-      'Matematyczny dowód istnienia Boga.',
-      'Historyczna analiza prześladowań religijnych.'
-    ]
   },
   {
     id: 'wanitatywny',
@@ -1263,11 +1064,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/wanitatywny.html',
-    distractors: [
-      'Wyrażający radość z chwili teraźniejszej i afirmację życia.',
-      'Skupiony na technicznej doskonałości formy.',
-      'Opisujący relacje między postaciami w dramacie.'
-    ]
   },
   {
     id: 'wiwisekcja',
@@ -1282,11 +1078,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/wiwisekcja.html',
-    distractors: [
-      'Ostrożna, powierzchowna analiza pomijająca szczegóły.',
-      'Ceremonia poświęcona leczeniu chorych zwierząt.',
-      'Popularnonaukowy opis budowy organizmów żywych.'
-    ]
   },
   {
     id: 'kabotynizm',
@@ -1301,11 +1092,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/kabotynizm.html',
-    distractors: [
-      'Wirtuozeria wynikająca z wieloletniego ćwiczenia.',
-      'Skromna, skupiona gra pozbawiona efektów specjalnych.',
-      'Zdolność do zapamiętywania długich tekstów na pamięć.'
-    ]
   },
   {
     id: 'kazuistyka',
@@ -1320,11 +1106,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/kazuistyka.html',
-    distractors: [
-      'Podejście intuicyjne oparte na przeczuciu.',
-      'Proste stosowanie jednakowej reguły do wszystkich przypadków.',
-      'Rezygnacja z wszelkich zasad moralnych.'
-    ]
   },
   {
     id: 'makiawelizm',
@@ -1339,11 +1120,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Etyka i Moralność',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/makiawelizm.html',
-    distractors: [
-      'Postawa szlachetna, opierająca się na zasadach honoru.',
-      'Filozofia uznająca dobro wspólne za najwyższy cel.',
-      'Nauka o budowaniu trwałych sojuszy dyplomatycznych.'
-    ]
   },
   {
     id: 'manicheizm',
@@ -1358,11 +1134,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/manicheizm.html',
-    distractors: [
-      'Filozofia uznająca materię za jedyne istniejące tworzywo.',
-      'Nauka o etapach rozwoju duszy po śmierci.',
-      'Monoteistyczna wiara w jedynego i wszechwładnego Boga.'
-    ]
   },
   {
     id: 'marazm',
@@ -1377,11 +1148,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Czas i Zjawiska',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/marazm.html',
-    distractors: [
-      'Gwałtowny rozkwit kulturalny i ekonomiczny.',
-      'Stan wyjątkowej aktywności twórczej.',
-      'Nagłe ożywienie społeczne po długim kryzysie.'
-    ]
   },
   {
     id: 'palinodia',
@@ -1396,11 +1162,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/palinodia.html',
-    distractors: [
-      'Utwór pochwalny sławiący zasługi bohatera.',
-      'Zbiór epigramów na tematy polityczne.',
-      'Powieść autobiograficzna opisująca lata młodości.'
-    ]
   },
   {
     id: 'oniryczny',
@@ -1415,11 +1176,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/oniryczny.html',
-    distractors: [
-      'Oparty na ścisłych danych empirycznych.',
-      'Brutalnie realistyczny i pozbawiony metafory.',
-      'Niezwykle dynamiczny i oparty na akcji.'
-    ]
   },
   {
     id: 'subsydiarnosc',
@@ -1434,11 +1190,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Społeczeństwo i Polityka',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/subsydiarno%C5%9B%C4%87.html',
-    distractors: [
-      'Zasada centralizacji władzy w rękach jednego organu.',
-      'Przepis o obowiązkowym finansowaniu organizacji pozarządowych.',
-      'Prawo zakazujące tworzenia partii regionalnych.'
-    ]
   },
   {
     id: 'proweniencja',
@@ -1453,11 +1204,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/proweniencja.html',
-    distractors: [
-      'Cena rynkowa dzieła sztuki w danym roku.',
-      'Technika malarska zastosowana przez twórcę.',
-      'Tematyka religijna obrazu lub rzeźby.'
-    ]
   },
   {
     id: 'logomachia',
@@ -1472,11 +1218,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/logomachia.html',
-    distractors: [
-      'Precyzyjne rozróżnienie między pojęciami bliskoznacznymi.',
-      'Wielojęzyczna konferencja naukowa.',
-      'Szczera i owocna wymiana argumentów.'
-    ]
   },
   {
     id: 'inercja',
@@ -1491,11 +1232,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Czas i Zjawiska',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/inercja.html',
-    distractors: [
-      'Gwałtowna aktywność i chęć do działania.',
-      'Przyspieszenie pociągu po opuszczeniu stacji.',
-      'Zdolność do szybkiego uczenia się nowych umiejętności.'
-    ]
   },
   {
     id: 'pleonazm',
@@ -1510,11 +1246,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/pleonazm.html',
-    distractors: [
-      'Celowe pominięcie ważnego słowa dla większego efektu.',
-      'Użycie słowa obcego zamiast polskiego odpowiednika.',
-      'Sposób tworzenia nowych wyrazów przez złożenie dwóch rdzeni.'
-    ]
   },
   {
     id: 'interregnum',
@@ -1529,11 +1260,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Społeczeństwo i Polityka',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/interregnum.html',
-    distractors: [
-      'Uroczysta koronacja nowego władcy.',
-      'Wieloletni okres stabilnych rządów jednej dynastii.',
-      'Dokument nadający prawa obywatelskie.'
-    ]
   },
   {
     id: 'katharsis',
@@ -1548,11 +1274,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Sztuka i Literatura',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/katharsis.html',
-    distractors: [
-      'Głębokie poczucie winy bez możliwości ulgi.',
-      'Zatrucie pokarmowe wywołane zjedzeniem zepsutej żywności.',
-      'Rozpad budowli z cegły na skutek działania mrozu.'
-    ]
   },
   {
     id: 'hipochondria',
@@ -1567,11 +1288,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/hipochondria.html',
-    distractors: [
-      'Rzeczywista, potwierdzona badaniami choroba przewlekła.',
-      'Nadmierna dbałość o higienę otoczenia.',
-      'Lęk przed przebywaniem w zamkniętych pomieszczeniach.'
-    ]
   },
   {
     id: 'prokrastynacja',
@@ -1586,11 +1302,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/prokrastynacja.html',
-    distractors: [
-      'Umiejętność sprawnego zarządzania własnym czasem.',
-      'Skłonność do wykonywania zadań z wyprzedzeniem.',
-      'Perfekcjonistyczne dążenie do jak najszybszego ukończenia pracy.'
-    ]
   },
   {
     id: 'afirmacja',
@@ -1605,11 +1316,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Filozofia i Pojęcia',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/afirmacja.html',
-    distractors: [
-      'Kategoryczne odrzucenie i negacja danego stanu rzeczy.',
-      'Obojętność wobec wydarzeń i dystans emocjonalny.',
-      'Krytyczna analiza wad i uchybień.'
-    ]
   },
   {
     id: 'afront',
@@ -1624,11 +1330,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Społeczeństwo i Polityka',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/afront.html',
-    distractors: [
-      'Wyjątkowy gest szacunku i wyróżnienia.',
-      'Spontaniczne, niezamierzone przeoczenie.',
-      'Oficjalna pochwała wygłoszona publicznie.'
-    ]
   },
   {
     id: 'arbitraz',
@@ -1643,11 +1344,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/arbitra%C5%BC.html',
-    distractors: [
-      'Jednostronna decyzja władzy bez możliwości odwołania.',
-      'Dobrowolna mediacja prowadzona przez prawnika jednej ze stron.',
-      'Publiczny proces sądowy z udziałem ławy przysięgłych.'
-    ]
   },
   {
     id: 'eksplikacja',
@@ -1662,11 +1358,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/eksplikacja.html',
-    distractors: [
-      'Celowe zaciemnianie znaczenia słów, by utrudnić rozumienie.',
-      'Krótkie hasło słownikowe podane bez uzasadnienia.',
-      'Wyszukiwanie błędów gramatycznych w tekście.'
-    ]
   },
   {
     id: 'elaborat',
@@ -1681,11 +1372,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/elaborat.html',
-    distractors: [
-      'Lakoniczne streszczenie skrócone do jednego akapitu.',
-      'Ustna wypowiedź wygłoszona bez przygotowania.',
-      'Krótki komunikat mailowy wysłany do zespołu.'
-    ]
   },
   {
     id: 'frywolnosc',
@@ -1700,11 +1386,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Osobowość i Postawy',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/frywolno%C5%9B%C4%87.html',
-    distractors: [
-      'Surowa, przesadna powaga w każdej sytuacji.',
-      'Głęboka refleksja moralna nad każdym czynem.',
-      'Ścisłe przestrzeganie zasad przyzwoitości.'
-    ]
   },
   {
     id: 'inklinacja',
@@ -1719,11 +1400,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Osobowość i Postawy',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/inklinacja.html',
-    distractors: [
-      'Awersja i głęboka niechęć do danej dziedziny.',
-      'Wyuczona umiejętność bez emocjonalnego zaangażowania.',
-      'Losowo przydzielone zadanie bez związku z predyspozycjami.'
-    ]
   },
   {
     id: 'interlokutor',
@@ -1738,11 +1414,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/interlokutor.html',
-    distractors: [
-      'Osoba słuchająca wykładu bez prawa głosu.',
-      'Autor monologu wygłaszanego bez publiczności.',
-      'Moderator czuwający nad regulaminem debaty.'
-    ]
   },
   {
     id: 'konkluzja',
@@ -1757,11 +1428,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/konkluzja.html',
-    distractors: [
-      'Wstępne założenie przyjmowane przed zbadaniem faktów.',
-      'Luźna dygresja niemająca związku z tematem.',
-      'Zbiór danych surowych bez żadnej interpretacji.'
-    ]
   },
   {
     id: 'kuriozum',
@@ -1776,11 +1442,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Czas i Zjawiska',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/kuriozum.html',
-    distractors: [
-      'Zjawisko całkowicie przewidywalne i typowe.',
-      'Przedmiot produkowany seryjnie bez żadnych osobliwości.',
-      'Norma prawna powszechnie stosowana w całym kraju.'
-    ]
   },
   {
     id: 'miraz',
@@ -1795,11 +1456,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Czas i Zjawiska',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/mira%C5%BC.html',
-    distractors: [
-      'Rzeczywisty przedmiot dotknięty ręką i potwierdzony zmysłami.',
-      'Spełnione życzenie wynikające z ciężkiej pracy.',
-      'Precyzyjny pomiar wykonany za pomocą instrumentów.'
-    ]
   },
   {
     id: 'pejoratywny',
@@ -1814,11 +1470,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/pejoratywny.html',
-    distractors: [
-      'Wyrażający pochlebną i pozytywną ocenę osoby lub rzeczy.',
-      'Całkowicie neutralny i pozbawiony oceny emocjonalnej.',
-      'Stosowany wyłącznie w tekstach naukowych bez zabarwienia.'
-    ]
   },
   {
     id: 'przechrzta',
@@ -1833,11 +1484,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Społeczeństwo i Polityka',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/przechrzta.html',
-    distractors: [
-      'Osoba wiernie trzymająca się swoich przekonań przez całe życie.',
-      'Wyznawca religii od pokoleń kultywujący tradycję.',
-      'Działacz społeczny konsekwentny w głoszonych poglądach.'
-    ]
   },
   {
     id: 'relewantny',
@@ -1852,11 +1498,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Nauka i Logika',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/relewantny.html',
-    distractors: [
-      'Przypadkowy i niemający żadnego związku z tematem.',
-      'Zbędny dodatek zaciemniający obraz sytuacji.',
-      'Przestarzały i nieaktualny w danym kontekście.'
-    ]
   },
   {
     id: 'spuneryzm',
@@ -1871,11 +1512,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Język i Mowa',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/spuneryzm.html',
-    distractors: [
-      'Celowe użycie metafory dla upiększenia wypowiedzi.',
-      'Świadome powtórzenie wyrazu dla wzmocnienia efektu retorycznego.',
-      'Dialektalna forma wymowy charakterystyczna dla danego regionu.'
-    ]
   },
   {
     id: 'wyalienowany',
@@ -1890,11 +1526,6 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/wyalienowany.html',
-    distractors: [
-      'Głęboko zakorzeniony w lokalnej wspólnocie i tradycji.',
-      'Cieszący się powszechną sympatią i akceptacją grupy.',
-      'Aktywnie zaangażowany w życie towarzyskie i społeczne.'
-    ]
   }
 
 ];
