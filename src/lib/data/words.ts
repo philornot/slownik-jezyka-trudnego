@@ -1526,6 +1526,89 @@ export const INITIAL_WORDS: DictionaryWord[] = [
     ],
     category: 'Psychologia i Emocje',
     sjpUrl: 'https://sjp.pwn.pl/szukaj/wyalienowany.html',
+  },
+  {
+    id: 'symultanicznie',
+    word: 'Symultanicznie',
+    phonetic: '[sy-mul-ta-nicz-nie]',
+    shortDefinition: 'W sposób jednoczesny, równoległy lub odbywający się w tym samym czasie.',
+    fullDefinition: 'Odbywający się w tym samym momencie lub współbieżnie z innym procesem; także w odniesieniu do działań prowadzonych na bieżąco, na przykład tłumaczenia ustnego równolegle z wypowiedzią mówcy.',
+    etymology: 'Z łaciny: simultaneus (jednoczesny), od simul (razem, w tym samym czasie).',
+    examples: [
+      'Tłumacz przekładał wystąpienie prelegenta symultanicznie, bez chwili opóźnienia.',
+      'W nowoczesnych procesorach obliczenia są wykonywane symultanicznie przez wiele rdzeni.'
+    ],
+    category: 'Czas i Zjawiska',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/symultanicznie.html',
+  },
+  {
+    id: 'koniunkturalny',
+    word: 'Koniunkturalny',
+    phonetic: '[ko-niunk-tu-ral-ny]',
+    shortDefinition: 'Wynikający z wyrachowania i wykorzystywania chwilowych, sprzyjających okoliczności.',
+    fullDefinition: 'Uwarunkowany doraźnymi, korzystnymi okolicznościami bądź wynikający z chłodnego wyrachowania i dążenia do osobistego zysku; w ekonomii odnoszący się do koniunktury gospodarczej.',
+    etymology: 'Z łaciny: coniunctura (połączenie, zbieg okoliczności), od coniungere (łączyć ze sobą).',
+    examples: [
+      'Jego nagłe poparcie dla nowego projektu miało charakter czysto koniunkturalny.',
+      'Eksperci ostrzegali, że obecny wzrost sprzedaży to jedynie koniunkturalne zjawisko.'
+    ],
+    category: 'Społeczeństwo i Polityka',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/koniunkturalny.html',
+  },
+  {
+    id: 'perseweracja',
+    word: 'Perseweracja',
+    phonetic: '[per-se-we-ra-cja]',
+    shortDefinition: 'Uporczywe, mimowolne powracanie do tych samych myśli, słów lub czynności.',
+    fullDefinition: 'Zjawisko polegające na natrętnym powtarzaniu określonych zachowań, słów bądź myśli mimo ustania wywołującego je bodźca; w językoznawstwie oznacza przedłużenie artykulacji głoski.',
+    etymology: 'Z łaciny: perseveratio (wytrwałość, upór), od perseverare (trwać uporczywie).',
+    examples: [
+      'Po trudnym spotkaniu męczyła go perseweracja przykrych myśli, od których nie potrafił się uwolnić.',
+      'U pacjenta zaobserwowano persewerację ruchową w postaci ciągłego stukania palcami o blat stołu.'
+    ],
+    category: 'Psychologia i Emocje',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/perseweracja.html',
+  },
+  {
+    id: 'abstrahowac',
+    word: 'Abstrahować',
+    phonetic: '[ab-stra-ho-wać]',
+    shortDefinition: 'Pomijać pewne szczegóły lub odrywać się od konkretu na rzecz uogólnienia.',
+    fullDefinition: 'Świadomie pomijać mniej istotne elementy, okoliczności lub cechy w celu skupienia się na sednie sprawy; w nauce i filozofii oznacza tworzenie pojęć ogólnych.',
+    etymology: 'Z łaciny: abstrahere (odciągać, odrywać), od abs- (od) oraz trahere (ciągnąć).',
+    examples: [
+      'Abstrahując od kwestii finansowych, projekt ten przynosi ogromne korzyści wizerunkowe.',
+      'Naukowiec musiał abstrahować od jednostkowych przypadków, by sformułować ogólne prawo przyrody.'
+    ],
+    category: 'Nauka i Logika',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/abstrahowa%C4%87.html',
+  },
+  {
+    id: 'defetyzm',
+    word: 'Defetyzm',
+    phonetic: '[de-fe-tyzm]',
+    shortDefinition: 'Brak wiary w sukces lub powodzenie, skłonność do siania zwątpienia.',
+    fullDefinition: 'Postawa cechująca się całkowitym brakiem wiary w powodzenie podejmowanego przedsięwzięcia lub wygraną w walce, wyrażająca się w ciągłym przewidywaniu porażki i szerzeniu nastrojów rezygnacji.',
+    etymology: 'Z języka francuskiego: défaitisme, od défaite (porażka, klęska).',
+    examples: [
+      'Kapitan nie tolerował defetyzmu w szeregach załogi, gdy statek znalazł się w niebezpieczeństwie.',
+      'Zamiast szukać rozwiązań problemu, zarząd uległ defetyzmowi i rozważał przedwczesne zamknięcie projektu.'
+    ],
+    category: 'Osobowość i Postawy',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/defetyzm.html',
+  },
+  {
+    id: 'labilny',
+    word: 'Labilny',
+    phonetic: '[la-bil-ny]',
+    shortDefinition: 'Chwiejny, podatny na częste zmiany i mało stabilny.',
+    fullDefinition: 'Odznaczający się nietrwałością, zmiennością oraz brakiem stabilizacji; w psychologii odnosi się do osoby o chwiejnych emocjach i nastrojach, a w chemii do nietrwałych układów.',
+    etymology: 'Z łaciny: labilis (nietrwały, skłonny do upadku), od labi (ślizgać się, osuwać).',
+    examples: [
+      'Jego labilny nastrój sprawiał, że od euforii do głębokiego przygnębienia dzieliło go zaledwie kilka minut.',
+      'W trudnych warunkach atmosferycznych związek ten staje się termicznie labilny i ulega rozpadowi.'
+    ],
+    category: 'Psychologia i Emocje',
+    sjpUrl: 'https://sjp.pwn.pl/szukaj/labilny.html',
   }
-
 ];
