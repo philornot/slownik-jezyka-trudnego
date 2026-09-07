@@ -3,7 +3,7 @@
 // initial JS bundle. All cloud/Firestore-dependent functions live in
 // `storage.cloud.ts`, which is only loaded via dynamic import() once a user
 // actually signs in (see `getCloudStorage()` in +page.svelte).
-import type { UserWordProgress, UserSettings } from './types';
+import type { UserWordProgress, UserSettings, NotificationTimeSlot } from './types';
 import { getTodayDateString } from './supermemo';
 
 
@@ -12,7 +12,7 @@ const SETTINGS_STORAGE_KEY = 'sjt_user_settings_v1';
 const LAST_LOGIN_METHOD_KEY = 'sjt_last_login_method_v1';
 
 export const DEFAULT_SETTINGS: UserSettings = {
-  preferredNotificationHour: 9,
+  notificationTimeSlot: 'morning',
   notificationsEnabled: false,
   dailyNewWordsLimit: 5,
   highContrast: false,
@@ -28,6 +28,16 @@ export const DEFAULT_SETTINGS: UserSettings = {
  */
 export function normalizeUserSettings(raw: any): UserSettings {
   const merged: UserSettings = { ...DEFAULT_SETTINGS, ...raw };
+  // Legacy: preferredNotificationHour was replaced by notificationTimeSlot.
+  // Map old numeric hour values to the closest named slot.
+  if (!merged.notificationTimeSlot && typeof raw?.preferredNotificationHour === 'number') {
+    const h = raw.preferredNotificationHour as number;
+    const slot: NotificationTimeSlot = h < 11 ? 'morning' : h < 17 ? 'daytime' : 'evening';
+    merged.notificationTimeSlot = slot;
+  }
+  if (!merged.notificationTimeSlot) {
+    merged.notificationTimeSlot = 'morning';
+  }
   if (!merged.textSize) {
     merged.textSize = raw?.largerText ? 'medium' : 'small';
   }

@@ -31,7 +31,7 @@
     hasUnstartedWords,
     hasWordsToPractice
   } from '$lib/session';
-  import { registerServiceWorker } from '$lib/notifications';
+  import { registerServiceWorker, scheduleNotificationIfNeeded, markNotificationSentToday } from '$lib/notifications';
   import type { Auth, User, Unsubscribe } from 'firebase/auth';
   import { initTheme } from '$lib/theme.svelte';
 
@@ -121,12 +121,24 @@
     // Rejestracja Service Workera
     registerServiceWorker();
 
+    // Nasłuchiwanie odpowiedzi SW o wysłanym powiadomieniu
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.addEventListener('message', (event) => {
+        if (event.data?.type === 'NOTIFICATION_SENT') {
+          markNotificationSentToday();
+        }
+      });
+    }
+
     // Wczytanie postępu lokalnego
     progressMap = getLocalProgressMap();
     settings = getLocalSettings();
 
     // Aplikacja ustawień dostępności
     applyA11ySettings(settings);
+
+    // Zaplanowanie powiadomienia na dziś (jeśli włączone i jeszcze nie wysłane)
+    scheduleNotificationIfNeeded(settings);
 
     // Utworzenie sesji
     startSession();
@@ -444,10 +456,12 @@
     if (currentUser?.uid) {
       getCloudStorage().then((cloud) => cloud.saveSettingsToCloud(currentUser!.uid, newSettings));
     }
-    // Jeśli zmieniono limit słówek, przelicz sesję na dziś
+    // Przelicz sesję jeśli zmieniono limit słówek
     if (newSettings.dailyNewWordsLimit !== oldLimit) {
       startSession(true);
     }
+    // Ponowne zaplanowanie powiadomienia (mogła zmienić się pora lub włączenie/wyłączenie)
+    scheduleNotificationIfNeeded(newSettings);
   }
 
   /** Podgląd na żywo – aplikuje ustawienia bez zapisu */

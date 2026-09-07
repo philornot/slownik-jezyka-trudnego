@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { UserSettings } from "../types";
+  import { NOTIFICATION_TIME_SLOTS } from "../types";
   import { requestNotificationPermission } from "../notifications";
   import { APP_VERSION } from "../version";
   import Icon from "@iconify/svelte";
@@ -261,6 +262,37 @@
             ></span>
           </button>
         </div>
+
+        <!-- Picker pory dnia – widoczny tylko gdy powiadomienia włączone -->
+        {#if localSettings.notificationsEnabled}
+          <div class="pt-1 space-y-2 animate-in fade-in duration-200">
+            <p class="text-[11px] font-semibold text-(--text-muted)">Pora przypomnienia</p>
+            <div
+              class="grid grid-cols-3 gap-2"
+              role="radiogroup"
+              aria-label="Pora powiadomienia"
+            >
+              {#each Object.entries(NOTIFICATION_TIME_SLOTS) as [slotKey, slotMeta]}
+                {@const isSelected = localSettings.notificationTimeSlot === slotKey}
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={isSelected}
+                  onclick={() => updateSetting('notificationTimeSlot', slotKey as any)}
+                  class="flex flex-col items-center justify-center gap-0.5 p-2.5 rounded-xl border-2 transition-all cursor-pointer text-center min-h-12 {isSelected
+                    ? 'bg-(--brand-primary) border-(--brand-primary) text-white font-extrabold shadow-xs'
+                    : 'bg-(--bg-surface-elevated) border-(--border-default) text-(--text-muted) hover:text-(--text-primary) hover:border-(--brand-primary)'}"
+                >
+                  <span class="text-xs font-bold">{slotMeta.label}</span>
+                  <span class="text-[10px] opacity-80">{slotMeta.startHour}:00–{slotMeta.endHour}:00</span>
+                </button>
+              {/each}
+            </div>
+            <p class="text-[10px] font-semibold text-(--text-muted) leading-tight pt-0.5">
+              Powiadomienie przyjdzie o losowej porze w wybranym przedziale, gdy aplikacja jest otwarta lub działa w tle.
+            </p>
+          </div>
+        {/if}
       </div>
 
       <!-- ========================================== -->

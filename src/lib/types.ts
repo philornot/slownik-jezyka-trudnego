@@ -1,3 +1,21 @@
+/**
+ * Broad part of the day the user prefers to receive their daily study
+ * reminder. The exact minute the notification fires is randomised within the
+ * slot's window on each day, so the reminder doesn't arrive at a predictable,
+ * easy-to-ignore time - identical behaviour to the Android app.
+ */
+export type NotificationTimeSlot = 'morning' | 'daytime' | 'evening';
+
+/** Meta-data for each time slot - used both in the UI picker and scheduler. */
+export const NOTIFICATION_TIME_SLOTS: Record<
+  NotificationTimeSlot,
+  { label: string; startHour: number; endHour: number }
+> = {
+  morning:  { label: 'Rano',          startHour: 7,  endHour: 11 },
+  daytime:  { label: 'W ciągu dnia',  startHour: 11, endHour: 17 },
+  evening:  { label: 'Wieczorem',     startHour: 17, endHour: 21 },
+};
+
 export interface DictionaryWord {
   id: string;
   word: string;
@@ -26,7 +44,8 @@ export interface UserWordProgress {
 export type TextSizeLevel = 'small' | 'medium' | 'large';
 
 export interface UserSettings {
-  preferredNotificationHour: number; // np. 9 dla 09:00
+  /** Part of the day in which the reminder fires at a random time. */
+  notificationTimeSlot: NotificationTimeSlot;
   notificationsEnabled: boolean;
   dailyNewWordsLimit: number; // np. 5
   // Accessibility
