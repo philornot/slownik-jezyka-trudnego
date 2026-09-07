@@ -54,12 +54,22 @@
   function getStatusBadge(wordId: string) {
     const prog = progressMap[wordId];
     if (!prog) return null;
+    // Use history.length (actual number of review sessions) rather than prog.repetitions,
+    // which is an internal SM-2 counter that resets to 0 on a grade-0 answer and would
+    // always be >= 3 inside this branch - making the rep === 1 / rep <= 4 cases dead code.
+    const reviewCount = prog.history?.length ?? 0;
     if (prog.repetitions >= 3) {
-      const rep = prog.repetitions;
-      const label = rep === 1 ? '1 powtórzenie' : (rep >= 2 && rep <= 4 ? `${rep} powtórzenia` : `${rep} powtórzeń`);
+      let label: string;
+      if (reviewCount === 1) {
+        label = '1 powtórzenie';
+      } else if (reviewCount >= 2 && reviewCount <= 4) {
+        label = `${reviewCount} powtórzenia`;
+      } else {
+        label = `${reviewCount} powtórzeń`;
+      }
       return { label, badgeClass: 'badge-emerald' };
     }
-    return { label: `W trakcie nauki`, badgeClass: 'badge-amber' };
+    return { label: 'W trakcie nauki', badgeClass: 'badge-amber' };
   }
 </script>
 

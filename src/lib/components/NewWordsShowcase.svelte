@@ -10,7 +10,16 @@
   let { words, onFinishShowcase }: Props = $props();
 
   let currentIndex = $state(0);
-  let currentWord = $derived(words[currentIndex]);
+  // words could theoretically be empty if the parent renders this component without
+  // guarding – keep currentWord nullable so the template never crashes on undefined.
+  let currentWord = $derived(words[currentIndex] ?? null);
+
+  // If for any reason the showcase receives an empty list, skip it immediately.
+  $effect(() => {
+    if (words.length === 0) {
+      onFinishShowcase();
+    }
+  });
 
   // Stan odsłonięcia definicji (domyślnie zamazana dla każdego nowego słowa)
   let isRevealed = $state(false);
@@ -70,6 +79,7 @@
 <div
   class="w-full sm:max-w-2xl border-y sm:border border-(--border-default) bg-(--bg-surface) sm:rounded-2xl sm:shadow-2xl transition-all duration-300"
 >
+{#if currentWord}
   <!-- Nagłówek Prezentacji Nowych Słów -->
   <div
     class="flex items-center justify-between border-b border-(--border-default) bg-(--bg-surface-elevated) px-4 sm:px-6 py-3.5 sm:rounded-t-2xl"
@@ -224,6 +234,8 @@
       </div>
     {/if}
   </div>
+
+{/if}
 
   <!-- Przycisk Przejścia – jedyny element dokowany na dole na mobile -->
   <div
